@@ -1,0 +1,295 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"fun",
+				"function"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"package",
+				"Package Control: Disable Package"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 528.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/lotts-over.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/single-cuar_private_file.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/customer-area/templates/customer-page.template.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/customer-area/templates/template-functions.class.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/customer-area/templates/customer-private-files-content-empty-category_archive.template.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/customer-area/templates/customer-private-files-content-empty-date_archive.template.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/customer-area/templates/customer-private-files-content-empty.template.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/customer-area/templates/customer-private-files-content-item.template.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/customer-area/templates/customer-private-files-content.template.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/functions.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/header.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/style.css",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/sftp-config.json",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/css/header.css",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/index.php",
+		"/C/Users/Henri/AppData/Roaming/Sublime Text 3/Packages/CSScomb/README.md",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/plugins/customer-area/customer-area.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/worldgap/DrasticTreemapGApi.js",
+		"/C/Users/Henri/Dropbox/Werk/Websites/worldgap/js/main.js",
+		"/C/Users/Henri/Dropbox/Werk/Websites/worldgap/data.tsv",
+		"/C/Users/Henri/Dropbox/Werk/Websites/gapminder/sftp-config.json",
+		"/C/Users/Henri/Dropbox/Werk/Websites/ivis/wvs/sftp-config.json",
+		"/C/Users/Henri/AppData/Roaming/Sublime Text 3/Packages/SFTP/SFTP.sublime-settings",
+		"/C/Users/Henri/Dropbox/Werk/Websites/ivis/wvs/globe.js",
+		"/C/Users/Henri/Dropbox/Werk/Websites/ivis/wvs/css/main.css",
+		"/C/Users/Henri/Dropbox/Werk/Websites/ivis/wvs/data.json",
+		"/C/Users/Henri/Dropbox/Werk/Websites/ivis/wvs/index.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/ivis/wvs/index.html",
+		"/C/Users/Henri/Dropbox/Werk/Websites/ivis/wvs/img/.gitignore"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"sub-menu",
+			"p",
+			"body",
+			"settime",
+			"hover",
+			"}",
+			",\"Mag\":",
+			"\"Lang\":",
+			"{\"Lat\":",
+			"}",
+			"\"Mag\":",
+			"\"Lang\":",
+			"{\"Lat\":",
+			"}",
+			"\"Mag\":",
+			"\"Lang\":",
+			"{\"Lat\":",
+			"question",
+			"year",
+			"settime",
+			"ar1990",
+			"year1990",
+			"world",
+			"}",
+			"\"magnitude\":",
+			"\"longitude\":",
+			"{\"latitude\":",
+			"}",
+			"\"magnitude\":",
+			"\"magnitude\":0}",
+			"\"longitude\":",
+			"{\"latitude\":",
+			"}",
+			"\"magnitude\":",
+			"\"longitude\":",
+			"{\"latitude\":",
+			"png",
+			".jpg",
+			".gif",
+			"1995",
+			"}",
+			"\"magnitude\":",
+			"\"longitude\":",
+			"{\"latitude\":",
+			"{\"latitude\"",
+			"}",
+			"\"magnitude\":",
+			"\"longitude\":",
+			"{\"latitude\":",
+			"0.",
+			"46",
+			"}",
+			"\"magnitude\":",
+			"\"longitude\":",
+			"{\"latitude\":",
+			"\":",
+			"{\"latitude\"",
+			"{\"latitude\":",
+			"{\"latitude",
+			"[{\"",
+			"1995",
+			"195",
+			"jpg",
+			"world",
+			"disable_formatted_linebreak",
+			"  \n",
+			"------------------------------\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 100.0
+	},
+	"project": "ibrowse.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 271.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
