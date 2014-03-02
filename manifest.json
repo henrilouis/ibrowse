@@ -1,0 +1,21 @@
+{
+  "name": "CHANGE THIS : iBrowse",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "This extension is for visualizing browser history",
+  "homepage_url": "http://henrilouis.com",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "browser_action": {
+    "default_icon": "icons/icon19.png",
+    "default_title": "iBrowse",
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "history"
+  ]
+}
