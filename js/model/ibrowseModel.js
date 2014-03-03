@@ -29,7 +29,7 @@ var IbrowseModel = function() {
 			function(historyItems)
 			{
 				//console.log(historyItems.length);
-				month.push([d,historyItems]);
+				month.push(historyItems);
 			});
 		}
 	}
