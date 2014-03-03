@@ -6,15 +6,22 @@ $(function()
 	// model works asynchronously.
 
 	setTimeout(function(){
+		var date = new Date();
+		date.setMonth(date.getMonth()-1);
+		date.setHours(0);
+		date.setMinutes(0);
+		date.setSeconds(0);
 
 		console.log(ibrowseModel.month);
 		for(i = 0; i < ibrowseModel.month.length; i++)
 		{
 			l = $("<p>");
-			l.html(ibrowseModel.month[i][0]+ibrowseModel.month[i][1].length);
+			l.append(date);
+			l.append("Visits:"+ibrowseModel.month[i].length);
 			$('#calendar').append(l);
+			date.setDate(date.getDate()+1);
 		}
-
+		
 	},3000);
 	
 });
