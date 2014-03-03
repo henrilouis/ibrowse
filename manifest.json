@@ -1,20 +1,17 @@
 {
-  "name": "CHANGE THIS : iBrowse",
+  "name": "iBrowse",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "This extension is for visualizing browser history",
-  "homepage_url": "http://henrilouis.com",
-  "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+  "description": "Get keen insights into your browsing behaviour. Replaces the normal browser history in Chrome.",
+
+  "icons": { "16": "images/icon16.png",
+           "48": "images/icon48.png",
+          "128": "images/icon128.png" },
+
+   "chrome_url_overrides" : {
+    "history": "index.html"
   },
-  "default_locale": "en",
-  "browser_action": {
-    "default_icon": "icons/icon19.png",
-    "default_title": "iBrowse",
-    "default_popup": "index.html"
-  },
+
   "permissions": [
     "history"
   ]
