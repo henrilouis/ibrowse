@@ -1,23 +1,39 @@
 var IbrowseModel = function() {
 
-	var history = [];
-
+	var month = [];
 	// Getting time in Unix timestamp to use in startTime
 	// option because we only want one month.
-	var date = new Date();
-	date.setMonth(date.getMonth()-1);
-	var time = date.getTime();
+	function updateMonth()
+	{
+		var now = new Date(Date.now());
+		var date = new Date();
 
-	chrome.history.search({
-	'text':'',
-	'startTime': time,
-	'maxResults': 99999
-	},
-	function(historyItems){
-		$.each(historyItems, function(index, val) {
-			history.push(val);
-		});
-	});
+		now.setDate(now.getDate());
+		date.setMonth(date.getMonth()-1);
+		date.setHours(0);
+		date.setMinutes(0);
+		date.setSeconds(0);
 
-	this.history = history;
+		for(var d = date; d <= now; d.setDate(d.getDate()+1))
+		{
+			var nextd = new Date(d.getTime());
+			nextd.setDate(d.getDate()+1);
+			//console.log(d,nextd);
+			
+			chrome.history.search({
+			'text':'',
+			'startTime': d.getTime(),
+			'endTime':  nextd.getTime(),
+			'maxResults': 999999
+			},
+			function(historyItems)
+			{
+				//console.log(historyItems.length);
+				month.push([d,historyItems]));
+			});
+		}
+	}
+
+	updateMonth();
+	this.month = month;
 }
