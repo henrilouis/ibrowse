@@ -19,7 +19,7 @@ var IbrowseModel = function() {
 			var nextd = new Date(d.getTime());
 			nextd.setDate(d.getDate()+1);
 			//console.log(d,nextd);
-			
+
 			chrome.history.search({
 			'text':'',
 			'startTime': d.getTime(),
@@ -29,7 +29,7 @@ var IbrowseModel = function() {
 			function(historyItems)
 			{
 				//console.log(historyItems.length);
-				month.push([d,historyItems]));
+				month.push([d,historyItems]);
 			});
 		}
 	}
