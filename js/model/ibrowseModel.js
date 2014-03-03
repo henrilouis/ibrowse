@@ -1,21 +1,18 @@
 var IbrowseModel = function() {
 
-	var month = [];
+	var days = [];
 	// Getting time in Unix timestamp to use in startTime
 	// option because we only want one month.
-	function updateMonth()
-	{
-		var now = new Date(Date.now());
-		var date = new Date();
+	function getDays(startTime,endTime){
 
-		now.setDate(now.getDate());
-		date.setMonth(date.getMonth()-1);
-		date.setHours(0);
-		date.setMinutes(0);
-		date.setSeconds(0);
+		var tempDays = [];
+		var sT = new Date(startTime.getTime());
+		sT.setHours(0);
+		sT.setMinutes(0);
+		sT.setSeconds(0);
 
-		for(var d = date; d <= now; d.setDate(d.getDate()+1))
-		{
+		for(var d = sT; d <= endTime; d.setDate(d.getDate()+1)){
+
 			var nextd = new Date(d.getTime());
 			nextd.setDate(d.getDate()+1);
 			//console.log(d,nextd);
@@ -29,11 +26,32 @@ var IbrowseModel = function() {
 			function(historyItems)
 			{
 				//console.log(historyItems.length);
-				month.push(historyItems);
+				tempDays.push(historyItems);
 			});
 		}
+
+		setTimeout(function(){
+
+			var d = new Date(startTime.getTime());
+			for(i = 0; i < tempDays.length; i++)
+			{
+				days.push([new Date(d.getTime()),tempDays[i]]);
+				d.setDate(d.getDate()+1);
+			}
+		},8000);
 	}
 
-	updateMonth();
-	this.month = month;
+	function getDaysJSON(){
+
+		var json = {};
+		for(i=0; i < days.length; i++){
+			json[Math.round(days[i][0].getTime()/1000)] = days[i][1].length;
+		}
+		return json;
+
+	}
+
+	this.getDays = getDays;
+	this.days = days;
+	this.getDaysJSON = getDaysJSON;
 }
