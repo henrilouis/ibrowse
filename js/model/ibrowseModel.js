@@ -38,7 +38,7 @@ var IbrowseModel = function() {
 				days.push([new Date(d.getTime()),tempDays[i]]);
 				d.setDate(d.getDate()+1);
 			}
-		},8000);
+		},4000);
 	}
 
 	function getDaysJSON(){

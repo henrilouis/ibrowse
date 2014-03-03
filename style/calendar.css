@@ -1,7 +1,52 @@
+#calendar
+{
+	margin-top:80px;
+}
+
+#nextButton
+{
+	position:absolute;
+	background:url(../images/next.png) no-repeat;
+	width: 47px;
+	height: 50px;
+	border: none;
+	box-shadow: none;
+	outline: 0;
+	top:50%;
+	margin-top:-25px;
+	right:0px;
+}
+
+#nextButton:hover
+{
+	background:url(../images/next-hover.png) no-repeat;
+}
+
+#previousButton
+{
+	position:absolute;
+	background:url(../images/prev.png) no-repeat;
+	width: 47px;
+	height: 50px;
+	border: none;
+	box-shadow: none;
+	outline: 0;
+	top:50%;
+	margin-top:-25px;
+	left:0px;
+}
+
+#previousButton:hover
+{
+	background:url(../images/prev-hover.png) no-repeat;
+}
+
+
 /* Cal-HeatMap CSS */
 
 .cal-heatmap-container {
 	display: block;
+	margin:auto;
 }
 
 .graph
@@ -11,8 +56,8 @@
 
 .graph-label
 {
-	fill: #999;
-	font-size: 10px
+	fill: #efefef;
+	font-size: 18px;
 }
 
 .graph, .graph-legend rect {
@@ -21,19 +66,21 @@
 
 .graph-rect
 {
-	fill: #ededed
+	/*fill: #ededed*/
+	fill:#000;
 }
 
 .graph-subdomain-group rect:hover
 {
-	stroke: #000;
+	stroke: #efefef;
 	stroke-width: 1px
 }
 
 .subdomain-text {
 	font-size: 8px;
-	fill: #999;
-	pointer-events: none
+	fill: #fff;
+	pointer-events: none;
+	text-shadow: 1px 1px #333;
 }
 
 .hover_cursor:hover {
@@ -45,16 +92,13 @@
 	fill: #999
 }
 
-/*
-Remove comment to apply this style to date with value equal to 0
 .q0
 {
-	background-color: #fff;
-	fill: #fff;
-	stroke: #ededed
+	background-color: rgba(0,0,0,1) !important;
+	fill: rgba(0,0,0,1) !important;
 }
-*/
 
+/*
 .q1
 {
 	background-color: #dae289;
@@ -83,6 +127,36 @@ Remove comment to apply this style to date with value equal to 0
 {
 	background-color: #3b6427;
 	fill: #3b6427
+}*/
+
+.q1
+{
+	background-color:rgba(50,180,255,0.2);
+	fill:rgba(50,180,255,0.2);
+}
+
+.q2
+{
+	background-color:rgba(50,180,255,0.4);
+	fill:rgba(50,180,255,0.4);
+}
+
+.q3
+{
+	background-color:rgba(50,180,255,0.6);
+	fill:rgba(50,180,255,0.6);
+}
+
+.q4
+{
+	background-color:rgba(50,180,255,0.8);
+	fill:rgba(50,180,255,0.7);
+}
+
+.q5
+{
+	background-color:rgba(50,180,255,1);
+	fill:rgba(50,180,255,1);
 }
 
 rect.highlight

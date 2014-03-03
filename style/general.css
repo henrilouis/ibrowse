@@ -1,0 +1,26 @@
+body
+{
+	background:#111;
+}
+
+.center
+{
+	text-align: center;
+}
+
+.floatleft
+{
+	float:left;
+}
+
+#logo
+{
+	margin-top:15px;
+}
+
+h1
+{
+	font-size: 25px;
+	margin-top: 24px;
+	color: #efefef;
+}

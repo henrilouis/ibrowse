@@ -1,11 +1,17 @@
 var CalendarView = function(container,model)
 {
+	// Calendar variables
 	var cal = new CalHeatMap();
-
-	var months = 5;
+	var months = 4;
 	var startDate = new Date();
 		startDate.setMonth(startDate.getMonth()-months);
 	var endDate = new Date(Date.now());
+
+	// Buttons
+	var nextButton = $("<button id='nextButton'>");
+	var previousButton = $("<button  id='previousButton'>");
+
+	container.append(nextButton,previousButton);
 
 	model.getDays(startDate,endDate);
 
@@ -17,14 +23,22 @@ var CalendarView = function(container,model)
 			data: JSONdata,
 			itemSelector: container.selector,
 			domain: "month",
-			subDomain: "x_day",
-			cellSize: 20,
-			cellPadding:5,
-			range: months+1,
+			subDomain: "day",
+			cellSize: 40,
+			cellPadding:2,
+			domainGutter: 20,
+			range: 4,
 			start: startDate,
-			legend: [100, 200, 300, 400] 
-
+			legend: [100, 200, 300, 400],
+			onClick: function(date,value)
+			{
+				alert(date+value);
+			}
 		});
 
-	},9000);
+	},4000);
+
+	this.nextButton = nextButton;
+	this.previousButton = previousButton;
+	this.cal = cal;
 }
