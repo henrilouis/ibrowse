@@ -2,7 +2,7 @@ var CalendarView = function(container,model)
 {
 	// Calendar variables
 	var cal = new CalHeatMap();
-	var months = 4;
+	var months = 6;
 	var startDate = new Date();
 		startDate.setMonth(startDate.getMonth()-months);
 	var endDate = new Date(Date.now());
@@ -15,8 +15,7 @@ var CalendarView = function(container,model)
 
 	model.getDays(startDate,endDate);
 
-	setTimeout(function(){
-
+	function createCalendar(){
 		var JSONdata = model.getDaysJSON();
 
 		cal.init({
@@ -36,9 +35,19 @@ var CalendarView = function(container,model)
 			}
 		});
 
-	},4000);
+	}
 
 	this.nextButton = nextButton;
 	this.previousButton = previousButton;
 	this.cal = cal;
+
+	// Observer Pattern
+
+	model.addObserver(this);
+
+	this.update = function(args)
+	{
+		createCalendar();
+	}
+
 }
