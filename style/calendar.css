@@ -1,5 +1,11 @@
 #calendar
 {
+	width: 940px;
+	margin: auto;
+}
+
+#cal
+{
 	margin-top:80px;
 }
 
@@ -14,7 +20,7 @@
 	outline: 0;
 	top:50%;
 	margin-top:-25px;
-	right:0px;
+	right:-60px;
 }
 
 #nextButton:hover
@@ -33,7 +39,7 @@
 	outline: 0;
 	top:50%;
 	margin-top:-25px;
-	left:0px;
+	left:-60px;
 }
 
 #previousButton:hover
@@ -46,7 +52,6 @@
 
 .cal-heatmap-container {
 	display: block;
-	margin:auto;
 }
 
 .graph
@@ -77,10 +82,16 @@
 }
 
 .subdomain-text {
+	opacity:0;
 	font-size: 8px;
 	fill: #fff;
 	pointer-events: none;
 	text-shadow: 1px 1px #333;
+}
+
+.subdomain-text:hover
+{
+	opacity:1;
 }
 
 .hover_cursor:hover {

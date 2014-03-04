@@ -5,6 +5,6 @@ $(function()
 	// Important to use a timeout function, because the request to the
 	// model works asynchronously.
 
-	var calendarView = new CalendarView($("#calendar"),model);
+	var calendarView = new CalendarView($("#cal"),model);
 	var calendarController = new CalendarController(calendarView,model);
 });
