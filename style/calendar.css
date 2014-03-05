@@ -1,7 +1,11 @@
 #calendar
 {
+	position: absolute;
 	width: 940px;
-	margin: auto;
+	top: 50%;
+	left: 50%;
+	margin-top: -268px;
+	margin-left: -470px;
 }
 
 #cal
@@ -20,7 +24,7 @@
 	outline: 0;
 	top:50%;
 	margin-top:-25px;
-	right:-60px;
+	right:-80px;
 }
 
 #nextButton:hover
@@ -39,7 +43,7 @@
 	outline: 0;
 	top:50%;
 	margin-top:-25px;
-	left:-60px;
+	left:-80px;
 }
 
 #previousButton:hover

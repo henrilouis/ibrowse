@@ -2,25 +2,24 @@ var CalendarView = function(container,model)
 {
 	// Calendar variables
 	var cal = new CalHeatMap();
-	var months = 6;
-	var startDate = new Date();
-		startDate.setMonth(startDate.getMonth()-months);
-	var endDate = new Date(Date.now());
+	var calContainer = $("<div id='cal'>");
+	container.append(calContainer);
 
 	// Buttons
 	var nextButton = $("<button id='nextButton'>");
 	var previousButton = $("<button  id='previousButton'>");
-
 	container.append(nextButton,previousButton);
 
-	model.getDays(startDate,endDate);
+	// Creating startdate wich is 90 days back because of google
+	startDate = new Date(Date.now());
+	startDate.setDate(startDate.getDate()-90);
 
 	function createCalendar(){
 		var JSONdata = model.getDaysJSON();
 
 		cal.init({
 			data: JSONdata,
-			itemSelector: container.selector,
+			itemSelector: "#cal",
 			domain: "month",
 			subDomain: "day",
 			cellSize: 40,
@@ -32,7 +31,22 @@ var CalendarView = function(container,model)
 			legend: [100, 200, 300, 400],
 			onClick: function(date,value)
 			{
-				alert(date+value);
+				// Already created the request for the date, here d is the 
+				// day object belonging to the clicked date. It has all the
+				// visit counts etc. check console for results from loop
+				 
+				var tmpday = model.days.filter(function(d){ if(d[0] == String(date)) return d})
+				var day = tmpday[0];
+
+				var visits = day[2];
+				console.log(day);
+
+				for(var website in visits)
+				{
+					console.log(website+" : "+visits[website]);
+				}
+
+				
 			}
 		});
 
