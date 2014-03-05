@@ -7,4 +7,10 @@ $(function()
 
 	var calendarView = new CalendarView($("#calendar"),model);
 	var calendarController = new CalendarController(calendarView,model);
+
+	window.treemapToggle = new function()
+	{
+		$("#treemap").toggle();
+	}
+	
 });

@@ -48,6 +48,10 @@ var CalendarView = function(container,model)
 				
 				// This visits data can be used in the treemap and this should
 				// be updated here when the button is pressed.
+				//
+				// Also the div containing the treemap should be shown or hidden
+				// on command using the supercontroller. I already created
+				// window.treemapToggle(); for that
 
 				for(i = 0; i < visits.length; i++)
 				{
