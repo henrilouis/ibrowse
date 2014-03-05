@@ -14,8 +14,12 @@ var CalendarView = function(container,model)
 	startDate = new Date(Date.now());
 	startDate.setDate(startDate.getDate()-90);
 
+
+
 	function createCalendar(){
 		var JSONdata = model.getDaysJSON();
+		var max = model.getDailyMax();
+		console.log(max);
 
 		cal.init({
 			data: JSONdata,
@@ -25,10 +29,11 @@ var CalendarView = function(container,model)
 			cellSize: 40,
 			cellPadding:2,
 			tooltip: true,
+			itemName: "site",
 			domainGutter: 20,
 			range: 4,
 			start: startDate,
-			legend: [100, 200, 300, 400],
+			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
 			onClick: function(date,value)
 			{
 				// Already created the request for the date, here d is the 

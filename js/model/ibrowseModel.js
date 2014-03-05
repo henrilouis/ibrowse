@@ -59,6 +59,7 @@ var IbrowseModel = function() {
 
 				var urlArray = new Array();
 
+				// Getting the starting of the url
 				for(j = 0; j<tempDays[i].length; j++){
 					
 					var url = $('<a>').prop('href',tempDays[i][j].url).prop('hostname');
@@ -104,12 +105,25 @@ var IbrowseModel = function() {
 		return days;
 	}
 
+	function getDailyMax()
+	{
+		var max = 0;
+		for(i = 0; i < days.length; i++){
+
+			// Get the highest value per day to determine scale
+			if(days[i][1].length > max){
+				max = days[i][1].length;
+			}
+		}
+		return max;
+	}
+
 	// fill them once
 	fillDays();
 
 	this.fillDays = fillDays;
-	this.getDays = getDays;
 	this.days = days;
+	this.getDailyMax = getDailyMax;
 	this.getDaysJSON = getDaysJSON;
 
 
