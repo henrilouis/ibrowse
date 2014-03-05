@@ -65,16 +65,24 @@ var IbrowseModel = function() {
 					urlArray.push(url);
 				}
 
+				// Creating associative array from url count
 				var counts = new Array();
 				urlArray.forEach(function(x){ 
 					counts[x] = (counts[x] || 0)+1; 
 				});
 
+				// Make a normal array out of the associative one
 				var countsNormalArray = new Array();
 				for(key in counts)
 				{
 					countsNormalArray.push([key,counts[key]]);
 				}
+
+				// Sorting the array in descending order
+				countsNormalArray.sort(function(a,b)
+				{
+					return b[1]-a[1];
+				});
 
 				days.push([new Date(d.getTime()),tempDays[i],countsNormalArray]);
 				d.setDate(d.getDate()+1);
