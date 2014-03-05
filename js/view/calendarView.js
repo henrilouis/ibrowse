@@ -33,17 +33,18 @@ var CalendarView = function(container,model)
 			{
 				// Already created the request for the date, here d is the 
 				// day object belonging to the clicked date. It has all the
-				// visit counts etc. check console for results from loop
+				// visit counts etc.
 				 
 				var tmpday = model.days.filter(function(d){ if(d[0] == String(date)) return d})
 				var day = tmpday[0];
 
-				var visits = day[2];
 				console.log(day);
+				var visits = day[2];
+				
 
-				for(var website in visits)
+				for(i = 0; i < visits.length; i++)
 				{
-					console.log(website+" : "+visits[website]);
+					console.log(visits[i][0]+" : "+visits[i][1]);
 				}
 
 				

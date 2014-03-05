@@ -5,15 +5,10 @@ var IbrowseModel = function() {
 	/********************************************************************************
 		Important: days[i] finally contains three arrays per day.
 
-		The first one (days[i][0]) is one with the day date
-		The second one (days[i][1]) has the individual url visits from google
-		The third days[i][1] is an associative array containingthe counted 
-		visits per website. Remember, looping over asoc arrays
-		only works with 
-		for(var key in days[i][1]){ 
-			
-			dosomethingwith(	key, days[i][1][key]	)
-		}	
+		The first one (days[i][0]) is one with the day date.
+		The second one (days[i][1]) has the individual url visits from google.
+		The third days[i][2] is an array containing the number of visits per site.
+		
 	*********************************************************************************/
 
 	function fillDays(){
@@ -75,7 +70,13 @@ var IbrowseModel = function() {
 					counts[x] = (counts[x] || 0)+1; 
 				});
 
-				days.push([new Date(d.getTime()),tempDays[i],counts]);
+				var countsNormalArray = new Array();
+				for(key in counts)
+				{
+					countsNormalArray.push([key,counts[key]]);
+				}
+
+				days.push([new Date(d.getTime()),tempDays[i],countsNormalArray]);
 				d.setDate(d.getDate()+1);
 			}
 			notifyObservers();
