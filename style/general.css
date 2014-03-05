@@ -15,7 +15,7 @@ body
 
 #logo
 {
-	margin-top:15px;
+	margin-top: 13px;
 }
 
 h1
@@ -23,4 +23,5 @@ h1
 	font-size: 25px;
 	margin-top: 24px;
 	color: #efefef;
+	margin-left: 5px;
 }
