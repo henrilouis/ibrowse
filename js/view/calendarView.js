@@ -46,6 +46,8 @@ var CalendarView = function(container,model)
 				console.log(day);
 				var visits = day[2];
 				
+				// This visits data can be used in the treemap and this should
+				// be updated here when the button is pressed.
 
 				for(i = 0; i < visits.length; i++)
 				{
@@ -62,8 +64,8 @@ var CalendarView = function(container,model)
 	this.previousButton = previousButton;
 	this.cal = cal;
 
-	// Observer Pattern
 
+	// Observer Pattern
 	model.addObserver(this);
 
 	this.update = function(args)

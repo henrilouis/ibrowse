@@ -82,7 +82,7 @@
 .graph-subdomain-group rect:hover
 {
 	stroke: #efefef;
-	stroke-width: 1px
+	stroke-width: 1px;
 }
 
 .subdomain-text {
