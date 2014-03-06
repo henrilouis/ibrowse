@@ -25,7 +25,7 @@ var CalendarView = function(container,model)
 			subDomain: "day",
 			cellSize: 40,
 			cellPadding:2,
-			//tooltip: true,
+			tooltip: true,
 			legendHorizontalPosition: "center",
 			itemName: "site",
 			domainGutter: 20,
