@@ -7,6 +7,6 @@ var HistoryView = function(container,model)
 
 	this.update = function(args)
 	{
-	
+		
 	}
 }
