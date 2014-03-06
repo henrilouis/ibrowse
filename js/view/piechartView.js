@@ -1,4 +1,4 @@
-var DayStatsView = function(container,model)
+var PiechartView = function(container,model)
 {
 	var w = 450;
 	var h = 300;
@@ -97,7 +97,6 @@ var DayStatsView = function(container,model)
 	// to run each time data is generated
 	function update() 
 	{
-
 	  var myData = model.getCurrentStats();
 
 	  // Get top 5 and count the rest to other
@@ -147,8 +146,8 @@ var DayStatsView = function(container,model)
 	    //DRAW ARC PATHS
 	    paths = arc_group.selectAll("path").data(filteredPieData);
 	    paths.enter().append("svg:path")
-	      .attr("stroke", "white")
-	      .attr("stroke-width", 0.5)
+	      //.attr("stroke", "white")
+	      //.attr("stroke-width", 0.5)
 	      .attr("fill", function(d, i) { return color(i); })
 	      .transition()
 	        .duration(tweenDuration)

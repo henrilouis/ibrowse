@@ -11,8 +11,8 @@ $(function()
 	//var dayView = new DayView($("#daycalendar"),model);
 	//var dayController = new DayController(dayView,model);
 
-	var dayStatsView = new DayStatsView($("#daystats"),model);
-	var dayStatsController = new DayStatsController(dayStatsView,model);
+	var piechartView = new PiechartView($("#daystats"),model);
+	var piechartController = new PiechartController(piechartView,model);
 
 	$("#statistics").draggable({
 		
