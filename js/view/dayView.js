@@ -1,8 +1,8 @@
-var CalendarView = function(container,model)
+var DayView = function(container,model,day)
 {
 	// Calendar variables
 	var cal = new CalHeatMap();
-	var calContainer = $("<div id='cal'>");
+	var calContainer = $("<div id='daycal'>");
 	container.append(calContainer);
 
 	// Buttons
@@ -14,22 +14,21 @@ var CalendarView = function(container,model)
 	startDate = new Date(Date.now());
 	startDate.setDate(startDate.getDate()-90);
 
-	function createCalendar(){
-		var JSONdata = model.getDaysJSON();
-		var max = model.getDailyMax();
+	function createDayCalendar(){
+		var JSONdata = model.getHoursJSON();
+		var max = model.getHourlyMax();
+		console.log(max);
 
 		cal.init({
 			data: JSONdata,
-			itemSelector: "#cal",
-			domain: "month",
-			subDomain: "day",
+			itemSelector: "#daycal",
+			domain: "day",
+			subDomain: "hour",
 			cellSize: 40,
 			cellPadding:2,
-			//tooltip: true,
-			legendHorizontalPosition: "center",
+			tooltip: true,
 			itemName: "site",
 			domainGutter: 20,
-			legendCellSize: 20,
 			range: 4,
 			start: startDate,
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
@@ -38,9 +37,12 @@ var CalendarView = function(container,model)
 				// Already created the request for the date, here d is the 
 				// day object belonging to the clicked date. It has all the
 				// visit counts etc.
-				 
+				
+				/*
 				var tmpday = model.days.filter(function(d){ if(d[0] == String(date)) return d})
 				var day = tmpday[0];
+
+				console.log(day);
 				var visits = day[2];
 				
 				// This visits data can be used in the treemap and this should
@@ -50,15 +52,11 @@ var CalendarView = function(container,model)
 				// on command using the supercontroller. I already created
 				// window.treemapToggle(); for that
 
-				model.setCurrentStats(visits);
-
-				/*
 				for(i = 0; i < visits.length; i++)
 				{
 					console.log(visits[i][0]+" : "+visits[i][1]);
-				}*/
-
-				
+				}
+				*/
 			}
 		});
 
@@ -68,16 +66,11 @@ var CalendarView = function(container,model)
 	this.previousButton = previousButton;
 	this.cal = cal;
 
-
 	// Observer Pattern
 	model.addObserver(this);
 
 	this.update = function(args)
 	{
-		if(args == 'dataReady')
-		{
-			createCalendar();
-		}
+		createDayCalendar();
 	}
-
 }

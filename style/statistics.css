@@ -1,0 +1,10 @@
+#statistics
+{
+	position:absolute;
+	cursor:move;
+}
+
+#statistics .label_group
+{
+	fill: #fff;
+}

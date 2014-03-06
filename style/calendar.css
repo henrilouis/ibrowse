@@ -1,4 +1,4 @@
-#calendar
+#calendar, #daycalendar
 {
 	position: absolute;
 	width: 940px;
@@ -8,12 +8,12 @@
 	margin-left: -470px;
 }
 
-#cal
+#cal, #daycal
 {
 	margin-top:80px;
 }
 
-#nextButton
+.nextButton
 {
 	position:absolute;
 	background:url(../images/next.png) no-repeat;
@@ -27,12 +27,12 @@
 	right:-80px;
 }
 
-#nextButton:hover
+.nextButton:hover
 {
 	background:url(../images/next-hover.png) no-repeat;
 }
 
-#previousButton
+.previousButton
 {
 	position:absolute;
 	background:url(../images/prev.png) no-repeat;
@@ -46,7 +46,7 @@
 	left:-80px;
 }
 
-#previousButton:hover
+.previousButton:hover
 {
 	background:url(../images/prev-hover.png) no-repeat;
 }
