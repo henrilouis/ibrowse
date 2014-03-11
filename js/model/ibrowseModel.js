@@ -45,7 +45,6 @@ var IbrowseModel = function() {
 				tempData.push(historyItems);
 				if (countTime >= endTime){
 					arrayFromHistory(tempData, targetArray, timeUnit, startTime);
-					console.log(targetArray);
 					notifyObservers('dataReady');
 				}
 				else{
@@ -143,11 +142,31 @@ var IbrowseModel = function() {
 		return currentStats;
 	}
 
-	function searchHistory(string)
+	function searchDays(string)
 	{
-		// warning, apparently this works insanely slow
-		getHistory(dayMs,string,days);
-		getHistory(hourMs,string,hours);
+		var data = [];
+		for (i = 0; i<days.length; i++)
+		{
+			var day = [];
+			day.push(days[i][0]);
+
+			var result = days[i][1].filter(function(d)
+			{
+				if(d['url'].indexOf(string)>=0)
+				{
+					return d;
+				}
+			});
+			day.push(result);
+			
+			data.push(day);
+		}
+		return data;
+	}
+
+	function searchHours(string)
+	{
+		
 	}
 
 	// fill them once
@@ -155,7 +174,7 @@ var IbrowseModel = function() {
 	this.days = days;
 
 	this.getHistory = getHistory;
-	this.searchHistory = searchHistory;
+	this.searchDays = searchDays;
 
 	this.getDailyMax = getDailyMax;
 	this.getHourlyMax = getHourlyMax;
