@@ -15,8 +15,7 @@
 
 .nextButton
 {
-	width:24px;
-	height:24px;
+	font-size:33px;
 	position:absolute;
 	border: none;
 	box-shadow: none;
@@ -25,10 +24,17 @@
 	margin-top:-25px;
 	right:-80px;
 	background:transparent;
+	color:#000;
+}
+
+.nextButton:hover
+{
+	color:rgba(50,180,255,1);
 }
 
 .previousButton
 {
+	font-size:33px;
 	position:absolute;
 	border: none;
 	box-shadow: none;
@@ -37,6 +43,12 @@
 	margin-top:-25px;
 	left:-80px;
 	background:transparent;
+	color:#000;
+}
+
+.previousButton:hover
+{
+	color:rgba(50,180,255,1);
 }
 
 
@@ -225,4 +237,20 @@ text.now
 {
 	width: 300px;
 	margin: auto;
+}
+
+#searchBar i
+{
+	margin-right: 2px;
+	float: right;
+	margin-top: -35px;
+	padding: 10px;
+	font-size: 16px;
+	color:#ccc;
+}
+
+#searchBar i:hover
+{
+	color:#888;
+	cursor: pointer;
 }

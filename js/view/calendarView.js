@@ -13,7 +13,8 @@ var CalendarView = function(container,model)
 	// Searchform
 	var form = $("<div id='searchBar'>");
 	var searchInput = $("<input type='text' class='form-control' placeholder='Filter History'>");
-	form.append(searchInput);
+	var removeInput = $("<i class='glyphicon glyphicon-remove'>");
+	form.append(searchInput,removeInput);
 
 	// Creating startdate wich is 90 days back because of google
 	startDate = new Date(Date.now());
@@ -33,7 +34,7 @@ var CalendarView = function(container,model)
 			tooltip: true,
 			legendHorizontalPosition: "center",
 			itemName: "site",
-			domainGutter: 20,
+			domainGutter: 10,
 			legendCellSize: 20,
 			range: 4,
 			start: startDate,
@@ -44,7 +45,7 @@ var CalendarView = function(container,model)
 				{ 
 					if( (d[0].getMonth() == date.getMonth()) && (d[0].getDate() == date.getDate()) ) return d;
 				})
-				
+
 				model.setCurrentStats(day[0][2]);
 			}
 		});
@@ -61,6 +62,7 @@ var CalendarView = function(container,model)
 
 	//this.searchButton = searchButton;
 	this.searchInput = searchInput;
+	this.removeInput = removeInput;
 
 	// Observer Pattern
 	model.addObserver(this);
