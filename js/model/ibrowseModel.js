@@ -3,6 +3,9 @@ var IbrowseModel = function() {
 	var days = [];
 	var hours = [];
 
+	var daysSearch = [];
+	var hoursSearch = [];
+
 	var currentStats;
 
 	var dayMs 	= 86400000;
@@ -16,7 +19,7 @@ var IbrowseModel = function() {
 		The third days[i][2] is an array containing the number of visits per site.
 		
 	*********************************************************************************/
-	function getHistory(timeUnit, searchString, targetArray){
+	function getHistory(timeUnit, targetArray){
 
 		var tempData = [];
 
@@ -37,7 +40,7 @@ var IbrowseModel = function() {
 				interval.setTime(d.getTime()+timeUnit);
 
 			chrome.history.search({
-			'text':searchString,
+			'text':'',
 			'startTime': d.getTime(),
 			'endTime':  interval.getTime(),
 			'maxResults': 9999999
@@ -106,7 +109,6 @@ var IbrowseModel = function() {
 	function getDailyMax(){
 		var max = 0;
 		for(i = 0; i < days.length; i++){
-			// Get the highest value per day to determine scale
 			if(days[i][1].length > max){
 				max = days[i][1].length;
 			}
@@ -117,7 +119,6 @@ var IbrowseModel = function() {
 	function getHourlyMax(){
 		var max = 0;
 		for(i = 0; i < hours.length; i++){
-			// Get the highest value per day to determine scale
 			if(hours[i][1].length > max){
 				max = hours[i][1].length;
 			}
@@ -144,7 +145,7 @@ var IbrowseModel = function() {
 
 			var result = days[i][1].filter(function(d)
 			{
-				if(d['url'].indexOf(string)>=0)
+				if(d['url'].indexOf(string.toLowerCase())>=0)
 				{
 					return d;
 				}
@@ -153,6 +154,7 @@ var IbrowseModel = function() {
 			
 			data.push(day);
 		}
+		daysSearch = data;
 		return data;
 	}
 
@@ -166,7 +168,7 @@ var IbrowseModel = function() {
 
 			var result = hours[i][1].filter(function(d)
 			{
-				if(d['url'].indexOf(string)>=0)
+				if(d['url'].indexOf(string.toLowerCase())>=0)
 				{
 					return d;
 				}
@@ -175,15 +177,19 @@ var IbrowseModel = function() {
 			
 			data.push(hour);
 		}
+		hoursSearch = data;
 		return data;
 	}
 
 	// fill them once
-	getHistory(dayMs,'',days);
+	getHistory(dayMs,days);
 	this.days = days;
 
 	this.getHistory = getHistory;
 	this.searchDays = searchDays;
+
+	this.daysSearch = daysSearch;
+	this.hoursSearch = hoursSearch;
 
 	this.getDailyMax = getDailyMax;
 	this.getHourlyMax = getHourlyMax;

@@ -3,7 +3,7 @@ var CalendarView = function(container,model)
 	// Calendar variables
 	var cal = new CalHeatMap();
 	var calContainer = $("<div id='cal'>");
-	container.append(calContainer);
+	
 
 	// Buttons
 	var nextButton = $("<button class='nextButton glyphicon glyphicon-chevron-right'>");
@@ -11,13 +11,10 @@ var CalendarView = function(container,model)
 	container.append(nextButton,previousButton);
 
 	// Searchform
-	var form = $("<form class='form-inline' id='searchBar' role='form'>");
-	var label = $("<label class='sr-only' for='searchHistory'>");
-	var searchInput = $("<input type='text' class='form-control' placeholder='Search History'>");
-	var searchButton = $("<button type='submit' class='btn btn-default'>Search</button>");
+	var form = $("<div id='searchBar'>");
+	var searchInput = $("<input type='text' class='form-control' placeholder='Filter History'>");
+	form.append(searchInput);
 
-	form.append(label,searchInput,searchButton);
-	container.append(form);
 	// Creating startdate wich is 90 days back because of google
 	startDate = new Date(Date.now());
 	startDate.setDate(startDate.getDate()-90);
@@ -31,7 +28,7 @@ var CalendarView = function(container,model)
 			itemSelector: "#cal",
 			domain: "month",
 			subDomain: "day",
-			cellSize: 40,
+			cellSize: 38,
 			cellPadding:2,
 			tooltip: true,
 			legendHorizontalPosition: "center",
@@ -43,29 +40,26 @@ var CalendarView = function(container,model)
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
 			onClick: function(date,value)
 			{
-				// Already created the request for the date, here d is the 
-				// day object belonging to the clicked date. It has all the
-				// visit counts etc.
-				 
-				var tmpday = model.days.filter(function(d)
-					{ 
-						if( (d[0].getMonth() == date.getMonth()) && (d[0].getDate() == date.getDate()) ) return d;
-					})
-				var day = tmpday[0];
-				var visits = day[2];
+				var day = model.days.filter(function(d)
+				{ 
+					if( (d[0].getMonth() == date.getMonth()) && (d[0].getDate() == date.getDate()) ) return d;
+				})
 				
-				model.setCurrentStats(visits);
+				model.setCurrentStats(day[0][2]);
 			}
 		});
 
 	}
-		
+	
+	// Append all items to the container
+	container.append(form);
+	container.append(calContainer);
 
 	this.nextButton = nextButton;
 	this.previousButton = previousButton;
 	this.cal = cal;
-	
-	this.searchButton = searchButton;
+
+	//this.searchButton = searchButton;
 	this.searchInput = searchInput;
 
 	// Observer Pattern
@@ -76,7 +70,6 @@ var CalendarView = function(container,model)
 		if(args == 'dataReady')
 		{
 			createCalendar(model.toJSON(model.days));
-			//cal.update(model.toJSON(model.searchDays('kth')));
 		}
 	}
 

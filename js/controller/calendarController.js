@@ -7,9 +7,8 @@ var CalendarController = function(view,model)
 	view.previousButton.click(function(){
 		view.cal.previous();
 	});
-
-	view.searchButton.click(function(e){
-		e.preventDefault();
+	
+	view.searchInput.keyup(function(){
 		view.cal.update(model.toJSON(model.searchDays(view.searchInput.val())));
 	})
 }
