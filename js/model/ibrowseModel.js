@@ -4,6 +4,9 @@ var IbrowseModel = function() {
 	var hours = [];
 	var currentStats;
 
+	var dayMs 	= 86400000;
+	var hourMs 	= 3600000;
+
 	/********************************************************************************
 		Important: days[i] finally contains three arrays per day.
 
@@ -12,173 +15,81 @@ var IbrowseModel = function() {
 		The third days[i][2] is an array containing the number of visits per site.
 		
 	*********************************************************************************/
+	function getHistory(timeUnit, searchString, targetArray){
 
-	function fillDays(){
-		days = [];
-		var tempDays = [];
+		var tempData = [];
 
 		// 90 days because sadly Chrome only saves history for 90 days
 		var startTime = new Date();
 			startTime.setDate(startTime.getDate()-90);
-		var endTime = new Date(Date.now());
+		var endTime = new Date();
 
-		var sT = new Date(startTime.getTime());
-		var cT = new Date(startTime.getTime());
-		sT.setHours(0);
-		sT.setMinutes(0);
-		sT.setSeconds(0);
+		// Counter for asynch chrome function
+		var countTime = new Date();
+			countTime.setTime(startTime.getTime());
 
-		for(var d = sT; d <= endTime; d.setDate(d.getDate()+1)){
+		var d = new Date();
+			d.setTime(startTime.getTime());
 
-			var nextd = new Date(d.getTime());
-			nextd.setDate(d.getDate()+1);
+		for(d; d<= endTime; d.setTime(d.getTime()+timeUnit)){
+			var interval = new Date();
+				interval.setTime(d.getTime()+timeUnit);
 
 			chrome.history.search({
-			'text':'',
+			'text':searchString,
 			'startTime': d.getTime(),
-			'endTime':  nextd.getTime(),
-			'maxResults': 999999
+			'endTime':  interval.getTime(),
+			'maxResults': 9999999
 			},
-			function(historyItems)
-			{
-				//console.log(historyItems.length);
-				tempDays.push(historyItems);
-				if (cT >= endTime){
-					// If it enters here the counting is done so the callback can be called
-					pushDays();
-				}else{
-					cT.setDate(cT.getDate()+1);
+			function(historyItems){
+				tempData.push(historyItems);
+				if (countTime >= endTime){
+					arrayFromHistory(tempData, targetArray, timeUnit, startTime);
+					console.log(targetArray);
+					notifyObservers('dataReady');
+				}
+				else{
+					countTime.setTime(countTime.getTime()+timeUnit);
 				}
 			});
 		}
-
-		function pushDays(){
-			var d = new Date(startTime.getTime());
-			d.setHours(0);
-			d.setMinutes(0);
-			d.setSeconds(0);
-			for(i = 0; i < tempDays.length; i++){
-
-				var urlArray = new Array();
-
-				// Getting the starting of the url
-				for(j = 0; j<tempDays[i].length; j++){
-					
-					var url = $('<a>').prop('href',tempDays[i][j].url).prop('hostname');
-					urlArray.push(url);
-				}
-
-				// Creating associative array from url count
-				var counts = new Array();
-				urlArray.forEach(function(x){ 
-					counts[x] = (counts[x] || 0)+1; 
-				});
-
-				// Make a normal array out of the associative one
-				var countsNormalArray = new Array();
-				for(key in counts)
-				{
-					countsNormalArray.push([key,counts[key]]);
-				}
-
-				// Sorting the array in descending order
-				countsNormalArray.sort(function(a,b)
-				{
-					return b[1]-a[1];
-				});
-
-				days.push([new Date(d.getTime()),tempDays[i],countsNormalArray]);
-				d.setDate(d.getDate()+1);
-			}
-			notifyObservers('dataReady');
-			//fillHours();
-		}
 	}
 
-	function fillHours(){
-		hours = [];
-		var tempHours = [];
+	function arrayFromHistory(historyData, targetArray, timeUnit, startTime){
 
-		// 90 days because sadly Chrome only saves history for 90 days
-		var startTime = new Date();
-			startTime.setDate(startTime.getDate()-3);
-		var endTime = new Date(Date.now());
+		var d = new Date(startTime.getTime());
 
-		var sT = new Date(startTime.getTime());
-		var cT = new Date(startTime.getTime());
+		for(i = 0; i < historyData.length; i++){
+			var urlArray = new Array();
 
-		for(var d = sT; d <= endTime; d.setHours(d.getHours()+1)){
+			// Getting the starting of the url
+			for(j = 0; j<historyData[i].length; j++){
+				var url = $('<a>').prop('href',historyData[i][j].url).prop('hostname');
+				urlArray.push(url);
+			}
 
-			var nextd = new Date(d.getTime());
-			nextd.setHours(d.getHours()+1);
-			var stopbool = false;
-
-			chrome.history.search({
-			'text':'',
-			'startTime': d.getTime(),
-			'endTime':  nextd.getTime(),
-			'maxResults': 999999
-			},
-			function(items)
-			{
-				//console.log(historyItems.length);
-				tempHours.push(items);
-				if (cT >= endTime){
-					
-					// If it enters here the counting is done so the callback can be called
-					if(!stopbool) 
-					{
-						pushHours();
-						stopbool = true;
-					}
-					console.log(cT+" "+endTime);
-				}else{
-					cT.setHours(cT.getHours()+1);
-				}
+			// Creating associative array from url count
+			var counts = new Array();
+			urlArray.forEach(function(x){ 
+				counts[x] = (counts[x] || 0)+1; 
 			});
-		}
 
-		function pushHours(){
-			var d = new Date(startTime.getTime());
-			d.setHours(0);
-			d.setMinutes(0);
-			d.setSeconds(0);
-			for(i = 0; i < tempHours.length; i++){
-
-				var urlArray = new Array();
-
-				// Getting the starting of the url
-				for(j = 0; j<tempHours[i].length; j++){
-					
-					var url = $('<a>').prop('href',tempHours[i][j].url).prop('hostname');
-					urlArray.push(url);
-				}
-
-				// Creating associative array from url count
-				var counts = new Array();
-				urlArray.forEach(function(x){ 
-					counts[x] = (counts[x] || 0)+1; 
-				});
-
-				// Make a normal array out of the associative one
-				var countsNormalArray = new Array();
-				for(key in counts)
-				{
-					countsNormalArray.push([key,counts[key]]);
-				}
-
-				// Sorting the array in descending order
-				countsNormalArray.sort(function(a,b)
-				{
-					return b[1]-a[1];
-				});
-
-				hours.push([new Date(d.getTime()),tempHours[i],countsNormalArray]);
-				d.setHours(d.getHours()+1);
+			// Make a normal array out of the associative one
+			var countsNormalArray = new Array();
+			for(key in counts){
+				countsNormalArray.push([key,counts[key]]);
 			}
-			notifyObservers('dataReady');
+
+			// Sorting the array in descending order
+			countsNormalArray.sort(function(a,b){
+				return b[1]-a[1];
+			});
+
+			targetArray.push([new Date(d.getTime()),historyData[i],countsNormalArray]);
+			d.setTime(d.getTime()+timeUnit);
 		}
 	}
+
 
 	function getDaysJSON(){
 		var json = {};
@@ -197,13 +108,11 @@ var IbrowseModel = function() {
 	}
 
 
-	function getDays()
-	{
+	function getDays(){
 		return days;
 	}
 
-	function getDailyMax()
-	{
+	function getDailyMax(){
 		var max = 0;
 		for(i = 0; i < days.length; i++){
 			// Get the highest value per day to determine scale
@@ -214,8 +123,7 @@ var IbrowseModel = function() {
 		return max;
 	}
 
-	function getHourlyMax()
-	{
+	function getHourlyMax(){
 		var max = 0;
 		for(i = 0; i < hours.length; i++){
 			// Get the highest value per day to determine scale
@@ -226,23 +134,28 @@ var IbrowseModel = function() {
 		return max;
 	}
 
-	function setCurrentStats(stats)
-	{
+	function setCurrentStats(stats){
 		currentStats = stats;
 		notifyObservers('dayStats');
 	}
 
-	function getCurrentStats()
-	{
+	function getCurrentStats(){
 		return currentStats;
 	}
 
-	// fill them once
-	fillDays();
-	
+	function searchHistory(string)
+	{
+		// warning, apparently this works insanely slow
+		getHistory(dayMs,string,days);
+		getHistory(hourMs,string,hours);
+	}
 
-	this.fillDays = fillDays;
+	// fill them once
+	getHistory(dayMs,'',days);
 	this.days = days;
+
+	this.getHistory = getHistory;
+	this.searchHistory = searchHistory;
 
 	this.getDailyMax = getDailyMax;
 	this.getHourlyMax = getHourlyMax;

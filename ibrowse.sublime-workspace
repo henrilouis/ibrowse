@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"filter",
+				"filteredPieData"
+			],
+			[
 				"pos",
 				"position"
 			],
@@ -31,7 +35,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 1870,
+				"buffer_size": 1981,
 				"line_ending": "Windows"
 			}
 		},
@@ -44,14 +48,6 @@
 			}
 		},
 		{
-			"file": "js/external/cal-heatmap.js",
-			"settings":
-			{
-				"buffer_size": 92459,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "style/calendar.css",
 			"settings":
 			{
@@ -60,34 +56,18 @@
 			}
 		},
 		{
+			"file": "ibrowse.sublime-project",
+			"settings":
+			{
+				"buffer_size": 73,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "js/superController.js",
 			"settings":
 			{
-				"buffer_size": 569,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/model/ibrowseModel.js",
-			"settings":
-			{
-				"buffer_size": 6200,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/view/dayStatsView.js",
-			"settings":
-			{
-				"buffer_size": 10184,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "style/statistics.css",
-			"settings":
-			{
-				"buffer_size": 92,
+				"buffer_size": 693,
 				"line_ending": "Windows"
 			}
 		}
@@ -164,12 +144,18 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/model/ibrowseModel.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/piechartView.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/piechartController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/style/statistics.css",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/ibrowse.sublime-project",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/historyView.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/historyController.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/style/general.css",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/calendarController.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/external/cal-heatmap.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/dayStatsController.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/style.css",
-		"/C/Users/Henri/Documents/GitHub/ibrowse/js/model/ibrowseModel.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/dayController.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/dayView.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/style/treemap.css",
@@ -180,8 +166,6 @@
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/calendarview.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/external/cal-heatmap.min.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/style/cal-heatmap.css",
-		"/C/Users/Henri/Documents/GitHub/ibrowse/style/statistics.css",
-		"/C/Users/Henri/Documents/GitHub/ibrowse/ibrowse.sublime-project",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js",
 		"/C/Users/Henri/Documents/GitHub/scheduler-html/index.html",
 		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/lotts-over.php",
@@ -230,6 +214,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"stroke",
 			"textOffset",
 			"hover_cursor",
 			"onClick",
@@ -359,7 +344,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -368,15 +353,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1870,
+						"buffer_size": 1981,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1387,
-								1387
+								1114,
+								1114
 							]
 						],
 						"settings":
@@ -387,10 +372,10 @@
 							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 135.0,
+						"translation.y": 510.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -422,43 +407,11 @@
 						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "js/external/cal-heatmap.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 92459,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								40476,
-								40476
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 20713.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "style/calendar.css",
 					"semi_transient": false,
 					"settings":
@@ -486,7 +439,38 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "ibrowse.sublime-project",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 73,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -495,15 +479,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 569,
+						"buffer_size": 693,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								558,
-								558
+								555,
+								555
 							]
 						],
 						"settings":
@@ -518,100 +502,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "js/model/ibrowseModel.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6200,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5448,
-								5448
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 270.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "js/view/dayStatsView.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10184,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5811,
-								5811
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 56.0,
-						"translation.y": 2233.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "style/statistics.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 92,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								46,
-								46
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
 					"type": "text"
 				}
 			]

@@ -39,26 +39,14 @@ var CalendarView = function(container,model)
 				// day object belonging to the clicked date. It has all the
 				// visit counts etc.
 				 
-				var tmpday = model.days.filter(function(d){ if(d[0] == String(date)) return d})
+				var tmpday = model.days.filter(function(d)
+					{ 
+						if( (d[0].getMonth() == date.getMonth()) && (d[0].getDate() == date.getDate()) ) return d;
+					})
 				var day = tmpday[0];
 				var visits = day[2];
 				
-				// This visits data can be used in the treemap and this should
-				// be updated here when the button is pressed.
-				//
-				// Also the div containing the treemap should be shown or hidden
-				// on command using the supercontroller. I already created
-				// window.treemapToggle(); for that
-
 				model.setCurrentStats(visits);
-
-				/*
-				for(i = 0; i < visits.length; i++)
-				{
-					console.log(visits[i][0]+" : "+visits[i][1]);
-				}*/
-
-				
 			}
 		});
 
