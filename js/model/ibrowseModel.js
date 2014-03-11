@@ -91,9 +91,10 @@ var IbrowseModel = function() {
 			countsNormalArray.sort(function(a,b){
 				return b[1]-a[1];
 			});
-
-			targetArray.push([new Date(d.getTime()),historyData[i],countsNormalArray]);
+			
 			d.setTime(d.getTime()+timeUnit);
+			targetArray.push([new Date(d.getTime()),historyData[i],countsNormalArray]);
+			
 		}
 	}
 
