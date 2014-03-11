@@ -6,20 +6,28 @@ var CalendarView = function(container,model)
 	container.append(calContainer);
 
 	// Buttons
-	var nextButton = $("<button class='nextButton'>");
-	var previousButton = $("<button class='previousButton'>");
+	var nextButton = $("<button class='nextButton glyphicon glyphicon-chevron-right'>");
+	var previousButton = $("<button class='previousButton glyphicon glyphicon-chevron-left'>");
 	container.append(nextButton,previousButton);
 
+	// Searchform
+	var form = $("<form class='form-inline' id='searchBar' role='form'>");
+	var label = $("<label class='sr-only' for='searchHistory'>");
+	var searchInput = $("<input type='text' class='form-control' placeholder='Search History'>");
+	var searchButton = $("<button type='submit' class='btn btn-default'>Search</button>");
+
+	form.append(label,searchInput,searchButton);
+	container.append(form);
 	// Creating startdate wich is 90 days back because of google
 	startDate = new Date(Date.now());
 	startDate.setDate(startDate.getDate()-90);
 
-	function createCalendar(){
-		var JSONdata = model.getDaysJSON();
+	function createCalendar(data){
+
 		var max = model.getDailyMax();
 
 		cal.init({
-			data: JSONdata,
+			data: data,
 			itemSelector: "#cal",
 			domain: "month",
 			subDomain: "day",
@@ -51,11 +59,14 @@ var CalendarView = function(container,model)
 		});
 
 	}
+		
 
 	this.nextButton = nextButton;
 	this.previousButton = previousButton;
 	this.cal = cal;
-
+	
+	this.searchButton = searchButton;
+	this.searchInput = searchInput;
 
 	// Observer Pattern
 	model.addObserver(this);
@@ -64,7 +75,8 @@ var CalendarView = function(container,model)
 	{
 		if(args == 'dataReady')
 		{
-			createCalendar();
+			createCalendar(model.toJSON(model.days));
+			//cal.update(model.toJSON(model.searchDays('kth')));
 		}
 	}
 

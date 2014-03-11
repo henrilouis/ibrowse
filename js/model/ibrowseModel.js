@@ -2,6 +2,7 @@ var IbrowseModel = function() {
 
 	var days = [];
 	var hours = [];
+
 	var currentStats;
 
 	var dayMs 	= 86400000;
@@ -90,22 +91,13 @@ var IbrowseModel = function() {
 	}
 
 
-	function getDaysJSON(){
+	function toJSON(history){
 		var json = {};
-		for(i=0; i < days.length; i++){
-			json[Math.round(days[i][0].getTime()/1000)] = days[i][1].length;
+		for(i=0; i < history.length; i++){
+			json[Math.round(history[i][0].getTime()/1000)] = history[i][1].length;
 		}
 		return json;
 	}
-
-	function getHoursJSON(){
-		var json = {};
-		for(i=0; i < hours.length; i++){
-			json[Math.round(hours[i][0].getTime()/1000)] = days[i][1].length;
-		}
-		return json;
-	}
-
 
 	function getDays(){
 		return days;
@@ -166,7 +158,24 @@ var IbrowseModel = function() {
 
 	function searchHours(string)
 	{
-		
+		var data = [];
+		for (i = 0; i<hours.length; i++)
+		{
+			var hour = [];
+			hour.push(hours[i][0]);
+
+			var result = hours[i][1].filter(function(d)
+			{
+				if(d['url'].indexOf(string)>=0)
+				{
+					return d;
+				}
+			});
+			hour.push(result);
+			
+			data.push(hour);
+		}
+		return data;
 	}
 
 	// fill them once
@@ -178,8 +187,7 @@ var IbrowseModel = function() {
 
 	this.getDailyMax = getDailyMax;
 	this.getHourlyMax = getHourlyMax;
-	this.getDaysJSON = getDaysJSON;
-	this.getHoursJSON = getHoursJSON;
+	this.toJSON = toJSON;
 
 	this.setCurrentStats = setCurrentStats;
 	this.getCurrentStats = getCurrentStats;

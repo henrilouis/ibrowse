@@ -15,40 +15,28 @@
 
 .nextButton
 {
+	width:24px;
+	height:24px;
 	position:absolute;
-	background:url(../images/next.png) no-repeat;
-	width: 47px;
-	height: 50px;
 	border: none;
 	box-shadow: none;
 	outline: 0;
 	top:50%;
 	margin-top:-25px;
 	right:-80px;
-}
-
-.nextButton:hover
-{
-	background:url(../images/next-hover.png) no-repeat;
+	background:transparent;
 }
 
 .previousButton
 {
 	position:absolute;
-	background:url(../images/prev.png) no-repeat;
-	width: 47px;
-	height: 50px;
 	border: none;
 	box-shadow: none;
 	outline: 0;
 	top:50%;
 	margin-top:-25px;
 	left:-80px;
-}
-
-.previousButton:hover
-{
-	background:url(../images/prev-hover.png) no-repeat;
+	background:transparent;
 }
 
 
