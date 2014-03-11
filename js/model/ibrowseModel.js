@@ -7,6 +7,7 @@ var IbrowseModel = function() {
 	var hoursSearch = [];
 
 	var currentStats;
+	var selectedItem;
 
 	var dayMs 	= 86400000;
 	var hourMs 	= 3600000;
@@ -50,6 +51,9 @@ var IbrowseModel = function() {
 				if (countTime >= endTime){
 					arrayFromHistory(tempData, targetArray, timeUnit, startTime);
 					notifyObservers('dataReady');
+
+					// doing one search to fill the array, bit dirty
+					searchDays("");
 				}
 				else{
 					countTime.setTime(countTime.getTime()+timeUnit);
@@ -93,7 +97,54 @@ var IbrowseModel = function() {
 		}
 	}
 
+	function searchDays(string)
+	{
+		var data = [];
+		for (i = 0; i<days.length; i++)
+		{
+			var day = [];
+			day.push(days[i][0]);
 
+			var result = days[i][1].filter(function(d)
+			{
+				if(d['url'].indexOf(string.toLowerCase())>=0)
+				{
+					return d;
+				}
+			});
+			day.push(result);
+			
+			data.push(day);
+		}		
+		daysSearch = data;
+		notifyObservers('searchComplete');
+	}
+
+	function searchHours(string)
+	{
+		var data = [];
+		for (i = 0; i<hours.length; i++)
+		{
+			var hour = [];
+			hour.push(hours[i][0]);
+
+			var result = hours[i][1].filter(function(d)
+			{
+				if(d['url'].indexOf(string.toLowerCase())>=0)
+				{
+					return d;
+				}
+			});
+			hour.push(result);
+			
+			data.push(hour);
+		}
+
+		hoursSearch = data;
+		return data;
+	}
+
+	// Helper functions
 	function toJSON(history){
 		var json = {};
 		for(i=0; i < history.length; i++){
@@ -102,6 +153,19 @@ var IbrowseModel = function() {
 		return json;
 	}
 
+	// Setters
+	function setSelectedItem(item)
+	{
+		selectedItem = item;
+		notifyObservers('itemSelected');
+	}
+
+	function setCurrentStats(stats){
+		currentStats = stats;
+		notifyObservers('dayStats');
+	}
+
+	// Getters
 	function getDays(){
 		return days;
 	}
@@ -126,70 +190,30 @@ var IbrowseModel = function() {
 		return max;
 	}
 
-	function setCurrentStats(stats){
-		currentStats = stats;
-		notifyObservers('dayStats');
-	}
-
 	function getCurrentStats(){
 		return currentStats;
 	}
 
-	function searchDays(string)
+	function getDaysSearch()
 	{
-		var data = [];
-		for (i = 0; i<days.length; i++)
-		{
-			var day = [];
-			day.push(days[i][0]);
-
-			var result = days[i][1].filter(function(d)
-			{
-				if(d['url'].indexOf(string.toLowerCase())>=0)
-				{
-					return d;
-				}
-			});
-			day.push(result);
-			
-			data.push(day);
-		}
-		daysSearch = data;
-		return data;
+		return daysSearch;
 	}
 
-	function searchHours(string)
+	function getSelectedItem()
 	{
-		var data = [];
-		for (i = 0; i<hours.length; i++)
-		{
-			var hour = [];
-			hour.push(hours[i][0]);
-
-			var result = hours[i][1].filter(function(d)
-			{
-				if(d['url'].indexOf(string.toLowerCase())>=0)
-				{
-					return d;
-				}
-			});
-			hour.push(result);
-			
-			data.push(hour);
-		}
-		hoursSearch = data;
-		return data;
+		return selectedItem;
 	}
 
 	// fill them once
 	getHistory(dayMs,days);
+	//searchDays("");
+
 	this.days = days;
 
 	this.getHistory = getHistory;
 	this.searchDays = searchDays;
 
-	this.daysSearch = daysSearch;
-	this.hoursSearch = hoursSearch;
+	this.getDaysSearch = getDaysSearch;
 
 	this.getDailyMax = getDailyMax;
 	this.getHourlyMax = getHourlyMax;
@@ -197,6 +221,9 @@ var IbrowseModel = function() {
 
 	this.setCurrentStats = setCurrentStats;
 	this.getCurrentStats = getCurrentStats;
+
+	this.setSelectedItem = setSelectedItem;
+	this.getSelectedItem = getSelectedItem;
 
 	/********************************************************
 		Observable pattern is necessary because of the 

@@ -1,0 +1,40 @@
+#history
+{
+	width:732px;
+	margin:auto;
+}
+
+#history ul
+{
+	list-style: none;
+	margin-left:0px;
+	padding-left:0px;
+}
+
+#history ul li
+{
+	height:20px;
+}
+
+#history ul li div.linkBox, #history ul li div.baseUrlBox
+{
+	float:left;
+}
+
+#history ul li div.linkBox
+{
+	max-height: 20px;
+	overflow:hidden;
+	max-width:  500px;
+}
+
+#history ul li div.linkBox a 
+{
+	
+}
+
+#history ul li div.baseUrlBox
+{
+	margin-left:5px;
+}
+

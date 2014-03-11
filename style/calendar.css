@@ -1,27 +1,24 @@
-#calendar, #daycalendar
+#calendar
 {
-	position: absolute;
-	width: 940px;
-	top: 50%;
-	left: 50%;
-	margin-top: -268px;
-	margin-left: -470px;
+	
 }
 
 #cal, #daycal
 {
 	margin-top:80px;
+	width: 735px;
+	margin:auto;
 }
 
 .nextButton
 {
-	font-size:33px;
+	font-size:25px;
 	position:absolute;
 	border: none;
 	box-shadow: none;
 	outline: 0;
 	top:50%;
-	margin-top:-25px;
+	margin-top:-45px;
 	right:-80px;
 	background:transparent;
 	color:#000;
@@ -34,13 +31,13 @@
 
 .previousButton
 {
-	font-size:33px;
+	font-size:25px;
 	position:absolute;
 	border: none;
 	box-shadow: none;
 	outline: 0;
 	top:50%;
-	margin-top:-25px;
+	margin-top:-45px;
 	left:-80px;
 	background:transparent;
 	color:#000;
@@ -66,7 +63,7 @@
 .graph-label
 {
 	fill: #efefef;
-	font-size: 18px;
+	font-size: 14px;
 }
 
 .graph, .graph-legend rect {
@@ -237,6 +234,7 @@ text.now
 {
 	width: 300px;
 	margin: auto;
+	margin-bottom: 30px;
 }
 
 #searchBar i

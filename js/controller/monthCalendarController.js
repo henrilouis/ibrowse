@@ -1,4 +1,4 @@
-var DayController = function(view,model)
+var MonthCalendarController = function(view,model)
 {
 	view.nextButton.click(function(){
 		view.cal.next();
