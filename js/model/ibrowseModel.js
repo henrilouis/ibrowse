@@ -54,6 +54,8 @@ var IbrowseModel = function() {
 
 					// doing one search to fill the array, bit dirty
 					searchDays("");
+					// settign selectedItem to today, also bit dirty
+					setSelectedItem(targetArray[targetArray.length-1]);
 				}
 				else{
 					countTime.setTime(countTime.getTime()+timeUnit);
