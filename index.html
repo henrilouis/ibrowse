@@ -8,16 +8,20 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Ubuntu:bold" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="style.css">
 
   </head>  
   <body>
-  	<div class="container">
+  	<div class="container-fluid">
 		<header class="row">
 		<div class="center col-md-12">
-			<div class="box">
-			<img class="floatleft" src="images/icon48.png" alt="iBrowse" id="logo"/>
-			<h1 class="floatleft">iBrowse</h1>
+			<div id="logobox">
+				<img class="floatleft" src="images/icon48.png" alt="iBrowse" id="logo"/>
+				<h1 class="floatleft">ibrowse</h1>
+			</div>
+			<div id="search">
+				<!-- here the searchbar will be displayed -->
 			</div>
 		</div>
 			
@@ -25,20 +29,26 @@
 		</header>
   	</div>
 
-	<section id="content">
+	<section id="calendars">
 		<div class="container">
 			<div class="row">
 				<div id="calendar">
 					<!-- here the calendar will be displayed -->
 				</div>
 
-				<div id="history">
-					<!-- here the history will be displayed -->
-				</div>
-
 				<div id="statistics">
 					<!-- here the statistics will be displayed -->
-				</div>
+				</div>	
+			</div>
+		</div>
+	</section>
+
+	<section id="historySection">
+		<div class="container">
+			<div class="row">
+				<div id="history">
+					<!-- here the history will be displayed -->
+				</div>		
 			</div>
 		</div>
 	</section>
@@ -57,6 +67,9 @@
 
 	<script src="js/view/calendarView.js"></script>
 	<script src="js/controller/calendarController.js"></script>
+
+	<script src="js/view/searchBarView.js"></script>
+	<script src="js/controller/searchBarController.js"></script>
 	
 	<script src="js/view/historyView.js"></script>
 	<script src="js/controller/historyController.js"></script>

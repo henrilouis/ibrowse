@@ -1,6 +1,40 @@
 body
 {
-	background:#111;
+	background:#efefef;
+}
+
+header
+{
+	border-bottom: 1px solid #ddd;
+	padding-top: 18px;
+	background: rgba(255,255,255,0.8);
+	height: 72px;
+}
+
+#logobox
+{
+	position: absolute;
+	margin-top:-8px;
+}
+
+#logo
+{
+	
+}
+
+header h1
+{
+	font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+	font-size: 37px;
+	color: #555;
+	margin-left: 5px;
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
+
+section#calendars
+{
+	margin-top: 10px;
 }
 
 .center
@@ -13,15 +47,3 @@ body
 	float:left;
 }
 
-#logo
-{
-	margin-top: 13px;
-}
-
-h1
-{
-	font-size: 25px;
-	margin-top: 24px;
-	color: #efefef;
-	margin-left: 5px;
-}

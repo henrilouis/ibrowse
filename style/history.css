@@ -13,19 +13,23 @@
 
 #history ul li
 {
-	height:20px;
+	height: 45px;
+	padding: 5px 10px;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-top: none;
 }
 
 #history ul li div.linkBox, #history ul li div.baseUrlBox
 {
-	float:left;
+	
 }
 
 #history ul li div.linkBox
 {
 	max-height: 20px;
 	overflow:hidden;
-	max-width:  500px;
+	max-width: 630px;
 }
 
 #history ul li div.linkBox a 
@@ -35,6 +39,21 @@
 
 #history ul li div.baseUrlBox
 {
-	margin-left:5px;
+	font-size:10px;
+}
+
+#history ul li.historyViewTitle
+{
+	background-color: #efefef;
+	border-top:1px solid #ddd;
+	height: 30px;
+	text-align: center;
+}
+
+#history ul li div.faviconBox
+{
+	float: left;
+	padding: 5px;
+	padding-right: 17px;
 }
 

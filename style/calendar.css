@@ -21,7 +21,7 @@
 	margin-top:-45px;
 	right:-80px;
 	background:transparent;
-	color:#000;
+	color:#fff;
 }
 
 .nextButton:hover
@@ -40,7 +40,7 @@
 	margin-top:-45px;
 	left:-80px;
 	background:transparent;
-	color:#000;
+	color:#fff;
 }
 
 .previousButton:hover
@@ -62,7 +62,7 @@
 
 .graph-label
 {
-	fill: #efefef;
+	fill: #444;
 	font-size: 14px;
 }
 
@@ -73,7 +73,7 @@
 .graph-rect
 {
 	/*fill: #ededed*/
-	fill:#000;
+	fill:#fff;
 }
 
 .graph-subdomain-group rect:hover
@@ -106,8 +106,8 @@
 
 .q0
 {
-	background-color: rgba(0,0,0,1) !important;
-	fill: rgba(0,0,0,1) !important;
+	background-color: #fff !important;
+	fill: #fff !important;
 }
 
 /*

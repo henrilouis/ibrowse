@@ -51,7 +51,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 2103,
+				"buffer_size": 2107,
 				"line_ending": "Windows"
 			}
 		},
@@ -68,14 +68,6 @@
 			"settings":
 			{
 				"buffer_size": 404,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/view/historyView.js",
-			"settings":
-			{
-				"buffer_size": 1055,
 				"line_ending": "Windows"
 			}
 		},
@@ -115,7 +107,7 @@
 			"file": "js/model/ibrowseModel.js",
 			"settings":
 			{
-				"buffer_size": 5204,
+				"buffer_size": 5211,
 				"line_ending": "Windows"
 			}
 		},
@@ -208,6 +200,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/historyView.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/calendarController.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/piechartView.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/superController.js",
@@ -221,7 +214,6 @@
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/piechartController.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/style/statistics.css",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/ibrowse.sublime-project",
-		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/historyView.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/historyController.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/style/general.css",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/external/cal-heatmap.js",
@@ -421,7 +413,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -430,15 +422,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2103,
+						"buffer_size": 2107,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1042,
-								1042
+								1023,
+								1023
 							]
 						],
 						"settings":
@@ -449,10 +441,10 @@
 							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 360.0,
+						"translation.y": 105.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -481,7 +473,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3215.0,
+						"translation.y": 3156.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -500,8 +492,8 @@
 						"selection":
 						[
 							[
-								38,
-								38
+								224,
+								224
 							]
 						],
 						"settings":
@@ -515,42 +507,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "js/view/historyView.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1055,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								806,
-								806
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"file": "style.css",
 					"semi_transient": false,
 					"settings":
@@ -581,7 +542,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "js/view/calendarView.js",
 					"semi_transient": false,
 					"settings":
@@ -613,7 +574,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "js/view/monthCalendarView.js",
 					"semi_transient": false,
 					"settings":
@@ -644,7 +605,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 6,
 					"file": "js/view/piechartView.js",
 					"semi_transient": false,
 					"settings":
@@ -672,24 +633,24 @@
 						"translation.y": 1451.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 7,
 					"file": "js/model/ibrowseModel.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5204,
+						"buffer_size": 5211,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2025,
-								2025
+								2498,
+								2498
 							]
 						],
 						"settings":
@@ -701,14 +662,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 975.0,
+						"translation.y": 18.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 8,
 					"file": "js/superController.js",
 					"semi_transient": false,
 					"settings":
@@ -740,7 +701,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 9,
 					"file": "js/controller/historyController.js",
 					"semi_transient": false,
 					"settings":
@@ -767,7 +728,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 9,
 					"type": "text"
 				}
 			]
