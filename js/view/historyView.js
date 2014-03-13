@@ -1,10 +1,6 @@
 var HistoryView = function(container,model)
 {	
 	var historyBox  = $("<div>");
-<<<<<<< HEAD
-=======
-	var historyTitle = $("<ul id='historyTitle'>");
->>>>>>> 9f02c30504d937ef2ee1100747476ab6534ab137
 	var historyList = $("<ul class='historyList'>");
 
 
@@ -19,7 +15,6 @@ var HistoryView = function(container,model)
 	function updateHistory()
 	{
 		historyList.empty();
-		historyTitle.empty();
 		var item = model.getSelectedItem();
 		// Sort items by id
 		item[1].sort(function(a,b)
@@ -34,14 +29,8 @@ var HistoryView = function(container,model)
 		var date = item[0].getDate();
 		var year = item[0].getFullYear();
 		title.html(day+", "+month+" "+date+", "+year);
-<<<<<<< HEAD
 		historyList.append(title);
-		
-=======
-		historyTitle.append(title);
-		
 
->>>>>>> 9f02c30504d937ef2ee1100747476ab6534ab137
 		for(i=0;i<item[1].length;i++)
 		{
 			var listItem = $("<li>");
@@ -77,15 +66,9 @@ var HistoryView = function(container,model)
 			historyList.append(listItem);
 		}
 	}
-<<<<<<< HEAD
-=======
-	historyBox.append(historyTitle);
->>>>>>> 9f02c30504d937ef2ee1100747476ab6534ab137
+
 	historyBox.append(historyList);
-
 	container.append(historyBox);
-
-
 
 	// Observer Pattern
 	model.addObserver(this);

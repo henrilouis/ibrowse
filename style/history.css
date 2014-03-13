@@ -16,18 +16,8 @@
 	list-style: none;
 	margin-left:0px;
 	padding-left:0px;
-<<<<<<< HEAD
 }
 
-=======
-	height: 280px;
-	overflow-x: hidden;
-	overflow-y: scroll;
-}
-
-
-
->>>>>>> 9f02c30504d937ef2ee1100747476ab6534ab137
 #history ul li
 {
 	height: 45px;
