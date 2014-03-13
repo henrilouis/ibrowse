@@ -1,7 +1,6 @@
 var HistoryView = function(container,model)
 {	
 	var historyBox  = $("<div>");
-	var historyTitle = $("<ul id='historyTitle'>");
 	var historyList = $("<ul class='historyList'>");
 
 
@@ -16,7 +15,6 @@ var HistoryView = function(container,model)
 	function updateHistory()
 	{
 		historyList.empty();
-		historyTitle.empty();
 		var item = model.getSelectedItem();
 		// Sort items by id
 		item[1].sort(function(a,b)
@@ -31,9 +29,8 @@ var HistoryView = function(container,model)
 		var date = item[0].getDate();
 		var year = item[0].getFullYear();
 		title.html(day+", "+month+" "+date+", "+year);
-		historyTitle.append(title);
+		historyList.append(title);
 		
-
 		for(i=0;i<item[1].length;i++)
 		{
 			var listItem = $("<li>");
@@ -69,7 +66,6 @@ var HistoryView = function(container,model)
 			historyList.append(listItem);
 		}
 	}
-	historyBox.append(historyTitle);
 	historyBox.append(historyList);
 
 	container.append(historyBox);
