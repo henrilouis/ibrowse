@@ -1,6 +1,9 @@
 var HistoryView = function(container,model)
-{
-	var historyList = $("<ul id='historyList'>");
+{	
+	var historyBox  = $("<div>");
+	var historyTitle = $("<ul id='historyTitle'>");
+	var historyList = $("<ul class='historyList'>");
+
 
 	// Static variables for creating dates
 	var monthNames = new Array("January", "February", "March", 
@@ -13,6 +16,7 @@ var HistoryView = function(container,model)
 	function updateHistory()
 	{
 		historyList.empty();
+		historyTitle.empty();
 		var item = model.getSelectedItem();
 		// Sort items by id
 		item[1].sort(function(a,b)
@@ -27,7 +31,8 @@ var HistoryView = function(container,model)
 		var date = item[0].getDate();
 		var year = item[0].getFullYear();
 		title.html(day+", "+month+" "+date+", "+year);
-		historyList.append(title);
+		historyTitle.append(title);
+		
 
 		for(i=0;i<item[1].length;i++)
 		{
@@ -64,8 +69,12 @@ var HistoryView = function(container,model)
 			historyList.append(listItem);
 		}
 	}
+	historyBox.append(historyTitle);
+	historyBox.append(historyList);
 
-	container.append(historyList);
+	container.append(historyBox);
+
+
 
 	// Observer Pattern
 	model.addObserver(this);
