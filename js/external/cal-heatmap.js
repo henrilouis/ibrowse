@@ -1463,6 +1463,7 @@ CalHeatMap.prototype = {
 	 * @param  Date		d		Date of the subdomain block
 	 * @param  int		itemNb	Number of items in that date
 	 * @param  rect     rect    The subdomain block itself
+	 *
 	 */
 	onClick: function(d, itemNb, rect) {
 		"use strict";
