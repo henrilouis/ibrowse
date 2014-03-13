@@ -843,7 +843,7 @@ var CalHeatMap = function() {
 			.attr("y", function(d) { return self.positionSubDomainY(d.t); })
 			.on("click", function(d) {
 				if (options.onClick !== null) {
-					return self.onClick(new Date(d.t), d.v);
+					return self.onClick(new Date(d.t), d.v, this);
 				}
 			})
 			.call(function(selection) {
@@ -1462,11 +1462,12 @@ CalHeatMap.prototype = {
 	 *
 	 * @param  Date		d		Date of the subdomain block
 	 * @param  int		itemNb	Number of items in that date
+	 * @param  rect     rect    The subdomain block itself
 	 */
-	onClick: function(d, itemNb) {
+	onClick: function(d, itemNb, rect) {
 		"use strict";
 
-		return this.triggerEvent("onClick", [d, itemNb]);
+		return this.triggerEvent("onClick", [d, itemNb, rect]);
 	},
 
 	/**

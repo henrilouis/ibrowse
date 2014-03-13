@@ -15,13 +15,14 @@ var MonthCalendarView = function(container,model)
 	function createCalendar(data){
 
 		var max = model.getDailyMax();
+		var cSize = 30;
 
 		cal.init({
 			data: data,
 			itemSelector: "#cal",
 			domain: "month",
 			subDomain: "day",
-			cellSize: 30,
+			cellSize: cSize,
 			cellPadding:2,
 			tooltip: true,
 			legendHorizontalPosition: "center",
@@ -32,8 +33,14 @@ var MonthCalendarView = function(container,model)
 			range: 4,
 			start: startDate,
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
-			onClick: function(date,value)
+			onClick: function(date,value,rect)
 			{
+				$('rect').css('stroke','none');
+				$('rect').attr('height',cSize).attr('width',cSize);
+
+				$(rect).css('stroke','#111');
+				$(rect).attr('height',cSize-1).attr('width',cSize-1);
+
 				var day = model.days.filter(function(d)
 				{ 
 					if( (d[0].getMonth() == date.getMonth()) && (d[0].getDate() == date.getDate()) ) return d;
@@ -50,6 +57,8 @@ var MonthCalendarView = function(container,model)
 
 					model.setSelectedItem(item[0]);
 				}
+
+				
 			}
 		});
 

@@ -76,12 +76,6 @@
 	fill:#fff;
 }
 
-.graph-subdomain-group rect:hover
-{
-	stroke: #efefef;
-	stroke-width: 1px;
-}
-
 .subdomain-text {
 	opacity:0;
 	font-size: 8px;
