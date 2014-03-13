@@ -2,7 +2,7 @@ var SearchBarView = function(container,model)
 {
 	// Searchform
 	var form = $("<div id='searchBar'>");
-	var searchInput = $("<input type='text' class='form-control' placeholder='Filter History'>");
+	var searchInput = $("<input type='text' class='form-control' placeholder='Search History'>");
 	var removeInput = $("<i class='glyphicon glyphicon-remove'>");
 	form.append(searchInput,removeInput);
 
