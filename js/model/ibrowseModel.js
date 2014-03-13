@@ -63,7 +63,7 @@ var IbrowseModel = function() {
 
 					// doing one search to fill the array, bit dirty
 					searchDays("");
-					
+
 					// settign selectedItem to today, also bit dirty
 					setSelectedItem(targetArray[targetArray.length-2]);
 				}
@@ -110,17 +110,17 @@ var IbrowseModel = function() {
 		}
 	}
 
-	function searchDays(string)
+	function searchHistory(string, inside)
 	{
 		var data = [];
-		for (i = 0; i<days.length; i++)
+		for (i = 0; i<inside.length; i++)
 		{
 			var day = [];
-			day.push(days[i][0]);
+			day.push(inside[i][0]);
 
-			var result = days[i][1].filter(function(d)
+			var result = inside[i][1].filter(function(d)
 			{
-				if(d['url'].indexOf(string.toLowerCase())>=0)
+				if(d['url'].indexOf(string.toLowerCase())>=0 || d['title'].indexOf(string.toLowerCase())>=0)
 				{
 					return d;
 				}
@@ -129,32 +129,19 @@ var IbrowseModel = function() {
 			
 			data.push(day);
 		}		
-		daysSearch = data;
+		return data;
+	}
+
+	function searchDays(string)
+	{
+		daysSearch = searchHistory(string, days);
 		notifyObservers('searchComplete');
 	}
 
 	function searchHours(string)
 	{
-		var data = [];
-		for (i = 0; i<hours.length; i++)
-		{
-			var hour = [];
-			hour.push(hours[i][0]);
-
-			var result = hours[i][1].filter(function(d)
-			{
-				if(d['url'].indexOf(string.toLowerCase())>=0)
-				{
-					return d;
-				}
-			});
-			hour.push(result);
-			
-			data.push(hour);
-		}
-
-		hoursSearch = data;
-		return data;
+		hoursSearch = searchHistory(string, hours);
+		notifyObservers('searchComplete');
 	}
 
 	// Helper functions
@@ -178,29 +165,37 @@ var IbrowseModel = function() {
 		notifyObservers('dayStats');
 	}
 
+	function setDaysSearch(value)
+	{
+		daysSearch = value;
+	}
+
 	// Getters
 	function getDays(){
 		return days;
 	}
 
-	function getDailyMax(){
+	function getMax(history)
+	{
 		var max = 0;
-		for(i = 0; i < days.length; i++){
-			if(days[i][1].length > max){
-				max = days[i][1].length;
+		for(i = 0; i < history.length; i++){
+			if(history[i][1].length > max){
+				max = history[i][1].length;
 			}
 		}
 		return max;
 	}
 
+	function getDailyMax(){
+		return getMax(days);
+	}
+
+	function getDaysSearchMax(){
+		return getMax(daysSearch);
+	}
+
 	function getHourlyMax(){
-		var max = 0;
-		for(i = 0; i < hours.length; i++){
-			if(hours[i][1].length > max){
-				max = hours[i][1].length;
-			}
-		}
-		return max;
+		return getMax(hours);
 	}
 
 	function getCurrentStats(){
@@ -222,6 +217,7 @@ var IbrowseModel = function() {
 	//searchDays("");
 
 	this.days = days;
+	this.hours = hours;
 
 	this.getHistory = getHistory;
 	this.searchDays = searchDays;
@@ -230,6 +226,8 @@ var IbrowseModel = function() {
 
 	this.getDailyMax = getDailyMax;
 	this.getHourlyMax = getHourlyMax;
+	this.getDaysSearchMax = getDaysSearchMax;
+
 	this.toJSON = toJSON;
 
 	this.setCurrentStats = setCurrentStats;

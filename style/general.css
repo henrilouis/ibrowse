@@ -1,6 +1,7 @@
 body
 {
 	background:#efefef;
+	overflow-y: scroll;
 }
 
 header

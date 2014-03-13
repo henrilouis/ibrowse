@@ -11,6 +11,15 @@
 	padding-left:0px;
 }
 
+.historyList
+{
+	list-style: none;
+	margin-left:0px;
+	padding-left:0px;
+}
+
+
+
 #history ul li
 {
 	height: 45px;
@@ -43,6 +52,14 @@
 }
 
 #history ul li.historyViewTitle
+{
+	background-color: #efefef;
+	border-top:1px solid #ddd;
+	height: 30px;
+	text-align: center;
+}
+
+#history .historyTitle
 {
 	background-color: #efefef;
 	border-top:1px solid #ddd;
