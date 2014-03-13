@@ -27,7 +27,16 @@ var IbrowseModel = function() {
 		// 90 days because sadly Chrome only saves history for 90 days
 		var startTime = new Date();
 			startTime.setDate(startTime.getDate()-90);
+			startTime.setHours(0);
+			startTime.setMinutes(0);
+			startTime.setSeconds(0);
+			startTime.setMilliseconds(0);
 		var endTime = new Date();
+			endTime.setDate(endTime.getDate()+1);
+			endTime.setHours(0);
+			endTime.setMinutes(0);
+			endTime.setSeconds(0);
+			endTime.setMilliseconds(0);
 
 		// Counter for asynch chrome function
 		var countTime = new Date();
@@ -94,8 +103,8 @@ var IbrowseModel = function() {
 				return b[1]-a[1];
 			});
 			
-			d.setTime(d.getTime()+timeUnit);
 			targetArray.push([new Date(d.getTime()),historyData[i],countsNormalArray]);
+			d.setTime(d.getTime()+timeUnit);
 			
 		}
 	}

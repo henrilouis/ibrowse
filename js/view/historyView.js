@@ -29,6 +29,8 @@ var HistoryView = function(container,model)
 		title.html(day+", "+month+" "+date+", "+year);
 		historyList.append(title);
 
+		console.log(item[0]);
+
 		for(i=0;i<item[1].length;i++)
 		{
 			var listItem = $("<li>");

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"fav",
+				"faviconBox"
+			],
+			[
 				"getD",
 				"getDaysSearch"
 			],
@@ -48,18 +52,18 @@
 	"buffers":
 	[
 		{
-			"file": "index.html",
+			"file": "js/view/historyView.js",
 			"settings":
 			{
-				"buffer_size": 2107,
+				"buffer_size": 1903,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "style/calendar.css",
+			"file": "manifest.json",
 			"settings":
 			{
-				"buffer_size": 2915,
+				"buffer_size": 438,
 				"line_ending": "Windows"
 			}
 		},
@@ -67,39 +71,7 @@
 			"file": "style/history.css",
 			"settings":
 			{
-				"buffer_size": 404,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "style.css",
-			"settings":
-			{
-				"buffer_size": 139,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/view/calendarView.js",
-			"settings":
-			{
-				"buffer_size": 677,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/view/monthCalendarView.js",
-			"settings":
-			{
-				"buffer_size": 1845,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/view/piechartView.js",
-			"settings":
-			{
-				"buffer_size": 10187,
+				"buffer_size": 690,
 				"line_ending": "Windows"
 			}
 		},
@@ -107,23 +79,7 @@
 			"file": "js/model/ibrowseModel.js",
 			"settings":
 			{
-				"buffer_size": 5211,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/superController.js",
-			"settings":
-			{
-				"buffer_size": 584,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/controller/historyController.js",
-			"settings":
-			{
-				"buffer_size": 50,
+				"buffer_size": 5322,
 				"line_ending": "Windows"
 			}
 		}
@@ -200,28 +156,33 @@
 	},
 	"file_history":
 	[
-		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/historyView.js",
-		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/calendarController.js",
-		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/piechartView.js",
-		"/C/Users/Henri/Documents/GitHub/ibrowse/js/superController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/index.html",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/style/history.css",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/style.css",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/style/general.css",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/style/statistics.css",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/style/calendar.css",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/calendarView.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/calendarController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/historyController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/superController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/model/ibrowseModel.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/searchBarView.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/searchBarController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/piechartView.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/monthCalendarView.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/historyView.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/dayCalendarView.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/dayCalendarController.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/monthCalendarController.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/dayView.js",
-		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/calendarView.js",
-		"/C/Users/Henri/Documents/GitHub/ibrowse/js/model/ibrowseModel.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/piechartController.js",
-		"/C/Users/Henri/Documents/GitHub/ibrowse/style/statistics.css",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/ibrowse.sublime-project",
-		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/historyController.js",
-		"/C/Users/Henri/Documents/GitHub/ibrowse/style/general.css",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/external/cal-heatmap.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/dayStatsController.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/dayController.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/style/treemap.css",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/treemapController.js",
-		"/C/Users/Henri/Documents/GitHub/ibrowse/style/calendar.css",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/manifest.json",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/calendarview.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/external/cal-heatmap.min.js",
@@ -274,6 +235,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"setSelectedItem",
+			"searchDays",
 			"selectedItem",
 			"model",
 			"setCurrentStats",
@@ -418,19 +381,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "index.html",
+					"file": "js/view/historyView.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2107,
+						"buffer_size": 1903,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1023,
-								1023
+								907,
+								907
 							]
 						],
 						"settings":
@@ -438,10 +401,11 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 105.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -449,19 +413,52 @@
 				},
 				{
 					"buffer": 1,
-					"file": "style/calendar.css",
+					"file": "manifest.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2915,
+						"buffer_size": 438,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2882,
-								2882
+								436,
+								438
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "style/history.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 690,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								21,
+								21
 							]
 						],
 						"settings":
@@ -473,37 +470,6 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3156.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "style/history.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 404,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								224,
-								224
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -512,145 +478,19 @@
 				},
 				{
 					"buffer": 3,
-					"file": "style.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 139,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								95,
-								95
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "js/view/calendarView.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 677,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								675,
-								675
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "js/view/monthCalendarView.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1845,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								905,
-								905
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 365.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "js/view/piechartView.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10187,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3082,
-								3082
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1451.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
 					"file": "js/model/ibrowseModel.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5211,
+						"buffer_size": 5322,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2498,
-								2498
+								1690,
+								1690
 							]
 						],
 						"settings":
@@ -662,73 +502,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 18.0,
+						"translation.y": 630.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "js/superController.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 584,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								322,
-								329
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "js/controller/historyController.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 50,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								50,
-								50
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
