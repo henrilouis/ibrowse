@@ -1,8 +1,8 @@
 {
   "name": "iBrowse",
-  "version": "0.0.1",
+  "version": "0.7",
   "manifest_version": 2,
-  "description": "Get keen insights into your browsing behaviour. Replaces the normal browser history in Chrome.",
+  "description": "Visually search your history and get keen insights in your browsing behaviour. Replaces the normal browser history in Chrome.",
 
   "icons": { "16": "images/icon16.png",
            "48": "images/icon48.png",
