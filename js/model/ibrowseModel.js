@@ -59,13 +59,20 @@ var IbrowseModel = function() {
 				tempData.push(historyItems);
 				if (countTime >= endTime){
 					arrayFromHistory(tempData, targetArray, timeUnit, startTime);
-					notifyObservers('dataReady');
 
-					// doing one search to fill the array, bit dirty
-					searchDays("");
-
+					if(timeUnit == dayMs)
+					{
+						notifyObservers('daysReady');
+						searchDays("");
+					}
+					else if(timeUnit == hourMs)
+					{
+						notifyObservers('hoursReady');
+						searchHours("");
+					}	
+					
 					// settign selectedItem to today, also bit dirty
-					setSelectedItem(targetArray[targetArray.length-2]);
+					setSelectedItem(days[days.length-2]);
 				}
 				else{
 					countTime.setTime(countTime.getTime()+timeUnit);
@@ -115,8 +122,8 @@ var IbrowseModel = function() {
 		var data = [];
 		for (i = 0; i<inside.length; i++)
 		{
-			var day = [];
-			day.push(inside[i][0]);
+			var item = [];
+			item.push(inside[i][0]);
 
 			var result = inside[i][1].filter(function(d)
 			{
@@ -125,9 +132,9 @@ var IbrowseModel = function() {
 					return d;
 				}
 			});
-			day.push(result);
+			item.push(result);
 			
-			data.push(day);
+			data.push(item);
 		}		
 		return data;
 	}
@@ -135,13 +142,13 @@ var IbrowseModel = function() {
 	function searchDays(string)
 	{
 		daysSearch = searchHistory(string, days);
-		notifyObservers('searchComplete');
+		notifyObservers('searchDaysComplete');
 	}
 
 	function searchHours(string)
 	{
 		hoursSearch = searchHistory(string, hours);
-		notifyObservers('searchComplete');
+		notifyObservers('searchHoursComplete');
 	}
 
 	// Helper functions
@@ -198,6 +205,10 @@ var IbrowseModel = function() {
 		return getMax(hours);
 	}
 
+	function getHoursSearchMax(){
+		return getMax(hoursSearch);
+	}
+
 	function getCurrentStats(){
 		return currentStats;
 	}
@@ -207,6 +218,11 @@ var IbrowseModel = function() {
 		return daysSearch;
 	}
 
+	function getHoursSearch()
+	{
+		return hoursSearch;
+	}
+
 	function getSelectedItem()
 	{
 		return selectedItem;
@@ -214,19 +230,22 @@ var IbrowseModel = function() {
 
 	// fill them once
 	getHistory(dayMs,days);
+	getHistory(hourMs,hours);
 	//searchDays("");
 
 	this.days = days;
 	this.hours = hours;
 
-	this.getHistory = getHistory;
 	this.searchDays = searchDays;
+	this.searchHours = searchHours;
 
 	this.getDaysSearch = getDaysSearch;
+	this.getHoursSearch = getHoursSearch;
 
 	this.getDailyMax = getDailyMax;
-	this.getHourlyMax = getHourlyMax;
 	this.getDaysSearchMax = getDaysSearchMax;
+	this.getHourlyMax = getHourlyMax;
+	this.getHoursSearchMax = getHoursSearchMax;
 
 	this.toJSON = toJSON;
 

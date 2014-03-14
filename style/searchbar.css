@@ -1,0 +1,40 @@
+#search
+{
+	
+}
+
+#menuContainer
+{
+	width: 735px;
+	margin: auto;
+}
+
+#searchBar
+{
+	float:left;
+	width: 300px;
+	margin: auto;
+	margin-bottom: 30px;
+	margin-left: 205px;
+}
+
+#searchBar i
+{
+	margin-right: 2px;
+	float: right;
+	margin-top: -35px;
+	padding: 10px;
+	font-size: 16px;
+	color:#ccc;
+}
+
+#searchBar i:hover
+{
+	color:#6FA7D1;
+	cursor: pointer;
+}
+
+#menuContainer .btn-group
+{
+	float:right;
+}

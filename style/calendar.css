@@ -10,7 +10,7 @@
 	margin:auto;
 }
 
-.nextButton
+.nextButton, .previousButton
 {
 	font-size:25px;
 	position:absolute;
@@ -18,10 +18,19 @@
 	box-shadow: none;
 	outline: 0;
 	top:50%;
-	margin-top:-45px;
-	right:-80px;
 	background:transparent;
 	color:#fff;
+	margin-top:-45px;
+}
+
+#daycal .nextButton, #daycal .previousButton
+{
+	margin-top:-22px;
+}
+
+.nextButton
+{
+	right:-80px;
 }
 
 .nextButton:hover
@@ -31,16 +40,7 @@
 
 .previousButton
 {
-	font-size:25px;
-	position:absolute;
-	border: none;
-	box-shadow: none;
-	outline: 0;
-	top:50%;
-	margin-top:-45px;
 	left:-80px;
-	background:transparent;
-	color:#fff;
 }
 
 .previousButton:hover
@@ -64,6 +64,11 @@
 {
 	fill: #444;
 	font-size: 14px;
+}
+
+#daycal .graph-label
+{
+	font-size: 8px;
 }
 
 .graph, .graph-legend rect {
@@ -222,27 +227,4 @@ text.now
 	margin-left: -6px;
     border-width: 6px 6px 0;
     border-top-color: #222;
-}
-
-#searchBar
-{
-	width: 300px;
-	margin: auto;
-	margin-bottom: 30px;
-}
-
-#searchBar i
-{
-	margin-right: 2px;
-	float: right;
-	margin-top: -35px;
-	padding: 10px;
-	font-size: 16px;
-	color:#ccc;
-}
-
-#searchBar i:hover
-{
-	color:#6FA7D1;
-	cursor: pointer;
 }

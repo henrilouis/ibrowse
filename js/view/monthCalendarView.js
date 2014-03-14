@@ -35,8 +35,8 @@ var MonthCalendarView = function(container,model)
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
 			onClick: function(date,value,rect)
 			{
-				$('rect').css('stroke','none');
-				$('rect').attr('height',cSize).attr('width',cSize);
+				$('#cal rect').css('stroke','none');
+				$('#cal rect').attr('height',cSize).attr('width',cSize);
 
 				$(rect).css('stroke','rgba(0,255,0,1)');
 				$(rect).attr('height',cSize-1).attr('width',cSize-1);
@@ -74,12 +74,12 @@ var MonthCalendarView = function(container,model)
 
 	this.update = function(args)
 	{
-		if(args == 'dataReady')
+		if(args == 'daysReady')
 		{
 			createCalendar(model.toJSON(model.days));
 		}
 
-		else if(args == 'searchComplete')
+		else if(args == 'searchDaysComplete')
 		{
 			// Update the calendar with the new search data
 			cal.update(model.toJSON(model.getDaysSearch()));

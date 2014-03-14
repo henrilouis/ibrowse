@@ -48,3 +48,12 @@ section#calendars
 	float:left;
 }
 
+#statistics
+{
+	display:none;
+}
+
+#daycal
+{
+	display:none;
+}
