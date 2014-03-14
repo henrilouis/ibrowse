@@ -11,6 +11,9 @@ $(function()
 	var historyView = new HistoryView($("#history"),model);
 	var historyController = new HistoryController(historyView,model);
 
+	var statisticsView = new StatisticsView($("#statistics"),model);
+	var statisticsController = new StatisticsController(statisticsView,model);
+
 	/*
 	var piechartView = new PiechartView($("#statistics"),model);
 	var piechartController = new PiechartController(piechartView,model);
