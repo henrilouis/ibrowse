@@ -92,8 +92,6 @@ var StatisticsView = function(container,model)
 
 	function update()
 	{	
-
-	 	var statisticsContainer = $("<div id='statistics'>");
 	  	var topSitesBox = $("<div>");
 	  	var totalVisitedContainer  = $("<div>");
 
@@ -326,10 +324,8 @@ var StatisticsView = function(container,model)
 		  			Append items to container  
 		*****************************************/
 
-	  	statisticsContainer.append(totalVisitedContainer);
-	  	statisticsContainer.append(topSitesBox);
-
-		container.append(statisticsContainer);
+	  	container.append(totalVisitedContainer);
+	  	container.append(topSitesBox);
 }
 
 
@@ -398,9 +394,8 @@ var StatisticsView = function(container,model)
 
 	this.update = function(args)
 	{
-		if(args == 'dataReady')
+		if(args == 'daysReady')
 		{
-			update();
 			update();
 		}
 	}
