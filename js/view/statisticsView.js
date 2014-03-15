@@ -82,27 +82,23 @@ var StatisticsView = function(container,model)
 	  	topSitesBox.append(topSitesVisits);
 	
 	   	graphsBox.append(piechartBox);
+
+	   	/*****************************************  
+		  		Append items to statisticsBox  
+		*****************************************/
 	   	statisticsBox.append(statisticsBoxTitle);
 	   	statisticsBox.append(topSitesBox);
 	   	statisticsBox.append(graphsBox);
- 	
-		 
-		
-	  	/*****************************************  
-		  			Append items to container  
-		*****************************************/
-		container.append(statisticsBox);
-	
+ 
 		var piechartView = new PiechartView(container,model,topData);
 	}
 	
 	function updateHourData()
 	{
-		
-		 var totalVisitedPerHour = new Array();
+		var totalVisitedPerHour = new Array();
 		var dayNumber =0;
 		var hourlyVisitsBox = $("<div id='hourlyVisitsBox'>");
-
+		
 		for (i=0; i<model.hours.length; i++)
 	 	{
 	 		for(j=0; j<24; j++)
@@ -118,13 +114,20 @@ var StatisticsView = function(container,model)
 	 		hourlyVisits.html(totalVisitedPerHour[j]);
 			hourlyVisitsBox.append(j+" :"+hourlyVisits);
 	 	}
-	 	hourlyVisitsBox.html("hourly viasits");	
+	 	
+	 	hourlyVisitsBox.html("hourly visits");	
 
 	 	/*****************************************  
-		  			Append items to container  
+		  		Append items to statisticsBox  
 		*****************************************/
 		statisticsBox.append(hourlyVisitsBox);
 	}
+
+	
+	/*****************************************  
+	  			Append items to container  
+	*****************************************/
+	container.append(statisticsBox);
 	
 	// Observer Pattern
 	model.addObserver(this);
