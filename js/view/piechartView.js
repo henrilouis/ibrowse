@@ -246,10 +246,11 @@ var PiechartView = function(container,model,topData)
 	      }).text(function(d){
 	        return d.name;
 	      });
-		*/
+		
 	    nameLabels.transition().duration(tweenDuration).attrTween("transform", textTween);
 
 	    nameLabels.exit().remove();
+	    */
 	  }  
 
 	}

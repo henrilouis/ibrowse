@@ -1,12 +1,16 @@
 var StatisticsView = function(container,model)
 {	
+	var statisticsBox = $("<div id='statisticsBox'>");
 	
-	function update()
+	function updateDayData()
 	{	
-		var statisticsBox = $("<div id='statisticsBox'>");
+		var statisticsBoxTitle = $("<h2>"); 
 		var topSitesBox = $("<div id='topSitesBox'>");
 	  	var graphsBox = $("<div id='graphsBox'>");
 	  	var piechartBox = $("<div id='piechart'>");
+	
+	  	statisticsBoxTitle.html("General browsing statistics");
+	  	
 			  	
 	  	statisticsBox.empty();
 
@@ -16,7 +20,8 @@ var StatisticsView = function(container,model)
 
 		totalVisitedPerSite = [];
 		totalVisitedPerSiteURL =[];
-		// Get top 5 and count the rest to other
+		
+		// Get top 10 and count the rest to other
 	 	var otherCount = 0;
 	 	var topData = [];
 
@@ -63,7 +68,7 @@ var StatisticsView = function(container,model)
 	  	var topSitesBoxTitle = $("<h4>"); 
 	  	topSitesBoxTitle.html("Top 10 most visited sites:");
 	  	topSitesBox.append(topSitesBoxTitle);
-	  	
+
 	   	for(i=0; i<topData.length; i++)
 	  	{
 	  		var topSitesURL  = $("<div id='topSitesURL'>");
@@ -73,33 +78,53 @@ var StatisticsView = function(container,model)
 	  		topSitesBox.append(topSitesURL);
 	  		topSitesBox.append(topSitesVisits);
 	  	}	
-	  	
-	  	topSitesURL.html("Other: ");
-	  	topSitesVisits.html(otherCount);
 	  	topSitesBox.append(topSitesURL);
 	  	topSitesBox.append(topSitesVisits);
-
-	  	var statisticsBoxTitle = $("<h2>"); 
-	  	statisticsBoxTitle.html("General browsing statistics");
-	  	statisticsBox.append(statisticsBoxTitle);
-	  	
-	  	
-	   	//statisticsBox.append(totalVisitedContainer);
+	
 	   	graphsBox.append(piechartBox);
+	   	statisticsBox.append(statisticsBoxTitle);
 	   	statisticsBox.append(topSitesBox);
 	   	statisticsBox.append(graphsBox);
-	  	
-		  	
+ 	
+		 
+		
 	  	/*****************************************  
 		  			Append items to container  
 		*****************************************/
 		container.append(statisticsBox);
 	
 		var piechartView = new PiechartView(container,model,topData);
-	
 	}
 	
+	function updateHourData()
+	{
+		
+		 var totalVisitedPerHour = new Array();
+		var dayNumber =0;
+		var hourlyVisitsBox = $("<div id='hourlyVisitsBox'>");
 
+		for (i=0; i<model.hours.length; i++)
+	 	{
+	 		for(j=0; j<24; j++)
+	 		{	
+	 			totalVisitedPerHour[j] += model.days[j+dayNumber][2];
+			}
+			dayNumber +=24;			
+	 	}
+
+	 	for(j=0;j<totalVisitedPerHour.length;j++)
+	 	{
+	 		var hourlyVisits = $("<div>");
+	 		hourlyVisits.html(totalVisitedPerHour[j]);
+			hourlyVisitsBox.append(j+" :"+hourlyVisits);
+	 	}
+	 	hourlyVisitsBox.html("hourly viasits");	
+
+	 	/*****************************************  
+		  			Append items to container  
+		*****************************************/
+		statisticsBox.append(hourlyVisitsBox);
+	}
 	
 	// Observer Pattern
 	model.addObserver(this);
@@ -108,8 +133,13 @@ var StatisticsView = function(container,model)
 	{
 		if(args == 'daysReady')
 		{
-			update();
+			updateDayData();
+		}
+
+		if(args == 'hoursReady')
+		{
+			updateHourData();
 		}
 	}
- 
-}
+
+ }
