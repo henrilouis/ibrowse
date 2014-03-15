@@ -4,7 +4,7 @@ var StatisticsView = function(container,model)
 	
 	function updateDayData()
 	{	
-		var statisticsBoxTitle = $("<h2>"); 
+		var statisticsBoxTitle = $("<h3>"); 
 		var topSitesBox = $("<div id='topSitesBox'>");
 	  	var graphsBox = $("<div id='graphsBox'>");
 	  	var piechartBox = $("<div id='piechart'>");
@@ -97,7 +97,8 @@ var StatisticsView = function(container,model)
 		var totalVisitedPerHour = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 		var hourNumber =0;
 		var hourlyVisitsBox = $("<div id='hourlyVisitsBox'>");
-		var hoursBox = $("<div id='hoursBox'>");
+		var hoursBox = $("<div id='hoursBox'>"); 
+		
 		
 		for (i=0; i<90; i++)
 	 	{
@@ -110,7 +111,7 @@ var StatisticsView = function(container,model)
 			}
 			hourNumber +=24;
 	 	}
-
+	 	/*
 	 	for(l=0;l<totalVisitedPerHour.length;l++)
 	 	{
 	 		var hourlyVisitsTime = $("<div id='hourlyVisitsTime'>");
@@ -120,16 +121,22 @@ var StatisticsView = function(container,model)
 	 		hoursBox.append(hourlyVisitsTime);
 			hoursBox.append(hourlyVisits);
 	 	}
+	 	*/
 	 	
-	 	var hourlyVisitsTitle = $("<h4>"); 
+	 	var hourlyVisitsTitle = $("<h4>");
+	 	var barGraphBox = $("<div id='bargraph'>");
 	  	hourlyVisitsTitle.html("Total hourly visits");
 	  	hourlyVisitsBox.append(hourlyVisitsTitle);
-	  	hourlyVisitsBox.append(hoursBox);
-
+	  	//hourlyVisitsBox.append(hoursBox);
+	  	hourlyVisitsBox.append(barGraphBox);
+	
 	 	/*****************************************  
 		  		Append items to statisticsBox  
 		*****************************************/
 		statisticsBox.append(hourlyVisitsBox);
+
+		var barGraphView = new BarGraphView(container,model,totalVisitedPerHour);
+
 	}
 
 	

@@ -1,6 +1,6 @@
 #statistics
 {
-	margin-top:80px;
+	margin-top:0px;
 	width: 735px;
 	margin:auto;
 }
@@ -12,7 +12,7 @@
 	color: #555;
 	width:100%;
 	margin-left: 5px;
-	margin-top: 5px;
+	margin-top: 0px;
 	margin-bottom: 0px;
 }
 
@@ -67,6 +67,7 @@ width:49%;
 text-align: left;
 font-size: 14px;
 color: #333;
+margin-top: 10px;
 }
 #hoursBox
 {
@@ -79,12 +80,17 @@ color: #333;
 
 #hourlyVisitsTime
 {	
-	float:left;
-	width:49%;
+float:left;
+width:49%;
 }
 
 #hourlyVisits
 {
-	float:right;
-	width:49%;
+float:right;
+width:49%;
+}
+
+#bargraph
+{
+margin-left: -10px;
 }

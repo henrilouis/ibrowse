@@ -14,6 +14,8 @@ $(function()
 	var statisticsView = new StatisticsView($("#statistics"),model);
 	var statisticsController = new StatisticsController(statisticsView,model);
 
+	//var barGraphView = new BarGraphView($("#statistics"),model);
+	//var barGraphController = new BarGraphController(barGraphView,model);
 	/*
 	var piechartView = new PiechartView($("#statistics"),model);
 	var piechartController = new PiechartController(piechartView,model);
