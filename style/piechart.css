@@ -1,8 +1,6 @@
 #piechart
 {
-	position:absolute;
-	cursor:move;
-}
+	float: right;
 
 #piechart .label_group
 {

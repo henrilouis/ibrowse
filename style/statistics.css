@@ -5,18 +5,57 @@
 	margin:auto;
 }
 
-#statisticsTitle
+#statisticsBox
 {
-
+	text-align: center;
+	font-size: 18px;
+	color: #555;
+	width:100%;
+	margin-left: 5px;
+	margin-top: 5px;
+	margin-bottom: 0px;
 }
 
-#topviewed
-{
-	position:absolute;
-	cursor:move;
+#topSitesBox
+{	
+	float:left;
+	width:49%;
+	text-align: left;
+	font-size: 14px;
+	color: #333;
+}
+#topSitesURL
+{	
+	float:left;
+	width:49%;
 }
 
-#topviewed .label_group
+#topSitesVisits
 {
-	fill: #222;
+	float:right;
+	width:49%;
+}
+
+#graphsBox
+{	
+	text-align: center;
+	font-size: 14px;
+	color: #555;
+	float:right;
+	width:49%;
+}
+
+#graphsBox .value
+{	
+	text-align: center;
+	font-size: 10px;
+	color: #555;
+}
+
+#piechart
+{	
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+font-size: 14px;
+line-height: 1.428571429;
+color: #333;
 }

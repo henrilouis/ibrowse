@@ -1,10 +1,10 @@
-var PiechartView = function(container,model)
+var PiechartView = function(container,model,topData)
 {
 	var w = 450;
 	var h = 300;
 	var r = 80;
 	var ir = 60;
-	var textOffset = 14;
+	var textOffset = 25;
 	var tweenDuration = 250;
 
 	//OBJECTS TO BE POPULATED WITH DATA LATER
@@ -93,34 +93,11 @@ var PiechartView = function(container,model)
 	///////////////////////////////////////////////////////////
 	// STREAKER CONNECTION ////////////////////////////////////
 	///////////////////////////////////////////////////////////
-	
+	update();
 	// to run each time data is generated
 	function update() 
 	{
-	  var myData = model.getCurrentStats();
-
-	  // Get top 5 and count the rest to other
-	  var otherCount = 0;
-	  var topData = [];
-
-	  for (i = 0; i< myData.length; i++)
-	  {
-	  	  	if(i<5)
-		  	{
-		  		topData.push(myData[i]);
-		  	}
-		  	else if (i < myData.length-1)
-		  	{
-		  		otherCount += myData[i][1];
-		  	}
-		  	else
-		  	{
-		  		otherCount += myData[i][1];
-		  		topData.push(["Other",otherCount]);
-		  	}
-	  }
-
-  	  streakerDataAdded = topData;
+	  streakerDataAdded = topData;
 
 	  oldPieData = filteredPieData;
 	  pieData = donut(streakerDataAdded);
@@ -228,7 +205,7 @@ var PiechartView = function(container,model)
 
 	    valueLabels.exit().remove();
 
-
+	    /*
 	    //DRAW LABELS WITH ENTITY NAMES
 	    nameLabels = label_group.selectAll("text.units").data(filteredPieData)
 	      .attr("dy", function(d){
@@ -269,11 +246,12 @@ var PiechartView = function(container,model)
 	      }).text(function(d){
 	        return d.name;
 	      });
-
+		*/
 	    nameLabels.transition().duration(tweenDuration).attrTween("transform", textTween);
 
 	    nameLabels.exit().remove();
 	  }  
+
 	}
 
 	///////////////////////////////////////////////////////////
@@ -339,7 +317,7 @@ var PiechartView = function(container,model)
 
 	this.update = function(args)
 	{
-		if(args == 'dayStats')
+		if(args == 'daysReady')
 		{
 			update();
 		}
