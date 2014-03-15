@@ -69,7 +69,7 @@ var StatisticsView = function(container,model)
 	  	topSitesBoxTitle.html("Top 10 most visited sites:");
 	  	topSitesBox.append(topSitesBoxTitle);
 
-	   	for(i=0; i<topData.length; i++)
+	   	for(i=0; i<topData.length-1; i++)
 	  	{
 	  		var topSitesURL  = $("<div id='topSitesURL'>");
 	  		var topSitesVisits  = $("<div id='topSitesVisits'>");
