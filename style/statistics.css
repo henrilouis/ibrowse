@@ -59,3 +59,32 @@ font-size: 14px;
 line-height: 1.428571429;
 color: #333;
 }
+
+#hourlyVisitsBox
+{
+float:left;
+width:49%;
+text-align: left;
+font-size: 14px;
+color: #333;
+}
+#hoursBox
+{
+float:left;
+width:49%;
+text-align: left;
+font-size: 14px;
+color: #333;
+}
+
+#hourlyVisitsTime
+{	
+	float:left;
+	width:49%;
+}
+
+#hourlyVisits
+{
+	float:right;
+	width:49%;
+}
