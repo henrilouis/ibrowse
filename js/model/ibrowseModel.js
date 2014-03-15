@@ -8,6 +8,7 @@ var IbrowseModel = function() {
 
 	var currentStats;
 	var selectedItem;
+	var currentView;
 
 	var dayMs 	= 86400000;
 	var hourMs 	= 3600000;
@@ -161,8 +162,7 @@ var IbrowseModel = function() {
 	}
 
 	// Setters
-	function setSelectedItem(item)
-	{
+	function setSelectedItem(item){
 		selectedItem = item;
 		notifyObservers('itemSelected');
 	}
@@ -170,6 +170,10 @@ var IbrowseModel = function() {
 	function setCurrentStats(stats){
 		currentStats = stats;
 		notifyObservers('dayStats');
+	}
+
+	function setCurrentView(string){
+		currentView = string;
 	}
 
 	function setDaysSearch(value)
@@ -228,9 +232,16 @@ var IbrowseModel = function() {
 		return selectedItem;
 	}
 
+	function getCurrentView()
+	{
+		return currentView;
+	}
+
 	// fill them once
 	getHistory(dayMs,days);
 	getHistory(hourMs,hours);
+
+	setCurrentView("monthCalendar");
 	//searchDays("");
 
 	this.days = days;
@@ -254,6 +265,9 @@ var IbrowseModel = function() {
 
 	this.setSelectedItem = setSelectedItem;
 	this.getSelectedItem = getSelectedItem;
+
+	this.getCurrentView = getCurrentView;
+	this.setCurrentView = setCurrentView;
 
 	/********************************************************
 		Observable pattern is necessary because of the 
