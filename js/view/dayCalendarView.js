@@ -84,7 +84,10 @@ var DayCalendarView = function(container,model)
 		else if(args == 'searchHoursComplete')
 		{
 			// Update the calendar with the new search data
-			cal.update(model.toJSON(model.getHoursSearch()));
+			var data = model.toJSON(model.getHoursSearch());
+			cal.update(data);
+			cal.options.data = data;
+			
 			// Set the legend to the new max value
 			var max = model.getHoursSearchMax();
 			cal.setLegend([Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)]);

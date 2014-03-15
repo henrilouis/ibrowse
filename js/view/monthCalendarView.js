@@ -82,7 +82,9 @@ var MonthCalendarView = function(container,model)
 		else if(args == 'searchDaysComplete')
 		{
 			// Update the calendar with the new search data
-			cal.update(model.toJSON(model.getDaysSearch()));
+			var data = model.toJSON(model.getDaysSearch())
+			cal.update(data);
+			cal.options.data = data;
 			// Set the legend to the new max value
 			var max = model.getDaysSearchMax();
 			cal.setLegend([Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)]);
