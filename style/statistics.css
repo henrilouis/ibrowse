@@ -1,0 +1,22 @@
+#statistics
+{
+	margin-top:80px;
+	width: 735px;
+	margin:auto;
+}
+
+#statisticsTitle
+{
+
+}
+
+#topviewed
+{
+	position:absolute;
+	cursor:move;
+}
+
+#topviewed .label_group
+{
+	fill: #222;
+}

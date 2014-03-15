@@ -1,10 +1,10 @@
-#statistics
+#piechart
 {
 	position:absolute;
 	cursor:move;
 }
 
-#statistics .label_group
+#piechart .label_group
 {
 	fill: #222;
 }
