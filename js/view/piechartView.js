@@ -32,7 +32,7 @@ var PiechartView = function(container,model)
 	// CREATE VIS & GROUPS ////////////////////////////////////
 	///////////////////////////////////////////////////////////
 
-	var vis = d3.select("#statistics").append("svg:svg")
+	var vis = d3.select("#piechart").append("svg:svg")
 	  .attr("width", w)
 	  .attr("height", h);
 
