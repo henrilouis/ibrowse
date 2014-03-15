@@ -63,34 +63,28 @@ color: #333;
 #hourlyVisitsBox
 {
 float:left;
-width:49%;
+width:100%;
 text-align: left;
 font-size: 14px;
 color: #333;
-margin-top: 10px;
-}
-#hoursBox
-{
-float:left;
-width:49%;
-text-align: left;
-font-size: 14px;
-color: #333;
-}
-
-#hourlyVisitsTime
-{	
-float:left;
-width:49%;
-}
-
-#hourlyVisits
-{
-float:right;
-width:49%;
+margin-top: -40px;
 }
 
 #bargraph
 {
 margin-left: -10px;
+}
+
+#buttonBox
+{
+	float:right;
+}
+
+#dayButton
+{
+	float:right;
+}
+#dayButtonText
+{
+	float:right;
 }

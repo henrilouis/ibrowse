@@ -4,7 +4,7 @@ var StatisticsView = function(container,model)
 	
 	function updateDayData()
 	{	
-		var statisticsBoxTitle = $("<h3>"); 
+		var statisticsBoxTitle = $("<div>"); 
 		var topSitesBox = $("<div id='topSitesBox'>");
 	  	var graphsBox = $("<div id='graphsBox'>");
 	  	var piechartBox = $("<div id='piechart'>");
@@ -65,9 +65,12 @@ var StatisticsView = function(container,model)
 		  	}
 	  	}
 
-	  	var topSitesBoxTitle = $("<h4>"); 
-	  	topSitesBoxTitle.html("Top 10 most visited sites:");
+	  	var topSitesBoxTitle = $("<h5>"); 
+	  	topSitesBoxTitle.html("<b>"+"Top 10 most visited sites:"+"</b>");
 	  	topSitesBox.append(topSitesBoxTitle);
+	  	
+	  	
+				
 
 	   	for(i=0; i<topData.length-1; i++)
 	  	{
@@ -80,7 +83,7 @@ var StatisticsView = function(container,model)
 	  	}	
 	  	topSitesBox.append(topSitesURL);
 	  	topSitesBox.append(topSitesVisits);
-	   	graphsBox.append(piechartBox);
+	  	graphsBox.append(piechartBox);
 
 	   	/*****************************************  
 		  		Append items to statisticsBox  
@@ -97,8 +100,6 @@ var StatisticsView = function(container,model)
 		var totalVisitedPerHour = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 		var hourNumber =0;
 		var hourlyVisitsBox = $("<div id='hourlyVisitsBox'>");
-		var hoursBox = $("<div id='hoursBox'>"); 
-		
 		
 		for (i=0; i<90; i++)
 	 	{
@@ -111,23 +112,21 @@ var StatisticsView = function(container,model)
 			}
 			hourNumber +=24;
 	 	}
-	 	/*
-	 	for(l=0;l<totalVisitedPerHour.length;l++)
-	 	{
-	 		var hourlyVisitsTime = $("<div id='hourlyVisitsTime'>");
-	 		var hourlyVisits = $("<div id='hourlyVisits'>")
-	 		hourlyVisitsTime.html(l+":00 :");
-	 		hourlyVisits.html(totalVisitedPerHour[l]);
-	 		hoursBox.append(hourlyVisitsTime);
-			hoursBox.append(hourlyVisits);
-	 	}
-	 	*/
 	 	
-	 	var hourlyVisitsTitle = $("<h4>");
+	 	var hourlyVisitsTitle = $("<h5>");
 	 	var barGraphBox = $("<div id='bargraph'>");
-	  	hourlyVisitsTitle.html("Total hourly visits");
+	  	hourlyVisitsTitle.html("<b style='float: left'> Total hourly visits</b>");
 	  	hourlyVisitsBox.append(hourlyVisitsTitle);
-	  	//hourlyVisitsBox.append(hoursBox);
+	  	
+   		var buttonBox = $("<div id='buttonBox'>"); 
+		
+		var dayButton = $("<input type='checkbox' id='dayButton'>");
+	  	dayButton.checked = false;
+	  	var dayButtonText = $("<div id='dayButtonText'>"); 
+	  	dayButtonText.html(" Sort by visits");
+	  	barGraphBox.append(dayButtonText);
+	  	barGraphBox.append(dayButton);
+	 
 	  	hourlyVisitsBox.append(barGraphBox);
 	
 	 	/*****************************************  
