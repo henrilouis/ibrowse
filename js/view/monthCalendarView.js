@@ -38,6 +38,9 @@ var MonthCalendarView = function(container,model)
 				$('#cal rect').css('stroke','none');
 				$('#cal rect').attr('height',cSize).attr('width',cSize);
 
+				// Also resetting the selection on the other calendar
+				$('#daycal rect').attr('height',10).attr('width',10);
+
 				$(rect).css('stroke','rgba(0,255,0,1)');
 				$(rect).attr('height',cSize-1).attr('width',cSize-1);
 
