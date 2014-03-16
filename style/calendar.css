@@ -30,6 +30,26 @@
 	background: #fff;
 }
 
+#daycal ul#dayLegend
+{
+	position: absolute;
+	list-style: none;
+}
+
+#daycal ul#dayLegend li
+{
+	padding-top: 8px;
+	height: 30px;
+	padding-bottom: 8px;
+	margin-bottom: 2px;
+	margin-left: -40px;
+	font-size: 10px;
+	width: 30px;
+	background: #dedede;
+	text-align: center;
+	background: #fff;
+}
+
 .nextButton, .previousButton
 {
 	font-size:25px;
