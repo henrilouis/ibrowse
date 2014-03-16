@@ -34,6 +34,7 @@
 {
 	position: absolute;
 	list-style: none;
+	pointer-events: none;
 }
 
 #daycal ul#dayLegend li
@@ -42,12 +43,13 @@
 	height: 30px;
 	padding-bottom: 8px;
 	margin-bottom: 2px;
-	margin-left: -40px;
+	margin-left: -73px;
 	font-size: 10px;
 	width: 30px;
 	background: #dedede;
 	text-align: center;
 	background: #fff;
+	pointer-events: none;
 }
 
 .nextButton, .previousButton
