@@ -67,6 +67,7 @@ var StatisticsView = function(container,model)
 	  	topSitesBoxTitle.html("<b>"+"Top 10 most visited sites:"+"</b>");
 	  	topSitesBox.append(topSitesBoxTitle);
 
+	  	/*
 	   	for(i=0; i<topData.length-1; i++)
 	  	{
 	  		var topSitesURL = 		$("<div id='topSitesURL'>");
@@ -77,6 +78,7 @@ var StatisticsView = function(container,model)
 	  		topSitesBox.append(topSitesVisits);
 	  	}	
 	  	topSitesBox.append(topSitesURL,topSitesVisits);
+	  	*/
 	  	graphsBox.append(piechartBox);
 
 	   	/*****************************************  
