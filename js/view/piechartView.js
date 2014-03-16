@@ -165,9 +165,9 @@ var PiechartView = function(container,model,topData)
 	    valueLabels = label_group.selectAll("text.value").data(filteredPieData)
 	      .attr("dy", function(d){
 	        if ((d.startAngle+d.endAngle)/2 > Math.PI/2 && (d.startAngle+d.endAngle)/2 < Math.PI*1.5 ) {
-	          return 5;
+	          return -10;
 	        } else {
-	          return -7;
+	          return 0;
 	        }
 	      })
 	      .attr("text-anchor", function(d){
@@ -189,9 +189,9 @@ var PiechartView = function(container,model,topData)
 	      })
 	      .attr("dy", function(d){
 	        if ((d.startAngle+d.endAngle)/2 > Math.PI/2 && (d.startAngle+d.endAngle)/2 < Math.PI*1.5 ) {
-	          return 2;
+	          return +10;
 	        } else {
-	          return -10;
+	          return +5;
 	        }
 	      })
 	      .attr("text-anchor", function(d){
@@ -209,7 +209,29 @@ var PiechartView = function(container,model,topData)
 
 	    valueLabels.exit().remove();
 
-	    
+	    var prev;
+valueLabels.each(function(d, i) {
+    if(i > 0) {
+        var thisbb = this.getBoundingClientRect(),
+            prevbb = prev.getBoundingClientRect();
+        // move if they overlap
+        if(!(thisbb.right < prevbb.left || 
+                thisbb.left > prevbb.right || 
+                thisbb.bottom < prevbb.top || 
+                thisbb.top > prevbb.bottom)) {
+            var ctx = thisbb.left + (thisbb.right - thisbb.left)/2,
+                cty = thisbb.top + (thisbb.bottom - thisbb.top)/2,
+                cpx = prevbb.left + (prevbb.right - prevbb.left)/2,
+                cpy = prevbb.top + (prevbb.bottom - prevbb.top)/2,
+                off = Math.sqrt(Math.pow(ctx - cpx, 2) + Math.pow(cty - cpy, 2))/2;
+            d3.select(this).attr("transform",
+                "translate(" + Math.cos(((d.startAngle + d.endAngle - Math.PI) / 2)) * (r + textOffset + off) + "," + Math.sin((d.startAngle + d.endAngle - Math.PI) / 2) * (r + textOffset + off) + ")");
+        }
+    }
+    prev = this;
+});
+
+	    /*
 	    //DRAW LABELS WITH ENTITY NAMES
 	    nameLabels = label_group.selectAll("text.units").data(filteredPieData)
 	      .attr("dy", function(d){
@@ -254,7 +276,8 @@ var PiechartView = function(container,model,topData)
 	    nameLabels.transition().duration(tweenDuration).attrTween("transform", textTween);
 
 	    nameLabels.exit().remove();
-	    
+	    */
+	    	    	    
 	  }  
 
 	}
