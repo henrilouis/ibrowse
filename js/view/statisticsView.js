@@ -67,7 +67,7 @@ var StatisticsView = function(container,model)
 	  		var topSitesVisits = 	$("<div class='topSitesVisits'>");
 	  		topSitesURL.html(topData[i][0]);
 	  		topSitesVisits.html(topData[i][1]);
-	  		legendItem.append(legendColor,topSitesURL);
+	  		legendItem.append(legendColor,topSitesURL,topSitesVisits);
 	  		topSitesList.append(legendItem);
 	  		legendColor.attr("style", "background-color:"+color(i));
 	  	}

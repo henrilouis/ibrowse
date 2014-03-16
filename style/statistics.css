@@ -17,7 +17,6 @@
 {
 	font-family: 'Fjalla One', sans-serif;
 	text-transform: uppercase;
-	text-align: center;
 	font-size: 25px;
 }
 
@@ -70,6 +69,7 @@ ul#topSitesList .topSitesURL
 ul#topSitesList .topSitesVisits
 {	
 	float:right;
+	margin-top: -19px;
 }
 
 #hourlyVisitsBox
@@ -80,6 +80,7 @@ ul#topSitesList .topSitesVisits
 	font-size: 14px;
 	color: #333;
 	margin-top: 10px;
+	margin-bottom: 30px;
 }
 
 #bargraph

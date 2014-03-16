@@ -164,6 +164,7 @@ var PiechartView = function(container,model,topData)
 		*/
 
 		/*
+		
 	    //DRAW FAVICONS
 	    favIcons = label_group.selectAll("image").data(filteredPieData);
 
