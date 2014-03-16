@@ -112,6 +112,20 @@ var StatisticsView = function(container,model)
 
 	 	totalVisitedPerDay = [0,0,0,0,0,0,0];
 	 	var dayNumber =0;
+	  	var retrievedDay = 0;
+	 	
+	 	//check whether day 0 is a monday and set loop to start at first monday
+	 	for(i=0; i<6;i++)
+	 	{	
+	 		var retrievedString = model.days[i][0].toString();
+	 		var retrievedDay = (retrievedString.indexOf('Mon') > -1); //true
+	 		if(retrievedDay == true){
+	 			alert("day "+i+" is monday");
+	 			dayNumber = i;
+	 		}
+	 	}
+
+	 	//for the last 12 weeks sum all visits of each weekday
 	 	for (i=0; i<12; i++)
 	 	{
 	 		for(j=0; j<7; j++)
@@ -136,7 +150,7 @@ var StatisticsView = function(container,model)
 		
 		hourlyVisitsTitle.html("<b style='float: left'> Total hourly/dayly visits:</b>");
 	  	sortButtonText.html(" Sort by visits");
-	  	viewButtonText.html(" Toggle Hour/Day ");
+	  	viewButtonText.html(" Hour/Day  ");
 
 		sortButtonContainer.append(sortButtonText,sortButton);
 		viewButtonContainer.append(viewButtonText,viewButton);
