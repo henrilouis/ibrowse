@@ -16,24 +16,54 @@
 	margin-bottom: 0px;
 }
 
+#topSitesBoxTitle
+{
+	float:left;
+	width: 100%;
+}
+
 #topSitesBox
 {	
 	float:left;
-	width:49%;
+	width: 100%;
 	text-align: left;
 	font-size: 14px;
 	color: #333;
 }
-#topSitesURL
+
+#topSitesList
 {	
 	float:left;
-	width:49%;
+	width: 50%;
 }
 
-#topSitesVisits
+#topSitesVisitsTitle
 {
+	width:100%;
+	float:left;
+	text-align: right;
+}
+
+.legendaBlock
+{
+	float: left;
+	width: 5%;
+	height: 12px;
+	margin-right: 5%;
+	margin-top: 5px;
+}
+
+.topSitesURL
+{	
+	float:left;
+	width:50%;
+}
+
+.topSitesVisits
+{	
+	width:40%;
 	float:right;
-	width:49%;
+	text-align: right;
 }
 
 #graphsBox
@@ -42,6 +72,7 @@
 	font-size: 14px;
 	color: #333;
 	float:left;
+	width:50%;
 }
 
 #piechart
@@ -59,7 +90,7 @@ width:100%;
 text-align: left;
 font-size: 14px;
 color: #333;
-margin-top: -40px;
+margin-top: 10px;
 }
 
 #bargraph

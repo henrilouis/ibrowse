@@ -1,9 +1,9 @@
 var PiechartView = function(container,model,topData)
 {
-	var w = 735;
-	var h = 550;
-	var r = 210;
-	var ir = 110;
+	var w = 350;
+	var h = 250;
+	var r = 105;
+	var ir = 70;
 	var textOffset = 25;
 	var tweenDuration = 250;
 
@@ -68,7 +68,7 @@ var PiechartView = function(container,model,topData)
 	// "TOTAL" LABEL
 	var totalLabel = center_group.append("svg:text")
 	  .attr("class", "label")
-	  .attr("dy", -40)
+	  .attr("dy", -15)
 	  .attr("text-anchor", "middle") // text-align: right
 	  .attr("fill", "#333333")
 	  .text("TOTAL");
@@ -76,7 +76,7 @@ var PiechartView = function(container,model,topData)
 	//TOTAL TRAFFIC VALUE
 	var totalValue = center_group.append("svg:text")
 	  .attr("class", "total")
-	  .attr("dy", 25)
+	  .attr("dy", 10)
 	  .attr("text-anchor", "middle") // text-align: right
 	  .attr("fill", "#333333")
 	  .text("Select day");
@@ -84,7 +84,7 @@ var PiechartView = function(container,model,topData)
 	//UNITS LABEL
 	var totalUnits = center_group.append("svg:text")
 	  .attr("class", "units")
-	  .attr("dy", 60)
+	  .attr("dy", 36)
 	  .attr("text-anchor", "middle") // text-align: right
 	  .attr("fill", "#333333")
 	  .text("Sites");
@@ -141,7 +141,7 @@ var PiechartView = function(container,model,topData)
 	        .duration(tweenDuration)
 	        .attrTween("d", removePieTween)
 	      .remove();
-
+/*
 	    //DRAW TICK MARK LINES FOR LABELS
 	    lines = label_group.selectAll("line").data(filteredPieData);
 	    lines.enter().append("svg:line")
@@ -209,29 +209,7 @@ var PiechartView = function(container,model,topData)
 
 	    valueLabels.exit().remove();
 
-	    var prev;
-valueLabels.each(function(d, i) {
-    if(i > 0) {
-        var thisbb = this.getBoundingClientRect(),
-            prevbb = prev.getBoundingClientRect();
-        // move if they overlap
-        if(!(thisbb.right < prevbb.left || 
-                thisbb.left > prevbb.right || 
-                thisbb.bottom < prevbb.top || 
-                thisbb.top > prevbb.bottom)) {
-            var ctx = thisbb.left + (thisbb.right - thisbb.left)/2,
-                cty = thisbb.top + (thisbb.bottom - thisbb.top)/2,
-                cpx = prevbb.left + (prevbb.right - prevbb.left)/2,
-                cpy = prevbb.top + (prevbb.bottom - prevbb.top)/2,
-                off = Math.sqrt(Math.pow(ctx - cpx, 2) + Math.pow(cty - cpy, 2))/2;
-            d3.select(this).attr("transform",
-                "translate(" + Math.cos(((d.startAngle + d.endAngle - Math.PI) / 2)) * (r + textOffset + off) + "," + Math.sin((d.startAngle + d.endAngle - Math.PI) / 2) * (r + textOffset + off) + ")");
-        }
-    }
-    prev = this;
-});
-
-	    /*
+	    
 	    //DRAW LABELS WITH ENTITY NAMES
 	    nameLabels = label_group.selectAll("text.units").data(filteredPieData)
 	      .attr("dy", function(d){
@@ -287,13 +265,12 @@ valueLabels.each(function(d, i) {
 	///////////////////////////////////////////////////////////
 	function update_legend(d)
     {
-    	console.log(d);
 	// "TOTAL" LABEL
 	 	totalLabel.text(d.name);
 	//TOTAL TRAFFIC VALUE
-		totalValue.text(d.value);
+		totalValue.text((d.value/totalSites*100).toFixed(1) + "%");
 	//UNITS LABEL
-		totalUnits.text("Visits");
+		totalUnits.text("");
 		d3.select(this)
 	      	.attr("stroke-width", 0);
     }

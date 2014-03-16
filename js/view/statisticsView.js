@@ -4,13 +4,6 @@ var StatisticsView = function(container,model)
 	
 	function updateDayData()
 	{	
-		var statisticsBoxTitle =	$("<div>"); 
-		var topSitesBox = 			$("<div id='topSitesBox'>");
-	  	var graphsBox = 			$("<div id='graphsBox'>");
-	  	var piechartBox = 			$("<div id='piechart'>");
-	
-	  	statisticsBoxTitle.html("General browsing statistics");
-
 		var totalVisited = 0;
 		var totalVisitedPerSite = new Array();
 		var totalVisitedPerSiteURL = new Array();
@@ -63,28 +56,39 @@ var StatisticsView = function(container,model)
 		  	}
 	  	}
 
-	  	var topSitesBoxTitle = $("<h5>"); 
-	  	topSitesBoxTitle.html("<b>"+"Top 10 most visited sites:"+"</b>");
-	  	topSitesBox.append(topSitesBoxTitle);
-
-	  	/*
+	  	var statisticsBoxTitle =	$("<div>"); 
+		var topSitesBox = 			$("<div id='topSitesBox'>");
+		var topSitesList = 			$("<div id='topSitesList'>");
+	  	var graphsBox = 			$("<div id='graphsBox'>");
+	  	var piechartBox = 			$("<div id='piechart'>");
+	  	var topSitesBoxTitle = 		$("<h5 id='topSitesBoxTitle'>"); 
+	  	var topSitesVisitsTitle = 	$("<div id='topSitesVisitsTitle'>");
+		var color = d3.scale.category20();
+	  	
+	  	statisticsBoxTitle.html("General browsing statistics");
+	  	topSitesBoxTitle.html("<b>Top 10 most visited sites:</b>");
+	  	topSitesVisitsTitle.html("<b>visits:</b>");
+	  	topSitesList.append(topSitesVisitsTitle)
+	   	
 	   	for(i=0; i<topData.length-1; i++)
-	  	{
-	  		var topSitesURL = 		$("<div id='topSitesURL'>");
-	  		var topSitesVisits = 	$("<div id='topSitesVisits'>");
+	  	{	
+	  		var legendaBlock = 		$("<div class='legendaBlock'>");
+	  		var topSitesURL = 		$("<div class='topSitesURL'>");
+	  		var topSitesVisits = 	$("<div class='topSitesVisits'>");
 	  		topSitesURL.html(topData[i][0]+": ");
 	  		topSitesVisits.html(topData[i][1]);
-	  		topSitesBox.append(topSitesURL);
-	  		topSitesBox.append(topSitesVisits);
-	  	}	
-	  	topSitesBox.append(topSitesURL,topSitesVisits);
-	  	*/
+	  		legendaBlock.html(" ");
+	  		topSitesList.append(legendaBlock,topSitesURL,topSitesVisits);
+	  		legendaBlock.attr("style", "background-color:"+color(i));
+	  	}
+	  	
 	  	graphsBox.append(piechartBox);
-
+	  	topSitesBox.append(topSitesBoxTitle,graphsBox,topSitesList);
+	  	
 	   	/*****************************************  
 		  		Append items to statisticsBox  
 		*****************************************/
-	   	statisticsBox.append(statisticsBoxTitle,topSitesBox,graphsBox);
+	   	statisticsBox.append(statisticsBoxTitle,topSitesBox);
  
 		var piechartView = new PiechartView(container,model,topData);
 	}
@@ -124,7 +128,7 @@ var StatisticsView = function(container,model)
 	 	
 	 	var hourlyVisitsTitle = $("<h5>");
 	 	var barGraphBox = 		$("<div id='bargraph'>");
-	  	hourlyVisitsTitle.html("<b style='float: left'> Total hourly visits</b>");
+	  	hourlyVisitsTitle.html("<b style='float: left'> Total hourly visits:</b>");
 	  	hourlyVisitsBox.append(hourlyVisitsTitle);
 	  	
 		var sortButton = 		$("<input type='checkbox' id='sortButton'>");
