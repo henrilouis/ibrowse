@@ -1,8 +1,36 @@
 #piechart
 {
-	float: right;
+	
+	color: #333;
+}
 
-#piechart .label_group
+#piechart .center_group
 {
-	fill: #222;
+	font-family: 'Fjalla One', sans-serif;
+}
+
+#piechart .center_group .label
+{
+	font-size: 25px;
+}
+
+#piechart .center_group .total
+{
+	font-size: 60px;
+}
+
+#piechart .center_group .units
+{
+	font-size: 25px;
+}
+
+#piechart .value
+{	
+	font-family: 'Fjalla One', sans-serif;
+	font-size: 20px;
+}
+
+#piechart .units
+{	
+	font-size: 10px;
 }

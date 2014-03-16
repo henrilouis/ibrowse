@@ -40,16 +40,8 @@
 {	
 	text-align: center;
 	font-size: 14px;
-	color: #555;
-	float:right;
-	width:49%;
-}
-
-#graphsBox .value
-{	
-	text-align: center;
-	font-size: 10px;
-	color: #555;
+	color: #333;
+	float:left;
 }
 
 #piechart

@@ -1,9 +1,9 @@
 var PiechartView = function(container,model,topData)
 {
-	var w = 450;
-	var h = 300;
-	var r = 80;
-	var ir = 60;
+	var w = 735;
+	var h = 550;
+	var r = 210;
+	var ir = 110;
 	var textOffset = 25;
 	var tweenDuration = 250;
 
@@ -62,31 +62,31 @@ var PiechartView = function(container,model,topData)
 
 	//WHITE CIRCLE BEHIND LABELS
 	var whiteCircle = center_group.append("svg:circle")
-	  .attr("fill", "rgba(1,1,1,0.3")
+	  .attr("fill", "white")
 	  .attr("r", ir);
 
 	// "TOTAL" LABEL
 	var totalLabel = center_group.append("svg:text")
 	  .attr("class", "label")
-	  .attr("dy", -15)
+	  .attr("dy", -40)
 	  .attr("text-anchor", "middle") // text-align: right
-	  .attr("fill", "white")
+	  .attr("fill", "#333333")
 	  .text("TOTAL");
 
 	//TOTAL TRAFFIC VALUE
 	var totalValue = center_group.append("svg:text")
 	  .attr("class", "total")
-	  .attr("dy", 7)
+	  .attr("dy", 25)
 	  .attr("text-anchor", "middle") // text-align: right
-	  .attr("fill", "white")
+	  .attr("fill", "#333333")
 	  .text("Select day");
 
 	//UNITS LABEL
 	var totalUnits = center_group.append("svg:text")
 	  .attr("class", "units")
-	  .attr("dy", 21)
+	  .attr("dy", 60)
 	  .attr("text-anchor", "middle") // text-align: right
-	  .attr("fill", "white")
+	  .attr("fill", "#333333")
 	  .text("Sites");
 
 
@@ -123,8 +123,8 @@ var PiechartView = function(container,model,topData)
 	    //DRAW ARC PATHS
 	    paths = arc_group.selectAll("path").data(filteredPieData);
 	    paths.enter().append("svg:path")
-	      //.attr("stroke", "white")
-	      //.attr("stroke-width", 0.5)
+	      .attr("stroke", "white")
+	      .attr("stroke-width", 2)
 	      .attr("fill", function(d, i) { return color(i); })
 	      .transition()
 	        .duration(tweenDuration)
@@ -144,9 +144,10 @@ var PiechartView = function(container,model,topData)
 	    lines.enter().append("svg:line")
 	      .attr("x1", 0)
 	      .attr("x2", 0)
-	      .attr("y1", -r-3)
-	      .attr("y2", -r-8)
-	      .attr("stroke", "gray")
+	      .attr("y1", -r+10)
+	      .attr("y2", -r-18)
+	      .attr("stroke", "#444444")
+	      .attr("stroke-width", "1px")
 	      .attr("transform", function(d) {
 	        return "rotate(" + (d.startAngle+d.endAngle)/2 * (180/Math.PI) + ")";
 	      });
@@ -185,9 +186,9 @@ var PiechartView = function(container,model,topData)
 	      })
 	      .attr("dy", function(d){
 	        if ((d.startAngle+d.endAngle)/2 > Math.PI/2 && (d.startAngle+d.endAngle)/2 < Math.PI*1.5 ) {
-	          return 5;
+	          return 2;
 	        } else {
-	          return -7;
+	          return -10;
 	        }
 	      })
 	      .attr("text-anchor", function(d){
@@ -205,7 +206,7 @@ var PiechartView = function(container,model,topData)
 
 	    valueLabels.exit().remove();
 
-	    /*
+	    
 	    //DRAW LABELS WITH ENTITY NAMES
 	    nameLabels = label_group.selectAll("text.units").data(filteredPieData)
 	      .attr("dy", function(d){
@@ -250,7 +251,7 @@ var PiechartView = function(container,model,topData)
 	    nameLabels.transition().duration(tweenDuration).attrTween("transform", textTween);
 
 	    nameLabels.exit().remove();
-	    */
+	    
 	  }  
 
 	}
