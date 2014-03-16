@@ -69,6 +69,7 @@ var StatisticsView = function(container,model)
 	  	topSitesBoxTitle.html("<b>Top 10 most visited sites:</b>");
 	  	topSitesVisitsTitle.html("<b>visits:</b>");
 	  	topSitesList.append(topSitesVisitsTitle)
+	  	graphsBox.append(piechartBox);
 	   	
 	   	for(i=0; i<topData.length-1; i++)
 	  	{	
@@ -82,7 +83,6 @@ var StatisticsView = function(container,model)
 	  		legendaBlock.attr("style", "background-color:"+color(i));
 	  	}
 	  	
-	  	graphsBox.append(piechartBox);
 	  	topSitesBox.append(topSitesBoxTitle,graphsBox,topSitesList);
 	  	
 	   	/*****************************************  
@@ -97,7 +97,6 @@ var StatisticsView = function(container,model)
 	{
 		var totalVisitedPerHour = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 		var hourNumber =0;
-		var hourlyVisitsBox = 	$("<div id='hourlyVisitsBox'>");
 		
 		for (i=0; i<90; i++)
 	 	{
@@ -125,22 +124,25 @@ var StatisticsView = function(container,model)
 			dayNumber +=7;
 	 	}
 
-	 	
+		var hourlyVisitsBox = 	$("<div id='hourlyVisitsBox'>");	 	
 	 	var hourlyVisitsTitle = $("<h5>");
 	 	var barGraphBox = 		$("<div id='bargraph'>");
-	  	hourlyVisitsTitle.html("<b style='float: left'> Total hourly visits:</b>");
-	  	hourlyVisitsBox.append(hourlyVisitsTitle);
-	  	
+	 	var sortButtonContainer=$("<div id='sortButtonContainer'>");
+	 	var viewButtonContainer=$("<div id='viewButtonContainer'>");
 		var sortButton = 		$("<input type='checkbox' id='sortButton'>");
 		var viewButton = 		$("<input type='checkbox' id='viewButton'>");
-		var sortButtonnText = 	$("<div id='dayButtonText'>"); 
-		var viewButtonnText = 	$("<div id='viewButtonText'>"); 
+		var sortButtonText = 	$("<div id='dayButtonText'>"); 
+		var viewButtonText = 	$("<div id='viewButtonText'>"); 
+		
+		hourlyVisitsTitle.html("<b style='float: left'> Total hourly/dayly visits:</b>");
+	  	sortButtonText.html(" Sort by visits");
+	  	viewButtonText.html(" Toggle Hour/Day ");
 
-	  	sortButtonnText.html(" Sort by visits");
-	  	viewButtonnText.html(" Change view");
-	  	barGraphBox.append(sortButtonnText,sortButton,viewButtonnText,viewButton);
-		 
-	  	hourlyVisitsBox.append(barGraphBox);
+		sortButtonContainer.append(sortButtonText,sortButton);
+		viewButtonContainer.append(viewButtonText,viewButton);
+		barGraphBox.append(sortButtonContainer,viewButtonContainer);
+ 
+	  	hourlyVisitsBox.append(hourlyVisitsTitle,barGraphBox);
 
 	 	/*****************************************  
 		  		Append items to statisticsBox  
@@ -148,7 +150,6 @@ var StatisticsView = function(container,model)
 		statisticsBox.append(hourlyVisitsBox);
 
 		var barGraphView = new BarGraphView(container,model,totalVisitedPerHour,totalVisitedPerDay);
-
 	}	
 	
 	/*****************************************  

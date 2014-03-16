@@ -1,9 +1,9 @@
 var PiechartView = function(container,model,topData)
 {
 	var w = 350;
-	var h = 250;
-	var r = 105;
-	var ir = 70;
+	var h = 260;
+	var r = 108;
+	var ir = 72;
 	var textOffset = 25;
 	var tweenDuration = 250;
 
