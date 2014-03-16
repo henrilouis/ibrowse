@@ -265,7 +265,6 @@ var PiechartView = function(container,model,topData)
 	function update_legend(d)
     {
 	// "TOTAL" LABEL
-		console.log(d);
 	 	totalLabel.text(d.name);
 	//TOTAL TRAFFIC VALUE
 		totalValue.text(d.value);
