@@ -1,5 +1,8 @@
-var BarGraphView = function(container,model,hourlyData)
+var BarGraphView = function(container,model,hourlyData,daylyData)
 {	
+
+var viewType =1;
+
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 700,
     height = 200;
@@ -69,35 +72,105 @@ var data = [];
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
 
-d3.select("#dayButton").on("change", change);
+    d3.select("#sortButton").on("change", change);
 
-  var sortTimeout = setTimeout(function() {
-    d3.select("input").property("checked", false).each(change);
-  }, 2000);
+    var sortTimeout = setTimeout(function(){
+        d3.select("input").property("checked", false).each(change);
+    }, 2000);
 
-  function change() {
-    clearTimeout(sortTimeout);
+    function change()
+    {
+        clearTimeout(sortTimeout);
+        // Copy-on-write since tweens are evaluated after a delay.
+        var x0 = x.domain(data.sort(this.checked
+            ? function(a, b) { return b.visits - a.visits; }
+            : function(a, b) { return d3.ascending(a.hour, b.hour); })
+            .map(function(d) { return d.hour+":00"; }))
+            .copy();
 
-    // Copy-on-write since tweens are evaluated after a delay.
-    var x0 = x.domain(data.sort(this.checked
-        ? function(a, b) { return b.visits - a.visits; }
-        : function(a, b) { return d3.ascending(a.hour, b.hour); })
-        .map(function(d) { return d.hour+":00"; }))
-        .copy();
+        var transition = svg.transition().duration(750),
+            delay = function(d, i) { return i * 50; };
 
-    var transition = svg.transition().duration(750),
-        delay = function(d, i) { return i * 50; };
+        transition.selectAll(".bar")
+            .delay(delay)
+            .attr("x", function(d) { return x0(d.hour+":00"); });
 
-    transition.selectAll(".bar")
-        .delay(delay)
-        .attr("x", function(d) { return x0(d.hour+":00"); });
+        transition.select(".x.axis")
+            .call(xAxis)
+          .selectAll("g")
+            .delay(delay);
+    }
 
-    transition.select(".x.axis")
-        .call(xAxis)
-      .selectAll("g")
-        .delay(delay);
-  }
-	
+    d3.select("#viewButton").on("change", updateData);
+    
+    function updateData()
+    {   
+        if (viewType ==1)
+        {
+            data=[];
+            // Get the data again
+            for(i=0;i<daylyData.length;i++)
+            {
+                data[i]={hour:i, visits:daylyData[i]};
+            }
+            viewType = 2;
+        }
+        else if (viewType ==2)
+        {
+            data=[];
+            // Get the data again
+            for(i=0;i<hourlyData.length;i++)
+            {
+                data[i]={hour:i, visits:hourlyData[i]};
+            }
+            viewType = 1;
+        }
+        d3.selectAll("svg").remove();
+
+        var svg = d3.select("#bargraph").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        svg.call(tip);
+
+        x.domain(data.map(function(d) { return d.hour+":00"; }));
+        y.domain([0, d3.max(data, function(d) { return d.visits; })]);
+
+        svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis);
+
+        svg.append("g")
+          .attr("class", "y axis")
+          .call(yAxis)
+        .append("text")
+          .attr("transform", "rotate(-90)")
+          .attr("y", 6)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text("Visits");
+
+        svg.selectAll(".bar")
+          .data(data)
+        .enter().append("rect")
+          .attr("class", "bar")
+          .attr("x", function(d) { return x(d.hour+":00"); })
+          .attr("width", x.rangeBand())
+          .attr("y", function(d) { return y(d.visits); })
+          .attr("height", function(d) { return height - y(d.visits); })
+          .on('mouseover', tip.show)
+          .on('mouseout', tip.hide)
+
+        d3.select("#sortButton").on("change", change);
+
+    var sortTimeout = setTimeout(function(){
+        d3.select("input").property("checked", false).each(change);
+    }, 2000);
+    }
+
 	// Observer Pattern
 	model.addObserver(this);
 

@@ -72,11 +72,21 @@ margin-left: -10px;
 	float:right;
 }
 
-#dayButton
+#sortButton
 {
 	float:right;
 }
 #dayButtonText
+{
+	float:right;
+}
+
+#viewButton
+{
+float:right;	
+}
+
+#viewButtonText
 {
 	float:right;
 }
