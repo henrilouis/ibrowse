@@ -1,14 +1,14 @@
 var PiechartView = function(container,model,topData)
 {
-	var w = 350;
-	var h = 260;
-	var r = 108;
-	var ir = 72;
+	var w = 550;
+	var h = 420;
+	var r = 200;
+	var ir = 130;
 	var textOffset = 25;
 	var tweenDuration = 250;
 
 	//OBJECTS TO BE POPULATED WITH DATA LATER
-	var lines, valueLabels, nameLabels;
+	var lines, valueLabels, nameLabels, favIcons;
 	var pieData = [];    
 	var oldPieData = [];
 	var filteredPieData = [];
@@ -68,7 +68,7 @@ var PiechartView = function(container,model,topData)
 	// "TOTAL" LABEL
 	var totalLabel = center_group.append("svg:text")
 	  .attr("class", "label")
-	  .attr("dy", -15)
+	  .attr("dy", -45)
 	  .attr("text-anchor", "middle") // text-align: right
 	  .attr("fill", "#333333")
 	  .text("TOTAL");
@@ -76,7 +76,7 @@ var PiechartView = function(container,model,topData)
 	//TOTAL TRAFFIC VALUE
 	var totalValue = center_group.append("svg:text")
 	  .attr("class", "total")
-	  .attr("dy", 10)
+	  .attr("dy", 20)
 	  .attr("text-anchor", "middle") // text-align: right
 	  .attr("fill", "#333333")
 	  .text("Select day");
@@ -84,7 +84,7 @@ var PiechartView = function(container,model,topData)
 	//UNITS LABEL
 	var totalUnits = center_group.append("svg:text")
 	  .attr("class", "units")
-	  .attr("dy", 36)
+	  .attr("dy", 55)
 	  .attr("text-anchor", "middle") // text-align: right
 	  .attr("fill", "#333333")
 	  .text("Sites");
@@ -141,7 +141,8 @@ var PiechartView = function(container,model,topData)
 	        .duration(tweenDuration)
 	        .attrTween("d", removePieTween)
 	      .remove();
-/*
+
+	    /*
 	    //DRAW TICK MARK LINES FOR LABELS
 	    lines = label_group.selectAll("line").data(filteredPieData);
 	    lines.enter().append("svg:line")
@@ -160,7 +161,25 @@ var PiechartView = function(container,model,topData)
 	        return "rotate(" + (d.startAngle+d.endAngle)/2 * (180/Math.PI) + ")";
 	      });
 	    lines.exit().remove();
+		*/
 
+		/*
+	    //DRAW FAVICONS
+	    favIcons = label_group.selectAll("image").data(filteredPieData);
+
+	    favIcons.enter().append("image").attr("xlink:href", function(d){
+	      	baseUrl = d.name;
+	      	return "chrome://favicon/http://"+baseUrl;
+	      })
+	      .attr("width","16px")
+	      .attr("height","16px");
+
+	    favIcons.transition().duration(tweenDuration).attrTween("transform", textTween);
+	    favIcons.exit().remove();
+
+	    */
+
+	    /*
 	    //DRAW LABELS WITH PERCENTAGE VALUES
 	    valueLabels = label_group.selectAll("text.value").data(filteredPieData)
 	      .attr("dy", function(d){
@@ -270,7 +289,7 @@ var PiechartView = function(container,model,topData)
 	//TOTAL TRAFFIC VALUE
 		totalValue.text((d.value/totalSites*100).toFixed(1) + "%");
 	//UNITS LABEL
-		totalUnits.text("");
+		totalUnits.text("OF VISITS");
 		d3.select(this)
 	      	.attr("stroke-width", 0);
     }
@@ -289,7 +308,7 @@ var PiechartView = function(container,model,topData)
 	  totalValue.text(totalSites);
 
 	//UNITS LABEL
-	  totalUnits.text("Sites");
+	  totalUnits.text("VISITS");
 
 	  d3.select(this)
 	      	.attr("stroke-width", 2);

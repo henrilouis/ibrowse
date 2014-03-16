@@ -1,8 +1,8 @@
 #statistics
 {
-	margin-top:0px;
 	width: 735px;
 	margin:auto;
+	margin-bottom:20px;
 }
 
 #statisticsBox
@@ -11,31 +11,38 @@
 	font-size: 18px;
 	color: #555;
 	width:100%;
-	margin-left: 5px;
-	margin-top: 0px;
-	margin-bottom: 0px;
 }
 
-#topSitesBoxTitle
+#statisticsTitle
+{
+	font-family: 'Fjalla One', sans-serif;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 25px;
+}
+
+#hourlyVisitsTitle
 {
 	float:left;
-	width: 100%;
+	font-family: 'Fjalla One', sans-serif;
+	text-transform: uppercase;
+	font-size: 20px;
 }
 
-#topSitesBox
+ul#topSitesList
 {	
+	width:150px;
+	margin-top: 100px;
+	float: right;
+	list-style:none;
 	float:left;
-	width: 100%;
-	text-align: left;
-	font-size: 14px;
-	color: #333;
+	margin-left: 0px;
+	padding-left: 0px;
 }
 
-#topSitesList
+ul#topSitesList li
 {	
-	float:left;
-	width: 50%;
-	margin-top:15px;
+	width:200px;
 }
 
 #topSitesVisitsTitle
@@ -45,53 +52,34 @@
 	text-align: right;
 }
 
-.legendaBlock
+ul#topSitesList .legendColor
 {
-	float: left;
-	width: 5%;
-	height: 12px;
-	margin-right: 5%;
-	margin-top: 5px;
-}
-
-.topSitesURL
-{	
 	float:left;
-	width:50%;
+	width:20px;
+	height:20px;
+	margin-right:10px;
+	border:2px solid white;
+	border-radius:3px;
 }
 
-.topSitesVisits
+ul#topSitesList .topSitesURL
 {	
-	width:40%;
+	
+}
+
+ul#topSitesList .topSitesVisits
+{	
 	float:right;
-	text-align: right;
-}
-
-#graphsBox
-{	
-	text-align: center;
-	font-size: 14px;
-	color: #333;
-	float:left;
-	width:50%;
-}
-
-#piechart
-{	
-font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-font-size: 14px;
-line-height: 1.428571429;
-color: #333;
 }
 
 #hourlyVisitsBox
 {
-float:left;
-width:100%;
-text-align: left;
-font-size: 14px;
-color: #333;
-margin-top: 10px;
+	float:left;
+	width:100%;
+	text-align: left;
+	font-size: 14px;
+	color: #333;
+	margin-top: 10px;
 }
 
 #bargraph

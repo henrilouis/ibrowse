@@ -8,6 +8,16 @@ var MonthCalendarView = function(container,model)
 	var previousButton = $("<button class='previousButton glyphicon glyphicon-chevron-left'>");
 	container.append(nextButton,previousButton);
 
+	// Legend
+	var dayLegend = $("<ul id='dayLegend'>");
+	var weekDays = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+	for(i=0; i<weekDays.length; i++)
+	{
+		var dayName = $("<li>");
+		dayName.html(weekDays[i]);
+		dayLegend.append(dayName);
+	}
+
 	// Creating startdate wich is 90 days back because of google
 	startDate = new Date(Date.now());
 	startDate.setDate(startDate.getDate()-90);
@@ -60,8 +70,6 @@ var MonthCalendarView = function(container,model)
 
 					model.setSelectedItem(item[0]);
 				}
-
-				
 			}
 		});
 
@@ -79,6 +87,7 @@ var MonthCalendarView = function(container,model)
 	{
 		if(args == 'daysReady')
 		{
+			container.append(dayLegend);
 			createCalendar(model.toJSON(model.days));
 		}
 

@@ -1,15 +1,10 @@
 var StatisticsView = function(container,model)
-{	
-	var statisticsBox = $("<div id='statisticsBox'>");
-	
+{
 	function updateDayData()
 	{	
 		var totalVisited = 0;
-		var totalVisitedPerSite = new Array();
-		var totalVisitedPerSiteURL = new Array();
-
-		totalVisitedPerSite = [];
-		totalVisitedPerSiteURL =[];
+		var totalVisitedPerSite = [];
+		var totalVisitedPerSiteURL = [];
 		
 		// For each unique url create entry and add similar url counts
 	 	for (i=0; i<model.days.length; i++)
@@ -56,39 +51,30 @@ var StatisticsView = function(container,model)
 		  	}
 	  	}
 
-	  	var statisticsBoxTitle =	$("<div>"); 
+	  	var statisticsTitle =		$("<div id='statisticsTitle'>"); 
 		var topSitesBox = 			$("<div id='topSitesBox'>");
-		var topSitesList = 			$("<div id='topSitesList'>");
-	  	var graphsBox = 			$("<div id='graphsBox'>");
-	  	var piechartBox = 			$("<div id='piechart'>");
-	  	var topSitesBoxTitle = 		$("<h5 id='topSitesBoxTitle'>"); 
-	  	var topSitesVisitsTitle = 	$("<div id='topSitesVisitsTitle'>");
+		var topSitesList = 			$("<ul id='topSitesList'>");
+	  	var piechart = 				$("<div id='piechart'>");
 		var color = d3.scale.category20();
 	  	
-	  	statisticsBoxTitle.html("General browsing statistics");
-	  	topSitesBoxTitle.html("<b>Top 10 most visited sites:</b>");
-	  	topSitesVisitsTitle.html("<b>visits:</b>");
-	  	topSitesList.append(topSitesVisitsTitle)
-	  	graphsBox.append(piechartBox);
+	  	statisticsTitle.html("Your browsing statistics");
 	   	
 	   	for(i=0; i<topData.length-1; i++)
 	  	{	
-	  		var legendaBlock = 		$("<div class='legendaBlock'>");
+	  		var legendItem = 		$("<li class='legendItem'>");
+	  		var legendColor = 		$("<div class='legendColor'>");
 	  		var topSitesURL = 		$("<div class='topSitesURL'>");
 	  		var topSitesVisits = 	$("<div class='topSitesVisits'>");
-	  		topSitesURL.html(topData[i][0]+": ");
+	  		topSitesURL.html(topData[i][0]);
 	  		topSitesVisits.html(topData[i][1]);
-	  		legendaBlock.html(" ");
-	  		topSitesList.append(legendaBlock,topSitesURL,topSitesVisits);
-	  		legendaBlock.attr("style", "background-color:"+color(i));
+	  		legendItem.append(legendColor,topSitesURL);
+	  		topSitesList.append(legendItem);
+	  		legendColor.attr("style", "background-color:"+color(i));
 	  	}
 	  	
-	  	topSitesBox.append(topSitesBoxTitle,graphsBox,topSitesList);
+	  	topSitesBox.append(piechart,topSitesList);
 	  	
-	   	/*****************************************  
-		  		Append items to statisticsBox  
-		*****************************************/
-	   	statisticsBox.append(statisticsBoxTitle,topSitesBox);
+	   	container.append(statisticsTitle,topSitesBox);
  
 		var piechartView = new PiechartView(container,model,topData);
 	}
@@ -120,7 +106,6 @@ var StatisticsView = function(container,model)
 	 		var retrievedString = model.days[i][0].toString();
 	 		var retrievedDay = (retrievedString.indexOf('Mon') > -1); //true
 	 		if(retrievedDay == true){
-	 			alert("day "+i+" is monday");
 	 			dayNumber = i;
 	 		}
 	 	}
@@ -139,7 +124,7 @@ var StatisticsView = function(container,model)
 	 	}
 
 		var hourlyVisitsBox = 	$("<div id='hourlyVisitsBox'>");	 	
-	 	var hourlyVisitsTitle = $("<h5>");
+	 	var hourlyVisitsTitle = $("<span id='hourlyVisitsTitle'>");
 	 	var barGraphBox = 		$("<div id='bargraph'>");
 	 	var sortButtonContainer=$("<div id='sortButtonContainer'>");
 	 	var viewButtonContainer=$("<div id='viewButtonContainer'>");
@@ -148,7 +133,7 @@ var StatisticsView = function(container,model)
 		var sortButtonText = 	$("<div id='dayButtonText'>"); 
 		var viewButtonText = 	$("<div id='viewButtonText'>"); 
 		
-		hourlyVisitsTitle.html("<b style='float: left'> Total hourly/dayly visits:</b>");
+		hourlyVisitsTitle.html("Visits per day/hour:");
 	  	sortButtonText.html(" Sort by visits");
 	  	viewButtonText.html(" Hour/Day  ");
 
@@ -159,17 +144,12 @@ var StatisticsView = function(container,model)
 	  	hourlyVisitsBox.append(hourlyVisitsTitle,barGraphBox);
 
 	 	/*****************************************  
-		  		Append items to statisticsBox  
+		  		Append items to container  
 		*****************************************/
-		statisticsBox.append(hourlyVisitsBox);
+		container.append(hourlyVisitsBox);
 
 		var barGraphView = new BarGraphView(container,model,totalVisitedPerHour,totalVisitedPerDay);
 	}	
-	
-	/*****************************************  
-	  			Append items to container  
-	*****************************************/
-	container.append(statisticsBox);
 	
 	// Observer Pattern
 	model.addObserver(this);

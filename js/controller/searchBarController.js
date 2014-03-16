@@ -41,6 +41,7 @@ var SearchBarController = function(view,model)
 		hideAll();
 		$(this).addClass("active");
 		$("#cal").show();
+		$("#history").show();
 		model.setCurrentView("monthCalendar");
 	})
 
@@ -49,12 +50,14 @@ var SearchBarController = function(view,model)
 		hideAll();
 		$(this).addClass("active");
 		$("#daycal").show();
+		$("#history").show();
 		model.setCurrentView("dayCalendar");
 	})
 
 	view.statsButton.click(function(){
 		hideAll();
 		$(this).addClass("active");
+		$("#history").hide();
 		$("#statistics").show();
 		model.setCurrentView("statistics");
 	})
