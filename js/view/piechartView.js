@@ -94,6 +94,7 @@ var PiechartView = function(container,model,topData)
 	// STREAKER CONNECTION ////////////////////////////////////
 	///////////////////////////////////////////////////////////
 	update();
+	var totalSites = 0;
 	// to run each time data is generated
 	function update() 
 	{
@@ -102,7 +103,7 @@ var PiechartView = function(container,model,topData)
 	  oldPieData = filteredPieData;
 	  pieData = donut(streakerDataAdded);
 
-	  var totalSites = 0;
+	  
 	  filteredPieData = pieData.filter(filterData);
 	  function filterData(element, index, array) {
 	    element.name = streakerDataAdded[index][0];
@@ -126,6 +127,8 @@ var PiechartView = function(container,model,topData)
 	      .attr("stroke", "white")
 	      .attr("stroke-width", 2)
 	      .attr("fill", function(d, i) { return color(i); })
+	      	      .on("mouseover",update_legend)
+	  	  .on("mouseout",remove_legend)
 	      .transition()
 	        .duration(tweenDuration)
 	        .attrTween("d", pieTween);
@@ -259,6 +262,35 @@ var PiechartView = function(container,model,topData)
 	///////////////////////////////////////////////////////////
 	// FUNCTIONS //////////////////////////////////////////////
 	///////////////////////////////////////////////////////////
+	function update_legend(d)
+    {
+	   	// "TOTAL" LABEL
+	  totalLabel.text(d.name);
+
+	//TOTAL TRAFFIC VALUE
+	  totalValue.text(d.value);
+
+	//UNITS LABEL
+	  totalUnits.text("Visits");
+    }
+
+    function remove_legend(d)
+    {
+    	
+    ///////////////////////////////////////////////////////////
+	// CENTER TEXT ////////////////////////////////////////////
+	///////////////////////////////////////////////////////////
+
+	// "TOTAL" LABEL
+	  totalLabel.text("TOTAL");
+
+	//TOTAL TRAFFIC VALUE
+	  totalValue.text(totalSites);
+
+	//UNITS LABEL
+	  totalUnits.text("Sites");
+    }
+
 
 	// Interpolate the arcs in data space.
 	function pieTween(d, i) {
