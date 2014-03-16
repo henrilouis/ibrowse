@@ -127,7 +127,7 @@ var PiechartView = function(container,model,topData)
 	      .attr("stroke", "white")
 	      .attr("stroke-width", 2)
 	      .attr("fill", function(d, i) { return color(i); })
-	      	      .on("mouseover",update_legend)
+	      .on("mouseover",update_legend)
 	  	  .on("mouseout",remove_legend)
 	      .transition()
 	        .duration(tweenDuration)
@@ -264,14 +264,15 @@ var PiechartView = function(container,model,topData)
 	///////////////////////////////////////////////////////////
 	function update_legend(d)
     {
-	   	// "TOTAL" LABEL
-	  totalLabel.text(d.name);
-
+	// "TOTAL" LABEL
+		console.log(d);
+	 	totalLabel.text(d.name);
 	//TOTAL TRAFFIC VALUE
-	  totalValue.text(d.value);
-
+		totalValue.text(d.value);
 	//UNITS LABEL
-	  totalUnits.text("Visits");
+		totalUnits.text("Visits");
+		d3.select(this)
+	      	.attr("stroke-width", 0);
     }
 
     function remove_legend(d)
@@ -289,6 +290,9 @@ var PiechartView = function(container,model,topData)
 
 	//UNITS LABEL
 	  totalUnits.text("Sites");
+
+	  d3.select(this)
+	      	.attr("stroke-width", 2);
     }
 
 
