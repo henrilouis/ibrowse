@@ -25,12 +25,13 @@ header
 
 header h1
 {
-	font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
-	font-size: 37px;
+	font-family: 'Fjalla One', sans-serif;
+	font-size: 31px;
 	color: #555;
 	margin-left: 5px;
-	margin-top: 5px;
+	margin-top: 10px;
 	margin-bottom: 0px;
+	/* text-transform: uppercase; */
 }
 
 section#calendars
