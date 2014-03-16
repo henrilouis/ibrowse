@@ -15,13 +15,13 @@ var DayCalendarView = function(container,model)
 	function createCalendar(data){
 
 		var max = model.getHourlyMax();
-		var cSize = 10;
+		var cSize = 30;
 
 		cal.init({
 			data: data,
 			itemSelector: "#daycal",
-			domain: "day",
-			subDomain: "hour",
+			domain: "week",
+			subDomain: "x_hour",
 			cellSize: cSize,
 			cellPadding:2,
 			tooltip: true,
@@ -32,7 +32,7 @@ var DayCalendarView = function(container,model)
 			rowLimit:24,
 			legendCellSize: 10,
 			domainLabelFormat:"%d",
-			range: 61,
+			range: 1,
 			start: stDate,
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
 			onClick: function(date,value,rect)
