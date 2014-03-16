@@ -164,7 +164,7 @@ var PiechartView = function(container,model,topData)
 		*/
 
 		/*
-		
+
 	    //DRAW FAVICONS
 	    favIcons = label_group.selectAll("image").data(filteredPieData);
 
@@ -285,14 +285,16 @@ var PiechartView = function(container,model,topData)
 	///////////////////////////////////////////////////////////
 	function update_legend(d)
     {
-	// "TOTAL" LABEL
+		// "TOTAL" LABEL
 	 	totalLabel.text(d.name);
-	//TOTAL TRAFFIC VALUE
+		//TOTAL TRAFFIC VALUE
 		totalValue.text((d.value/totalSites*100).toFixed(1) + "%");
-	//UNITS LABEL
+		//UNITS LABEL
 		totalUnits.text("OF VISITS");
 		d3.select(this)
+	      	.attr("opacity", 1)
 	      	.attr("stroke-width", 0);
+
     }
 
     function remove_legend(d)
@@ -312,6 +314,7 @@ var PiechartView = function(container,model,topData)
 	  totalUnits.text("VISITS");
 
 	  d3.select(this)
+	        .attr("opacity", 0.8)
 	      	.attr("stroke-width", 2);
     }
 
