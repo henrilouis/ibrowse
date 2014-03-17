@@ -8,8 +8,9 @@ var IbrowseModel = function() {
 
 	var currentStats;
 	var selectedItem;
-	var currentView;
+	var currentView = "monthCalendar";
 
+	// milliseconds in one hour
 	var hourMs 	= 3600000;
 
 	/********************************************************************************
@@ -276,9 +277,6 @@ var IbrowseModel = function() {
 
 	// fill them once
 	getHistory(hours,days);
-
-	setCurrentView("monthCalendar");
-	//searchDays("");
 
 	/*******************************
 			Self Assignments

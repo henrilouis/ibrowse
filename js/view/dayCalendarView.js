@@ -23,7 +23,7 @@ var DayCalendarView = function(container,model)
 
 	// stDate is the date the calender shows at start
 	stDate = new Date(Date.now());
-	stDate.setDate(stDate.getDate());
+	stDate.setMonth(stDate.getMonth()-1);
 
 	function createCalendar(data){
 
@@ -58,8 +58,6 @@ var DayCalendarView = function(container,model)
 
 				$(rect).css('stroke','rgba(0,255,0,1)');
 				$(rect).attr('height',cSize-1).attr('width',cSize-1);
-
-				model.setCurrentStats(hour[0][2]);
 
 				if(model.getHoursSearch()!= "")
 				{

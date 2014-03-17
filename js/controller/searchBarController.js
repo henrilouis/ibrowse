@@ -1,8 +1,5 @@
 var SearchBarController = function(view,model)
 {	
-	$("#weekcal").hide();
-	$("#daycal").hide();
-
 	view.searchInput.keyup(function(){
 
 		if(model.getCurrentView() == "dayCalendar")

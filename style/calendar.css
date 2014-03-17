@@ -3,6 +3,11 @@
 	
 }
 
+#daycal, #weekcal
+{
+	display:none;
+}
+
 #cal, #daycal, #weekcal
 {
 	margin-top:80px;
