@@ -23,7 +23,7 @@ var DayCalendarView = function(container,model)
 
 	// stDate is the date the calender shows at start
 	stDate = new Date(Date.now());
-	stDate.setDate(stDate.getDate()-60);
+	stDate.setDate(stDate.getDate());
 
 	function createCalendar(data){
 
