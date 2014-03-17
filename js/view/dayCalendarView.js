@@ -2,6 +2,7 @@ var DayCalendarView = function(container,model)
 {
 	// Calendar variables
 	var cal = new CalHeatMap();
+	var dayCalContainer = $("<div id='dayCalContainer'>");
 	
 	// Buttons
 	var nextButton = $("<button class='nextButton glyphicon glyphicon-chevron-right'>");
@@ -34,8 +35,8 @@ var DayCalendarView = function(container,model)
 
 		cal.init({
 			data: data,
-			itemSelector: "#daycal",
-			domain: "day",
+			itemSelector: "#dayCalContainer",
+			domain: "month",
 			subDomain: "hour",
 			cellSize: cSize,
 			cellPadding:2,
@@ -43,11 +44,10 @@ var DayCalendarView = function(container,model)
 			legendHorizontalPosition: "center",
 			displayLegend: false,
 			itemName: "site",
-			domainGutter: 0,
-			domainLabelFormat:"%d",
+			domainGutter: 5,
 			rowLimit:24,
 			legendCellSize: 10,
-			range: 61,
+			range: 2,
 			start: stDate,
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
 			onClick: function(date,value,rect)
@@ -98,6 +98,7 @@ var DayCalendarView = function(container,model)
 		if(args == 'hoursReady')
 		{	
 			container.append(hourLegend);
+			container.append(dayCalContainer);
 			createCalendar(model.toJSON(model.hours));
 		}
 

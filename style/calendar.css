@@ -8,6 +8,7 @@
 	margin-top:80px;
 	width: 735px;
 	margin:auto;
+	position: relative;
 }
 
 #cal ul#dayLegend
@@ -57,6 +58,12 @@
 	padding-right: 2px;
 	border-right: 2px solid #efefef;
 	border-bottom: 2px solid #efefef;
+}
+
+#daycal #dayCalContainer
+{
+	margin-left: 24px;
+	position: relative;
 }
 
 #weekcal
@@ -167,7 +174,7 @@
 
 #daycal .graph-label
 {
-	font-size: 8px;
+	font-size: 14px;
 }
 
 #weekcal .graph-label

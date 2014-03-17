@@ -1,19 +1,8 @@
 var BarGraphView = function(container,model,visitsData,viewType)
 {  
   var data=visitsData;
-  if (viewType == 1)
-  {
-  dailyView();
-  }
-  else if (viewType == 2)
-  {
-  hourlyView();
-  }
 
-  function hourlyView()
-  { 
-    
-    var margin = {top: 5, right: 20, bottom: 30, left: 40},
+  var margin = {top: 5, right: 20, bottom: 30, left: 40},
     width = 700,
     height = 200;
 
@@ -32,7 +21,18 @@ var BarGraphView = function(container,model,visitsData,viewType)
     .orient("left")
     .ticks(10, "visits");
 
-    
+  if (viewType == 1)
+  {
+  dailyView();
+  }
+  else if (viewType == 2)
+  {
+  hourlyView();
+  }
+
+  function hourlyView()
+  { 
+   
     var toolTip = d3.select("#hourlyBargraph")
     .append("div")
     .attr("class", "ch-tooltip");
@@ -127,27 +127,7 @@ var BarGraphView = function(container,model,visitsData,viewType)
 
   function dailyView()
   {
-  var margin = {top: 5, right: 20, bottom: 30, left: 40},
-  width = 700,
-  height = 200;
-
-  var x = d3.scale.ordinal()
-  .rangeRoundBands([0, width], .1);
-
-  var y = d3.scale.linear()
-  .range([height, 0]);
-
-  var xAxis = d3.svg.axis()
-  .scale(x)
-  .orient("bottom");
-
-  var yAxis = d3.svg.axis()
-  .scale(y)
-  .orient("left")
-  .ticks(10, "visits");
-
-  
-  var toolTip = d3.select("#dailyBargraph")
+ var toolTip = d3.select("#dailyBargraph")
   .append("div")
   .attr("class", "ch-tooltip");
 
