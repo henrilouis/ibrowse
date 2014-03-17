@@ -64,13 +64,6 @@ var WeekCalendarView = function(container,model)
 				$(rect).css('stroke','rgba(0,255,0,1)');
 				$(rect).attr('height',cSize-1).attr('width',cSize-1);
 
-				var hour = model.hours.filter(function(d)
-				{ 
-					if( (d[0].getMonth() == date.getMonth()) && (d[0].getDate() == date.getDate()) && (d[0].getHours() == date.getHours()) ) return d;
-				})
-
-				model.setCurrentStats(hour[0][2]);
-
 				if(model.getHoursSearch()!= "")
 				{
 					var item = model.getHoursSearch().filter(function(d)
@@ -80,8 +73,6 @@ var WeekCalendarView = function(container,model)
 
 					model.setSelectedItem(item[0]);
 				}
-
-
 			}
 		});
 

@@ -55,13 +55,6 @@ var MonthCalendarView = function(container,model)
 				$(rect).css('stroke','rgba(0,255,0,1)');
 				$(rect).attr('height',cSize-1).attr('width',cSize-1);
 
-				var day = model.days.filter(function(d)
-				{ 
-					if( (d[0].getMonth() == date.getMonth()) && (d[0].getDate() == date.getDate()) ) return d;
-				})
-
-				model.setCurrentStats(day[0][2]);
-
 				if(model.getDaysSearch()!= "")
 				{
 					var item = model.getDaysSearch().filter(function(d)

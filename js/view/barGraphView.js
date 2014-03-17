@@ -87,7 +87,7 @@ var BarGraphView = function(container,model,visitsData,viewType)
         toolTip.attr("style",
               "display: block; " +
               "margin-left: " + (x(d.hour+":00")-(x.rangeBand()/2)-4) + "px; " +
-              "margin-top: " + (y(d.visits)) + "px;");
+              "margin-top: " + (y(d.visits)+10) + "px;");
       })
       .on('mouseout', function(d){
         toolTip
@@ -181,7 +181,7 @@ var BarGraphView = function(container,model,visitsData,viewType)
         toolTip.attr("style",
               "display: block; " +
               "margin-left: " + (x(d.dname)+15) + "px; " +
-              "margin-top: " + (y(d.visits)-20) + "px;");
+              "margin-top: " + (y(d.visits)-10) + "px;");
       })
       .on('mouseout', function(d){
         toolTip
