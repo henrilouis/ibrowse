@@ -9,22 +9,22 @@ var WeekCalendarView = function(container,model)
 	container.append(nextButton,previousButton);
 
 	// Legend
-	var dayLegend = $("<ul id='dayLegend'>");
+	var dayLegend_y = $("<ul id='dayLegend_y'>");
 	var weekDays = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 	for(i=0; i<weekDays.length; i++)
 	{
 		var dayName = $("<li>");
 		dayName.html(weekDays[i]);
-		dayLegend.append(dayName);
+		dayLegend_y.append(dayName);
 	}
 
-	var dayLegend2 = $("<ul id='dayLegend2'>");
+	var dayLegend_x = $("<ul id='dayLegend_x'>");
 
 	for(i=0; i<24; i++)
 	{
 		var hourName = $("<li>");
 		hourName.html(i+":00");
-		dayLegend2.append(hourName);
+		dayLegend_x.append(hourName);
 	}
 
 	// Creating startdate wich is 90 days back because of google
@@ -101,7 +101,7 @@ var WeekCalendarView = function(container,model)
 	{
 		if(args == 'hoursReady')
 		{	
-			container.append(dayLegend,dayLegend2);
+			container.append(dayLegend_y,dayLegend_x);
 			createCalendar(model.toJSON(model.hours));
 		}
 

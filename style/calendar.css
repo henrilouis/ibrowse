@@ -31,36 +31,42 @@
 }
 
 
-#daycal ul#dayLegend
+#daycal ul#hourLegend
 {
 	position: absolute;
 	list-style: none;
 	pointer-events: none;
+	
+	margin-left: -64px;
 }
 
-#daycal ul#dayLegend li
+#daycal ul#hourLegend li
 {
-	padding-top: 8px;
+	float:left;
 	height: 10px;
-	padding-bottom: 8px;
-	margin-bottom: 2px;
-	margin-left: -38px;;
-	font-size: 8px;
 	width: 10px;
+	margin-bottom: 2px;
+	margin-right: 2px;
+	font-size: 7px;
 	background: #dedede;
-	text-align: center;
+	text-align: right;
 	background: #fff;
 	pointer-events: none;
 }
 
-#weekcal ul#dayLegend
+#daycal ul#hourLegend div
+{
+	width:24px;
+}
+
+#weekcal ul#dayLegend_y
 {
 	position: absolute;
 	list-style: none;
 	pointer-events: none;
 }
 
-#weekcal ul#dayLegend li
+#weekcal ul#dayLegend_y li
 {
 	padding-top: 8px;
 	height: 27px;
@@ -75,7 +81,7 @@
 	pointer-events: none;
 }
 
-#weekcal ul#dayLegend2 
+#weekcal ul#dayLegend_x 
 {
 	position: absolute;
 	width: 767px;
@@ -83,7 +89,7 @@
 	margin-left: -7px;
 }
 
-#weekcal ul#dayLegend2 li
+#weekcal ul#dayLegend_x li
 {	
 	text-align: center;
 	font-size:11px;

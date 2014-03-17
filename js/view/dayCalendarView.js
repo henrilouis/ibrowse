@@ -9,16 +9,17 @@ var DayCalendarView = function(container,model)
 	container.append(nextButton,previousButton);
 
 	// Legend
-	var dayLegend = $("<ul id='dayLegend'>");
-	var weekDays = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-
-	var dayLegend = $("<ul id='dayLegend3'>");
-
-	for(i=0; i<24; i++)
+	var hourLegend = $("<ul id='hourLegend'>");
+		for(i=0; i<24; i++)
 	{
-		var hourName = $("<li>");
-		hourName.html(i+":00");
-		dayLegend.append(hourName);
+		var timebox = $("<div>");
+		var hourName = $("<li style='text-align: right'>");
+		hourName.html(i);
+		timebox.append(hourName);
+		var hourNameSuffix = $("<li style='text-align: center'>");
+		hourNameSuffix.html(":00");
+		timebox.append(hourNameSuffix);
+		hourLegend.append(timebox);
 	}
 
 
@@ -96,7 +97,7 @@ var DayCalendarView = function(container,model)
 	{
 		if(args == 'hoursReady')
 		{	
-			//container.append(dayLegend);
+			container.append(hourLegend);
 			createCalendar(model.toJSON(model.hours));
 		}
 
