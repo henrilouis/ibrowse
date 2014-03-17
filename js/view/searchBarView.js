@@ -11,18 +11,21 @@ var SearchBarView = function(container,model)
 
 	var buttonGroup = 		$("<div class='btn-group'>");
 	var monthButton = 		$("<button class='btn btn-default active'>");
+	var weekButton = 		$("<button class='btn btn-default'>");
 	var dayButton = 		$("<button class='btn btn-default'>");
 	var statsButton	= 		$("<button class='btn btn-default'>");
 
 	var monthSpan = 		$("<span class='glyphicon glyphicon-th-large'>");
+	var weekSpan = 			$("<span class='glyphicon glyphicon-th'>");
 	var daySpan = 			$("<span class='glyphicon glyphicon-th'>");
 	var statsSpan = 		$("<span class='glyphicon glyphicon-stats'>");
 
 	monthButton.append(monthSpan);
+	weekButton.append(weekSpan);
 	dayButton.append(daySpan);
 	statsButton.append(statsSpan);
 
-	buttonGroup.append(monthButton,dayButton,statsButton);
+	buttonGroup.append(monthButton,weekButton,dayButton,statsButton);
 	
 	menuContainer.append(form,buttonGroup);
 	container.append(menuContainer);
@@ -31,6 +34,7 @@ var SearchBarView = function(container,model)
 	this.searchInput = searchInput;
 	this.removeInput = removeInput;
 	this.monthButton = monthButton;
-	this.dayButton = dayButton;
+	this.weekButton  = weekButton;
+	this.dayButton 	 = dayButton;
 	this.statsButton = statsButton;
 }

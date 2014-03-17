@@ -8,6 +8,21 @@ var DayCalendarView = function(container,model)
 	var previousButton = $("<button class='previousButton glyphicon glyphicon-chevron-left'>");
 	container.append(nextButton,previousButton);
 
+	// Legend
+	var hourLegend = $("<ul id='hourLegend'>");
+		for(i=0; i<24; i++)
+	{
+		var timebox = $("<div>");
+		var hourName = $("<li style='text-align: right'>");
+		hourName.html(i);
+		timebox.append(hourName);
+		var hourNameSuffix = $("<li style='text-align: center'>");
+		hourNameSuffix.html(":00");
+		timebox.append(hourNameSuffix);
+		hourLegend.append(timebox);
+	}
+
+
 	// Creating startdate wich is 90 days back because of google
 	stDate = new Date(Date.now());
 	stDate.setDate(stDate.getDate()-60);
@@ -29,9 +44,9 @@ var DayCalendarView = function(container,model)
 			displayLegend: false,
 			itemName: "site",
 			domainGutter: 0,
+			domainLabelFormat:"%d",
 			rowLimit:24,
 			legendCellSize: 10,
-			domainLabelFormat:"%d",
 			range: 61,
 			start: stDate,
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
@@ -42,6 +57,7 @@ var DayCalendarView = function(container,model)
 				
 				// Also resetting the selection on the other calendar
 				$('#cal rect').attr('height',30).attr('width',30);
+				$('#weekcal rect').attr('height',10).attr('width',10);
 
 				$(rect).css('stroke','rgba(0,255,0,1)');
 				$(rect).attr('height',cSize-1).attr('width',cSize-1);
@@ -80,7 +96,8 @@ var DayCalendarView = function(container,model)
 	this.update = function(args)
 	{
 		if(args == 'hoursReady')
-		{
+		{	
+			container.append(hourLegend);
 			createCalendar(model.toJSON(model.hours));
 		}
 
