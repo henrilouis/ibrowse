@@ -37,13 +37,13 @@
 	position: absolute;
 	list-style: none;
 	pointer-events: none;
-	margin-left: -40px;
+	margin-left: -46px;
 	/*margin-left: -64px;*/
 }
 
 #daycal ul#hourLegend li
 {
-	width:24px;
+	width:12px;
 }
 
 #daycal ul#hourLegend li div
@@ -51,7 +51,7 @@
 	float: left;
 	font-size: 7px;
 	background: #dedede;
-	text-align: right;
+	text-align: center;
 	background: #fff;
 	height: 12px;
 	width: 12px;
@@ -62,7 +62,7 @@
 
 #daycal #dayCalContainer
 {
-	margin-left: 24px;
+	margin-left: 6px;
 	position: relative;
 }
 

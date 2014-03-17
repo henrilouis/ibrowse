@@ -17,9 +17,6 @@ var DayCalendarView = function(container,model)
 		var hourName = $("<div style='text-align: right'>");
 		hourName.html(i);
 		timebox.append(hourName);
-		var hourNameSuffix = $("<div style='text-align: center'>");
-		hourNameSuffix.html(":00");
-		timebox.append(hourNameSuffix);
 		hourLegend.append(timebox);
 	}
 
