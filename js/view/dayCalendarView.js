@@ -12,11 +12,11 @@ var DayCalendarView = function(container,model)
 	var hourLegend = $("<ul id='hourLegend'>");
 		for(i=0; i<24; i++)
 	{
-		var timebox = $("<div>");
-		var hourName = $("<li style='text-align: right'>");
+		var timebox = $("<li>");
+		var hourName = $("<div style='text-align: right'>");
 		hourName.html(i);
 		timebox.append(hourName);
-		var hourNameSuffix = $("<li style='text-align: center'>");
+		var hourNameSuffix = $("<div style='text-align: center'>");
 		hourNameSuffix.html(":00");
 		timebox.append(hourNameSuffix);
 		hourLegend.append(timebox);
@@ -57,7 +57,7 @@ var DayCalendarView = function(container,model)
 				
 				// Also resetting the selection on the other calendar
 				$('#cal rect').attr('height',30).attr('width',30);
-				$('#weekcal rect').attr('height',10).attr('width',10);
+				$('#weekcal rect').attr('height',27).attr('width',27);
 
 				$(rect).css('stroke','rgba(0,255,0,1)');
 				$(rect).attr('height',cSize-1).attr('width',cSize-1);
@@ -101,7 +101,7 @@ var DayCalendarView = function(container,model)
 			createCalendar(model.toJSON(model.hours));
 		}
 
-		else if(args == 'searchHoursComplete')
+		else if(args == 'searchHoursComplete' && model.getCurrentView() == "dayCalendar")
 		{
 			// Update the calendar with the new search data
 			var data = model.toJSON(model.getHoursSearch());

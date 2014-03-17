@@ -1,10 +1,10 @@
 var WeekCalendarController = function(view,model)
 {
 	view.nextButton.click(function(){
-		view.cal.next(5);
+		view.cal.next();
 	});
 
 	view.previousButton.click(function(){
-		view.cal.previous(5);
+		view.cal.previous();
 	});
 }

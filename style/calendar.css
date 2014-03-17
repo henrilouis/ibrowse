@@ -36,27 +36,32 @@
 	position: absolute;
 	list-style: none;
 	pointer-events: none;
-	
-	margin-left: -64px;
+	margin-left: -40px;
+	/*margin-left: -64px;*/
 }
 
 #daycal ul#hourLegend li
 {
-	float:left;
-	height: 10px;
-	width: 10px;
-	margin-bottom: 2px;
-	margin-right: 2px;
+	width:24px;
+}
+
+#daycal ul#hourLegend li div
+{
+	float: left;
 	font-size: 7px;
 	background: #dedede;
 	text-align: right;
 	background: #fff;
-	pointer-events: none;
+	height: 12px;
+	width: 12px;
+	padding-right: 2px;
+	border-right: 2px solid #efefef;
+	border-bottom: 2px solid #efefef;
 }
 
-#daycal ul#hourLegend div
+#weekcal
 {
-	width:24px;
+	position: relative;
 }
 
 #weekcal ul#dayLegend_y
@@ -64,6 +69,7 @@
 	position: absolute;
 	list-style: none;
 	pointer-events: none;
+	z-index:1;
 }
 
 #weekcal ul#dayLegend_y li
@@ -72,13 +78,18 @@
 	height: 27px;
 	padding-bottom: 8px;
 	margin-bottom: 2px;
-	margin-left: -38px;;
+	margin-left: -37px;;
 	font-size: 10px;
 	width: 30px;
 	background: #dedede;
 	text-align: center;
 	background: #fff;
 	pointer-events: none;
+}
+
+#weekcal #weekCalContainer
+{
+	margin-left: 35px;
 }
 
 #weekcal ul#dayLegend_x 
