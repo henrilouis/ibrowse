@@ -57,13 +57,13 @@ var BarGraphView = function(container,model,hourlyData,daylyData)
     {
       data=[];
       // Get the data again
-      data[0]={day:0, dname: "Monday", visits:daylyData[0]};
-      data[1]={day:1, dname: "Tuesday", visits:daylyData[1]};
+      data[0]={day:0, dname: "Monday",    visits:daylyData[0]};
+      data[1]={day:1, dname: "Tuesday",   visits:daylyData[1]};
       data[2]={day:2, dname: "Wednesday", visits:daylyData[2]};
-      data[3]={day:3, dname: "Thursday", visits:daylyData[3]};
-      data[4]={day:4, dname: "Friday", visits:daylyData[4]};
-      data[5]={day:5, dname: "Saturday", visits:daylyData[5]};
-      data[6]={day:6, dname: "Sunday", visits:daylyData[6]};
+      data[3]={day:3, dname: "Thursday",  visits:daylyData[3]};
+      data[4]={day:4, dname: "Friday",    visits:daylyData[4]};
+      data[5]={day:5, dname: "Saturday",  visits:daylyData[5]};
+      data[6]={day:6, dname: "Sunday",    visits:daylyData[6]};
       x.domain(data.map(function(d) { return d.dname; }));
       y.domain([0, d3.max(data, function(d) { return d.visits; })]);
     }

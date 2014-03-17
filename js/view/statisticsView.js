@@ -96,6 +96,11 @@ var StatisticsView = function(container,model)
 			hourNumber +=24;
 	 	}
 
+	 	//make averages
+	 	for (i=0;i<totalVisitedPerHour.length;i++){
+	 		totalVisitedPerHour[i] = (totalVisitedPerHour[i]/90).toFixed(1);
+	 	}
+
 	 	totalVisitedPerDay = [0,0,0,0,0,0,0];
 	 	var dayNumber =0;
 	  	var retrievedDay = 0;
@@ -112,15 +117,18 @@ var StatisticsView = function(container,model)
 
 	 	//for the last 12 weeks sum all visits of each weekday
 	 	for (i=0; i<12; i++)
-	 	{
+	 	{	
+	 		console.log(dayNumber);
 	 		for(j=0; j<7; j++)
 	 		{	
-	 			for(k=0; k<model.days[(j+dayNumber)][2].length; k++)
-	 			{
-	 				totalVisitedPerDay[j] += model.days[(j+dayNumber)][2][k][1];
-	 			} 							 
+	 			totalVisitedPerDay[j] += model.days[j+dayNumber][1].length
 			}
 			dayNumber +=7;
+	 	}
+
+	 	//make averages
+	 	for (i=0; i<totalVisitedPerDay.length;i++){
+	 		totalVisitedPerDay[i] = (totalVisitedPerDay[i]/12).toFixed(0);
 	 	}
 
 		var hourlyVisitsBox = 	$("<div id='hourlyVisitsBox'>");	 	
