@@ -20,7 +20,7 @@
 	font-size: 25px;
 }
 
-#hourlyVisitsTitle
+#visitsTitle
 {
 	float:left;
 	font-family: 'Fjalla One', sans-serif;
@@ -71,7 +71,7 @@ ul#topSitesList .topSitesVisits
 	margin-top: -19px;
 }
 
-#hourlyVisitsBox
+#visitsBox
 {
 	float:left;
 	width:100%;
@@ -80,6 +80,11 @@ ul#topSitesList .topSitesVisits
 	color: #333;
 	margin-top: 10px;
 	margin-bottom: 30px;
+}
+
+#visitsBox .btn-group
+{
+float: right;
 }
 
 #bargraph
@@ -92,11 +97,11 @@ margin-left: -10px;
 	float:right;
 }
 
-#sortButton
+#dailySortButton, #hourlySortButton
 {
-	float:right;
+	float:left;
 }
-#dayButtonText
+.dayButtonText
 {
 	float:right;
 }
@@ -108,5 +113,11 @@ float:right;
 
 #viewButtonText
 {
+	float:left;
+}
+.buttonContainer
+{
 	float:right;
+	margin-top: 40px;
+	margin-right: -117px;
 }

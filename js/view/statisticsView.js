@@ -1,5 +1,53 @@
 var StatisticsView = function(container,model)
-{
+{	
+	var color = d3.scale.category20();	
+	var statisticsTitle =		$("<div id='statisticsTitle'>");
+
+	statisticsTitle.html("Your browsing statistics");
+	
+	//top visited statistics
+	var topSitesBox = 			$("<div id='topSitesBox'>");
+	var piechart = 				$("<div id='piechart'>");
+  	var topSitesList = 			$("<ul id='topSitesList'>");
+
+  	topSitesBox.append(piechart,topSitesList);
+	
+  	//daily & hourly statistics
+  	var visitsBox = 			$("<div id='visitsBox'>");	
+  	var visitsTitle = 			$("<span id='visitsTitle'>"); 
+  	var dailyBarGraphBox = 		$("<div id='dailyBargraph'>");
+  	var hourlyBarGraphBox = 	$("<div id='hourlyBargraph'>");
+	
+	//buttons 
+	var viewbuttonGroup =		$("<div class='btn-group'>")
+	var daysButton = 			$("<button class='btn btn-default active' id='daysButton'>");
+	var hoursButton = 			$("<button class='btn btn-default' id='hoursButton'>");
+
+	daysButton.html("Days");
+	hoursButton.html("Hours");
+	
+	var dailysortButtonContainer=	$("<div class='buttonContainer'>");
+  	var hourlysortButtonContainer=	$("<div class='buttonContainer'>");
+  	var dailySortButton = 		$("<input type='checkbox' id='dailySortButton'>");
+ 	var hourlySortButton = 		$("<input type='checkbox' id='hourlySortButton'>");
+ 	var sortButtonText = 		$("<b>");
+	
+	visitsTitle.html("Average visits per day/hour:");
+  	sortButtonText=" Sort by visits";
+  	
+	dailysortButtonContainer.append(dailySortButton,sortButtonText);
+	hourlysortButtonContainer.append(hourlySortButton,sortButtonText);
+	viewbuttonGroup.append(hoursButton,daysButton);
+
+	dailyBarGraphBox.append(dailysortButtonContainer);
+	hourlyBarGraphBox.append(hourlysortButtonContainer);
+	visitsBox.append(visitsTitle,viewbuttonGroup,dailyBarGraphBox,hourlyBarGraphBox);
+
+ 	/*****************************************  
+	  		Append items to container  
+	*****************************************/
+	container.append(statisticsTitle,topSitesBox,visitsBox);
+
 	function updateDayData()
 	{	
 		var totalVisited = 0;
@@ -51,15 +99,9 @@ var StatisticsView = function(container,model)
 		  	}
 	  	}
 
-	  	var statisticsTitle =		$("<div id='statisticsTitle'>"); 
-		var topSitesBox = 			$("<div id='topSitesBox'>");
-		var topSitesList = 			$("<ul id='topSitesList'>");
-	  	var piechart = 				$("<div id='piechart'>");
-		var color = d3.scale.category20();
-	  	
-	  	statisticsTitle.html("Your browsing statistics");
-	   	
-	   	for(i=0; i<topData.length-1; i++)
+	  	var piechartView = new PiechartView(container,model,topData);
+
+	  	for(i=0; i<topData.length-1; i++)
 	  	{	
 	  		var legendItem = 		$("<li class='legendItem'>");
 	  		var legendColor = 		$("<div class='legendColor'>");
@@ -72,36 +114,7 @@ var StatisticsView = function(container,model)
 	  		legendColor.attr("style", "background-color:"+color(i));
 	  	}
 	  	
-	  	topSitesBox.append(piechart,topSitesList);
-	  	
-	   	container.append(statisticsTitle,topSitesBox);
- 
-		var piechartView = new PiechartView(container,model,topData);
-	}
-	
-	function updateHourData()
-	{
-		var totalVisitedPerHour = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-		var hourNumber =0;
-		
-		for (i=0; i<90; i++)
-	 	{
-	 		for(j=0; j<24; j++)
-	 		{	
-	 			for(k=0; k<model.hours[(j+hourNumber)][2].length; k++)
-	 			{
-	 				totalVisitedPerHour[j] += model.hours[(j+hourNumber)][2][k][1];
-	 			} 							 
-			}
-			hourNumber +=24;
-	 	}
-
-	 	//make averages
-	 	for (i=0;i<totalVisitedPerHour.length;i++){
-	 		totalVisitedPerHour[i] = (totalVisitedPerHour[i]/90).toFixed(1);
-	 	}
-
-	 	totalVisitedPerDay = [0,0,0,0,0,0,0];
+		totalVisitedPerDay = [0,0,0,0,0,0,0];
 	 	var dayNumber =0;
 	  	var retrievedDay = 0;
 	 	
@@ -131,33 +144,36 @@ var StatisticsView = function(container,model)
 	 		totalVisitedPerDay[i] = (totalVisitedPerDay[i]/12).toFixed(0);
 	 	}
 
-		var hourlyVisitsBox = 	$("<div id='hourlyVisitsBox'>");	 	
-	 	var hourlyVisitsTitle = $("<span id='hourlyVisitsTitle'>");
-	 	var barGraphBox = 		$("<div id='bargraph'>");
-	 	var sortButtonContainer=$("<div id='sortButtonContainer'>");
-	 	var viewButtonContainer=$("<div id='viewButtonContainer'>");
-		var sortButton = 		$("<input type='checkbox' id='sortButton'>");
-		var viewButton = 		$("<input type='checkbox' id='viewButton'>");
-		var sortButtonText = 	$("<div id='dayButtonText'>"); 
-		var viewButtonText = 	$("<div id='viewButtonText'>"); 
+		var barGraphView = new BarGraphView(container,model,totalVisitedPerDay,1);
+	}
+	
+	function updateHourData()
+	{
+		var totalVisitedPerHour = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+		var hourNumber =0;
 		
-		hourlyVisitsTitle.html("Visits per day/hour:");
-	  	sortButtonText.html(" Sort by visits");
-	  	viewButtonText.html(" Hour/Day  ");
+		for (i=0; i<90; i++)
+	 	{
+	 		for(j=0; j<24; j++)
+	 		{	
+	 			for(k=0; k<model.hours[(j+hourNumber)][2].length; k++)
+	 			{
+	 				totalVisitedPerHour[j] += model.hours[(j+hourNumber)][2][k][1];
+	 			} 							 
+			}
+			hourNumber +=24;
+	 	}
 
-		sortButtonContainer.append(sortButtonText,sortButton);
-		viewButtonContainer.append(viewButtonText,viewButton);
-		barGraphBox.append(sortButtonContainer,viewButtonContainer);
- 
-	  	hourlyVisitsBox.append(hourlyVisitsTitle,barGraphBox);
+	 	//make averages
+	 	for (i=0;i<totalVisitedPerHour.length;i++){
+	 		totalVisitedPerHour[i] = (totalVisitedPerHour[i]/90).toFixed(1);
+	 	}
 
-	 	/*****************************************  
-		  		Append items to container  
-		*****************************************/
-		container.append(hourlyVisitsBox);
+	 	var barGraphView = new BarGraphView(container,model,totalVisitedPerHour,2);
+	}
 
-		var barGraphView = new BarGraphView(container,model,totalVisitedPerHour,totalVisitedPerDay);
-	}	
+	this.daysButton = daysButton;
+	this.hoursButton = hoursButton;	
 	
 	// Observer Pattern
 	model.addObserver(this);
