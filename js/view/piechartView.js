@@ -292,7 +292,6 @@ var PiechartView = function(container,model,topData)
 		//UNITS LABEL
 		totalUnits.text("OF VISITS");
 		d3.select(this)
-	      	.attr("opacity", 1)
 	      	.attr("stroke-width", 0);
 
     }
@@ -314,7 +313,6 @@ var PiechartView = function(container,model,topData)
 	  totalUnits.text("VISITS");
 
 	  d3.select(this)
-	        .attr("opacity", 0.8)
 	      	.attr("stroke-width", 2);
     }
 

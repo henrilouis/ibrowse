@@ -71,23 +71,7 @@
 			"file": "js/view/piechartView.js",
 			"settings":
 			{
-				"buffer_size": 10575,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/view/monthCalendarView.js",
-			"settings":
-			{
-				"buffer_size": 2371,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/external/cal-heatmap.js",
-			"settings":
-			{
-				"buffer_size": 92537,
+				"buffer_size": 11111,
 				"line_ending": "Windows"
 			}
 		},
@@ -95,15 +79,34 @@
 			"file": "js/view/statisticsView.js",
 			"settings":
 			{
-				"buffer_size": 4526,
+				"buffer_size": 4695,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "style/piechart.css",
+			"file": "js/view/barGraphView.js",
 			"settings":
 			{
-				"buffer_size": 382,
+				"buffer_size": 5232,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "style/searchbar.css",
+			"settings":
+			{
+				"buffer_size": 388,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "#piechart\n{\n	color: #333;\n	width:550px;\n	float:left;\n}\n\n#piechart .center_group\n{\n	font-family: 'Fjalla One', sans-serif;\n	text-transform: uppercase;\n}\n\n#piechart .center_group .label\n{\n	font-size: 20px;\n	font-weight:normal;\n}\n\n#piechart .center_group .total\n{\n	font-size: 60px;\n}\n\n#piechart .center_group .units\n{\n	font-size: 20px;\n}\n\n#piechart .value\n{	\n	font-family: 'Fjalla One', sans-serif;\n	font-size: 8px;\n}\n\n#piechart .units\n{	\n	font-size: 10px;\n}",
+			"file": "style/piechart.css",
+			"file_size": 493,
+			"file_write_time": 130394602658543911,
+			"settings":
+			{
+				"buffer_size": 455,
 				"line_ending": "Windows"
 			}
 		},
@@ -111,7 +114,55 @@
 			"file": "style/statistics.css",
 			"settings":
 			{
-				"buffer_size": 911,
+				"buffer_size": 1194,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/view/searchBarView.js",
+			"settings":
+			{
+				"buffer_size": 1219,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "style/general.css",
+			"settings":
+			{
+				"buffer_size": 581,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/view/dayCalendarView.js",
+			"settings":
+			{
+				"buffer_size": 2622,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/view/monthCalendarView.js",
+			"settings":
+			{
+				"buffer_size": 2755,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "style/calendar.css",
+			"settings":
+			{
+				"buffer_size": 2702,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/controller/searchBarController.js",
+			"settings":
+			{
+				"buffer_size": 1379,
 				"line_ending": "Windows"
 			}
 		},
@@ -119,7 +170,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 3001,
+				"buffer_size": 3000,
 				"line_ending": "Windows"
 			}
 		}
@@ -196,11 +247,12 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/external/d3tip.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/dayCalendarView.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/superController.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/manifest.json",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/index.html",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/model/ibrowseModel.js",
-		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/dayCalendarView.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/style/calendar.css",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/style/searchbar.css",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/searchBarView.js",
@@ -279,6 +331,31 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			".html",
+			"rotate(-90)",
+			"visits",
+			"text",
+			"transform",
+			"tip",
+			"d3-tip n",
+			"text-anchor",
+			"visits",
+			"text-align: center;\nfont-size: 25px;",
+			"statisticsTitle",
+			"your statistics",
+			"filteredPieData",
+			"label_group",
+			"favIcons",
+			"label",
+			"#piechart .center_group .total",
+			"ul#topSitesList .topSitesURL",
+			"statistics",
+			"statisticsTitle",
+			"statisticstitle",
+			"k",
+			"statisticsbox",
+			"alert",
+			"update_legend",
 			"click",
 			"onclick",
 			"update_legend",
@@ -381,32 +458,7 @@
 			"sub-menu",
 			"p",
 			"body",
-			"settime",
-			"hover",
-			"}",
-			",\"Mag\":",
-			"\"Lang\":",
-			"{\"Lat\":",
-			"}",
-			"\"Mag\":",
-			"\"Lang\":",
-			"{\"Lat\":",
-			"}",
-			"\"Mag\":",
-			"\"Lang\":",
-			"{\"Lat\":",
-			"question",
-			"year",
-			"settime",
-			"ar1990",
-			"year1990",
-			"world",
-			"}",
-			"\"magnitude\":",
-			"\"longitude\":",
-			"{\"latitude\":",
-			"}",
-			"\"magnitude\":"
+			"settime"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -424,7 +476,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 8,
 			"sheets":
 			[
 				{
@@ -440,8 +492,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								49,
+								49
 							]
 						],
 						"settings":
@@ -455,7 +507,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -464,15 +516,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10575,
+						"buffer_size": 11111,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8328,
-								8328
+								9268,
+								9268
 							]
 						],
 						"settings":
@@ -484,91 +536,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3853.0,
+						"translation.y": 4320.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "js/view/monthCalendarView.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2371,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								977,
-								977
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 270.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "js/external/cal-heatmap.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 92537,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5886,
-								5886
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3178.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
 					"file": "js/view/statisticsView.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4526,
+						"buffer_size": 4695,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								669,
-								669
+								1967,
+								1967
 							]
 						],
 						"settings":
@@ -577,13 +565,78 @@
 							"remote_loading": false,
 							"synced": false,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 785.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "js/view/barGraphView.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5232,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2142,
+								2142
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1010.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "style/searchbar.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 388,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								163,
+								163
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/CSS/CSS.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -592,15 +645,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 382,
+						"buffer_size": 455,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								339,
-								339
+								260,
+								260
 							]
 						],
 						"settings":
@@ -614,7 +667,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -623,15 +676,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 911,
+						"buffer_size": 1194,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								473,
-								473
+								730,
+								730
 							]
 						],
 						"settings":
@@ -643,27 +696,219 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 395.0,
+						"translation.y": 500.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 7,
-					"file": "index.html",
-					"semi_transient": false,
+					"file": "js/view/searchBarView.js",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 3001,
+						"buffer_size": 1219,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								561,
-								561
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "style/general.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 581,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								231,
+								231
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "js/view/dayCalendarView.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2622,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								656,
+								656
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "js/view/monthCalendarView.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2755,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								900,
+								900
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 90.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "style/calendar.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2702,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								320,
+								320
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "js/controller/searchBarController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1379,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								576,
+								576
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 360.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3000,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								619,
+								619
 							]
 						],
 						"settings":
@@ -677,7 +922,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]

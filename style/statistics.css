@@ -53,12 +53,11 @@ ul#topSitesList li
 
 ul#topSitesList .legendColor
 {
-	float:left;
-	width:20px;
-	height:20px;
-	margin-right:10px;
-	border:2px solid white;
-	border-radius:3px;
+	float: left;
+	width: 16px;
+	height: 16px;
+	margin-right: 10px;
+	margin-top: 3px;
 }
 
 ul#topSitesList .topSitesURL
