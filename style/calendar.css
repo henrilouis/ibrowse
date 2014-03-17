@@ -42,10 +42,10 @@
 #daycal ul#dayLegend li
 {
 	padding-top: 8px;
-	height: 30px;
+	height: 27px;
 	padding-bottom: 8px;
 	margin-bottom: 2px;
-	margin-left: -73px;
+	margin-left: -38px;;
 	font-size: 10px;
 	width: 30px;
 	background: #dedede;
@@ -57,9 +57,9 @@
 #daycal ul#dayLegend2 
 {
 	position: absolute;
-	width: 809px;
-	margin-top: 225px;
-	margin-left: -41px;
+	width: 767px;
+	margin-top: 202px;
+	margin-left: -7px;
 }
 
 #daycal ul#dayLegend2 li
@@ -67,7 +67,7 @@
 	text-align: center;
 	font-size:11px;
 	float:left;
-	width: 32px;
+	width: 29px;
 	list-style: none;
 }
 .nextButton, .previousButton

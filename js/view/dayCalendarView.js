@@ -29,12 +29,12 @@ var DayCalendarView = function(container,model)
 
 	// Creating startdate wich is 90 days back because of google
 	stDate = new Date(Date.now());
-	stDate.setDate(stDate.getDate()-60);
+	stDate.setDate(stDate.getDate());
 
 	function createCalendar(data){
 
 		var max = model.getHourlyMax();
-		var cSize = 30;
+		var cSize = 27;
 
 		cal.init({
 			data: data,
@@ -50,8 +50,7 @@ var DayCalendarView = function(container,model)
 			domainGutter: 0,
 			rowLimit:24,
 			legendCellSize: 10,
-			subDomainLabelFormat:"%h",
-			
+			domainMargin: [0, 0, 0, 35],
 			range: 1,
 			start: stDate,
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
