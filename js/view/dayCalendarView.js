@@ -23,7 +23,7 @@ var DayCalendarView = function(container,model)
 	}
 
 
-	// Creating startdate wich is 90 days back because of google
+	// stDate is the date the calender shows at start
 	stDate = new Date(Date.now());
 	stDate.setDate(stDate.getDate()-60);
 

@@ -7,7 +7,14 @@ var SearchBarController = function(view,model)
 
 		if(model.getCurrentView() == "dayCalendar")
 		{
-			model.searchHours(view.searchInput.val());
+			// Setting interval so the daycal won't get slow
+			if(interval != null)
+			{
+				clearTimeout(interval);
+			}
+			var interval = setTimeout(function(){
+				model.searchHours(view.searchInput.val());
+			},1500)
 		}
 		else if(model.getCurrentView() == "weekCalendar")
 		{
@@ -36,7 +43,7 @@ var SearchBarController = function(view,model)
 		{
 			model.searchDays(view.searchInput.val());
 		}
-
+		
 	});
 
 	function hideAll()

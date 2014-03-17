@@ -28,8 +28,7 @@ var WeekCalendarView = function(container,model)
 	}
 
 	// Creating startdate wich is 90 days back because of google
-	stDate = new Date(Date.now());
-	stDate.setDate(stDate.getDate());
+	strDate = new Date(Date.now());
 
 	function createCalendar(data){
 
@@ -51,7 +50,7 @@ var WeekCalendarView = function(container,model)
 			rowLimit:24,
 			legendCellSize: 10,
 			range: 1,
-			start: stDate,
+			start: strDate,
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
 			onClick: function(date,value,rect)
 			{
