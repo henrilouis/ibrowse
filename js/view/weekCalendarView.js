@@ -2,7 +2,7 @@ var WeekCalendarView = function(container,model)
 {
 	// Calendar variables
 	var cal = new CalHeatMap();
-
+	var weekCalContainer = $("<div id='weekCalContainer'>");
 	// Buttons
 	var nextButton = $("<button class='nextButton glyphicon glyphicon-chevron-right'>");
 	var previousButton = $("<button class='previousButton glyphicon glyphicon-chevron-left'>");
@@ -38,7 +38,7 @@ var WeekCalendarView = function(container,model)
 
 		cal.init({
 			data: data,
-			itemSelector: "#weekcal",
+			itemSelector: "#weekCalContainer",
 			domain: "week",
 			subDomain: "x_hour",
 			cellSize: cSize,
@@ -50,7 +50,6 @@ var WeekCalendarView = function(container,model)
 			domainGutter: 0,
 			rowLimit:24,
 			legendCellSize: 10,
-			domainMargin: [0, 0, 0, 35],
 			range: 1,
 			start: stDate,
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
@@ -102,10 +101,11 @@ var WeekCalendarView = function(container,model)
 		if(args == 'hoursReady')
 		{	
 			container.append(dayLegend_y,dayLegend_x);
+			container.append(weekCalContainer);
 			createCalendar(model.toJSON(model.hours));
 		}
 
-		else if(args == 'searchHoursComplete')
+		else if(args == 'searchHoursComplete' && model.getCurrentView() == "weekCalendar")
 		{
 			// Update the calendar with the new search data
 			var data = model.toJSON(model.getHoursSearch());
