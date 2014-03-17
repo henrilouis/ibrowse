@@ -18,6 +18,15 @@ var DayCalendarView = function(container,model)
 		dayLegend.append(dayName);
 	}
 
+	var dayLegend2 = $("<ul id='dayLegend2'>");
+
+	for(i=0; i<24; i++)
+	{
+		var hourName = $("<li>");
+		hourName.html(i+":00");
+		dayLegend2.append(hourName);
+	}
+
 	// Creating startdate wich is 90 days back because of google
 	stDate = new Date(Date.now());
 	stDate.setDate(stDate.getDate()-60);
@@ -41,7 +50,8 @@ var DayCalendarView = function(container,model)
 			domainGutter: 0,
 			rowLimit:24,
 			legendCellSize: 10,
-			domainLabelFormat:"%d",
+			subDomainLabelFormat:"%h",
+			
 			range: 1,
 			start: stDate,
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
@@ -91,7 +101,7 @@ var DayCalendarView = function(container,model)
 	{
 		if(args == 'hoursReady')
 		{	
-			container.append(dayLegend);
+			container.append(dayLegend,dayLegend2);
 			createCalendar(model.toJSON(model.hours));
 		}
 

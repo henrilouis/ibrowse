@@ -30,6 +30,8 @@
 	background: #fff;
 }
 
+
+
 #daycal ul#dayLegend
 {
 	position: absolute;
@@ -52,6 +54,22 @@
 	pointer-events: none;
 }
 
+#daycal ul#dayLegend2 
+{
+	position: absolute;
+	width: 809px;
+	margin-top: 225px;
+	margin-left: -41px;
+}
+
+#daycal ul#dayLegend2 li
+{	
+	text-align: center;
+	font-size:11px;
+	float:left;
+	width: 32px;
+	list-style: none;
+}
 .nextButton, .previousButton
 {
 	font-size:25px;
@@ -67,7 +85,7 @@
 
 #daycal .nextButton, #daycal .previousButton
 {
-	margin-top:-22px;
+	margin-top:-45px;
 }
 
 .nextButton
