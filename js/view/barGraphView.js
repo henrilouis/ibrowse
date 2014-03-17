@@ -21,12 +21,10 @@ var BarGraphView = function(container,model,hourlyData,daylyData)
   .orient("left")
   .ticks(10, "visits");
 
-  var tip = d3.tip()
-  .attr('class', 'd3-tip')
-  .offset([-10, 0])
-  .html(function(d) {
-  return "<strong>Visits:</strong> <span style='color:brown'>" + d.visits + "</span>";
-  })
+  
+  var toolTip = d3.select("#bargraph")
+  .append("div")
+  .attr("class", "ch-tooltip");
 
   updateData();
   d3.select("#viewButton").on("change", updateData);
@@ -42,8 +40,6 @@ var BarGraphView = function(container,model,hourlyData,daylyData)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    svg.call(tip);
   
     if (viewType ==1)
     {
@@ -97,8 +93,22 @@ var BarGraphView = function(container,model,hourlyData,daylyData)
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.visits); })
       .attr("height", function(d) { return height - y(d.visits); })
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide)
+
+      .on('mouseover', function(d){
+        toolTip
+        .html(d.visits+" visits at "+d.hour+"h")
+        .attr("style", "display: block;");
+
+        toolTip.attr("style",
+              "display: block; " +
+              "margin-left: " + (x(d.hour+":00")-(x.rangeBand()/2)-4) + "px; " +
+              "margin-top: " + (y(d.visits)) + "px;");
+      })
+      .on('mouseout', function(d){
+        toolTip
+        .attr("style", "display:none")
+        .html("");
+      });
     }
     else if (viewType ==2)
     {
@@ -110,8 +120,22 @@ var BarGraphView = function(container,model,hourlyData,daylyData)
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.visits); })
       .attr("height", function(d) { return height - y(d.visits); })
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide)
+
+      .on('mouseover', function(d){
+        toolTip
+        .html(d.visits+" visits on "+d.dname+"s")
+        .attr("style", "display: block;");
+
+        toolTip.attr("style",
+              "display: block; " +
+              "margin-left: " + (x(d.dname)+15) + "px; " +
+              "margin-top: " + (y(d.visits)-20) + "px;");
+      })
+      .on('mouseout', function(d){
+        toolTip
+        .attr("style", "display:none")
+        .html("");
+      });
     }
 
 

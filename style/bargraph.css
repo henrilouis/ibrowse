@@ -21,6 +21,11 @@
   display: none;
 }
 
+#bargraph .ch-tooltip
+{
+  
+}
+
 .d3-tip {
   line-height: 1;
   font-weight: bold;

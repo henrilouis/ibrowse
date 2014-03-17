@@ -106,7 +106,6 @@ var StatisticsView = function(container,model)
 	 		var retrievedString = model.days[i][0].toString();
 	 		var retrievedDay = (retrievedString.indexOf('Mon') > -1); //true
 	 		if(retrievedDay == true){
-	 			alert("monday starts at day"+ i);
 	 			dayNumber = i;
 	 		}
 	 	}
