@@ -179,13 +179,9 @@ var StatisticsView = function(container,model)
 
 	this.update = function(args)
 	{
-		if(args == 'daysReady')
+		if(args == 'dataReady')
 		{
 			updateDayData();
-		}
-
-		if(args == 'hoursReady')
-		{
 			updateHourData();
 		}
 	}

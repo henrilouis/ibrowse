@@ -97,7 +97,7 @@ var WeekCalendarView = function(container,model)
 
 	this.update = function(args)
 	{
-		if(args == 'hoursReady')
+		if(args == 'dataReady')
 		{	
 			container.append(dayLegend_y,dayLegend_x);
 			container.append(weekCalContainer);

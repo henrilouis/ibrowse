@@ -10,7 +10,6 @@ var IbrowseModel = function() {
 	var selectedItem;
 	var currentView;
 
-	var dayMs 	= 86400000;
 	var hourMs 	= 3600000;
 
 	/********************************************************************************
@@ -21,7 +20,7 @@ var IbrowseModel = function() {
 		The third days[i][2] is an array containing the number of visits per site.
 		
 	*********************************************************************************/
-	function getHistory(timeUnit, targetArray){
+	function getHistory(hours, days){
 
 		var tempData = [];
 
@@ -46,9 +45,9 @@ var IbrowseModel = function() {
 		var d = new Date();
 			d.setTime(startTime.getTime());
 
-		for(d; d<= endTime; d.setTime(d.getTime()+timeUnit)){
+		for(d; d<= endTime; d.setTime(d.getTime()+hourMs)){
 			var interval = new Date();
-				interval.setTime(d.getTime()+timeUnit);
+				interval.setTime(d.getTime()+hourMs);
 
 			chrome.history.search({
 			'text':'',
@@ -59,24 +58,21 @@ var IbrowseModel = function() {
 			function(historyItems){
 				tempData.push(historyItems);
 				if (countTime >= endTime){
-					arrayFromHistory(tempData, targetArray, timeUnit, startTime);
+					arrayFromHistory(tempData, hours, hourMs, startTime);
 
-					if(timeUnit == dayMs)
-					{
-						notifyObservers('daysReady');
-						searchDays("");
-					}
-					else if(timeUnit == hourMs)
-					{
-						notifyObservers('hoursReady');
-						searchHours("");
-					}	
-					
+					// Converting the hours to the days var
+					hoursToDays(hours,days);
+					notifyObservers('dataReady');
+
+					// Fill both the search arrays
+					searchDays("");
+					searchHours("");
+
 					// settign selectedItem to today, also bit dirty
 					setSelectedItem(days[days.length-2]);
 				}
 				else{
-					countTime.setTime(countTime.getTime()+timeUnit);
+					countTime.setTime(countTime.getTime()+hourMs);
 				}
 			});
 		}
@@ -87,32 +83,10 @@ var IbrowseModel = function() {
 		var d = new Date(startTime.getTime());
 
 		for(i = 0; i < historyData.length; i++){
-			var urlArray = new Array();
 
-			// Getting the starting of the url
-			for(j = 0; j<historyData[i].length; j++){
-				var url = $('<a>').prop('href',historyData[i][j].url).prop('hostname');
-				urlArray.push(url);
-			}
-
-			// Creating associative array from url count
-			var counts = new Array();
-			urlArray.forEach(function(x){ 
-				counts[x] = (counts[x] || 0)+1; 
-			});
-
-			// Make a normal array out of the associative one
-			var countsNormalArray = new Array();
-			for(key in counts){
-				countsNormalArray.push([key,counts[key]]);
-			}
-
-			// Sorting the array in descending order
-			countsNormalArray.sort(function(a,b){
-				return b[1]-a[1];
-			});
+			var count = createSiteCount(historyData[i]);
 			
-			targetArray.push([new Date(d.getTime()),historyData[i],countsNormalArray]);
+			targetArray.push([new Date(d.getTime()),historyData[i],count]);
 			d.setTime(d.getTime()+timeUnit);
 			
 		}
@@ -159,6 +133,67 @@ var IbrowseModel = function() {
 			json[Math.round(history[i][0].getTime()/1000)] = history[i][1].length;
 		}
 		return json;
+	}
+
+	function hoursToDays(h,d){
+		d.length = 0;
+		var day = new Array();
+		var combinedHours = new Array();
+		
+		for(i=0; i<h.length; i++)
+		{
+			if(i==0)
+			{
+				day.push(h[i][0]);
+			}
+
+			if(h[i][1].length > 0)
+			{
+				for(j=0; j<h[i][1].length; j++)
+				combinedHours.push(h[i][1][j]);
+			}
+
+			if((i+1)%24==0)
+			{
+				day.push(combinedHours);
+				day.push(createSiteCount(combinedHours));
+				d.push(day);
+
+				var day = new Array();
+				var combinedHours = new Array();
+
+				day.push(h[i+1][0]);
+			}
+		}
+	}
+
+	function createSiteCount(data)
+	{
+		var urlArray = new Array();
+
+		// Getting the starting of the url
+		for(j = 0; j<data.length; j++){
+			var url = $('<a>').prop('href',data[j].url).prop('hostname');
+			urlArray.push(url);
+		}
+		// Creating associative array from url count
+		var counts = new Array();
+		urlArray.forEach(function(x){ 
+			counts[x] = (counts[x] || 0)+1; 
+		});
+
+		// Make a normal array out of the associative one
+		var countsNormalArray = new Array();
+		for(key in counts){
+			countsNormalArray.push([key,counts[key]]);
+		}
+
+		// Sorting the array in descending order
+		countsNormalArray.sort(function(a,b){
+			return b[1]-a[1];
+		});
+
+		return countsNormalArray;
 	}
 
 	// Setters
@@ -238,8 +273,7 @@ var IbrowseModel = function() {
 	}
 
 	// fill them once
-	getHistory(dayMs,days);
-	getHistory(hourMs,hours);
+	getHistory(hours,days);
 
 	setCurrentView("monthCalendar");
 	//searchDays("");
@@ -259,6 +293,7 @@ var IbrowseModel = function() {
 	this.getHoursSearchMax = getHoursSearchMax;
 
 	this.toJSON = toJSON;
+	this.hoursToDays = hoursToDays;
 
 	this.setCurrentStats = setCurrentStats;
 	this.getCurrentStats = getCurrentStats;

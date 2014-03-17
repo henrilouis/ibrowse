@@ -86,7 +86,7 @@ var MonthCalendarView = function(container,model)
 
 	this.update = function(args)
 	{
-		if(args == 'daysReady')
+		if(args == 'dataReady')
 		{
 			container.append(dayLegend);
 			createCalendar(model.toJSON(model.days));

@@ -95,7 +95,7 @@ var DayCalendarView = function(container,model)
 
 	this.update = function(args)
 	{
-		if(args == 'hoursReady')
+		if(args == 'dataReady')
 		{	
 			container.append(hourLegend);
 			container.append(dayCalContainer);
