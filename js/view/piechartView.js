@@ -376,7 +376,7 @@ var PiechartView = function(container,model,topData)
 
 	this.update = function(args)
 	{
-		if(args == 'daysReady')
+		if(args == 'dataReady')
 		{
 			update();
 		}
