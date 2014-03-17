@@ -101,11 +101,12 @@ var StatisticsView = function(container,model)
 	  	var retrievedDay = 0;
 	 	
 	 	//check whether day 0 is a monday and set loop to start at first monday
-	 	for(i=0; i<6;i++)
+	 	for(i=0; i<7;i++)
 	 	{	
 	 		var retrievedString = model.days[i][0].toString();
 	 		var retrievedDay = (retrievedString.indexOf('Mon') > -1); //true
 	 		if(retrievedDay == true){
+	 			alert("monday starts at day"+ i);
 	 			dayNumber = i;
 	 		}
 	 	}
