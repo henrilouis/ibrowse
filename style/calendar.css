@@ -3,7 +3,7 @@
 	
 }
 
-#cal, #daycal
+#cal, #daycal, #weekcal
 {
 	margin-top:80px;
 	width: 735px;
@@ -31,7 +31,6 @@
 }
 
 
-
 #daycal ul#dayLegend
 {
 	position: absolute;
@@ -40,6 +39,28 @@
 }
 
 #daycal ul#dayLegend li
+{
+	padding-top: 8px;
+	height: 10px;
+	padding-bottom: 8px;
+	margin-bottom: 2px;
+	margin-left: -38px;;
+	font-size: 8px;
+	width: 10px;
+	background: #dedede;
+	text-align: center;
+	background: #fff;
+	pointer-events: none;
+}
+
+#weekcal ul#dayLegend
+{
+	position: absolute;
+	list-style: none;
+	pointer-events: none;
+}
+
+#weekcal ul#dayLegend li
 {
 	padding-top: 8px;
 	height: 27px;
@@ -54,7 +75,7 @@
 	pointer-events: none;
 }
 
-#daycal ul#dayLegend2 
+#weekcal ul#dayLegend2 
 {
 	position: absolute;
 	width: 767px;
@@ -62,7 +83,7 @@
 	margin-left: -7px;
 }
 
-#daycal ul#dayLegend2 li
+#weekcal ul#dayLegend2 li
 {	
 	text-align: center;
 	font-size:11px;
@@ -70,6 +91,7 @@
 	width: 29px;
 	list-style: none;
 }
+
 .nextButton, .previousButton
 {
 	font-size:25px;
@@ -83,7 +105,7 @@
 	margin-top:-45px;
 }
 
-#daycal .nextButton, #daycal .previousButton
+#daycal .nextButton, #daycal .previousButton, #weekcal .nextButton, #weekcal .previousButton
 {
 	margin-top:-45px;
 }
@@ -131,6 +153,10 @@
 	font-size: 8px;
 }
 
+#weekcal .graph-label
+{
+	font-size: 14px;
+}
 .graph, .graph-legend rect {
 	shape-rendering: crispedges
 }

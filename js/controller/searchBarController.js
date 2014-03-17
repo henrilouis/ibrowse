@@ -1,15 +1,23 @@
 var SearchBarController = function(view,model)
-{
+{	
+	$("#weekcal").hide();
+	$("#daycal").hide();
+
 	view.searchInput.keyup(function(){
 
 		if(model.getCurrentView() == "dayCalendar")
 		{
 			model.searchHours(view.searchInput.val());
 		}
+		else if(model.getCurrentView() == "weekCalendar")
+		{
+			model.searchDays(view.searchInput.val());
+		}
 		else if(model.getCurrentView() == "monthCalendar")
 		{
 			model.searchDays(view.searchInput.val());
 		}
+
 
 	});
 
@@ -20,6 +28,10 @@ var SearchBarController = function(view,model)
 		{
 			model.searchHours(view.searchInput.val());
 		}
+		else if(model.getCurrentView() == "weekCalendar")
+		{
+			model.searchDays(view.searchInput.val());
+		}
 		else if(model.getCurrentView() == "monthCalendar")
 		{
 			model.searchDays(view.searchInput.val());
@@ -29,9 +41,10 @@ var SearchBarController = function(view,model)
 
 	function hideAll()
 	{
-		$("#cal, #daycal, #statistics").hide();
+		$("#cal, #weekcal, #daycal, #statistics").hide();
 
 		$(view.monthButton).removeClass('active');
+		$(view.weekButton).removeClass('active');
 		$(view.dayButton).removeClass('active');
 		$(view.statsButton).removeClass('active');
 	}
@@ -43,6 +56,15 @@ var SearchBarController = function(view,model)
 		$("#cal").show();
 		$("#history").show();
 		model.setCurrentView("monthCalendar");
+	})
+
+	view.weekButton.click(function(){
+		model.searchHours(view.searchInput.val());
+		hideAll();
+		$(this).addClass("active");
+		$("#weekcal").show();
+		$("#history").show();
+		model.setCurrentView("weekCalendar");
 	})
 
 	view.dayButton.click(function(){

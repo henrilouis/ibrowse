@@ -11,36 +11,31 @@ var DayCalendarView = function(container,model)
 	// Legend
 	var dayLegend = $("<ul id='dayLegend'>");
 	var weekDays = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-	for(i=0; i<weekDays.length; i++)
-	{
-		var dayName = $("<li>");
-		dayName.html(weekDays[i]);
-		dayLegend.append(dayName);
-	}
 
-	var dayLegend2 = $("<ul id='dayLegend2'>");
+	var dayLegend = $("<ul id='dayLegend3'>");
 
 	for(i=0; i<24; i++)
 	{
 		var hourName = $("<li>");
 		hourName.html(i+":00");
-		dayLegend2.append(hourName);
+		dayLegend.append(hourName);
 	}
+
 
 	// Creating startdate wich is 90 days back because of google
 	stDate = new Date(Date.now());
-	stDate.setDate(stDate.getDate());
+	stDate.setDate(stDate.getDate()-60);
 
 	function createCalendar(data){
 
 		var max = model.getHourlyMax();
-		var cSize = 27;
+		var cSize = 10;
 
 		cal.init({
 			data: data,
 			itemSelector: "#daycal",
-			domain: "week",
-			subDomain: "x_hour",
+			domain: "day",
+			subDomain: "hour",
 			cellSize: cSize,
 			cellPadding:2,
 			tooltip: true,
@@ -48,10 +43,10 @@ var DayCalendarView = function(container,model)
 			displayLegend: false,
 			itemName: "site",
 			domainGutter: 0,
+			domainLabelFormat:"%d",
 			rowLimit:24,
 			legendCellSize: 10,
-			domainMargin: [0, 0, 0, 35],
-			range: 1,
+			range: 61,
 			start: stDate,
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
 			onClick: function(date,value,rect)
@@ -61,6 +56,7 @@ var DayCalendarView = function(container,model)
 				
 				// Also resetting the selection on the other calendar
 				$('#cal rect').attr('height',30).attr('width',30);
+				$('#weekcal rect').attr('height',10).attr('width',10);
 
 				$(rect).css('stroke','rgba(0,255,0,1)');
 				$(rect).attr('height',cSize-1).attr('width',cSize-1);
@@ -100,7 +96,7 @@ var DayCalendarView = function(container,model)
 	{
 		if(args == 'hoursReady')
 		{	
-			container.append(dayLegend,dayLegend2);
+			//container.append(dayLegend);
 			createCalendar(model.toJSON(model.hours));
 		}
 
