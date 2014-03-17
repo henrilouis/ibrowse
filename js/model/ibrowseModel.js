@@ -196,7 +196,7 @@ var IbrowseModel = function() {
 				countsNormalArray.push([key,counts[key]]);
 			}
 			else{
-				countsNormalArray.push(["Local file",counts[key]]);
+				countsNormalArray.push(["local files",counts[key]]);
 			}
 		}
 
