@@ -16,7 +16,7 @@ var SearchBarView = function(container,model)
 	var statsButton	= 		$("<button class='btn btn-default'>");
 
 	var monthSpan = 		$("<span class='glyphicon glyphicon-th-large'>");
-	var weekSpan = 			$("<span class='glyphicon glyphicon-th'>");
+	var weekSpan = 			$("<span class='glyphicon glyphicon-th-list'>");
 	var daySpan = 			$("<span class='glyphicon glyphicon-th'>");
 	var statsSpan = 		$("<span class='glyphicon glyphicon-stats'>");
 

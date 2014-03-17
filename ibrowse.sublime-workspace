@@ -79,7 +79,7 @@
 			"file": "js/view/statisticsView.js",
 			"settings":
 			{
-				"buffer_size": 4695,
+				"buffer_size": 4920,
 				"line_ending": "Windows"
 			}
 		},
@@ -95,18 +95,7 @@
 			"file": "js/view/barGraphView.js",
 			"settings":
 			{
-				"buffer_size": 5923,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "// d3.tip\n// Copyright (c) 2013 Justin Palmer\n//\n// Tooltips for d3.js SVG visualizations\n\n// Public - contructs a new tooltip\n//\n// Returns a tip\nd3.tip = function() {\n  var direction = d3_tip_direction,\n      offset    = d3_tip_offset,\n      html      = d3_tip_html,\n      node      = initNode(),\n      svg       = null,\n      point     = null,\n      target    = null\n\n  function tip(vis) {\n    svg = getSVGNode(vis)\n    point = svg.createSVGPoint()\n    document.body.appendChild(node)\n  }\n\n  // Public - show the tooltip on the screen\n  //\n  // Returns a tip\n  tip.show = function() {\n    var args = Array.prototype.slice.call(arguments)\n    if(args[args.length - 1] instanceof SVGElement) target = args.pop()\n\n    var content = html.apply(this, args),\n        poffset = offset.apply(this, args),\n        dir     = direction.apply(this, args),\n        nodel   = d3.select(node), i = 0,\n        coords\n\n    nodel.html(content)\n      .style({ opacity: 1, 'pointer-events': 'all' })\n\n    while(i--) nodel.classed(directions[i], false)\n    coords = direction_callbacks.get(dir).apply(this)\n    nodel.classed(dir, true).style({\n      top: (coords.top +  poffset[0]) + 'px',\n      left: (coords.left + poffset[1]) + 'px'\n    })\n\n    return tip\n  }\n\n  // Public - hide the tooltip\n  //\n  // Returns a tip\n  tip.hide = function() {\n    nodel = d3.select(node)\n    nodel.style({ opacity: 0, 'pointer-events': 'none' })\n    return tip\n  }\n\n  // Public: Proxy attr calls to the d3 tip container.  Sets or gets attribute value.\n  //\n  // n - name of the attribute\n  // v - value of the attribute\n  //\n  // Returns tip or attribute value\n  tip.attr = function(n, v) {\n    if (arguments.length < 2 && typeof n === 'string') {\n      return d3.select(node).attr(n)\n    } else {\n      var args =  Array.prototype.slice.call(arguments)\n      d3.selection.prototype.attr.apply(d3.select(node), args)\n    }\n\n    return tip\n  }\n\n  // Public: Proxy style calls to the d3 tip container.  Sets or gets a style value.\n  //\n  // n - name of the property\n  // v - value of the property\n  //\n  // Returns tip or style property value\n  tip.style = function(n, v) {\n    if (arguments.length < 2 && typeof n === 'string') {\n      return d3.select(node).style(n)\n    } else {\n      var args =  Array.prototype.slice.call(arguments)\n      d3.selection.prototype.style.apply(d3.select(node), args)\n    }\n\n    return tip\n  }\n\n  // Public: Set or get the direction of the tooltip\n  //\n  // v - One of n(north), s(south), e(east), or w(west), nw(northwest),\n  //     sw(southwest), ne(northeast) or se(southeast)\n  //\n  // Returns tip or direction\n  tip.direction = function(v) {\n    if (!arguments.length) return direction\n    direction = v == null ? v : d3.functor(v)\n\n    return tip\n  }\n\n  // Public: Sets or gets the offset of the tip\n  //\n  // v - Array of [x, y] offset\n  //\n  // Returns offset or\n  tip.offset = function(v) {\n    if (!arguments.length) return offset\n    offset = v == null ? v : d3.functor(v)\n\n    return tip\n  }\n\n  // Public: sets or gets the html value of the tooltip\n  //\n  // v - String value of the tip\n  //\n  // Returns html value or tip\n  tip.html = function(v) {\n    if (!arguments.length) return html\n    html = v == null ? v : d3.functor(v)\n\n    return tip\n  }\n\n  function d3_tip_direction() { return 'n' }\n  function d3_tip_offset() { return [0, 0] }\n  function d3_tip_html() { return ' ' }\n\n  var direction_callbacks = d3.map({\n    n:  direction_n,\n    s:  direction_s,\n    e:  direction_e,\n    w:  direction_w,\n    nw: direction_nw,\n    ne: direction_ne,\n    sw: direction_sw,\n    se: direction_se\n  }),\n\n  directions = direction_callbacks.keys()\n\n  function direction_n() {\n    var bbox = getScreenBBox()\n    return {\n      top:  bbox.n.y - node.offsetHeight,\n      left: bbox.n.x - node.offsetWidth / 2\n    }\n  }\n\n  function direction_s() {\n    var bbox = getScreenBBox()\n    return {\n      top:  bbox.s.y,\n      left: bbox.s.x - node.offsetWidth / 2\n    }\n  }\n\n  function direction_e() {\n    var bbox = getScreenBBox()\n    return {\n      top:  bbox.e.y - node.offsetHeight / 2,\n      left: bbox.e.x\n    }\n  }\n\n  function direction_w() {\n    var bbox = getScreenBBox()\n    return {\n      top:  bbox.w.y - node.offsetHeight / 2,\n      left: bbox.w.x - node.offsetWidth\n    }\n  }\n\n  function direction_nw() {\n    var bbox = getScreenBBox()\n    return {\n      top:  bbox.nw.y - node.offsetHeight,\n      left: bbox.nw.x - node.offsetWidth\n    }\n  }\n\n  function direction_ne() {\n    var bbox = getScreenBBox()\n    return {\n      top:  bbox.ne.y - node.offsetHeight,\n      left: bbox.ne.x\n    }\n  }\n\n  function direction_sw() {\n    var bbox = getScreenBBox()\n    return {\n      top:  bbox.sw.y,\n      left: bbox.sw.x - node.offsetWidth\n    }\n  }\n\n  function direction_se() {\n    var bbox = getScreenBBox()\n    return {\n      top:  bbox.se.y,\n      left: bbox.e.x\n    }\n  }\n\n  function initNode() {\n    var node = d3.select(document.createElement('div'))\n    node.style({\n      position: 'absolute',\n      opacity: 0,\n      pointerEvents: 'none',\n      boxSizing: 'border-box'\n    })\n\n    return node.node()\n  }\n\n  function getSVGNode(el) {\n    el = el.node()\n    if(el.tagName.toLowerCase() == 'svg')\n      return el\n\n    return el.ownerSVGElement\n  }\n\n  // Private - gets the screen coordinates of a shape\n  //\n  // Given a shape on the screen, will return an SVGPoint for the directions\n  // n(north), s(south), e(east), w(west), ne(northeast), se(southeast), nw(northwest),\n  // sw(southwest).\n  //\n  //    +-+-+\n  //    |   |\n  //    +   +\n  //    |   |\n  //    +-+-+\n  //\n  // Returns an Object {n, s, e, w, nw, sw, ne, se}\n  function getScreenBBox() {\n    var targetel   = target || d3.event.target,\n        bbox       = {},\n        matrix     = targetel.getScreenCTM(),\n        tbbox      = targetel.getBBox(),\n        width      = tbbox.width,\n        height     = tbbox.height,\n        x          = tbbox.x,\n        y          = tbbox.y,\n        scrollTop  = document.documentElement.scrollTop || document.body.scrollTop,\n        scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft\n\n\n    point.x = x + scrollLeft\n    point.y = y + scrollTop\n    bbox.nw = point.matrixTransform(matrix)\n    point.x += width\n    bbox.ne = point.matrixTransform(matrix)\n    point.y += height\n    bbox.se = point.matrixTransform(matrix)\n    point.x -= width\n    bbox.sw = point.matrixTransform(matrix)\n    point.y -= height / 2\n    bbox.w  = point.matrixTransform(matrix)\n    point.x += width\n    bbox.e = point.matrixTransform(matrix)\n    point.x -= width / 2\n    point.y -= height / 2\n    bbox.n = point.matrixTransform(matrix)\n    point.y += height\n    bbox.s = point.matrixTransform(matrix)\n\n    return bbox\n  }\n\n  return tip\n};",
-			"file": "js/external/d3.tip.v0.6.3.js",
-			"file_size": -1,
-			"file_write_time": -1,
-			"settings":
-			{
-				"buffer_size": 6744,
+				"buffer_size": 5936,
 				"line_ending": "Windows"
 			}
 		},
@@ -114,7 +103,15 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 2943,
+				"buffer_size": 3062,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/controller/weekCalendarController.js",
+			"settings":
+			{
+				"buffer_size": 180,
 				"line_ending": "Windows"
 			}
 		},
@@ -154,7 +151,7 @@
 			"file": "js/view/dayCalendarView.js",
 			"settings":
 			{
-				"buffer_size": 2622,
+				"buffer_size": 3130,
 				"line_ending": "Windows"
 			}
 		},
@@ -162,7 +159,7 @@
 			"file": "js/view/monthCalendarView.js",
 			"settings":
 			{
-				"buffer_size": 2755,
+				"buffer_size": 2859,
 				"line_ending": "Windows"
 			}
 		},
@@ -170,7 +167,23 @@
 			"file": "style/calendar.css",
 			"settings":
 			{
-				"buffer_size": 2702,
+				"buffer_size": 3891,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/controller/searchBarController.js",
+			"settings":
+			{
+				"buffer_size": 1911,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/view/weekCalendarView.js",
+			"settings":
+			{
+				"buffer_size": 3251,
 				"line_ending": "Windows"
 			}
 		}
@@ -247,6 +260,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/external/d3.tip.v0.6.3.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/searchBarController.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/historyView.js",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/index.html",
@@ -331,6 +345,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"#weekcal ul#dayLegend_y",
+			"dayLegend_y",
 			"tip",
 			";\");\n",
 			"apply",
@@ -456,9 +472,7 @@
 			"max",
 			"days",
 			"this.days",
-			"getdays",
-			"tooltip",
-			"fillDays"
+			"getdays"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -476,7 +490,7 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 14,
 			"sheets":
 			[
 				{
@@ -507,7 +521,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -539,7 +553,7 @@
 						"translation.y": 4320.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
@@ -548,7 +562,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4695,
+						"buffer_size": 4920,
 						"regions":
 						{
 						},
@@ -571,7 +585,7 @@
 						"translation.y": 620.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -603,7 +617,7 @@
 						"translation.y": 12613.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -612,7 +626,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5923,
+						"buffer_size": 5936,
 						"regions":
 						{
 						},
@@ -636,57 +650,24 @@
 						"translation.y": 245.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "js/external/d3.tip.v0.6.3.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6744,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
 					"file": "index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2943,
+						"buffer_size": 3062,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1875,
-								1875
+								2241,
+								2241
 							]
 						],
 						"settings":
@@ -700,7 +681,38 @@
 						"translation.y": 945.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "js/controller/weekCalendarController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 180,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								180,
+								180
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -733,7 +745,7 @@
 						"translation.y": 96.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -764,7 +776,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -796,7 +808,7 @@
 						"translation.y": 500.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
@@ -828,7 +840,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
@@ -837,15 +849,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2622,
+						"buffer_size": 3130,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								656,
-								656
+								2768,
+								2768
 							]
 						],
 						"settings":
@@ -857,10 +869,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1215.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -869,15 +881,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2755,
+						"buffer_size": 2859,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								759,
-								759
+								2424,
+								2424
 							]
 						],
 						"settings":
@@ -889,10 +901,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 540.0,
+						"translation.y": 585.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -901,15 +913,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2702,
+						"buffer_size": 3891,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								320,
-								320
+								1061,
+								1061
 							]
 						],
 						"settings":
@@ -921,10 +933,74 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 720.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "js/controller/searchBarController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1911,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								669,
+								669
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 90.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "js/view/weekCalendarView.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3251,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2906,
+								2906
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1350.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1006,7 +1082,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 271.0,
+	"side_bar_width": 272.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
