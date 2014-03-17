@@ -92,18 +92,17 @@ var IbrowseModel = function() {
 		}
 	}
 
-	function searchHistory(string, inside)
-	{
+	/*******************************
+			Search Functions
+	********************************/
+	function searchHistory(string, inside){
 		var data = [];
-		for (i = 0; i<inside.length; i++)
-		{
+		for (i = 0; i<inside.length; i++){
 			var item = [];
 			item.push(inside[i][0]);
 
-			var result = inside[i][1].filter(function(d)
-			{
-				if(d['url'].indexOf(string.toLowerCase())>=0 || d['title'].indexOf(string.toLowerCase())>=0)
-				{
+			var result = inside[i][1].filter(function(d){
+				if(d['url'].indexOf(string.toLowerCase())>=0 || d['title'].indexOf(string.toLowerCase())>=0){
 					return d;
 				}
 			});
@@ -114,19 +113,20 @@ var IbrowseModel = function() {
 		return data;
 	}
 
-	function searchDays(string)
-	{
+	function searchDays(string){
 		daysSearch = searchHistory(string, days);
 		notifyObservers('searchDaysComplete');
 	}
 
-	function searchHours(string)
-	{
+	function searchHours(string){
 		hoursSearch = searchHistory(string, hours);
 		notifyObservers('searchHoursComplete');
 	}
 
-	// Helper functions
+	/*******************************
+		Convert the normal array
+		to JSON for d3 Calendar
+	********************************/
 	function toJSON(history){
 		var json = {};
 		for(i=0; i < history.length; i++){
@@ -135,6 +135,10 @@ var IbrowseModel = function() {
 		return json;
 	}
 
+	/*******************************
+		Convert the array of
+		hours to days.
+	********************************/
 	function hoursToDays(h,d){
 		d.length = 0;
 		var day = new Array();
@@ -167,8 +171,11 @@ var IbrowseModel = function() {
 		}
 	}
 
-	function createSiteCount(data)
-	{
+	/*******************************
+		Create top for single
+		time unit.
+	********************************/
+	function createSiteCount(data){
 		var urlArray = new Array();
 
 		// Getting the starting of the url
@@ -185,7 +192,12 @@ var IbrowseModel = function() {
 		// Make a normal array out of the associative one
 		var countsNormalArray = new Array();
 		for(key in counts){
-			countsNormalArray.push([key,counts[key]]);
+			if(key != ""){
+				countsNormalArray.push([key,counts[key]]);
+			}
+			else{
+				countsNormalArray.push(["Local file",counts[key]]);
+			}
 		}
 
 		// Sorting the array in descending order
@@ -196,31 +208,25 @@ var IbrowseModel = function() {
 		return countsNormalArray;
 	}
 
-	// Setters
+	/*******************************
+				Setters
+	********************************/
 	function setSelectedItem(item){
 		selectedItem = item;
 		notifyObservers('itemSelected');
-	}
-
-	function setCurrentStats(stats){
-		currentStats = stats;
-		notifyObservers('dayStats');
 	}
 
 	function setCurrentView(string){
 		currentView = string;
 	}
 
-	function setDaysSearch(value)
-	{
+	function setDaysSearch(value){
 		daysSearch = value;
 	}
 
-	// Getters
-	function getDays(){
-		return days;
-	}
-
+	/*******************************
+				Getters
+	********************************/
 	function getMax(history)
 	{
 		var max = 0;
@@ -246,10 +252,6 @@ var IbrowseModel = function() {
 
 	function getHoursSearchMax(){
 		return getMax(hoursSearch);
-	}
-
-	function getCurrentStats(){
-		return currentStats;
 	}
 
 	function getDaysSearch()
@@ -278,6 +280,9 @@ var IbrowseModel = function() {
 	setCurrentView("monthCalendar");
 	//searchDays("");
 
+	/*******************************
+			Self Assignments
+	********************************/
 	this.days = days;
 	this.hours = hours;
 
@@ -295,20 +300,15 @@ var IbrowseModel = function() {
 	this.toJSON = toJSON;
 	this.hoursToDays = hoursToDays;
 
-	this.setCurrentStats = setCurrentStats;
-	this.getCurrentStats = getCurrentStats;
-
 	this.setSelectedItem = setSelectedItem;
 	this.getSelectedItem = getSelectedItem;
 
 	this.getCurrentView = getCurrentView;
 	this.setCurrentView = setCurrentView;
 
-	/********************************************************
-		Observable pattern is necessary because of the 
-		asynchronous nature of the chrome request
-
-	********************************************************/
+	/*******************************
+			   Observable
+	********************************/
 	var listeners = [];
 	
 	notifyObservers = function (args) {
