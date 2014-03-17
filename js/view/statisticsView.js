@@ -118,7 +118,6 @@ var StatisticsView = function(container,model)
 	 	//for the last 12 weeks sum all visits of each weekday
 	 	for (i=0; i<12; i++)
 	 	{	
-	 		console.log(dayNumber);
 	 		for(j=0; j<7; j++)
 	 		{	
 	 			totalVisitedPerDay[j] += model.days[j+dayNumber][1].length
