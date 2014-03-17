@@ -34,6 +34,7 @@ var BarGraphView = function(container,model,hourlyData,daylyData)
     if (viewType ==1){viewType = 2;}
     else {viewType = 1}
     d3.select("#bargraph svg").remove();
+    data=[];
 
     var svg = d3.select("#bargraph").append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -43,27 +44,27 @@ var BarGraphView = function(container,model,hourlyData,daylyData)
   
     if (viewType ==1)
     {
-      data=[];
+      
       // Get the data again
       for(i=0;i<hourlyData.length;i++)
       {
-          data[i]={hour:i, visits:hourlyData[i]};
+          data[i]={hour:i, visits:parseFloat(hourlyData[i])};
+          
       }
-      
+
       x.domain(data.map(function(d) { return d.hour+":00"; }));
       y.domain([0, d3.max(data, function(d) { return d.visits; })]);
     }
     else if (viewType ==2)
     {
-      data=[];
       // Get the data again
-      data[0]={day:0, dname: "Monday",    visits:daylyData[0]};
-      data[1]={day:1, dname: "Tuesday",   visits:daylyData[1]};
-      data[2]={day:2, dname: "Wednesday", visits:daylyData[2]};
-      data[3]={day:3, dname: "Thursday",  visits:daylyData[3]};
-      data[4]={day:4, dname: "Friday",    visits:daylyData[4]};
-      data[5]={day:5, dname: "Saturday",  visits:daylyData[5]};
-      data[6]={day:6, dname: "Sunday",    visits:daylyData[6]};
+      data[0]={day:0, dname: "Monday",    visits:parseInt(daylyData[0])};
+      data[1]={day:1, dname: "Tuesday",   visits:parseInt(daylyData[1])};
+      data[2]={day:2, dname: "Wednesday", visits:parseInt(daylyData[2])};
+      data[3]={day:3, dname: "Thursday",  visits:parseInt(daylyData[3])};
+      data[4]={day:4, dname: "Friday",    visits:parseInt(daylyData[4])};
+      data[5]={day:5, dname: "Saturday",  visits:parseInt(daylyData[5])};
+      data[6]={day:6, dname: "Sunday",    visits:parseInt(daylyData[6])};
       x.domain(data.map(function(d) { return d.dname; }));
       y.domain([0, d3.max(data, function(d) { return d.visits; })]);
     }
