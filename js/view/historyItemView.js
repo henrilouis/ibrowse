@@ -23,7 +23,7 @@ var HistoryItemView = function(container,model,item)
 		link.html(url);
 	}
 	link.prop("href",url);
-	link.prop("target","blank");
+	link.prop("target","_blank");
 
 	faviconBox.append(favicon);
 	linkBox.append(link);

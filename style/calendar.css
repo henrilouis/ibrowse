@@ -177,6 +177,11 @@
 	font-size: 14px;
 }
 
+#daycal
+{
+	margin-bottom: 10px;
+}
+
 #daycal .graph-label
 {
 	font-size: 14px;
