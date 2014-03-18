@@ -55,7 +55,6 @@ var HistoryView = function(container,model)
 		if(args == "itemSelected")
 		{
 			updateHistory();
-			console.log('update');
 		}
 	}
 }
