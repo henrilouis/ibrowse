@@ -200,6 +200,35 @@ var IbrowseModel = function() {
 	}
 
 	/*******************************
+		Remove url from current
+		arrays so we dont need
+		to reload
+	********************************/
+	function removeUrl(url)
+	{
+		removeFromArray(hours);
+		removeFromArray(days);
+		removeFromArray(daysSearch);
+		removeFromArray(hoursSearch);
+
+		function removeFromArray(array)
+		{
+			for(i=0;i<array.length;i++)
+			{
+				for(j=0;j<array[i][1].length;j++)
+				{
+					if(array[i][1][j].url === url)
+					{
+						array[i][1].splice(j,1);
+					}
+				}
+			}
+		}
+
+		notifyObservers('searchComplete');
+	}
+
+	/*******************************
 				Setters
 	********************************/
 	function setSelectedItem(item){
@@ -287,6 +316,8 @@ var IbrowseModel = function() {
 
 	this.getCurrentView = getCurrentView;
 	this.setCurrentView = setCurrentView;
+
+	this.removeUrl = removeUrl;
 
 	/*******************************
 			   Observable

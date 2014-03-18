@@ -72,3 +72,17 @@
 	padding-right: 17px;
 }
 
+#history ul li span.removeUrl
+{
+	position: relative;
+	float: right;
+	font-size: 16px;
+	color: #bbb;
+	margin-top: -10px;
+}
+
+#history ul li span.removeUrl:hover
+{
+	color:#6FA7D1;
+	cursor: pointer;
+}

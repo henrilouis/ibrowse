@@ -17,54 +17,31 @@ var HistoryView = function(container,model)
 		historyList.empty();
 		var item = model.getSelectedItem();
 		// Sort items by id
-		item[1].sort(function(a,b)
+		if(item!= null)
 		{
-			return b.id-a.id;
-		});
-
-		// Creating date from timestamp
-		var title = $("<li class='historyViewTitle'>");
-		var day = dayNames[item[0].getDay()];
-		var month = monthNames[item[0].getMonth()]
-		var date = item[0].getDate();
-		var year = item[0].getFullYear();
-		title.html(day+", "+month+" "+date+", "+year);
-		historyList.append(title);
-
-		for(i=0;i<item[1].length;i++)
-		{
-			var listItem = $("<li>");
-
-			var linkBox = $("<div class='linkBox'>");
-			var link = $("<a>");
-
-			var baseUrlBox = $("<div class='baseUrlBox'>")
-			var baseUrl = $('<a>').prop('href',item[1][i].url).prop('hostname');
-
-			var faviconBox = $("<div class='faviconBox'>");
-			var favicon = $("<img>");
-				favicon.prop('src',"chrome://favicon/http://"+baseUrl);
-
-			if(item[1][i].title != "")
+			item[1].sort(function(a,b)
 			{
-				link.html(item[1][i].title);
-			}
-			else
-			{
-				link.html(item[1][i].url);
-			}
-				link.prop("href",item[1][i].url);
-				link.prop("target","blank");
+				return b.id-a.id;
+			});
 
-			faviconBox.append(favicon);
-			listItem.append(faviconBox);
-			
-			linkBox.append(link);
-			listItem.append(linkBox);
-			baseUrlBox.append(baseUrl);
-			listItem.append(baseUrlBox);
-			historyList.append(listItem);
+			// Creating date from timestamp
+			var title = $("<li class='historyViewTitle'>");
+			var day = dayNames[item[0].getDay()];
+			var month = monthNames[item[0].getMonth()]
+			var date = item[0].getDate();
+			var year = item[0].getFullYear();
+			title.html(day+", "+month+" "+date+", "+year);
+			historyList.append(title);
+
+			for(i=0;i<item[1].length;i++)
+			{
+				var listItem = $("<li>");
+				var historyItemView = new HistoryItemView(listItem,model,item);
+				var historyItemController = new HistoryItemController(historyItemView,model);
+				historyList.append(listItem);
+			}
 		}
+		
 	}
 
 	historyBox.append(historyList);
@@ -78,6 +55,7 @@ var HistoryView = function(container,model)
 		if(args == "itemSelected")
 		{
 			updateHistory();
+			console.log('update');
 		}
 	}
 }
