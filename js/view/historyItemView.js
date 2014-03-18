@@ -20,7 +20,7 @@ var HistoryItemView = function(container,model,item)
 	}
 	else
 	{
-		link.html(url);
+		link.html(item[1][i].url);
 	}
 	link.prop("href",url);
 	link.prop("target","_blank");
