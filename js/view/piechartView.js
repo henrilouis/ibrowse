@@ -1,6 +1,6 @@
 var PiechartView = function(container,model,topData)
 {
-	var w = 550;
+	var w = 500;
 	var h = 420;
 	var r = 200;
 	var ir = 130;
