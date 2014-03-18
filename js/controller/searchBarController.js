@@ -10,18 +10,13 @@ var SearchBarController = function(view,model)
 				clearTimeout(interval);
 			}
 			var interval = setTimeout(function(){
-				model.searchHours(view.searchInput.val());
+				model.search(view.searchInput.val());
 			},1500)
 		}
-		else if(model.getCurrentView() == "weekCalendar")
+		else if(model.getCurrentView() == "weekCalendar" || model.getCurrentView() == "monthCalendar")
 		{
-			model.searchHours(view.searchInput.val());
+			model.search(view.searchInput.val());
 		}
-		else if(model.getCurrentView() == "monthCalendar")
-		{
-			model.searchDays(view.searchInput.val());
-		}
-
 
 	});
 
@@ -30,21 +25,16 @@ var SearchBarController = function(view,model)
 		view.searchInput.val("");
 		if(model.getCurrentView() == "dayCalendar")
 		{
-			model.searchHours(view.searchInput.val());
+			model.search(view.searchInput.val());
 		}
-		else if(model.getCurrentView() == "weekCalendar")
+		else if(model.getCurrentView() == "weekCalendar" || model.getCurrentView() == "monthCalendar")
 		{
-			model.searchHours(view.searchInput.val());
-		}
-		else if(model.getCurrentView() == "monthCalendar")
-		{
-			model.searchDays(view.searchInput.val());
+			model.search(view.searchInput.val());
 		}
 		
 	});
 
-	function hideAll()
-	{
+	function hideAll(){
 		$("#cal, #weekcal, #daycal, #statistics").hide();
 
 		$(view.monthButton).removeClass('active');
@@ -55,7 +45,7 @@ var SearchBarController = function(view,model)
 
 	view.monthButton.click(function(){
 		model.setCurrentView("monthCalendar");
-		model.searchDays(view.searchInput.val());
+		model.search(view.searchInput.val());
 		hideAll();
 		$(this).addClass("active");
 		$("#cal").show();
@@ -64,7 +54,7 @@ var SearchBarController = function(view,model)
 
 	view.weekButton.click(function(){
 		model.setCurrentView("weekCalendar");
-		model.searchHours(view.searchInput.val());
+		model.search(view.searchInput.val());
 		hideAll();
 		$(this).addClass("active");
 		$("#weekcal").show();
@@ -73,7 +63,7 @@ var SearchBarController = function(view,model)
 
 	view.dayButton.click(function(){
 		model.setCurrentView("dayCalendar");
-		model.searchHours(view.searchInput.val());
+		model.search(view.searchInput.val());
 		hideAll();
 		$(this).addClass("active");
 		$("#daycal").show();

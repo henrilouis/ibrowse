@@ -19,7 +19,6 @@ var WeekCalendarView = function(container,model)
 	}
 
 	var dayLegend_x = $("<ul id='dayLegend_x'>");
-
 	for(i=0; i<24; i++)
 	{
 		var hourName = $("<li>");
@@ -27,7 +26,6 @@ var WeekCalendarView = function(container,model)
 		dayLegend_x.append(hourName);
 	}
 
-	// Creating startdate wich is 90 days back because of google
 	strDate = new Date(Date.now());
 
 	function createCalendar(data){
@@ -95,7 +93,7 @@ var WeekCalendarView = function(container,model)
 			createCalendar(model.toJSON(model.hours));
 		}
 
-		else if(args == 'searchHoursComplete' && model.getCurrentView() == "weekCalendar")
+		else if(args == 'searchComplete' && model.getCurrentView() == "weekCalendar")
 		{
 			// Update the calendar with the new search data
 			var data = model.toJSON(model.getHoursSearch());

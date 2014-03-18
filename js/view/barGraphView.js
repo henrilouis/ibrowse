@@ -221,19 +221,4 @@ var BarGraphView = function(container,model,visitsData,viewType)
       }
    
   }
-  
-
-
-    
-
-  // Observer Pattern
-  model.addObserver(this);
-
-  this.update = function(args)
-  {
-    if(args == 'hoursReady')
-    {
-      //update();
-    }
-  }
 }

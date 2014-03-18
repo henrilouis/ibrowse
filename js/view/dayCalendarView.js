@@ -20,7 +20,6 @@ var DayCalendarView = function(container,model)
 		hourLegend.append(timebox);
 	}
 
-
 	// stDate is the date the calender shows at start
 	stDate = new Date(Date.now());
 	stDate.setMonth(stDate.getMonth()-1);
@@ -92,7 +91,7 @@ var DayCalendarView = function(container,model)
 			createCalendar(model.toJSON(model.hours));
 		}
 
-		else if(args == 'searchHoursComplete' && model.getCurrentView() == "dayCalendar")
+		else if(args == 'searchComplete' && model.getCurrentView() == "dayCalendar")
 		{
 			// Update the calendar with the new search data
 			var data = model.toJSON(model.getHoursSearch());

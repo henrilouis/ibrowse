@@ -55,19 +55,15 @@ var StatisticsView = function(container,model)
 		var totalVisitedPerSiteURL = [];
 		
 		// For each unique url create entry and add similar url counts
-	 	for (i=0; i<model.days.length; i++)
-	 	{
+	 	for (i=0; i<model.days.length; i++){
 	 		totalVisited += model.days[i][1].length;
 
-	 		for(j=0; j<model.days[i][2].length; j++)
-	 		{	
+	 		for(j=0; j<model.days[i][2].length; j++){	
 	 			var urlLocation = totalVisitedPerSiteURL.indexOf(model.days[i][2][j][0]);
-				if(urlLocation > -1)
-				{
+				if(urlLocation > -1){
 					totalVisitedPerSite[urlLocation][1] += model.days[i][2][j][1];	
 				}
-				else
-				{	
+				else{	
 					totalVisitedPerSite.push(model.days[i][2][j]);
 					totalVisitedPerSiteURL.push(model.days[i][2][j][0]);
 				}
@@ -82,27 +78,24 @@ var StatisticsView = function(container,model)
    		 return  b[1] - a[1];
 		});
 
-		for (i = 0; i< totalVisitedPerSite.length; i++)
-	 	{
-	  	  	if(i<10)
-		  	{
+		for (i = 0; i< totalVisitedPerSite.length; i++){
+	  	  	if(i<10){
 		  		topData.push(totalVisitedPerSite[i]);
 		  	}
-		  	else if (i < totalVisitedPerSite.length-1)
-		  	{
+		  	else if (i < totalVisitedPerSite.length-1){
 		  		otherCount += totalVisitedPerSite[i][1];
 		  	}
-		  	else
-		  	{
+		  	else{
 		  		otherCount += totalVisitedPerSite[i][1];
 		  		topData.push(["Other",otherCount]);
 		  	}
 	  	}
 
+	  	// Create pie chart
 	  	var piechartView = new PiechartView(container,model,topData);
 
-	  	for(i=0; i<topData.length-1; i++)
-	  	{	
+	  	// Legend for pie-chart
+	  	for(i=0; i<topData.length-1; i++){	
 	  		var legendItem = 		$("<li class='legendItem'>");
 	  		var legendColor = 		$("<div class='legendColor'>");
 	  		var topSitesURL = 		$("<div class='topSitesURL'>");
@@ -119,8 +112,7 @@ var StatisticsView = function(container,model)
 	  	var retrievedDay = 0;
 	 	
 	 	//check whether day 0 is a monday and set loop to start at first monday
-	 	for(i=0; i<7;i++)
-	 	{	
+	 	for(i=0; i<7;i++){	
 	 		var retrievedString = model.days[i][0].toString();
 	 		var retrievedDay = (retrievedString.indexOf('Mon') > -1); //true
 	 		if(retrievedDay == true){
@@ -129,10 +121,8 @@ var StatisticsView = function(container,model)
 	 	}
 
 	 	//for the last 12 weeks sum all visits of each weekday
-	 	for (i=0; i<12; i++)
-	 	{	
-	 		for(j=0; j<7; j++)
-	 		{	
+	 	for (i=0; i<12; i++){	
+	 		for(j=0; j<7; j++){	
 	 			totalVisitedPerDay[j] += model.days[j+dayNumber][1].length
 			}
 			dayNumber +=7;
@@ -151,12 +141,9 @@ var StatisticsView = function(container,model)
 		var totalVisitedPerHour = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 		var hourNumber =0;
 		
-		for (i=0; i<90; i++)
-	 	{
-	 		for(j=0; j<24; j++)
-	 		{	
-	 			for(k=0; k<model.hours[(j+hourNumber)][2].length; k++)
-	 			{
+		for (i=0; i<90; i++){
+	 		for(j=0; j<24; j++){	
+	 			for(k=0; k<model.hours[(j+hourNumber)][2].length; k++){
 	 				totalVisitedPerHour[j] += model.hours[(j+hourNumber)][2][k][1];
 	 			} 							 
 			}
@@ -185,5 +172,4 @@ var StatisticsView = function(container,model)
 			updateHourData();
 		}
 	}
-
  }

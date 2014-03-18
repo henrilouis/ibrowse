@@ -18,7 +18,6 @@ var MonthCalendarView = function(container,model)
 		dayLegend.append(dayName);
 	}
 
-	// Creating startdate wich is 90 days back because of google
 	startDate = new Date(Date.now());
 	startDate.setDate(startDate.getDate()-90);
 
@@ -85,7 +84,7 @@ var MonthCalendarView = function(container,model)
 			createCalendar(model.toJSON(model.days));
 		}
 
-		else if(args == 'searchDaysComplete' && model.getCurrentView() == "monthCalendar")
+		else if(args == 'searchComplete' && model.getCurrentView() == "monthCalendar")
 		{
 			// Update the calendar with the new search data
 			var data = model.toJSON(model.getDaysSearch())

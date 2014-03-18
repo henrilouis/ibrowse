@@ -17,7 +17,7 @@ var IbrowseModel = function() {
 		Important: days[i] finally contains three arrays per day.
 
 		The first one (days[i][0]) is one with the day date.
-		The second one (days[i][1]) has the individual url visits from google.
+		The second one (days[i][1]) has the individual url visits from chrome.
 		The third days[i][2] is an array containing the number of visits per site.
 		
 	*********************************************************************************/
@@ -66,11 +66,10 @@ var IbrowseModel = function() {
 					notifyObservers('dataReady');
 
 					// Fill both the search arrays
-					searchDays("");
-					searchHours("");
+					search("");
 
 					// settign selectedItem to today, also bit dirty
-					setSelectedItem(days[days.length-2]);
+					setSelectedItem(days[days.length-1]);
 				}
 				else{
 					countTime.setTime(countTime.getTime()+hourMs);
@@ -86,7 +85,6 @@ var IbrowseModel = function() {
 		for(i = 0; i < historyData.length; i++){
 
 			var count = createSiteCount(historyData[i]);
-			
 			targetArray.push([new Date(d.getTime()),historyData[i],count]);
 			d.setTime(d.getTime()+timeUnit);
 			
@@ -101,7 +99,6 @@ var IbrowseModel = function() {
 		for (i = 0; i<inside.length; i++){
 			var item = [];
 			item.push(inside[i][0]);
-
 			var result = inside[i][1].filter(function(d){
 				if(d['url'].indexOf(string.toLowerCase())>=0 || d['title'].indexOf(string.toLowerCase())>=0){
 					return d;
@@ -114,19 +111,16 @@ var IbrowseModel = function() {
 		return data;
 	}
 
-	function searchDays(string){
+	function search(string){
 		daysSearch = searchHistory(string, days);
-		notifyObservers('searchDaysComplete');
-	}
-
-	function searchHours(string){
 		hoursSearch = searchHistory(string, hours);
-		notifyObservers('searchHoursComplete');
+		notifyObservers('searchComplete');
 	}
 
 	/*******************************
 		Convert the normal array
 		to JSON for d3 Calendar
+		but only with visits.
 	********************************/
 	function toJSON(history){
 		var json = {};
@@ -145,21 +139,17 @@ var IbrowseModel = function() {
 		var day = new Array();
 		var combinedHours = new Array();
 		
-		for(i=0; i<h.length; i++)
-		{
-			if(i==0)
-			{
+		for(i=0; i<h.length; i++){
+			if(i==0){
 				day.push(h[i][0]);
 			}
 
-			if(h[i][1].length > 0)
-			{
+			if(h[i][1].length > 0){
 				for(j=0; j<h[i][1].length; j++)
 				combinedHours.push(h[i][1][j]);
 			}
 
-			if((i+1)%24==0)
-			{
+			if((i+1)%24==0){
 				day.push(combinedHours);
 				day.push(createSiteCount(combinedHours));
 				d.push(day);
@@ -228,8 +218,7 @@ var IbrowseModel = function() {
 	/*******************************
 				Getters
 	********************************/
-	function getMax(history)
-	{
+	function getMax(history){
 		var max = 0;
 		for(i = 0; i < history.length; i++){
 			if(history[i][1].length > max){
@@ -255,23 +244,19 @@ var IbrowseModel = function() {
 		return getMax(hoursSearch);
 	}
 
-	function getDaysSearch()
-	{
+	function getDaysSearch(){
 		return daysSearch;
 	}
 
-	function getHoursSearch()
-	{
+	function getHoursSearch(){
 		return hoursSearch;
 	}
 
-	function getSelectedItem()
-	{
+	function getSelectedItem(){
 		return selectedItem;
 	}
 
-	function getCurrentView()
-	{
+	function getCurrentView(){
 		return currentView;
 	}
 
@@ -284,8 +269,7 @@ var IbrowseModel = function() {
 	this.days = days;
 	this.hours = hours;
 
-	this.searchDays = searchDays;
-	this.searchHours = searchHours;
+	this.search = search;
 
 	this.getDaysSearch = getDaysSearch;
 	this.getHoursSearch = getHoursSearch;
