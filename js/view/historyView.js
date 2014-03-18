@@ -15,7 +15,7 @@ var HistoryView = function(container,model)
 	function updateHistory()
 	{
 		historyList.empty();
-		var item = model.getSelectedItem();
+		var item = model.getSelectedItemSearch();
 		// Sort items by id
 		if(item!= null)
 		{
@@ -52,7 +52,7 @@ var HistoryView = function(container,model)
 
 	this.update = function(args)
 	{
-		if(args == "itemSelected")
+		if(args == "searchComplete")
 		{
 			updateHistory();
 		}

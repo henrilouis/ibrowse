@@ -3,8 +3,10 @@ var IbrowseModel = function() {
 	var days = [];
 	var hours = [];
 
+	var lastSearchString = "";
 	var daysSearch = [];
 	var hoursSearch = [];
+	var selectedItemSearch = [];
 
 	var currentStats;
 	var selectedItem;
@@ -21,7 +23,7 @@ var IbrowseModel = function() {
 		The third days[i][2] is an array containing the number of visits per site.
 		
 	*********************************************************************************/
-	function getHistory(hours, days){
+	function getHistory(){
 
 		var tempData = [];
 
@@ -65,10 +67,8 @@ var IbrowseModel = function() {
 					hoursToDays(hours,days);
 					notifyObservers('dataReady');
 
-					// Fill both the search arrays
-					search("");
-
-					// settign selectedItem to today, also bit dirty
+					// Setting selectedItem to today automatically filling
+					// the searches
 					setSelectedItem(days[days.length-1]);
 				}
 				else{
@@ -112,8 +112,12 @@ var IbrowseModel = function() {
 	}
 
 	function search(string){
+
+		// setting lastSearchString so it can be used again
+		lastSearchString = string;
 		daysSearch = searchHistory(string, days);
 		hoursSearch = searchHistory(string, hours);
+		selectedItemSearch = searchHistory(string, [selectedItem])[0];
 		notifyObservers('searchComplete');
 	}
 
@@ -233,7 +237,7 @@ var IbrowseModel = function() {
 	********************************/
 	function setSelectedItem(item){
 		selectedItem = item;
-		notifyObservers('itemSelected');
+		search(lastSearchString);
 	}
 
 	function setCurrentView(string){
@@ -281,16 +285,20 @@ var IbrowseModel = function() {
 		return hoursSearch;
 	}
 
-	function getSelectedItem(){
-		return selectedItem;
+	function getSelectedItemSearch(){
+		return selectedItemSearch;
 	}
 
 	function getCurrentView(){
 		return currentView;
 	}
 
+	function getLastSearchString(){
+		return lastSearchString;
+	}
+
 	// fill them once
-	getHistory(hours,days);
+	getHistory();
 
 	/*******************************
 			Self Assignments
@@ -302,6 +310,7 @@ var IbrowseModel = function() {
 
 	this.getDaysSearch = getDaysSearch;
 	this.getHoursSearch = getHoursSearch;
+	this.getLastSearchString = lastSearchString;
 
 	this.getDailyMax = getDailyMax;
 	this.getDaysSearchMax = getDaysSearchMax;
@@ -312,7 +321,7 @@ var IbrowseModel = function() {
 	this.hoursToDays = hoursToDays;
 
 	this.setSelectedItem = setSelectedItem;
-	this.getSelectedItem = getSelectedItem;
+	this.getSelectedItemSearch = getSelectedItemSearch;
 
 	this.getCurrentView = getCurrentView;
 	this.setCurrentView = setCurrentView;
