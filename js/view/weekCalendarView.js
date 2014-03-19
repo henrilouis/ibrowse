@@ -93,7 +93,7 @@ var WeekCalendarView = function(container,model)
 			createCalendar(model.toJSON(model.hours));
 		}
 
-		else if(args == 'searchComplete' || 'itemRemoved' && model.getCurrentView() == "weekCalendar")
+		else if((args == 'searchComplete' || 'itemRemoved') && model.getCurrentView() == "weekCalendar")
 		{
 			// Update the calendar with the new search data
 			var data = model.toJSON(model.getHoursSearch());

@@ -36,6 +36,7 @@ var MonthCalendarView = function(container,model)
 			tooltip: true,
 			displayLegend: false,
 			itemName: "site",
+			highlight: "now",
 			domainGutter: 10,
 			legendCellSize: 10,
 			range: 4,
@@ -82,7 +83,7 @@ var MonthCalendarView = function(container,model)
 			createCalendar(model.toJSON(model.days));
 		}
 
-		else if(args == 'searchComplete' || 'itemRemoved' && model.getCurrentView() == "monthCalendar")
+		else if((args == 'searchComplete' || 'itemRemoved') && model.getCurrentView() == "monthCalendar")
 		{
 			// Update the calendar with the new search data
 			var data = model.toJSON(model.getDaysSearch())

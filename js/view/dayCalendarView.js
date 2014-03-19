@@ -88,7 +88,7 @@ var DayCalendarView = function(container,model)
 			createCalendar(model.toJSON(model.hours));
 		}
 
-		else if(args == 'searchComplete' || 'itemRemoved' && model.getCurrentView() == "dayCalendar")
+		else if((args == 'searchComplete' || 'itemRemoved') && model.getCurrentView() == "dayCalendar")
 		{
 			// Update the calendar with the new search data
 			var data = model.toJSON(model.getHoursSearch());

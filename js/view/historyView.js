@@ -55,6 +55,7 @@ var HistoryView = function(container,model)
 		if(args == "searchComplete")
 		{
 			updateHistory();
+			console.log('Historyview update');
 		}
 	}
 }

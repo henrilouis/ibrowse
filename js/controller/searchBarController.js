@@ -1,14 +1,15 @@
 var SearchBarController = function(view,model)
 {	
+	var interval;
 	view.searchInput.keyup(function(){
 		// Setting interval so the cal won't get slow
 		if(interval != null)
 		{
 			clearTimeout(interval);
 		}
-		var interval = setTimeout(function(){
+		interval = setTimeout(function(){
 			model.search(view.searchInput.val());
-		},1500)
+		},500)
 
 	});
 
