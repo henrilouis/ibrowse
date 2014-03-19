@@ -1,9 +1,11 @@
 ibrowse
 =======
 
-##Contents
+##What is iBROWSE?
 
-* **iBROWSE Chrome history visualization** *
+iBROWSE is a Chrome extension visualizing browsing history.
+
+* **iBROWSE**
   -Creates a browsable heat-map of your browsing behaviour
     -including a Monthly view
     -a Weekly view
