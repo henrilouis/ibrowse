@@ -45,20 +45,22 @@ var MonthCalendarView = function(container,model)
 			{
 				$('#cal rect').css('stroke','none');
 				$('#cal rect').attr('height',cSize).attr('width',cSize);
-				
+
 				// Also resetting the selection on the other calendar
 				$('#daycal rect').attr('height',10).attr('width',10);
 				$('#weekcal rect').attr('height',27).attr('width',27);
-				
+
 				$(rect).css('stroke','rgba(0,255,0,1)');
 				$(rect).attr('height',cSize-1).attr('width',cSize-1);
-				
+
 				var item = model.days.filter(function(d)
 				{ 
 					if( (d[0].getMonth() == date.getMonth()) && (d[0].getDate() == date.getDate()) ) return d;
 				})
-				
-				model.setSelectedItem(item[0]);
+				if(item.length >0)
+				{
+					model.setSelectedItem(item[0]);
+				}
 			}
 		});
 
@@ -80,7 +82,7 @@ var MonthCalendarView = function(container,model)
 			createCalendar(model.toJSON(model.days));
 		}
 
-		else if(args == 'searchComplete' && model.getCurrentView() == "monthCalendar")
+		else if(args == 'searchComplete' || 'itemRemoved' && model.getCurrentView() == "monthCalendar")
 		{
 			// Update the calendar with the new search data
 			var data = model.toJSON(model.getDaysSearch())

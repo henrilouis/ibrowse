@@ -1,36 +1,21 @@
 var SearchBarController = function(view,model)
 {	
 	view.searchInput.keyup(function(){
-
-		if(model.getCurrentView() == "dayCalendar")
+		// Setting interval so the cal won't get slow
+		if(interval != null)
 		{
-			// Setting interval so the daycal won't get slow
-			if(interval != null)
-			{
-				clearTimeout(interval);
-			}
-			var interval = setTimeout(function(){
-				model.search(view.searchInput.val());
-			},1500)
+			clearTimeout(interval);
 		}
-		else if(model.getCurrentView() == "weekCalendar" || model.getCurrentView() == "monthCalendar")
-		{
+		var interval = setTimeout(function(){
 			model.search(view.searchInput.val());
-		}
+		},1500)
 
 	});
 
 	view.removeInput.click(function(){
 
 		view.searchInput.val("");
-		if(model.getCurrentView() == "dayCalendar")
-		{
-			model.search(view.searchInput.val());
-		}
-		else if(model.getCurrentView() == "weekCalendar" || model.getCurrentView() == "monthCalendar")
-		{
-			model.search(view.searchInput.val());
-		}
+		model.search(view.searchInput.val());
 		
 	});
 

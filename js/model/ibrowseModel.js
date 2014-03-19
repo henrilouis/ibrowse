@@ -16,13 +16,24 @@ var IbrowseModel = function() {
 	var hourMs 	= 3600000;
 
 	/********************************************************************************
-		Important: days[i] finally contains three arrays per day.
+		Important: days[i]/hours[i] etc finally contains three arrays per day.
 
 		The first one (days[i][0]) is one with the day date.
 		The second one (days[i][1]) has the individual url visits from chrome.
 		The third days[i][2] is an array containing the number of visits per site.
-		
 	*********************************************************************************/
+
+	/*******************************
+			Run on startup
+	*******************************/
+	
+	getHistory();
+
+	/*******************************
+	   Getting the actual history
+	   from Chrome
+	*******************************/
+
 	function getHistory(){
 
 		var tempData = [];
@@ -67,7 +78,7 @@ var IbrowseModel = function() {
 					hoursToDays(hours,days);
 					notifyObservers('dataReady');
 
-					// Setting selectedItem to today automatically filling
+					// Setting selectedItem to today, automatically filling
 					// the searches
 					setSelectedItem(days[days.length-1]);
 				}
@@ -115,6 +126,7 @@ var IbrowseModel = function() {
 
 		// setting lastSearchString so it can be used again
 		lastSearchString = string;
+
 		daysSearch = searchHistory(string, days);
 		hoursSearch = searchHistory(string, hours);
 		selectedItemSearch = searchHistory(string, [selectedItem])[0];
@@ -228,8 +240,7 @@ var IbrowseModel = function() {
 				}
 			}
 		}
-
-		notifyObservers('searchComplete');
+		notifyObservers('itemRemoved');
 	}
 
 	/*******************************
@@ -297,8 +308,7 @@ var IbrowseModel = function() {
 		return lastSearchString;
 	}
 
-	// fill them once
-	getHistory();
+
 
 	/*******************************
 			Self Assignments

@@ -67,7 +67,10 @@ var WeekCalendarView = function(container,model)
 					if( (d[0].getMonth() == date.getMonth()) && (d[0].getDate() == date.getDate()) && (d[0].getHours() == date.getHours()) ) return d;
 				})
 
-				model.setSelectedItem(item[0]);
+				if(item.length >0)
+				{
+					model.setSelectedItem(item[0]);
+				}
 			}
 		});
 
@@ -90,7 +93,7 @@ var WeekCalendarView = function(container,model)
 			createCalendar(model.toJSON(model.hours));
 		}
 
-		else if(args == 'searchComplete' && model.getCurrentView() == "weekCalendar")
+		else if(args == 'searchComplete' || 'itemRemoved' && model.getCurrentView() == "weekCalendar")
 		{
 			// Update the calendar with the new search data
 			var data = model.toJSON(model.getHoursSearch());
