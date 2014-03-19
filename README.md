@@ -3,7 +3,7 @@ ibrowse
 
 ##Contents
 
-** *iBROWSE Chrome history visualization* **
+* **iBROWSE Chrome history visualization** *
   -Creates a browsable heat-map of your browsing behaviour
     -including a Monthly view
     -a Weekly view
