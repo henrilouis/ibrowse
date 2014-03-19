@@ -30,7 +30,9 @@ var HistoryView = function(container,model)
 			var month = monthNames[item[0].getMonth()]
 			var date = item[0].getDate();
 			var year = item[0].getFullYear();
+
 			title.html(day+", "+month+" "+date+", "+year);
+
 			historyList.append(title);
 
 			for(i=0;i<item[1].length;i++)
@@ -55,7 +57,6 @@ var HistoryView = function(container,model)
 		if(args == "searchComplete")
 		{
 			updateHistory();
-			console.log('Historyview update');
 		}
 	}
 }
