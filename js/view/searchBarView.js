@@ -4,16 +4,16 @@ var SearchBarView = function(container,model)
 	var menuContainer = $("<div id='menuContainer'>");
 	var form = $("<div id='searchBar'>");
 	var searchInput = $("<input type='text' class='form-control' placeholder='Search History'>");
-	var removeInput = $("<i class='glyphicon glyphicon-remove'>");
+	var removeInput = $("<i title='Clear search' class='glyphicon glyphicon-remove'>");
 	form.append(searchInput,removeInput);
 
 	// View navigation
 
 	var buttonGroup = 		$("<div class='btn-group'>");
-	var monthButton = 		$("<button class='btn btn-default active'>");
-	var weekButton = 		$("<button class='btn btn-default'>");
-	var dayButton = 		$("<button class='btn btn-default'>");
-	var statsButton	= 		$("<button class='btn btn-default'>");
+	var monthButton = 		$("<button title='Month / Day View' class='btn btn-default active'>");
+	var weekButton = 		$("<button title='Week / Hour View' class='btn btn-default'>");
+	var dayButton = 		$("<button title='Month / Hour View' class='btn btn-default'>");
+	var statsButton	= 		$("<button title='Statistics View' class='btn btn-default'>");
 
 	var monthSpan = 		$("<span class='glyphicon glyphicon-th-large'>");
 	var weekSpan = 			$("<span class='glyphicon glyphicon-th-list'>");

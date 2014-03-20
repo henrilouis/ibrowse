@@ -3,6 +3,12 @@ var WeekCalendarView = function(container,model)
 	// Calendar variables
 	var cal = new CalHeatMap();
 	var weekCalContainer = $("<div id='weekCalContainer'>");
+
+	// Title
+	var title = $('<h2>');
+		title.html('Week / Hour View');
+	container.append(title);
+
 	// Buttons
 	var nextButton = $("<button class='nextButton glyphicon glyphicon-chevron-right'>");
 	var previousButton = $("<button class='previousButton glyphicon glyphicon-chevron-left'>");

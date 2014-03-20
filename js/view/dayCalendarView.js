@@ -4,6 +4,11 @@ var DayCalendarView = function(container,model)
 	var cal = new CalHeatMap();
 	var dayCalContainer = $("<div id='dayCalContainer'>");
 	
+	// Title
+	var title = $('<h2>');
+		title.html('Month / Hour View');
+	container.append(title);
+
 	// Buttons
 	var nextButton = $("<button class='nextButton glyphicon glyphicon-chevron-right'>");
 	var previousButton = $("<button class='previousButton glyphicon glyphicon-chevron-left'>");

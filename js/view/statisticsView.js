@@ -1,7 +1,7 @@
 var StatisticsView = function(container,model)
 {	
 	var color = d3.scale.category20();	
-	var statisticsTitle =		$("<div id='statisticsTitle'>");
+	var statisticsTitle =		$("<h2>");
 
 	statisticsTitle.html("Your browsing statistics");
 	

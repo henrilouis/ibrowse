@@ -2,6 +2,11 @@ var MonthCalendarView = function(container,model)
 {
 	// Calendar variables
 	var cal = new CalHeatMap();
+
+	// Title
+	var title = $('<h2>');
+		title.html('Month / Day View');
+	container.append(title);
 	
 	// Buttons
 	var nextButton = $("<button class='nextButton glyphicon glyphicon-chevron-right'>");
@@ -40,6 +45,9 @@ var MonthCalendarView = function(container,model)
 			domainGutter: 10,
 			legendCellSize: 10,
 			range: 4,
+			label:{
+				offset:{x:0,y:-15}
+			},
 			start: startDate,
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
 			onClick: function(date,value,rect)

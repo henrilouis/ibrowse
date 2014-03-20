@@ -12,7 +12,7 @@ var HistoryItemView = function(container,model,item)
 	var favicon = $("<img>");
 		favicon.prop('src',"chrome://favicon/http://"+baseUrl);
 
-	var removeButton = $("<span class='removeUrl glyphicon glyphicon-remove'>");
+	var removeButton = $("<span title='Remove from history' class='removeUrl glyphicon glyphicon-remove'>");
 
 	if(item[1][i].title != "")
 	{

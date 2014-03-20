@@ -35,7 +35,23 @@ header h1
 	/* text-transform: uppercase; */
 }
 
+h2
+{
+	font-family: 'Fjalla One', sans-serif;
+	text-transform: uppercase;
+}
+
+h2
+{
+	font-size: 20px;
+}
+
 section#visualisations
+{
+	
+}
+
+section#visualisations h2
 {
 	margin-top: 10px;
 }

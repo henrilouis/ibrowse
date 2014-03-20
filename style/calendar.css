@@ -16,6 +16,12 @@
 	position: relative;
 }
 
+#cal
+{
+	height: 280px;
+	margin-bottom: 20px;
+}
+
 #cal ul#dayLegend
 {
 	position: absolute;

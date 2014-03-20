@@ -1,9 +1,9 @@
 {
   "name": "iBROWSE",
-  "version": "0.5",
-  "manifest_version": 3,
-  "description": "Visually search your history smarter than normal, and get keen insights in your browsing behaviour. 
-  Replaces the normal browser history in Chrome.",
+  "version": "0.5.2",
+  "manifest_version": 2,
+  "description": "Visually search your history faster than normal, and get keen insights into your browsing behaviour. 
+  Replaces normal history.",
 
   "icons": { "16": "images/icon16.png",
            "48": "images/icon48.png",
