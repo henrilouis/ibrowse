@@ -1,4 +1,4 @@
-var PiechartView = function(container,model,topData)
+var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDailyDataPerSite)
 {
 	var w = 500;
 	var h = 420;
@@ -126,9 +126,11 @@ var PiechartView = function(container,model,topData)
 	    paths.enter().append("svg:path")
 	      .attr("stroke", "white")
 	      .attr("stroke-width", 2)
+	      .attr("cursor", "pointer")
 	      .attr("fill", function(d, i) { return color(i); })
 	      .on("mouseover",update_legend)
 	  	  .on("mouseout",remove_legend)
+	  	  .on("click",create_bargraph)
 	      .transition()
 	        .duration(tweenDuration)
 	        .attrTween("d", pieTween);
@@ -170,6 +172,25 @@ var PiechartView = function(container,model,topData)
 
 	  d3.select(this)
 	      	.attr("stroke-width", 2);
+    }
+
+    function create_bargraph(d)
+    {	
+    	for(i=0;i<topDailyDataPerSite.length;i++)
+    	{
+    		if(topData[i][0] == d.name)
+    		{
+    			var barGraphView = new BarGraphView(container,model,topDailyDataPerSite[i],1);
+    		}
+    	}
+    	for(j=0;j<topHourlyDataPerSite.length;j++)
+    	{
+    		if(topData[j][0] == d.name)
+    		{
+    			var barGraphView = new BarGraphView(container,model,topHourlyDataPerSite[j],2);
+    		}
+    	}
+
     }
 
 
