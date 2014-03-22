@@ -11,6 +11,7 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 	var totalVisitedPerHour = totalVisitedPerHour;
 	var pieSelected = false;
 	var selectedPie =0;
+	var selectedThis =0;
 
 	//OBJECTS TO BE POPULATED WITH DATA LATER
 	var lines, valueLabels, nameLabels, favIcons;
@@ -158,8 +159,10 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 		totalValue.text((d.value/totalSites*100).toFixed(1) + "%");
 		//UNITS LABEL
 		totalUnits.text("OF VISITS");
+
 		d3.select(this)
-	      	.attr("stroke-width", 0);
+		.attr("stroke-width", 0)
+	    .attr("opacity", 1);
     }
 
     function remove_legend(d)
@@ -175,10 +178,12 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 		//UNITS LABEL
 		  totalUnits.text("VISITS");
 
-		  d3.select(this)
-		      	.attr("stroke-width", 2);
+		d3.selectAll("path")
+		  	.attr("opacity", 1)
+		  	.attr("stroke-width", 2);
+
 	    }
-	    if (pieSelected == true)
+	    else if (pieSelected == true && d.name != selectedPie.name)
 	    {
 	    // "TOTAL" LABEL
 	 	totalLabel.text(selectedPie.name);
@@ -188,38 +193,59 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 		totalUnits.text("OF VISITS");
 		d3.select(this)
 	      	.attr("stroke-width", 2)
-	      	.attr("cursor", "pointer");
+	      	.attr("cursor", "pointer")
+	      	.attr("opacity", 0.7);
 	    }
 	}
 
     function create_bargraph(d)
     {	
-    	pieSelected = true;
-    	selectedPie = d;
-    	// "TOTAL" LABEL
-	 	totalLabel.text(d.name);
-		//TOTAL TRAFFIC VALUE
-		totalValue.text((d.value/totalSites*100).toFixed(1) + "%");
-		//UNITS LABEL
-		totalUnits.text("OF VISITS");
-		d3.select(this)
-	      	.attr("stroke-width", 0)
-	      	.attr("cursor", "pointer");
+    	if (d.name != selectedPie.name)
+    	{
+	    	pieSelected = true;
+	    	selectedPie = d;
 
-    	for(i=0;i<topDailyDataPerSite.length;i++)
-    	{
-    		if(topData[i][0] == d.name)
-    		{
-    			var barGraphView = new BarGraphView(container,model,topDailyDataPerSite[i],1);
-    		}
+	    	// "TOTAL" LABEL
+		 	totalLabel.text(d.name);
+			//TOTAL TRAFFIC VALUE
+			totalValue.text((d.value/totalSites*100).toFixed(1) + "%");
+			//UNITS LABEL
+			totalUnits.text("OF VISITS");
+
+			d3.selectAll("path")
+		  	.attr("opacity", 0.4);
+
+		  	selectedThis=d3.select(this);
+			d3.select(this)
+		      	.attr("stroke-width", 2)
+		      	.attr("cursor", "pointer")
+		      	.attr("opacity", 1);
+
+	    	for(i=0;i<topDailyDataPerSite.length;i++)
+	    	{
+	    		if(topData[i][0] == d.name)
+	    		{
+	    			var barGraphView = new BarGraphView(container,model,topDailyDataPerSite[i],1);
+	    		}
+	    	}
+	    	for(j=0;j<topHourlyDataPerSite.length;j++)
+	    	{
+	    		if(topData[j][0] == d.name)
+	    		{
+	    			var barGraphView = new BarGraphView(container,model,topHourlyDataPerSite[j],2);
+	    		}
+	    	}
+	    }
+	    else
+    	{	
+    		d3.select(this)
+		      	.attr("stroke-width", 2)
+		      	.attr("cursor", "pointer")
+		      	.attr("opacity", 1);
+    		
+    		restore_piechart();
     	}
-    	for(j=0;j<topHourlyDataPerSite.length;j++)
-    	{
-    		if(topData[j][0] == d.name)
-    		{
-    			var barGraphView = new BarGraphView(container,model,topHourlyDataPerSite[j],2);
-    		}
-    	}
+
     }
 
 	function update_center(d)
@@ -250,6 +276,7 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 	{
 		pieSelected = false;
 		selectedPie = 0;
+
 		// "TOTAL" LABEL
 		  totalLabel.text("TOTAL");
 
@@ -259,9 +286,11 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 		//UNITS LABEL
 		  totalUnits.text("VISITS");
 
-		  d3.select(this)
-		  .attr("stroke-width", 2)
+		  d3.select("circle")
 		  .attr("cursor", "default");
+
+		  d3.selectAll("path")
+		  .attr("opacity", 1);
 
 		// Create bar chart
 		var barGraphView = new BarGraphView(container,model,totalVisitedPerDay,1);
