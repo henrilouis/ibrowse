@@ -1,4 +1,4 @@
-var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDailyDataPerSite)
+var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDailyDataPerSite,totalVisitedPerDay,totalVisitedPerHour)
 {
 	var w = 500;
 	var h = 420;
@@ -6,6 +6,11 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 	var ir = 130;
 	var textOffset = 25;
 	var tweenDuration = 250;
+	
+	var totalVisitedPerDay = totalVisitedPerDay;
+	var totalVisitedPerHour = totalVisitedPerHour;
+	var pieSelected = false;
+	var selectedPie =0;
 
 	//OBJECTS TO BE POPULATED WITH DATA LATER
 	var lines, valueLabels, nameLabels, favIcons;
@@ -63,7 +68,11 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 	//WHITE CIRCLE BEHIND LABELS
 	var whiteCircle = center_group.append("svg:circle")
 	  .attr("fill", "white")
-	  .attr("r", ir);
+	  .attr("r", ir)
+	  .attr("cursor", "pointer")
+	  .on("mouseover",update_center)
+	  .on("mouseout",remove_center)
+	  .on("click",restore_piechart);
 
 	// "TOTAL" LABEL
 	var totalLabel = center_group.append("svg:text")
@@ -151,31 +160,52 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 		totalUnits.text("OF VISITS");
 		d3.select(this)
 	      	.attr("stroke-width", 0);
-
     }
 
     function remove_legend(d)
     {
-    	
-    ///////////////////////////////////////////////////////////
-	// CENTER TEXT ////////////////////////////////////////////
-	///////////////////////////////////////////////////////////
+    	if (pieSelected ==false)
+    	{
+		// "TOTAL" LABEL
+		  totalLabel.text("TOTAL");
 
-	// "TOTAL" LABEL
-	  totalLabel.text("TOTAL");
+		//TOTAL TRAFFIC VALUE
+		  totalValue.text(totalSites);
 
-	//TOTAL TRAFFIC VALUE
-	  totalValue.text(totalSites);
+		//UNITS LABEL
+		  totalUnits.text("VISITS");
 
-	//UNITS LABEL
-	  totalUnits.text("VISITS");
-
-	  d3.select(this)
-	      	.attr("stroke-width", 2);
-    }
+		  d3.select(this)
+		      	.attr("stroke-width", 2);
+	    }
+	    if (pieSelected == true)
+	    {
+	    // "TOTAL" LABEL
+	 	totalLabel.text(selectedPie.name);
+		//TOTAL TRAFFIC VALUE
+		totalValue.text((selectedPie.value/totalSites*100).toFixed(1) + "%");
+		//UNITS LABEL
+		totalUnits.text("OF VISITS");
+		d3.select(this)
+	      	.attr("stroke-width", 2)
+	      	.attr("cursor", "pointer");
+	    }
+	}
 
     function create_bargraph(d)
     {	
+    	pieSelected = true;
+    	selectedPie = d;
+    	// "TOTAL" LABEL
+	 	totalLabel.text(d.name);
+		//TOTAL TRAFFIC VALUE
+		totalValue.text((d.value/totalSites*100).toFixed(1) + "%");
+		//UNITS LABEL
+		totalUnits.text("OF VISITS");
+		d3.select(this)
+	      	.attr("stroke-width", 0)
+	      	.attr("cursor", "pointer");
+
     	for(i=0;i<topDailyDataPerSite.length;i++)
     	{
     		if(topData[i][0] == d.name)
@@ -190,9 +220,53 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
     			var barGraphView = new BarGraphView(container,model,topHourlyDataPerSite[j],2);
     		}
     	}
-
     }
 
+	function update_center(d)
+	{	
+		if (pieSelected == true)
+	    {
+		// "TOTAL" LABEL
+		  totalLabel.text("Back to total");
+
+		//TOTAL TRAFFIC VALUE
+		  totalValue.text(totalSites);
+
+		//UNITS LABEL
+		  totalUnits.text("VISITS");
+
+		  d3.select(this)
+		      	.attr("stroke-width", 2)
+		      	.attr("cursor", "pointer");
+		}
+	}
+
+	function remove_center(d)
+	{
+		
+	}
+
+	function restore_piechart(d)
+	{
+		pieSelected = false;
+		selectedPie = 0;
+		// "TOTAL" LABEL
+		  totalLabel.text("TOTAL");
+
+		//TOTAL TRAFFIC VALUE
+		  totalValue.text(totalSites);
+
+		//UNITS LABEL
+		  totalUnits.text("VISITS");
+
+		  d3.select(this)
+		  .attr("stroke-width", 2)
+		  .attr("cursor", "default");
+
+		// Create bar chart
+		var barGraphView = new BarGraphView(container,model,totalVisitedPerDay,1);
+		var barGraphView = new BarGraphView(container,model,totalVisitedPerHour,2);
+	}
 
 	// Interpolate the arcs in data space.
 	function pieTween(d, i) {

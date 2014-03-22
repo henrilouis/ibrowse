@@ -128,7 +128,7 @@ var StatisticsView = function(container,model)
 
 
 		// Create pie chart
-	  	var piechartView = new PiechartView(container,model,topData,topHourlyDataPerSite,topDailyDataPerSite);
+	  	var piechartView = new PiechartView(container,model,topData,topHourlyDataPerSite,topDailyDataPerSite,totalVisitedPerDay,totalVisitedPerHour);
 
 	  	// Create bar chart
 		var barGraphView = new BarGraphView(container,model,totalVisitedPerDay,1);
@@ -260,8 +260,6 @@ var StatisticsView = function(container,model)
 		}
 		return topHourlyDataPerSite
 	}
-
-
 
 
 	this.daysButton = daysButton;
