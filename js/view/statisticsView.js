@@ -180,7 +180,7 @@ var StatisticsView = function(container,model)
 	  	{	
 	  		topDailyDataPerSite.push([0,0,0,0,0,0,0]);
 	  		dayNumber = firstMonday;
-	  		alert(dayNumber);
+	  		//alert(dayNumber);
 		   	//for the last 12 weeks sum all visits of each weekday
 		 	for (k=0; k<12; k++)
 		 	{	
