@@ -10,7 +10,7 @@ var BarGraphView = function(container,model,visitsData,viewType)
     .rangeRoundBands([0, width], .1);
 
     var y = d3.scale.linear()
-    .range([height, 0]);
+    .range([height, 10]);
 
     var xAxis = d3.svg.axis()
     .scale(x)

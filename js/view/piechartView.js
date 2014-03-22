@@ -11,7 +11,6 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 	var totalVisitedPerHour = totalVisitedPerHour;
 	var pieSelected = false;
 	var selectedPie =0;
-	var selectedThis =0;
 
 	//OBJECTS TO BE POPULATED WITH DATA LATER
 	var lines, valueLabels, nameLabels, favIcons;
@@ -89,6 +88,7 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 	  .attr("dy", 20)
 	  .attr("text-anchor", "middle") // text-align: right
 	  .attr("fill", "#333333")
+	  totalValue.attr("font-size",60)
 	  .text("Select day");
 
 	//UNITS LABEL
@@ -156,7 +156,7 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 		// "TOTAL" LABEL
 	 	totalLabel.text(d.name);
 		//TOTAL TRAFFIC VALUE
-		totalValue.text((d.value/totalSites*100).toFixed(1) + "%");
+		totalValue.text((d.value/totalSites*100).toFixed(1) + "%")
 		//UNITS LABEL
 		totalUnits.text("OF VISITS");
 
@@ -178,7 +178,7 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 		//UNITS LABEL
 		  totalUnits.text("VISITS");
 
-		d3.selectAll("path")
+		d3.selectAll("#piechart path")
 		  	.attr("opacity", 1)
 		  	.attr("stroke-width", 2);
 
@@ -209,10 +209,11 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 		 	totalLabel.text(d.name);
 			//TOTAL TRAFFIC VALUE
 			totalValue.text((d.value/totalSites*100).toFixed(1) + "%");
+			totalValue.attr("font-size",60);
 			//UNITS LABEL
 			totalUnits.text("OF VISITS");
 
-			d3.selectAll("path")
+			d3.selectAll("#piechart path")
 		  	.attr("opacity", 0.4);
 
 		  	selectedThis=d3.select(this);
@@ -253,13 +254,14 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 		if (pieSelected == true)
 	    {
 		// "TOTAL" LABEL
-		  totalLabel.text("Back to total");
+		  totalLabel.text(" ");
 
 		//TOTAL TRAFFIC VALUE
-		  totalValue.text(totalSites);
-
+		  totalValue.text("Back to total")
+		  totalValue.attr("font-size",30)
+		  totalValue.attr("dy", 10)
 		//UNITS LABEL
-		  totalUnits.text("VISITS");
+		  totalUnits.text(" ");
 
 		  d3.select(this)
 		      	.attr("stroke-width", 2)
@@ -269,7 +271,8 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 
 	function remove_center(d)
 	{
-		
+		totalValue.attr("font-size",60);
+		totalValue.attr("dy", 20)
 	}
 
 	function restore_piechart(d)
@@ -281,7 +284,9 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 		  totalLabel.text("TOTAL");
 
 		//TOTAL TRAFFIC VALUE
-		  totalValue.text(totalSites);
+		  totalValue.text(totalSites)
+		  totalValue.attr("font-size",60)
+		  totalValue.attr("dy", 20);	
 
 		//UNITS LABEL
 		  totalUnits.text("VISITS");
