@@ -55,7 +55,8 @@ ul#topSitesList .legendColor
 
 ul#topSitesList .topSitesURL
 {	
-	
+	width: 150px;
+	overflow: hidden;
 }
 
 ul#topSitesList .topSitesVisits

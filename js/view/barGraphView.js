@@ -71,7 +71,7 @@ var BarGraphView = function(container,model,visitsData,viewType)
       .style("text-anchor", "end")
       .text("Visits");
 
-        svg.selectAll(".bar")
+    svg.selectAll(".bar")
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
