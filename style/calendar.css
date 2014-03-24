@@ -145,12 +145,17 @@
 	top:50%;
 	background:transparent;
 	color:#fff;
-	margin-top:-45px;
+	margin-top: -10px;
 }
 
-#daycal .nextButton, #daycal .previousButton, #weekcal .nextButton, #weekcal .previousButton
+#weekcal .nextButton, #weekcal .previousButton
 {
-	margin-top:-45px;
+	margin-top: -25px;
+}
+
+#daycal .nextButton, #daycal .previousButton
+{
+	margin-top: -25px;
 }
 
 .nextButton

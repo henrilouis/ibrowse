@@ -1,22 +1,22 @@
 var MonthCalendarView = function(container,model)
 {
 	// Calendar variables
-	var cal = new CalHeatMap();
-	var monthCalContainer = $("<div id='monthCalContainer'>");
-
+	var cal               	= new CalHeatMap();
+	var monthCalContainer 	= $("<div id='monthCalContainer'>");
+	
 	// Title
-	var title = $('<h2>');
+	var title             	= $('<h2>');
 		title.html('Month / Day View');
 	container.append(title);
 	
 	// Buttons
-	var nextButton = $("<button class='nextButton glyphicon glyphicon-chevron-right'>");
-	var previousButton = $("<button class='previousButton glyphicon glyphicon-chevron-left'>");
+	var nextButton 			= $("<button class='nextButton glyphicon glyphicon-chevron-right'>");
+	var previousButton 		= $("<button class='previousButton glyphicon glyphicon-chevron-left'>");
 	container.append(nextButton,previousButton);
 
 	// Legend
-	var dayLegend = $("<ul id='dayLegend'>");
-	var weekDays = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+	var dayLegend 			= $("<ul id='dayLegend'>");
+	var weekDays 			= ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 	for(i=0; i<weekDays.length; i++)
 	{
 		var dayName = $("<li>");
@@ -24,7 +24,7 @@ var MonthCalendarView = function(container,model)
 		dayLegend.append(dayName);
 	}
 
-	startDate = new Date(Date.now());
+	startDate 				= new Date(Date.now());
 	startDate.setDate(startDate.getDate()-90);
 
 	function createCalendar(data){
@@ -53,7 +53,7 @@ var MonthCalendarView = function(container,model)
 			legendVerticalPosition: "top",
 			legendHorizontalPosition: "left",
 			legendCellSize: 20,
-			legendMargin:[0,0,12,621],
+			legendMargin:[0,0,12,626],
 			onClick: function(date,value,rect)
 			{
 				$('#cal rect').css('stroke','none');
