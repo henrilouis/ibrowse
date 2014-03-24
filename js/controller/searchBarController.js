@@ -10,7 +10,6 @@ var SearchBarController = function(view,model)
 		interval = setTimeout(function(){
 			model.search(view.searchInput.val());
 		},500)
-
 	});
 
 	view.removeInput.click(function(){
@@ -63,4 +62,7 @@ var SearchBarController = function(view,model)
 		$("#history").hide();
 		$("#statistics").show();
 	})
+
+	// focus on searchinput
+	view.searchInput.focus();
 }
