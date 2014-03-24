@@ -33,6 +33,8 @@ var BarGraphView = function(container,model,visitsData,viewType)
   function hourlyView()
   { 
     d3.select("#hourlyBargraph svg").remove();
+
+    d3.select("#hourlyBargraph .ch-tooltip").remove();
    
     var toolTip = d3.select("#hourlyBargraph")
     .append("div")
@@ -129,10 +131,12 @@ var BarGraphView = function(container,model,visitsData,viewType)
   function dailyView()
   {
      d3.select("#dailyBargraph svg").remove();
+
+     d3.select("#dailyBargraph .ch-tooltip").remove();
   
-  var toolTip = d3.select("#dailyBargraph")
-  .append("div")
-  .attr("class", "ch-tooltip");
+    var toolTip = d3.select("#dailyBargraph")
+    .append("div")
+    .attr("class", "ch-tooltip");
 
     data=[];
 
