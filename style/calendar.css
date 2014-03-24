@@ -49,7 +49,7 @@
 	position: absolute;
 	list-style: none;
 	pointer-events: none;
-	margin-left: -46px;
+	margin-left: -48px;
 	/*margin-left: -64px;*/
 }
 
@@ -74,9 +74,9 @@
 
 #daycal #dayCalContainer
 {
-	margin-left: 6px;
-	margin-top: -32px;
 	position: relative;
+	margin-top: -32px;
+	margin-left: 4px;
 }
 
 #weekcal
@@ -133,6 +133,7 @@
 #monthCalContainer
 {
 	margin-top: -32px;
+	overflow: hidden;
 }
 
 .nextButton, .previousButton

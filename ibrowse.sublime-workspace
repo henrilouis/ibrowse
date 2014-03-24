@@ -71,15 +71,7 @@
 			"file": "js/view/barGraphView.js",
 			"settings":
 			{
-				"buffer_size": 6711,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/view/piechartView.js",
-			"settings":
-			{
-				"buffer_size": 8680,
+				"buffer_size": 6829,
 				"line_ending": "Windows"
 			}
 		},
@@ -96,6 +88,14 @@
 			"settings":
 			{
 				"buffer_size": 63,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "style/statistics.css",
+			"settings":
+			{
+				"buffer_size": 1246,
 				"line_ending": "Windows"
 			}
 		}
@@ -157,6 +157,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"tooltip",
+			"    var toolTip = d3.select(\"#hourlyBargraph\")\n    .append(\"div\")\n    .attr(\"class\", \"ch-tooltip\");",
+			"tooltip",
 			"create_bargraph",
 			"click",
 			"tooltip",
@@ -181,7 +184,7 @@
 	"groups":
 	[
 		{
-			"selected": 10,
+			"selected": 7,
 			"sheets":
 			[
 				{
@@ -414,15 +417,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6711,
+						"buffer_size": 6829,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2172,
-								2172
+								3707,
+								3707
 							]
 						],
 						"settings":
@@ -435,46 +438,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1134.0,
+						"translation.y": 1026.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 8,
-					"file": "js/view/piechartView.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 8680,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5619,
-								5634
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 5516.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
 					"file": "style/general.css",
 					"semi_transient": false,
 					"settings":
@@ -502,11 +473,11 @@
 						"translation.y": 687.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 9,
 					"file": ".gitignore",
 					"semi_transient": false,
 					"settings":
@@ -533,7 +504,39 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "style/statistics.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1246,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								637,
+								637
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 630.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

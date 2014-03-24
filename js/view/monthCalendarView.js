@@ -38,10 +38,10 @@ var MonthCalendarView = function(container,model)
 			domain: "month",
 			subDomain: "day",
 			itemName: "site",
-			range: 4,
+			range: 5,
 			cellSize: cSize,
 			cellPadding:2,
-			domainGutter: 10,
+			domainMargin:[0,6,0,0],
 			tooltip: true,
 			highlight: "now",
 			label:{
