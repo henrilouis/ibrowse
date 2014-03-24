@@ -26,6 +26,7 @@
 {
 	position: absolute;
 	list-style: none;
+	z-index: 1;
 }
 
 #cal ul#dayLegend li
@@ -74,6 +75,7 @@
 #daycal #dayCalContainer
 {
 	margin-left: 6px;
+	margin-top: -32px;
 	position: relative;
 }
 
@@ -108,6 +110,7 @@
 #weekcal #weekCalContainer
 {
 	margin-left: 35px;
+	margin-top: -32px;
 }
 
 #weekcal ul#dayLegend_x 
@@ -125,6 +128,11 @@
 	float:left;
 	width: 29px;
 	list-style: none;
+}
+
+#monthCalContainer
+{
+	margin-top: -32px;
 }
 
 .nextButton, .previousButton

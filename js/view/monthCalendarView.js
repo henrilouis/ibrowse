@@ -2,6 +2,7 @@ var MonthCalendarView = function(container,model)
 {
 	// Calendar variables
 	var cal = new CalHeatMap();
+	var monthCalContainer = $("<div id='monthCalContainer'>");
 
 	// Title
 	var title = $('<h2>');
@@ -33,23 +34,26 @@ var MonthCalendarView = function(container,model)
 
 		cal.init({
 			data: data,
-			itemSelector: "#cal",
+			itemSelector: "#monthCalContainer",
 			domain: "month",
 			subDomain: "day",
+			itemName: "site",
+			range: 4,
 			cellSize: cSize,
 			cellPadding:2,
-			tooltip: true,
-			displayLegend: false,
-			itemName: "site",
-			highlight: "now",
 			domainGutter: 10,
-			legendCellSize: 10,
-			range: 4,
+			tooltip: true,
+			highlight: "now",
 			label:{
 				offset:{x:0,y:-15}
 			},
 			start: startDate,
+			displayLegend: true,
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
+			legendVerticalPosition: "top",
+			legendHorizontalPosition: "left",
+			legendCellSize: 20,
+			legendMargin:[0,0,12,621],
 			onClick: function(date,value,rect)
 			{
 				$('#cal rect').css('stroke','none');
@@ -88,6 +92,7 @@ var MonthCalendarView = function(container,model)
 		if(args == 'dataReady')
 		{
 			container.append(dayLegend);
+			container.append(monthCalContainer);
 			createCalendar(model.toJSON(model.days));
 		}
 
