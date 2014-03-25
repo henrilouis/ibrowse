@@ -43,6 +43,24 @@
 	background: #fff;
 }
 
+#colorLegendValuesContainer
+{
+	width: 110px;
+	position: absolute;
+	font-size: 11px;
+	margin-top: -47px;
+	margin-left: 623px;
+	text-align: center;
+
+}
+
+#colorLegendValue
+{
+	float:left;
+	width:20px;
+	margin-left: 2px;
+}
+
 
 #daycal ul#hourLegend
 {
