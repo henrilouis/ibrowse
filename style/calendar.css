@@ -45,11 +45,11 @@
 
 #colorLegendValuesContainer
 {
-	width: 110px;
+	width: 120px;
 	position: absolute;
 	font-size: 11px;
 	margin-top: -47px;
-	margin-left: 623px;
+	margin-left: 626px;
 	text-align: center;
 
 }
@@ -58,7 +58,7 @@
 {
 	float:left;
 	width:20px;
-	margin-left: 2px;
+	margin-right: 4px;
 }
 
 

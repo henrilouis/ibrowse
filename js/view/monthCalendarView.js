@@ -27,6 +27,10 @@ var MonthCalendarView = function(container,model)
 	startDate 				= new Date(Date.now());
 	startDate.setDate(startDate.getDate()-90);
 
+	// Color Legend Values
+	var colorLegendValues = new Array;
+	var colorLegendValuesContainer = $("<div id='colorLegendValuesContainer'>");
+
 	function createCalendar(data){
 
 		var max = model.getDailyMax();
@@ -76,7 +80,25 @@ var MonthCalendarView = function(container,model)
 				}
 			}
 		});
+		updateLegend(max)
 
+	}
+
+	function updateLegend(max)
+	{
+		colorLegendValues = [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)]
+		colorLegendValuesContainer.empty();
+	  	var colorLegendValue = $("<div id='colorLegendValue'>");
+		colorLegendValue.html("<"+colorLegendValues[0]);
+		colorLegendValuesContainer.append(colorLegendValue);
+
+		var colorLegendValue = $("<div id='colorLegendValue' style='width:60px'>");
+		colorLegendValue.html(colorLegendValues[1]+'-'+ colorLegendValues[2]);
+		colorLegendValuesContainer.append(colorLegendValue);
+
+	  	var colorLegendValue = $("<div id='colorLegendValue'>");
+		colorLegendValue.html(colorLegendValues[3]+"<");
+		colorLegendValuesContainer.append(colorLegendValue);
 	}
 	
 	// Append all items to the container
@@ -92,6 +114,7 @@ var MonthCalendarView = function(container,model)
 		if(args == 'dataReady')
 		{
 			container.append(dayLegend);
+			container.append(colorLegendValuesContainer);
 			container.append(monthCalContainer);
 			createCalendar(model.toJSON(model.days));
 		}
@@ -105,6 +128,8 @@ var MonthCalendarView = function(container,model)
 			// Set the legend to the new max value
 			var max = model.getDaysSearchMax();
 			cal.setLegend([Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)]);
+
+			updateLegend(max);
 		}
 	}
 }
