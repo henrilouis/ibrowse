@@ -31,8 +31,8 @@ var StatisticsView = function(container,model)
 	
 	var dailysortButtonContainer=	$("<div class='buttonContainer'>");
   	var hourlysortButtonContainer=	$("<div class='buttonContainer'>");
-  	var dailySortButton = 		$("<input type='checkbox' id='dailySortButton'>");
- 	var hourlySortButton = 		$("<input type='checkbox' id='hourlySortButton'>");
+  	var dailySortButton = 		$("<input type='checkbox' id='dailySortButton' checked='true'>");
+ 	var hourlySortButton = 		$("<input type='checkbox' id='hourlySortButton' checked='true'>");
  	var sortButtonText = 		$("<b>");
 	
 	visitsTitle.html("Average visits per day/hour");
@@ -133,9 +133,6 @@ var StatisticsView = function(container,model)
 	  	// Create bar chart
 		var barGraphView = new BarGraphView(container,model,totalVisitedPerDay,1);
 		var barGraphView = new BarGraphView(container,model,totalVisitedPerHour,2);
-		//var barGraphView = new BarGraphView(container,model,topHourlyDataPerSite[0],2);
-
-	  	
 	}
 
 	function getFirstMonday()
