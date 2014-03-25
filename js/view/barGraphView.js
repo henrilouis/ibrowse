@@ -101,8 +101,12 @@ var BarGraphView = function(container,model,visitsData,viewType)
     d3.select("#hourlySortButton").on("change", change);
 
     var sortTimeout = setTimeout(function(){
-      d3.select("input").property("checked", false).each(change);
-    }, 0);
+      if(hourlySortButton.checked==true)
+      {
+      d3.select("input").property("checked", true).each(change);
+      }
+      console.log(hourlySortButton.checked);
+    }, 250);
 
       function change()
       { 
@@ -199,8 +203,12 @@ var BarGraphView = function(container,model,visitsData,viewType)
     d3.select("#dailySortButton").on("change", change);
 
     var sortTimeout = setTimeout(function(){
-      d3.select("input").property("checked", false).each(change);
-    }, 0);
+      if(dailySortButton.checked==true)
+      {
+      d3.select("input").property("checked", true).each(change);
+      }
+      console.log(dailySortButton.checked);
+    }, 250);
 
       function change()
       { 

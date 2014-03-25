@@ -50,6 +50,8 @@ var StatisticsView = function(container,model)
 	  		Append items to container  
 	*****************************************/
 	container.append(statisticsTitle,topSitesBox,visitsBox);
+	  $("#dailySortButton").prop("checked", true);
+  	$("#hourlySortButton").prop("checked", true);
 
 	function updateData()
 	{	
@@ -133,9 +135,6 @@ var StatisticsView = function(container,model)
 	  	// Create bar chart
 		var barGraphView = new BarGraphView(container,model,totalVisitedPerDay,1);
 		var barGraphView = new BarGraphView(container,model,totalVisitedPerHour,2);
-		//var barGraphView = new BarGraphView(container,model,topHourlyDataPerSite[0],2);
-
-	  	
 	}
 
 	function getFirstMonday()
