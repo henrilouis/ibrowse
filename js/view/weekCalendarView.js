@@ -61,12 +61,12 @@ var WeekCalendarView = function(container,model)
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
 			onClick: function(date,value,rect)
 			{
-				$('#weekcal rect').css('stroke','none');
-				$('#weekcal rect').attr('height',cSize).attr('width',cSize);
+				$('#weekcal svg.graph rect').css('stroke','none');
+				$('#weekcal svg.graph rect').attr('height',cSize).attr('width',cSize);
 
-				// Also resetting the selection on the other calendar
-				$('#cal rect').attr('height',30).attr('width',30);
-				$('#daycal rect').attr('height',10).attr('width',10);
+				// Also resetting the selection on the other calendars
+				$('#cal svg.graph rect').attr('height',30).attr('width',30);
+				$('#daycal svg.graph rect').attr('height',10).attr('width',10);
 			
 				$(rect).css('stroke','rgba(0,255,0,1)');
 				$(rect).attr('height',cSize-1).attr('width',cSize-1);
