@@ -31,8 +31,8 @@ var StatisticsView = function(container,model)
 	
 	var dailysortButtonContainer=	$("<div class='buttonContainer'>");
   	var hourlysortButtonContainer=	$("<div class='buttonContainer'>");
-  	var dailySortButton = 		$("<input type='checkbox' id='dailySortButton' checked='true'>");
- 	var hourlySortButton = 		$("<input type='checkbox' id='hourlySortButton' checked='true'>");
+  	var dailySortButton = 		$("<input type='checkbox' id='dailySortButton'>");
+ 	var hourlySortButton = 		$("<input type='checkbox' id='hourlySortButton'>");
  	var sortButtonText = 		$("<b>");
 	
 	visitsTitle.html("Average visits per day/hour");
