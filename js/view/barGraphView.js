@@ -105,8 +105,7 @@ var BarGraphView = function(container,model,visitsData,viewType)
       {
       d3.select("input").property("checked", true).each(change);
       }
-      console.log(hourlySortButton.checked);
-    }, 150);
+    }, 250);
 
       function change()
       { 
@@ -207,7 +206,6 @@ var BarGraphView = function(container,model,visitsData,viewType)
       {
       d3.select("input").property("checked", true).each(change);
       }
-      console.log(dailySortButton.checked);
     }, 150);
 
       function change()
