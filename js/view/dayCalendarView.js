@@ -57,12 +57,12 @@ var DayCalendarView = function(container,model)
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
 			onClick: function(date,value,rect)
 			{
-				$('#daycal rect').css('stroke','none');
-				$('#daycal rect').attr('height',cSize).attr('width',cSize);
+				$('#daycal svg.graph rect').css('stroke','none');
+				$('#daycal svg.graph rect').attr('height',cSize).attr('width',cSize);
 				
 				// Also resetting the selection on the other calendar
-				$('#cal rect').attr('height',30).attr('width',30);
-				$('#weekcal rect').attr('height',27).attr('width',27);
+				$('#cal svg.graph rect').attr('height',30).attr('width',30);
+				$('#weekcal svg.graph rect').attr('height',27).attr('width',27);
 
 				$(rect).css('stroke','rgba(0,255,0,1)');
 				$(rect).attr('height',cSize-1).attr('width',cSize-1);

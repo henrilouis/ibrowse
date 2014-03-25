@@ -33,9 +33,9 @@ var BarGraphView = function(container,model,visitsData,viewType)
   function hourlyView()
   { 
     d3.select("#hourlyBargraph svg").remove();
-
     d3.select("#hourlyBargraph .ch-tooltip").remove();
-   
+    d3.select("input#dailySortButton").property("checked", false);
+
     var toolTip = d3.select("#hourlyBargraph")
     .append("div")
     .attr("class", "ch-tooltip");
@@ -101,7 +101,7 @@ var BarGraphView = function(container,model,visitsData,viewType)
     d3.select("#hourlySortButton").on("change", change);
 
     var sortTimeout = setTimeout(function(){
-      d3.select("input").property("checked", false).each(change);
+      d3.select("input#hourlySortButton").property("checked", false).each(change);
     }, 0);
 
       function change()
@@ -130,10 +130,9 @@ var BarGraphView = function(container,model,visitsData,viewType)
 
   function dailyView()
   {
-     d3.select("#dailyBargraph svg").remove();
-
-     d3.select("#dailyBargraph .ch-tooltip").remove();
-  
+    d3.select("#dailyBargraph svg").remove();
+    d3.select("#dailyBargraph .ch-tooltip").remove();
+    
     var toolTip = d3.select("#dailyBargraph")
     .append("div")
     .attr("class", "ch-tooltip");
@@ -199,12 +198,11 @@ var BarGraphView = function(container,model,visitsData,viewType)
     d3.select("#dailySortButton").on("change", change);
 
     var sortTimeout = setTimeout(function(){
-      d3.select("input").property("checked", false).each(change);
+      d3.select("input#dailySortButton").property("checked", false).each(change);
     }, 0);
 
       function change()
       { 
-        
           clearTimeout(sortTimeout);
           // Copy-on-write since tweens are evaluated after a delay.
           var x0 = x.domain(data.sort(this.checked
@@ -224,7 +222,6 @@ var BarGraphView = function(container,model,visitsData,viewType)
               .call(xAxis)
             .selectAll("g")
               .delay(delay);
-       
       }
    
   }

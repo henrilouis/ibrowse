@@ -133,7 +133,13 @@
 #monthCalContainer
 {
 	margin-top: -32px;
+	
+}
+
+#monthCalContainer .cal-heatmap-container
+{
 	overflow: hidden;
+	width:735px;
 }
 
 .nextButton, .previousButton
