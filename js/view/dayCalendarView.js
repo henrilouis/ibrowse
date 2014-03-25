@@ -25,6 +25,10 @@ var DayCalendarView = function(container,model)
 		hourLegend.append(timebox);
 	}
 
+	// Color Legend Values
+	var colorLegendValues = new Array;
+	var colorLegendValuesContainer = $("<div id='colorLegendValuesContainer'>");
+
 	// stDate is the date the calender shows at start
 	stDate = new Date(Date.now());
 	stDate.setMonth(stDate.getMonth()-1);
@@ -46,13 +50,13 @@ var DayCalendarView = function(container,model)
 			itemName: "site",
 			domainGutter: 5,
 			rowLimit:24,
-			legendCellSize: 10,
 			range: 2,
 			start: stDate,
 			displayLegend: true,
 			legendVerticalPosition: "top",
 			legendHorizontalPosition: "left",
 			legendCellSize: 20,
+			legendCellPadding: 0,
 			legendMargin:[0,0,12,622],
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
 			onClick: function(date,value,rect)
@@ -78,7 +82,20 @@ var DayCalendarView = function(container,model)
 				}
 			}
 		});
+		updateLegend(max)
+	}
 
+	function updateLegend(max)
+	{
+		colorLegendValues = [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)]
+		colorLegendValuesContainer.empty();
+	  	var colorLegendValue = $("<div id='colorLegendValueMin'>");
+		colorLegendValue.html("<"+colorLegendValues[0]);
+		colorLegendValuesContainer.append(colorLegendValue);
+
+	  	var colorLegendValue = $("<div id='colorLegendValueMax'>");
+		colorLegendValue.html(colorLegendValues[3]+"<");
+		colorLegendValuesContainer.append(colorLegendValue);
 	}
 	
 	// Append all items to the container
@@ -94,6 +111,7 @@ var DayCalendarView = function(container,model)
 		if(args == 'dataReady')
 		{	
 			container.append(hourLegend);
+			container.append(colorLegendValuesContainer);
 			container.append(dayCalContainer);
 			createCalendar(model.toJSON(model.hours));
 		}
@@ -108,6 +126,7 @@ var DayCalendarView = function(container,model)
 			// Set the legend to the new max value
 			var max = model.getHoursSearchMax();
 			cal.setLegend([Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)]);
+			updateLegend(max)
 		}
 	}
 }

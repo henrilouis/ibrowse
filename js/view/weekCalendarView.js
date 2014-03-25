@@ -32,6 +32,10 @@ var WeekCalendarView = function(container,model)
 		dayLegend_x.append(hourName);
 	}
 
+	// Color Legend Values
+	var colorLegendValues = new Array;
+	var colorLegendValuesContainer = $("<div id='colorLegendValuesContainer'>");
+
 	strDate = new Date(Date.now());
 
 	function createCalendar(data){
@@ -57,6 +61,7 @@ var WeekCalendarView = function(container,model)
 			legendVerticalPosition: "top",
 			legendHorizontalPosition: "left",
 			legendCellSize: 20,
+			legendCellPadding: 0,
 			legendMargin:[0,0,12,591],
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
 			onClick: function(date,value,rect)
@@ -82,7 +87,20 @@ var WeekCalendarView = function(container,model)
 				}
 			}
 		});
+		updateLegend(max)
+	}
 
+	function updateLegend(max)
+	{
+		colorLegendValues = [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)]
+		colorLegendValuesContainer.empty();
+	  	var colorLegendValue = $("<div id='colorLegendValueMin'>");
+		colorLegendValue.html("<"+colorLegendValues[0]);
+		colorLegendValuesContainer.append(colorLegendValue);
+
+	  	var colorLegendValue = $("<div id='colorLegendValueMax'>");
+		colorLegendValue.html(colorLegendValues[3]+"<");
+		colorLegendValuesContainer.append(colorLegendValue);
 	}
 
 	// Append all items to the container
@@ -98,6 +116,7 @@ var WeekCalendarView = function(container,model)
 		if(args == 'dataReady')
 		{	
 			container.append(dayLegend_y,dayLegend_x);
+			container.append(colorLegendValuesContainer);
 			container.append(weekCalContainer);
 			createCalendar(model.toJSON(model.hours));
 		}
@@ -112,6 +131,7 @@ var WeekCalendarView = function(container,model)
 			// Set the legend to the new max value
 			var max = model.getHoursSearchMax();
 			cal.setLegend([Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)]);
+			updateLegend(max)
 		}
 	}
 }

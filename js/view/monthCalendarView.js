@@ -57,6 +57,7 @@ var MonthCalendarView = function(container,model)
 			legendVerticalPosition: "top",
 			legendHorizontalPosition: "left",
 			legendCellSize: 20,
+			legendCellPadding: 0,
 			legendMargin:[0,0,12,626],
 			onClick: function(date,value,rect)
 			{
@@ -88,15 +89,11 @@ var MonthCalendarView = function(container,model)
 	{
 		colorLegendValues = [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)]
 		colorLegendValuesContainer.empty();
-	  	var colorLegendValue = $("<div id='colorLegendValue'>");
+	  	var colorLegendValue = $("<div id='colorLegendValueMin'>");
 		colorLegendValue.html("<"+colorLegendValues[0]);
 		colorLegendValuesContainer.append(colorLegendValue);
 
-		var colorLegendValue = $("<div id='colorLegendValue' style='width:60px'>");
-		colorLegendValue.html(colorLegendValues[1]+'-'+ colorLegendValues[2]);
-		colorLegendValuesContainer.append(colorLegendValue);
-
-	  	var colorLegendValue = $("<div id='colorLegendValue'>");
+	  	var colorLegendValue = $("<div id='colorLegendValueMax'>");
 		colorLegendValue.html(colorLegendValues[3]+"<");
 		colorLegendValuesContainer.append(colorLegendValue);
 	}

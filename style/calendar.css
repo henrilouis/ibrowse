@@ -45,20 +45,30 @@
 
 #colorLegendValuesContainer
 {
-	width: 120px;
+	width: 100px;
 	position: absolute;
 	font-size: 11px;
-	margin-top: -47px;
+	color: #FFF;
+	margin-top: -29px;
 	margin-left: 626px;
-	text-align: center;
+	z-index: 2;
 
 }
 
-#colorLegendValue
+#colorLegendValueMax
+{
+	float:right;
+	width:40px;
+	margin-right: 2px;
+	text-align: right;
+}
+
+#colorLegendValueMin
 {
 	float:left;
-	width:20px;
-	margin-right: 4px;
+	width:40;
+	margin-left: 2px;
+	text-align: left;
 }
 
 
