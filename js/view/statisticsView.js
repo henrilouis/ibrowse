@@ -35,7 +35,7 @@ var StatisticsView = function(container,model)
  	var hourlySortButton = 		$("<input type='checkbox' id='hourlySortButton'>");
  	var sortButtonText = 		$("<b>");
 	
-	visitsTitle.html("Average visits per day/hour");
+	visitsTitle.html("Average visits per day");
   	sortButtonText=" Sort by visits";
   	
 	dailysortButtonContainer.append(dailySortButton,sortButtonText);

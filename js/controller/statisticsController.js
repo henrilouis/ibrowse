@@ -7,6 +7,7 @@ var StatisticsController = function(view,model)
 		$("#hourlyBargraph").hide();
 		$("#dailyBargraph").show();
 		view.setTitle = "days";
+		document.getElementById('visitsTitle').innerHTML ='Average visits per day';
 	})
 
 	view.hoursButton.click(function(){
@@ -15,5 +16,6 @@ var StatisticsController = function(view,model)
 		$("#hourlyBargraph").show();
 		$("#dailyBargraph").hide();
 		view.setTitle = "hours";
+		document.getElementById('visitsTitle').innerHTML ='Average visits per hour';
 	})
 }
