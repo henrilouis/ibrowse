@@ -50,9 +50,9 @@
 	font-size: 11px;
 	color: #FFF;
 	margin-top: -29px;
-	margin-left: 626px;
+	margin-left: 635px;
 	z-index: 2;
-
+	pointer-events:none;
 }
 
 #colorLegendValueMax
