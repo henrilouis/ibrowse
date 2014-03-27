@@ -37,4 +37,13 @@ var SearchBarView = function(container,model)
 	this.weekButton  = weekButton;
 	this.dayButton 	 = dayButton;
 	this.statsButton = statsButton;
+
+	model.addObserver(this);
+	
+	this.update = function(args){
+		if(args == 'dataReady'){	
+			// focus on searchinput
+			searchInput.focus();
+		}
+	}
 }

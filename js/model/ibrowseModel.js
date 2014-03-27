@@ -14,6 +14,7 @@ var IbrowseModel = function() {
 
 	// milliseconds in one hour
 	var hourMs 	= 3600000;
+	var dayMs   = 86400000;
 
 	/********************************************************************************
 		Important: days[i]/hours[i] etc finally contains three arrays per day.
@@ -33,18 +34,48 @@ var IbrowseModel = function() {
 	   Getting the actual history
 	   from Chrome
 	*******************************/
+	function getHistory()
+	{
+		var data = [];
+		chrome.history.search({
+			'text':'',
+			'startTime':0,
+			'maxResults': 9999999
+		},function(historyItems){
+			var itemsCount = 0;
 
-	function getHistory(){
+			historyItems.forEach(function(historyItem){
+				chrome.history.getVisits({url:historyItem.url},function(visitItems){
+					visitItems.forEach(function(visitItem){
+						var item = new Array();
+						item.push(visitItem.visitId,historyItem.url,historyItem.title,visitItem.visitTime);
+						data.push(item);
+					});
+					itemsCount++;
+					if(itemsCount == historyItems.length){
+						historyPerTimeUnit(data,hourMs,hours);
+						historyPerTimeUnit(data,dayMs,days);
 
-		var tempData = [];
+						notifyObservers('dataReady');
+						setSelectedItem(days[days.length-1]);
+						
+					}
+				});
+			});
+		});
+	}
 
-		// 90 days because sadly Chrome only saves history for 90 days
-		var startTime = new Date();
-			startTime.setDate(startTime.getDate()-90);
-			startTime.setHours(0);
-			startTime.setMinutes(0);
-			startTime.setSeconds(0);
-			startTime.setMilliseconds(0);
+	function historyPerTimeUnit(history,timeUnit,target)
+	{
+		target.length = 0;
+
+		var d = new Date();
+			d.setDate(d.getDate()-90);
+			d.setHours(0);
+			d.setMinutes(0);
+			d.setSeconds(0);
+			d.setMilliseconds(0);
+
 		var endTime = new Date();
 			endTime.setDate(endTime.getDate()+1);
 			endTime.setHours(0);
@@ -52,53 +83,17 @@ var IbrowseModel = function() {
 			endTime.setSeconds(0);
 			endTime.setMilliseconds(0);
 
-		// Counter for asynch chrome function
-		var countTime = new Date();
-			countTime.setTime(startTime.getTime());
-
-		var d = new Date();
-			d.setTime(startTime.getTime());
-
-		for(d; d<= endTime; d.setTime(d.getTime()+hourMs)){
-			var interval = new Date();
-				interval.setTime(d.getTime()+hourMs);
-
-			chrome.history.search({
-			'text':'',
-			'startTime': d.getTime(),
-			'endTime':  interval.getTime(),
-			'maxResults': 9999999
-			},
-			function(historyItems){
-				tempData.push(historyItems);
-				if (countTime >= endTime){
-					arrayFromHistory(tempData, hours, hourMs, startTime);
-
-					// Converting the hours to the days var
-					hoursToDays(hours,days);
-					notifyObservers('dataReady');
-
-					// Setting selectedItem to today, automatically filling
-					// the searches
-					setSelectedItem(days[days.length-1]);
+		for(d; d<endTime; d.setTime(d.getTime()+timeUnit)){
+			var unit = new Array();
+			unit.push(new Date(d.getTime()));
+			unit[1] = [];
+			for(i=0; i < history.length; i++){
+				if( (history[i][3] >= d.getTime()) && (history[i][3] < (d.getTime()+timeUnit)) ){
+					unit[1].push(history[i]);
 				}
-				else{
-					countTime.setTime(countTime.getTime()+hourMs);
-				}
-			});
-		}
-	}
-
-	function arrayFromHistory(historyData, targetArray, timeUnit, startTime){
-
-		var d = new Date(startTime.getTime());
-
-		for(i = 0; i < historyData.length; i++){
-
-			var count = createSiteCount(historyData[i]);
-			targetArray.push([new Date(d.getTime()),historyData[i],count]);
-			d.setTime(d.getTime()+timeUnit);
-			
+			}
+			unit.push(createSiteCount(unit[1]));
+			target.push(unit);
 		}
 	}
 
@@ -111,7 +106,7 @@ var IbrowseModel = function() {
 			var item = [];
 			item.push(inside[i][0]);
 			var result = inside[i][1].filter(function(d){
-				if(d['url'].indexOf(string.toLowerCase())>=0 || d['title'].indexOf(string.toLowerCase())>=0){
+				if(d[1].indexOf(string.toLowerCase())>=0 || d[2].indexOf(string.toLowerCase())>=0){
 					return d;
 				}
 			});
@@ -147,38 +142,6 @@ var IbrowseModel = function() {
 	}
 
 	/*******************************
-		Convert the array of
-		hours to days.
-	********************************/
-	function hoursToDays(h,d){
-		d.length = 0;
-		var day = new Array();
-		var combinedHours = new Array();
-		
-		for(i=0; i<h.length; i++){
-			if(i==0){
-				day.push(h[i][0]);
-			}
-
-			if(h[i][1].length > 0){
-				for(j=0; j<h[i][1].length; j++)
-				combinedHours.push(h[i][1][j]);
-			}
-
-			if((i+1)%24==0){
-				day.push(combinedHours);
-				day.push(createSiteCount(combinedHours));
-				d.push(day);
-
-				var day = new Array();
-				var combinedHours = new Array();
-
-				day.push(h[i+1][0]);
-			}
-		}
-	}
-
-	/*******************************
 		Create top for single
 		time unit.
 	********************************/
@@ -187,7 +150,7 @@ var IbrowseModel = function() {
 
 		// Getting the starting of the url
 		for(j = 0; j<data.length; j++){
-			var url = $('<a>').prop('href',data[j].url).prop('hostname');
+			var url = $('<a>').prop('href',data[j][1]).prop('hostname');
 			urlArray.push(url);
 		}
 		// Creating associative array from url count
@@ -233,7 +196,7 @@ var IbrowseModel = function() {
 			{
 				for(j=0;j<array[i][1].length;j++)
 				{
-					if(array[i][1][j].url === url)
+					if(array[i][1][j][1] === url)
 					{
 						array[i][1].splice(j,1);
 					}
@@ -328,7 +291,6 @@ var IbrowseModel = function() {
 	this.getHoursSearchMax = getHoursSearchMax;
 
 	this.toJSON = toJSON;
-	this.hoursToDays = hoursToDays;
 
 	this.setSelectedItem = setSelectedItem;
 	this.getSelectedItemSearch = getSelectedItemSearch;

@@ -21,7 +21,6 @@ var SearchBarController = function(view,model)
 
 	function hideAll(){
 		$("#cal, #weekcal, #daycal, #statistics").hide();
-
 		$(view.monthButton).removeClass('active');
 		$(view.weekButton).removeClass('active');
 		$(view.dayButton).removeClass('active');
@@ -62,7 +61,4 @@ var SearchBarController = function(view,model)
 		$("#history").hide();
 		$("#statistics").show();
 	})
-
-	// focus on searchinput
-	view.searchInput.focus();
 }

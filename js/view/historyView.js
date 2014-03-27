@@ -16,12 +16,13 @@ var HistoryView = function(container,model)
 	{
 		historyList.empty();
 		var item = model.getSelectedItemSearch();
-		// Sort items by id
+		
 		if(item!= null)
 		{
+			// Sort items by Time
 			item[1].sort(function(a,b)
 			{
-				return b.id-a.id;
+				return b[3]-a[3];
 			});
 
 			// Creating date from timestamp

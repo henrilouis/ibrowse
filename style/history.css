@@ -65,11 +65,21 @@
 	text-align: center;
 }
 
+#history ul li div.timeBox
+{
+	float:left;
+	padding: 6px 0px 6px 6px;
+	width: 42px;
+	text-align: right;
+	color:#aaa;
+}
+
 #history ul li div.faviconBox
 {
 	float: left;
 	padding: 5px;
 	padding-right: 17px;
+	padding-left: 17px;
 }
 
 #history ul li span.removeUrl
