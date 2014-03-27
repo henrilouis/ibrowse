@@ -53,7 +53,6 @@ var StatisticsView = function(container,model)
 
 	function updateData()
 	{	
-		var firstMonday = getFirstMonday();
 		var totalVisited = 0;
 		var totalVisitedPerSite = model.getSiteRanking();
 
@@ -88,17 +87,12 @@ var StatisticsView = function(container,model)
 
 	  	// visited per day
 	  	var totalVisitedPerDay = model.getDailyAverages();
-	  	
 	 	// to visited per day
-	  	var topDailyDataPerSite = getTopDailyData(firstMonday,topData);
-
+	  	var topDailyDataPerSite = getTopDailyData(topData);
 	  	// visited per hour
 	  	var totalVisitedPerHour = model.getHourlyAverages();
-
 	  	// top visited per hour
 	 	var topHourlyDataPerSite = getTopHourlyData(topData);
-
-
 		// Create pie chart
 	  	var piechartView = new PiechartView(container,model,topData,topHourlyDataPerSite,topDailyDataPerSite,totalVisitedPerDay,totalVisitedPerHour);
 
@@ -106,52 +100,35 @@ var StatisticsView = function(container,model)
 		var barGraphView = new BarGraphView(container,model,totalVisitedPerDay,1);
 		var barGraphView = new BarGraphView(container,model,totalVisitedPerHour,2);
 	}
-
-	function getFirstMonday()
-	{
-	 	//check whether day 0 is a monday and set loop to start at first monday
-	 	for(i=0; i<7;i++){	
-	 		var firstMonday = 0;
-	 		var retrievedString = model.days[i][0].toString();
-	 		var retrievedDay = (retrievedString.indexOf('Mon') > -1); //true
-	 		if(retrievedDay == true){
-	 			firstMonday = i;
-	 			return firstMonday;
-	 		}
-	 	}
-	}
-
-	function getTopDailyData(firstMonday,topData)
+	
+	function getTopDailyData(topData)
 	{	
-		var topDailyDataPerSite = [];
+		var data = [];
+		var count = [];
 	  	for(i=0;i<10;i++)
 	  	{	
-	  		topDailyDataPerSite.push([0,0,0,0,0,0,0]);
-	  		dayNumber = firstMonday;
-	  		//alert(dayNumber);
-		   	//for the last 12 weeks sum all visits of each weekday
-		 	for (k=0; k<12; k++)
-		 	{	
-		 		for(l=0; l<7; l++)
-		 		{	
-		 			for(m=0;m<model.days[l+dayNumber][2].length;m++)
+	  		data.push([0,0,0,0,0,0,0]);
+	  		count = [0,0,0,0,0,0,0];
+
+		   	for(j = 0; j<model.days.length; j++)
+		   	{
+		   		for(k=0;k<model.days[j][2].length;k++)
+	 			{	
+		 			if (model.days[j][2][k][0] == topData[i][0])
 		 			{	
-			 			if (model.days[l+dayNumber][2][m][0] == topData[i][0])
-			 			{	
-			 				topDailyDataPerSite[i][l] += model.days[l+dayNumber][2][m][1];
-			 			}
-			 		}
-				}
-				dayNumber +=7;
-		 	}
-		 	
+		 				data[i][model.days[j][0].getDay()] += model.days[j][2][k][1];
+		 			}
+		 		}
+		 		count[model.days[j][0].getDay()] ++;
+		   	}
 		 	//make averages
-		 	for (m=0; m<topDailyDataPerSite[i].length;m++){
-		 		topDailyDataPerSite[i][m] = (topDailyDataPerSite[i][m]/12).toFixed(0);
+		 	for (j=0; j<data[i].length;j++){
+		 		data[i][j] = (data[i][j]/count[j]).toFixed(0);
 		 	}
-		 	
+		 	// Javascript counts sunday as first weekday so splice it baby
+	 		data[i].push(data[i].splice(0,1)[0]);
 	  	}
-	  	return topDailyDataPerSite;
+	  	return data;
 	}
 
 	function getTopHourlyData(topData)
@@ -161,7 +138,7 @@ var StatisticsView = function(container,model)
 	 	for(i=0;i<10;i++)
 	  	{	
 	  		topHourlyDataPerSite.push([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
-	  		var hourNumber2 =0;
+	  		var hourNumber2 = 0;
 		
 			for (j=0; j<90; j++)
 			{
