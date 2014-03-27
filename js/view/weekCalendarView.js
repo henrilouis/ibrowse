@@ -61,7 +61,7 @@ var WeekCalendarView = function(container,model)
 			legendVerticalPosition: "top",
 			legendHorizontalPosition: "left",
 			legendCellSize: 27,
-			legendMargin:[-10,0,12,551],
+			legendMargin:[-7,0,12,551],
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
 			onClick: function(date,value,rect)
 			{
