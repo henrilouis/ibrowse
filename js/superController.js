@@ -2,6 +2,9 @@ $(function()
 {
 	var model = new IbrowseModel();
 
+	var loadingView = new LoadingView($("#loading"),model);
+	var loadingController = new LoadingController(loadingView,model);
+
 	var calendarView = new CalendarView($("#calendar"),model);
 	var calendarController = new CalendarController(calendarView,model);
 	
