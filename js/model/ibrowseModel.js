@@ -297,8 +297,9 @@ var IbrowseModel = function() {
 
 	function createHourlyTop(){
 		var topData 				= getTop();
-	 	var topHourlyDataPerSite 	=[];
-	 
+	 	var topHourlyDataPerSite 	= [];
+	 	var averages 				= dailyAverages; 
+
 	 	for(i=0;i<topData.length;i++){	
 	  		topHourlyDataPerSite.push([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
 	  		var hourNumber2 = 0;
@@ -326,6 +327,7 @@ var IbrowseModel = function() {
 		var topData = getTop();
 		var data 	= [];
 		var count 	= [];
+
 	  	for(i=0; i<topData.length ;i++){
 	  		data.push([0,0,0,0,0,0,0]);
 	  		count = [0,0,0,0,0,0,0];
@@ -345,7 +347,7 @@ var IbrowseModel = function() {
 		 	// Javascript counts sunday as first weekday so splice it baby
 	 		data[i].push(data[i].splice(0,1)[0]);
 	  	}
-	  	
+	  	console.log(data);
 	  	dailyTop = data;
 	}
 

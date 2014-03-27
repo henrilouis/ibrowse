@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"getD",
+				"getDailyTop"
+			],
+			[
+				"totalVist",
+				"totalVisitedPerSite"
+			],
+			[
 				"sear",
 				"searchInput"
 			]
@@ -15,7 +23,39 @@
 			"file": "js/view/monthCalendarView.js",
 			"settings":
 			{
-				"buffer_size": 3012,
+				"buffer_size": 3767,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/view/weekCalendarView.js",
+			"settings":
+			{
+				"buffer_size": 3870,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/view/dayCalendarView.js",
+			"settings":
+			{
+				"buffer_size": 3782,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/view/statisticsView.js",
+			"settings":
+			{
+				"buffer_size": 3580,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/controller/searchBarController.js",
+			"settings":
+			{
+				"buffer_size": 1468,
 				"line_ending": "Windows"
 			}
 		},
@@ -39,7 +79,7 @@
 			"file": "style/calendar.css",
 			"settings":
 			{
-				"buffer_size": 4314,
+				"buffer_size": 4903,
 				"line_ending": "Windows"
 			}
 		},
@@ -52,34 +92,26 @@
 			}
 		},
 		{
-			"file": "js/view/barGraphView.js",
+			"file": "js/view/historyItemView.js",
 			"settings":
 			{
-				"buffer_size": 6907,
+				"buffer_size": 1170,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "js/view/statisticsView.js",
+			"file": "style/history.css",
 			"settings":
 			{
-				"buffer_size": 7971,
+				"buffer_size": 1221,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "js/view/weekCalendarView.js",
+			"file": "js/view/historyView.js",
 			"settings":
 			{
-				"buffer_size": 3122,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/view/dayCalendarView.js",
-			"settings":
-			{
-				"buffer_size": 3057,
+				"buffer_size": 1445,
 				"line_ending": "Windows"
 			}
 		}
@@ -120,6 +152,11 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/model/ibrowseModel.js",
+		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/view/historyView.js",
+		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/view/searchBarView.js",
+		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/view/barGraphView.js",
+		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/view/statisticsView.js",
 		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/controller/searchBarController.js",
 		"/C/Users/Henri/Dropbox/GitHub/ibrowse/style/calendar.css",
 		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/view/monthCalendarView.js",
@@ -131,15 +168,13 @@
 		"/C/Users/Henri/Dropbox/GitHub/ibrowse/style/statistics.css",
 		"/C/Users/Henri/Dropbox/GitHub/ibrowse/.gitignore",
 		"/C/Users/Henri/Dropbox/GitHub/ibrowse/style/general.css",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/view/barGraphView.js",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/view/statisticsView.js",
 		"/C/Users/Henri/AppData/Roaming/Sublime Text 3/Packages/Alignment/Base File.sublime-settings",
 		"/C/Users/Henri/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
 		"/C/Users/Henri/AppData/Roaming/Sublime Text 3/Packages/Alignment/Default (Windows).sublime-keymap"
 	],
 	"find":
 	{
-		"height": 26.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -153,6 +188,34 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"search",
+			"createstats",
+			"getDailyTop",
+			"getTop",
+			"totalVisited",
+			"totalVisitedPerSite",
+			"getTopDailyData",
+			"getHourlyAverages",
+			"getVisitedPerHour",
+			"getDailyAverages",
+			"average",
+			"visitedperday",
+			"visitsperday",
+			"getVisitedPerDay",
+			"totalVisitedPerDay",
+			"getVisitedPerDay",
+			"totalVisitedPerSiteURL",
+			"firstMonday",
+			"createSiteCount",
+			"selectedItemSearch",
+			"history",
+			"dataReady",
+			"selectedItem",
+			".url",
+			"search",
+			".url",
+			"createSiteCount",
+			"gethistor",
 			"tooltip",
 			"dailySortButton",
 			"change",
@@ -186,7 +249,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -195,15 +258,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3012,
+						"buffer_size": 3767,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1195,
-								1195
+								1660,
+								1660
 							]
 						],
 						"settings":
@@ -214,15 +277,143 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": -0.0,
-						"translation.y": 378.0,
+						"translation.x": 0.0,
+						"translation.y": 594.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/view/weekCalendarView.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3870,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1609,
+								1609
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 972.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "js/view/dayCalendarView.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3782,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3098,
+								3074
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1782.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "js/view/statisticsView.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3580,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								450,
+								450
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "js/controller/searchBarController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1468,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1085,
+								1085
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 594.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 5,
 					"file": "js/external/cal-heatmap.js",
 					"semi_transient": false,
 					"settings":
@@ -250,11 +441,11 @@
 						"translation.y": 15128.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 6,
 					"file": "manifest.json",
 					"semi_transient": false,
 					"settings":
@@ -283,24 +474,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 7,
 					"file": "style/calendar.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4314,
+						"buffer_size": 4903,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1800,
-								1800
+								632,
+								632
 							]
 						],
 						"settings":
@@ -312,14 +503,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2016.0,
+						"translation.y": 450.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 8,
 					"file": "js/view/piechartView.js",
 					"semi_transient": false,
 					"settings":
@@ -331,8 +522,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								665,
+								665
 							]
 						],
 						"settings":
@@ -347,57 +538,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "js/view/barGraphView.js",
+					"buffer": 9,
+					"file": "js/view/historyItemView.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6907,
+						"buffer_size": 1170,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2595,
-								2595
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1675.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "js/view/statisticsView.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7971,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1060,
-								1069
+								376,
+								376
 							]
 						],
 						"settings":
@@ -409,27 +567,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 108.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "js/view/weekCalendarView.js",
+					"buffer": 10,
+					"file": "style/history.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3122,
+						"buffer_size": 1221,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1797,
-								1787
+								456,
+								456
 							]
 						],
 						"settings":
@@ -437,31 +595,31 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 972.0,
+						"translation.y": 162.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "js/view/dayCalendarView.js",
+					"buffer": 11,
+					"file": "js/view/historyView.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3057,
+						"buffer_size": 1445,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1814,
-								1814
+								676,
+								676
 							]
 						],
 						"settings":
@@ -472,11 +630,11 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 702.0,
+						"translation.x": -0.0,
+						"translation.y": 216.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
