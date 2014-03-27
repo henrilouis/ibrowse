@@ -45,14 +45,14 @@
 
 #colorLegendValuesContainer
 {
-	width: 100px;
+	width: 158px;
 	position: absolute;
 	font-size: 11px;
 	color: #FFF;
 	margin-top: -29px;
-	margin-left: 635px;
+	margin-left: 569px;
 	z-index: 2;
-	pointer-events:none;
+	pointer-events: none;
 }
 
 #colorLegendValueMax
@@ -71,6 +71,18 @@
 	text-align: left;
 }
 
+#weekcal #colorLegendValuesContainer
+{
+	width: 143px;
+	margin-left: 586px;
+	margin-top: -30px;
+	font-size: 10px;
+}
+
+#daycal #colorLegendValuesContainer
+{
+	margin-left: 581px;
+}
 
 #daycal ul#hourLegend
 {

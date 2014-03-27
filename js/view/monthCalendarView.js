@@ -56,9 +56,9 @@ var MonthCalendarView = function(container,model)
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
 			legendVerticalPosition: "top",
 			legendHorizontalPosition: "left",
-			legendCellSize: 20,
-			legendCellPadding: 0,
-			legendMargin:[0,0,12,635],
+			legendCellSize: 30,
+			
+			legendMargin:[-10,0,12,568],
 			onClick: function(date,value,rect)
 			{
 				$('#cal svg.graph rect').css('stroke','none');
