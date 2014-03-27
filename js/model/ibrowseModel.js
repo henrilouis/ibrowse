@@ -1,24 +1,33 @@
 var IbrowseModel = function() {
 
-	var history = [];
+	var history 			= [];
 
-	var days = [];
-	var hours = [];
+	var days 				= [];
+	this.days = days;
+	
+	var hours 				= [];
+	this.hours = hours;
 
-	var lastSearchString = "";
-	var daysSearch = [];
-	var hoursSearch = [];
-	var selectedItemSearch = [];
+	var lastSearchString 	= "";
+	var daysSearch 			= [];
+	var hoursSearch 		= [];
+	var selectedItemSearch 	= [];
 
 	var currentStats;
 	var selectedItem;
-	var currentView = "monthCalendar";
+	var currentView 		= "monthCalendar";
 
-	var siteRanking = [];
+	var siteRanking 		= [];
+
+	var dailyAverages;
+	var hourlyAverages;
+	var top;
+	var hourlyTop;
+	var dailyTop;
 
 	// milliseconds in one hour
-	var hourMs 	= 3600000;
-	var dayMs   = 86400000;
+	var hourMs 				= 3600000;
+	var dayMs   			= 86400000;
 
 	/********************************************************************************
 		Important: days[i]/hours[i] etc finally contains three arrays per day.
@@ -65,8 +74,8 @@ var IbrowseModel = function() {
 						historyPerTimeUnit(history,hourMs,hours);
 						historyPerTimeUnit(history,dayMs,days);
 
-						// Create the top list from the raw data
-						siteRanking = createSiteCount(history);
+						// Create the top lists and statistics
+						createStats();
 
 						// Notify observers that the data is ready
 						notifyObservers('dataReady');
@@ -132,14 +141,14 @@ var IbrowseModel = function() {
 	}
 
 	function search(string){
-
 		// setting lastSearchString so it can be used again
-		lastSearchString = string;
-		daysSearch = searchHistory(string, days);
-		hoursSearch = searchHistory(string, hours);
-		selectedItemSearch = searchHistory(string, [selectedItem])[0];
+		lastSearchString 	= string;
+		daysSearch 			= searchHistory(string, days);
+		hoursSearch 		= searchHistory(string, hours);
+		selectedItemSearch 	= searchHistory(string, [selectedItem])[0];
 		notifyObservers('searchComplete');
 	}
+	this.search = search;
 
 	/*******************************
 		Convert the normal array
@@ -153,6 +162,7 @@ var IbrowseModel = function() {
 		}
 		return json;
 	}
+	this.toJSON = toJSON;
 
 	/*******************************
 		Create top-sites for 
@@ -218,34 +228,58 @@ var IbrowseModel = function() {
 		}
 		notifyObservers('itemRemoved');
 	}
+	this.removeUrl = removeUrl;
 
 	/*******************************
-				Setters
+		Create overall, per hour
+		and per day statistics
 	********************************/
-	function setSelectedItem(item){
-		selectedItem = item;
-		search(lastSearchString);
+	function createStats(){
+		siteRanking = createSiteCount(history);
+		createHourlyAverages();
+		createDailyAverages();
+		createTop();
+		createHourlyTop();
+		createDailyTop();
 	}
 
-	function setCurrentView(string){
-		currentView = string;
+	function createHourlyAverages(){
+		var visits 		= [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+		var count 		= [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+		for(i = 0; i<hours.length; i++)
+		{
+			visits[hours[i][0].getHours()] += hours[i][1].length;
+			count[hours[i][0].getHours()] ++;
+		}
+		
+		for (i=0; i<visits.length;i++){
+	 		visits[i] 	= (visits[i]/count[i]).toFixed(1);
+	 	}
+		hourlyAverages 	= visits;
 	}
 
-	function setDaysSearch(value){
-		daysSearch = value;
+	function createDailyAverages(){
+		var visits 		= [0,0,0,0,0,0,0];
+		var count 		= [0,0,0,0,0,0,0];
+		for(i = 0; i<days.length; i++)
+		{
+			visits[days[i][0].getDay()] += days[i][1].length;
+			count[days[i][0].getDay()] ++;
+		}
+		
+		for (i=0; i<visits.length;i++){
+	 		visits[i] = (visits[i]/count[i]).toFixed(0);
+	 	}
+	 	// Javascript counts sunday as first weekday so splice it baby
+	 	visits.push(visits.splice(0,1)[0]);
+		dailyAverages = visits;
 	}
 
-	/*******************************
-				Getters
-	********************************/
-	function getSiteRanking(){
-		return siteRanking;
-	}
-
-	function getTop(){
-		var ranking = getSiteRanking();
-		var topData = [];
-		var count = 0;
+	function createTop(){
+		var ranking 	= getSiteRanking();
+		var topData 	= [];
+		var count 		= 0;
 		for (i = 0; i< ranking.length; i++){
 	  	  	if(i<10){
 		  		topData.push(ranking[i]);
@@ -258,42 +292,12 @@ var IbrowseModel = function() {
 		  		topData.push(["Other",count]);
 		  	}
 	  	}
-	  	return topData;
+	  	top = topData;
 	}
 
-	function getDailyTop()
-	{	
-		var topData = getTop();
-		var data = [];
-		var count = [];
-	  	for(i=0; i<topData.length ;i++)
-	  	{
-	  		data.push([0,0,0,0,0,0,0]);
-	  		count = [0,0,0,0,0,0,0];
-
-		   	for(j = 0; j<days.length; j++)
-		   	{
-		   		for(k=0;k<days[j][2].length;k++){
-		 			if(days[j][2][k][0] == topData[i][0]){	
-		 				data[i][days[j][0].getDay()] += days[j][2][k][1];
-		 			}
-		 		}
-		 		count[days[j][0].getDay()] ++;
-		   	}
-		 	//make averages
-		 	for (j=0; j<data[i].length;j++){
-		 		data[i][j] = (data[i][j]/count[j]).toFixed(0);
-		 	}
-		 	// Javascript counts sunday as first weekday so splice it baby
-	 		data[i].push(data[i].splice(0,1)[0]);
-	  	}
-	  	return data;
-	}
-
-	function getHourlyTop()
-	{	
-		var topData = getTop();
-	 	var topHourlyDataPerSite =[];
+	function createHourlyTop(){
+		var topData 				= getTop();
+	 	var topHourlyDataPerSite 	=[];
 	 
 	 	for(i=0;i<topData.length;i++){	
 	  		topHourlyDataPerSite.push([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
@@ -315,44 +319,39 @@ var IbrowseModel = function() {
 		 	}
 		 	
 		}
-		return topHourlyDataPerSite
+		hourlyTop = topHourlyDataPerSite;
 	}
 
-	function getDailyAverages()
-	{
-		var visits = [0,0,0,0,0,0,0];
-		var count = [0,0,0,0,0,0,0];
-		for(i = 0; i<days.length; i++)
-		{
-			visits[days[i][0].getDay()] += days[i][1].length;
-			count[days[i][0].getDay()] ++;
-		}
-		
-		for (i=0; i<visits.length;i++){
-	 		visits[i] = (visits[i]/count[i]).toFixed(0);
-	 	}
-	 	// Javascript counts sunday as first weekday so splice it baby
-	 	visits.push(visits.splice(0,1)[0]);
-		return visits;
+	function createDailyTop(){
+		var topData = getTop();
+		var data 	= [];
+		var count 	= [];
+	  	for(i=0; i<topData.length ;i++){
+	  		data.push([0,0,0,0,0,0,0]);
+	  		count = [0,0,0,0,0,0,0];
+
+		   	for(j = 0; j<days.length; j++){
+		   		for(k=0; k<days[j][2].length ;k++){
+		 			if(days[j][2][k][0] == topData[i][0]){	
+		 				data[i][days[j][0].getDay()] += days[j][2][k][1];
+		 			}
+		 		}
+		 		count[days[j][0].getDay()] ++;
+		   	}
+		 	//make averages
+		 	for (j=0; j<data[i].length;j++){
+		 		data[i][j] = (data[i][j]/count[j]).toFixed(0);
+		 	}
+		 	// Javascript counts sunday as first weekday so splice it baby
+	 		data[i].push(data[i].splice(0,1)[0]);
+	  	}
+	  	
+	  	dailyTop = data;
 	}
 
-	function getHourlyAverages()
-	{
-		var visits = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-		var count = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-
-		for(i = 0; i<hours.length; i++)
-		{
-			visits[hours[i][0].getHours()] += hours[i][1].length;
-			count[hours[i][0].getHours()] ++;
-		}
-		
-		for (i=0; i<visits.length;i++){
-	 		visits[i] = (visits[i]/count[i]).toFixed(1);
-	 	}
-		return visits;
-	}
-
+	/*******************************
+			Helper functions
+	********************************/
 	function getMax(history){
 		var max = 0;
 		for(i = 0; i < history.length; i++){
@@ -363,80 +362,105 @@ var IbrowseModel = function() {
 		return max;
 	}
 
+	/*******************************
+				Setters
+	********************************/
+	function setSelectedItem(item){
+		selectedItem = item;
+		search(lastSearchString);
+	}
+	this.setSelectedItem = setSelectedItem;
+
+	function setCurrentView(string){
+		currentView = string;
+	}
+	this.setCurrentView = setCurrentView;
+
+	function setDaysSearch(value){
+		daysSearch = value;
+	}
+
+	/*******************************
+				Getters
+	********************************/
+	function getSiteRanking(){
+		return siteRanking;
+	}
+	this.getSiteRanking = getSiteRanking;
+
+	function getTop(){
+	  	return top;
+	}
+	this.getTop = getTop;
+
+	function getDailyTop()
+	{	
+		return dailyTop;
+	}
+	this.getDailyTop = getDailyTop;
+
+	function getHourlyTop()
+	{	
+		return hourlyTop;
+	}
+	this.getHourlyTop = getHourlyTop;
+
+	function getDailyAverages()
+	{
+		return dailyAverages;
+	}
+	this.getDailyAverages = getDailyAverages;
+
+	function getHourlyAverages()
+	{
+		return hourlyAverages;
+	}
+	this.getHourlyAverages = getHourlyAverages;
+
 	function getDailyMax(){
 		return getMax(days);
 	}
+	this.getDailyMax = getDailyMax;
 
 	function getDaysSearchMax(){
 		return getMax(daysSearch);
 	}
+	this.getDaysSearchMax = getDaysSearchMax;
 
 	function getHourlyMax(){
 		return getMax(hours);
 	}
+	this.getHourlyMax = getHourlyMax;
 
 	function getHoursSearchMax(){
 		return getMax(hoursSearch);
 	}
+	this.getHoursSearchMax = getHoursSearchMax;
 
 	function getDaysSearch(){
 		return daysSearch;
 	}
+	this.getDaysSearch = getDaysSearch;
 
 	function getHoursSearch(){
 		return hoursSearch;
 	}
+	this.getHoursSearch = getHoursSearch;
 
 	function getSelectedItemSearch(){
 		return selectedItemSearch;
 	}
+	this.getSelectedItemSearch = getSelectedItemSearch;
 
 	function getCurrentView(){
 		return currentView;
 	}
+	this.getCurrentView = getCurrentView;
 
 	function getLastSearchString(){
 		return lastSearchString;
 	}
-
-	
-
-
-
-	/*******************************
-			Self Assignments
-	********************************/
-	this.days = days;
-	this.hours = hours;
-
-	this.search = search;
-
-	this.getDaysSearch = getDaysSearch;
-	this.getHoursSearch = getHoursSearch;
 	this.getLastSearchString = lastSearchString;
-
-	this.getDailyAverages = getDailyAverages;
-	this.getHourlyAverages = getHourlyAverages;
-
-	this.getSiteRanking = getSiteRanking;
-	this.getTop = getTop;
-	this.getDailyTop = getDailyTop;
-	this.getHourlyTop = getHourlyTop;
-
-	this.getDailyMax = getDailyMax;
-	this.getDaysSearchMax = getDaysSearchMax;
-	this.getHourlyMax = getHourlyMax;
-	this.getHoursSearchMax = getHoursSearchMax;
-
-	this.toJSON = toJSON;
-
-	this.setSelectedItem = setSelectedItem;
-	this.getSelectedItemSearch = getSelectedItemSearch;
-
-	this.getCurrentView = getCurrentView;
-	this.setCurrentView = setCurrentView;
-
-	this.removeUrl = removeUrl;
 
 	/*******************************
 			   Observable
