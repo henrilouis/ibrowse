@@ -238,6 +238,85 @@ var IbrowseModel = function() {
 	/*******************************
 				Getters
 	********************************/
+	function getSiteRanking(){
+		return siteRanking;
+	}
+
+	function getTop(){
+		var ranking = getSiteRanking();
+		var topData = [];
+		var count = 0;
+		for (i = 0; i< ranking.length; i++){
+	  	  	if(i<10){
+		  		topData.push(ranking[i]);
+		  	}
+		  	else if (i < ranking.length-1){
+		  		count += ranking[i][1];
+		  	}
+		  	else{
+		  		count += ranking[i][1];
+		  		topData.push(["Other",count]);
+		  	}
+	  	}
+	  	return topData;
+	}
+
+	function getDailyTop()
+	{	
+		var topData = getTop();
+		var data = [];
+		var count = [];
+	  	for(i=0; i<topData.length ;i++)
+	  	{
+	  		data.push([0,0,0,0,0,0,0]);
+	  		count = [0,0,0,0,0,0,0];
+
+		   	for(j = 0; j<days.length; j++)
+		   	{
+		   		for(k=0;k<days[j][2].length;k++){
+		 			if(days[j][2][k][0] == topData[i][0]){	
+		 				data[i][days[j][0].getDay()] += days[j][2][k][1];
+		 			}
+		 		}
+		 		count[days[j][0].getDay()] ++;
+		   	}
+		 	//make averages
+		 	for (j=0; j<data[i].length;j++){
+		 		data[i][j] = (data[i][j]/count[j]).toFixed(0);
+		 	}
+		 	// Javascript counts sunday as first weekday so splice it baby
+	 		data[i].push(data[i].splice(0,1)[0]);
+	  	}
+	  	return data;
+	}
+
+	function getHourlyTop()
+	{	
+		var topData = getTop();
+	 	var topHourlyDataPerSite =[];
+	 
+	 	for(i=0;i<topData.length;i++){	
+	  		topHourlyDataPerSite.push([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+	  		var hourNumber2 = 0;
+		
+			for (j=0; j<90; j++){
+		 		for(k=0; k<24; k++){	
+		 			for(l=0;l<hours[k+hourNumber2][2].length; l++){	
+			 			if (hours[k+hourNumber2][2][l][0] == topData[i][0]){	
+			 				topHourlyDataPerSite[i][k] += hours[k+hourNumber2][2][l][1];
+			 			}
+		 			} 							 
+				}
+				hourNumber2 +=24;
+		 	}
+		 	//make averages
+		 	for (m=0; m<topHourlyDataPerSite[i].length;m++){
+		 		topHourlyDataPerSite[i][m] = (topHourlyDataPerSite[i][m]/90).toFixed(1);
+		 	}
+		 	
+		}
+		return topHourlyDataPerSite
+	}
 
 	function getDailyAverages()
 	{
@@ -320,9 +399,7 @@ var IbrowseModel = function() {
 		return lastSearchString;
 	}
 
-	function getSiteRanking(){
-		return siteRanking;
-	}
+	
 
 
 
@@ -342,6 +419,10 @@ var IbrowseModel = function() {
 	this.getHourlyAverages = getHourlyAverages;
 
 	this.getSiteRanking = getSiteRanking;
+	this.getTop = getTop;
+	this.getDailyTop = getDailyTop;
+	this.getHourlyTop = getHourlyTop;
+
 	this.getDailyMax = getDailyMax;
 	this.getDaysSearchMax = getDaysSearchMax;
 	this.getHourlyMax = getHourlyMax;
