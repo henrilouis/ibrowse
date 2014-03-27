@@ -47,7 +47,6 @@ var IbrowseModel = function() {
 	*******************************/
 	function getHistory()
 	{
-		$('.progress-bar').css('width','50%');
 		history.length = 0;
 		chrome.history.search({
 			'text':'',
@@ -56,8 +55,6 @@ var IbrowseModel = function() {
 		},function(historyItems){
 			var itemsCount = 0;
 			historyItems.forEach(function(historyItem){
-
-				$('.progress-bar').css('width','75%');
 				chrome.history.getVisits({url:historyItem.url},function(visitItems){
 					visitItems.forEach(function(visitItem){
 						var item = new Array();
@@ -66,8 +63,6 @@ var IbrowseModel = function() {
 					});
 					itemsCount++;
 					if(itemsCount == historyItems.length){
-
-						$('.progress-bar').css('width','86%');
 						// Convert the raw data in time-unit based arrays
 						historyPerTimeUnit(history,hourMs,hours);
 						historyPerTimeUnit(history,dayMs,days);

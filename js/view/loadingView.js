@@ -1,12 +1,10 @@
 var LoadingView = function(container,model)
 {	
-	var barInner 		= $('<div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 25%">');
-	var barOuter 		= $("<div class='progress progress-striped active'>");
-		barOuter.append(barInner);
+	var loadingTitle 	= $("<h2 id='loadingTitle'>LOADING HISTORY</h2>")
+
 	var barContainer 	= $("<div id='loadingContainer'>");
-		barContainer.append(barOuter);
+		barContainer.append(loadingTitle);
 	
-	this.barInner = barInner;
 	container.append(barContainer);
 
 		// Observer Pattern
@@ -16,7 +14,6 @@ var LoadingView = function(container,model)
 	{
 		if(args == "dataReady")
 		{
-			barInner.css('width',"100%");
 			container.fadeOut(1200);
 		}
 	}
