@@ -81,7 +81,10 @@
 
 #daycal #colorLegendValuesContainer
 {
-	margin-left: 581px;
+	width: 143px;
+	margin-left: 596px;
+	margin-top: -30px;
+	font-size: 10px;
 }
 
 #daycal ul#hourLegend

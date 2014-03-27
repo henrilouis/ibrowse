@@ -55,8 +55,8 @@ var DayCalendarView = function(container,model)
 			displayLegend: true,
 			legendVerticalPosition: "top",
 			legendHorizontalPosition: "left",
-			legendCellSize: 30,
-			legendMargin:[-10,0,12,577],
+			legendCellSize: 27,
+			legendMargin:[-10,0,12,592],
 			legend: [Math.round(max*0.2),Math.round(max*0.4),Math.round(max*0.6),Math.round(max*0.8)],
 			onClick: function(date,value,rect)
 			{
