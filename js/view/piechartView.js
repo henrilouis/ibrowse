@@ -1,4 +1,4 @@
-var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDailyDataPerSite,totalVisitedPerDay,totalVisitedPerHour)
+var PiechartView = function(container,model,topData)
 {
 	var w = 500;
 	var h = 420;
@@ -222,21 +222,16 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 		      	.attr("cursor", "pointer")
 		      	.attr("opacity", 1);
 
-	    	for(i=0;i<topDailyDataPerSite.length;i++)
+	    	for(i=0;i<topData.length;i++)
 	    	{
 	    		if(topData[i][0] == d.name)
 	    		{
-	    			var barGraphView = new BarGraphView(container,model,topDailyDataPerSite[i],1);
+	    			var barGraphView = new BarGraphView(container,model,model.getDailyTop()[i],1);
+	    			var barGraphView = new BarGraphView(container,model,model.getHourlyTop()[i],2);
 	    		}
 	    	}
-	    	for(j=0;j<topHourlyDataPerSite.length;j++)
-	    	{
-	    		if(topData[j][0] == d.name)
-	    		{
-	    			var barGraphView = new BarGraphView(container,model,topHourlyDataPerSite[j],2);
-	    		}
-	    	}
-	    }
+	    } 
+	    
 	    else
     	{	
     		d3.select(this)
@@ -298,8 +293,8 @@ var PiechartView = function(container,model,topData,topHourlyDataPerSite,topDail
 		  .attr("opacity", 1);
 
 		// Create bar chart
-		var barGraphView = new BarGraphView(container,model,totalVisitedPerDay,1);
-		var barGraphView = new BarGraphView(container,model,totalVisitedPerHour,2);
+		var barGraphView = new BarGraphView(container,model,model.getDailyAverages(),1);
+		var barGraphView = new BarGraphView(container,model,model.getHourlyAverages(),2);
 	}
 
 	// Interpolate the arcs in data space.
