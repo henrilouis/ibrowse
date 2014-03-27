@@ -83,9 +83,6 @@ var StatisticsView = function(container,model)
 		var barGraphView = new BarGraphView(container,model,totalVisitedPerDay,1);
 		var barGraphView = new BarGraphView(container,model,totalVisitedPerHour,2);
 	}
-	
-	
-
 
 	this.daysButton = daysButton;
 	this.hoursButton = hoursButton;	
