@@ -320,7 +320,7 @@ var IbrowseModel = function() {
 		 	}
 		 	
 		}
-
+		// create 'other' category
 		for(i=0;i<topHourlyDataPerSite[topHourlyDataPerSite.length-1].length;i++)
 		{	
 			topHourlyDataPerSite[topHourlyDataPerSite.length-1][i] = hourlyAverages[i]
@@ -330,7 +330,6 @@ var IbrowseModel = function() {
 				topHourlyDataPerSite[topHourlyDataPerSite.length-1][i] = topHourlyDataPerSite[topHourlyDataPerSite.length-1][i].toFixed(1);
 			}
 		}
-
 		hourlyTop = topHourlyDataPerSite;
 	}
 
@@ -358,7 +357,7 @@ var IbrowseModel = function() {
 		 	// Javascript counts sunday as first weekday so splice it baby
 	 		data[i].push(data[i].splice(0,1)[0]);
 	  	}
-
+	  	// create 'other' category
 	  	for(i=0;i<data[data.length-1].length;i++)
 		{	
 			data[data.length-1][i] = dailyAverages[i]
@@ -367,8 +366,6 @@ var IbrowseModel = function() {
 				data[data.length-1][i] -= data[j][i]
 			}
 		}
-
-	  	console.log(data);
 	  	dailyTop = data;
 	}
 
