@@ -1,5 +1,7 @@
 var IbrowseModel = function() {
 
+	var history = [];
+
 	var days = [];
 	var hours = [];
 
@@ -12,6 +14,8 @@ var IbrowseModel = function() {
 	var selectedItem;
 	var currentView = "monthCalendar";
 
+	var siteRanking = [];
+
 	// milliseconds in one hour
 	var hourMs 	= 3600000;
 	var dayMs   = 86400000;
@@ -21,13 +25,16 @@ var IbrowseModel = function() {
 
 		The first one (days[i][0]) is one with the day date.
 		The second one (days[i][1]) has the individual url visits from chrome.
+			And days[i][1][0] = the Unique ID
+				days[i][1][1] = the URL
+				days[i][1][2] = the Title
+				days[i][1][3] = the Timestamp
 		The third days[i][2] is an array containing the number of visits per site.
 	*********************************************************************************/
 
 	/*******************************
 			Run on startup
 	*******************************/
-	
 	getHistory();
 
 	/*******************************
@@ -36,7 +43,7 @@ var IbrowseModel = function() {
 	*******************************/
 	function getHistory()
 	{
-		var data = [];
+		history.length = 0;
 		chrome.history.search({
 			'text':'',
 			'startTime':0,
@@ -49,16 +56,23 @@ var IbrowseModel = function() {
 					visitItems.forEach(function(visitItem){
 						var item = new Array();
 						item.push(visitItem.visitId,historyItem.url,historyItem.title,visitItem.visitTime);
-						data.push(item);
+						history.push(item);
 					});
 					itemsCount++;
 					if(itemsCount == historyItems.length){
-						historyPerTimeUnit(data,hourMs,hours);
-						historyPerTimeUnit(data,dayMs,days);
 
+						// Convert the raw data in time-unit based arrays
+						historyPerTimeUnit(history,hourMs,hours);
+						historyPerTimeUnit(history,dayMs,days);
+
+						// Create the top list from the raw data
+						siteRanking = createSiteCount(history);
+
+						// Notify observers that the data is ready
 						notifyObservers('dataReady');
+
+						// Search for nothing so all arrays are filled
 						setSelectedItem(days[days.length-1]);
-						
 					}
 				});
 			});
@@ -121,7 +135,6 @@ var IbrowseModel = function() {
 
 		// setting lastSearchString so it can be used again
 		lastSearchString = string;
-
 		daysSearch = searchHistory(string, days);
 		hoursSearch = searchHistory(string, hours);
 		selectedItemSearch = searchHistory(string, [selectedItem])[0];
@@ -133,17 +146,17 @@ var IbrowseModel = function() {
 		to JSON for d3 Calendar
 		but only with visits.
 	********************************/
-	function toJSON(history){
+	function toJSON(data){
 		var json = {};
-		for(i=0; i < history.length; i++){
-			json[Math.round(history[i][0].getTime()/1000)] = history[i][1].length;
+		for(i=0; i < data.length; i++){
+			json[Math.round(data[i][0].getTime()/1000)] = data[i][1].length;
 		}
 		return json;
 	}
 
 	/*******************************
-		Create top for single
-		time unit.
+		Create top-sites for 
+		single time unit.
 	********************************/
 	function createSiteCount(data){
 		var urlArray = new Array();
@@ -225,6 +238,42 @@ var IbrowseModel = function() {
 	/*******************************
 				Getters
 	********************************/
+
+	function getDailyAverages()
+	{
+		var visits = [0,0,0,0,0,0,0];
+		var count = [0,0,0,0,0,0,0];
+		for(i = 0; i<days.length; i++)
+		{
+			visits[days[i][0].getDay()] += days[i][1].length;
+			count[days[i][0].getDay()] ++;
+		}
+		
+		for (i=0; i<visits.length;i++){
+	 		visits[i] = (visits[i]/count[i]).toFixed(0);
+	 	}
+	 	// Javascript counts sunday as first weekday so splice it baby
+	 	visits.push(visits.splice(0,1)[0]);
+		return visits;
+	}
+
+	function getHourlyAverages()
+	{
+		var visits = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+		var count = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+		for(i = 0; i<hours.length; i++)
+		{
+			visits[hours[i][0].getHours()] += hours[i][1].length;
+			count[hours[i][0].getHours()] ++;
+		}
+		
+		for (i=0; i<visits.length;i++){
+	 		visits[i] = (visits[i]/count[i]).toFixed(1);
+	 	}
+		return visits;
+	}
+
 	function getMax(history){
 		var max = 0;
 		for(i = 0; i < history.length; i++){
@@ -271,6 +320,10 @@ var IbrowseModel = function() {
 		return lastSearchString;
 	}
 
+	function getSiteRanking(){
+		return siteRanking;
+	}
+
 
 
 	/*******************************
@@ -285,6 +338,10 @@ var IbrowseModel = function() {
 	this.getHoursSearch = getHoursSearch;
 	this.getLastSearchString = lastSearchString;
 
+	this.getDailyAverages = getDailyAverages;
+	this.getHourlyAverages = getHourlyAverages;
+
+	this.getSiteRanking = getSiteRanking;
 	this.getDailyMax = getDailyMax;
 	this.getDaysSearchMax = getDaysSearchMax;
 	this.getHourlyMax = getHourlyMax;

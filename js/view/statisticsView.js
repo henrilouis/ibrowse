@@ -55,38 +55,10 @@ var StatisticsView = function(container,model)
 	{	
 		var firstMonday = getFirstMonday();
 		var totalVisited = 0;
-		var totalVisitedPerSite = [];
-		var totalVisitedPerSiteURL = [];
-		
-		// For each unique url create entry and add similar url counts
-	 	for (i=0; i<model.days.length; i++){
-	 		totalVisited += model.days[i][1].length;
-
-	 		for(j=0; j<model.days[i][2].length; j++)
-	 		{	
-	 			var urlLocation = totalVisitedPerSiteURL.indexOf(model.days[i][2][j][0]);
-				if(urlLocation > -1)
-				{	
-					var websitecount = model.days[i][2][j][1];
-					totalVisitedPerSite[urlLocation][1] += websitecount;	
-				}
-				else
-				{	
-					totalVisitedPerSite.push([0,0]);
-					totalVisitedPerSite[totalVisitedPerSite.length-1][0] = model.days[i][2][j][0];
-					totalVisitedPerSite[totalVisitedPerSite.length-1][1] = model.days[i][2][j][1];
-					totalVisitedPerSiteURL.push(model.days[i][2][j][0]);
-				}
- 			}
-	 	}
+		var totalVisitedPerSite = model.getSiteRanking();
 
 	 	var otherCount = 0;
 	 	var topData = [];
-
-	 	// Get top 10 and count the rest to other
-	 	totalVisitedPerSite.sort(function(a,b){
-   		 return  b[1] - a[1];
-		});
 
 		for (i = 0; i< totalVisitedPerSite.length; i++){
 	  	  	if(i<10){
@@ -115,13 +87,13 @@ var StatisticsView = function(container,model)
 	  	}
 
 	  	// visited per day
-	  	var totalVisitedPerDay = getVisitedPerDay(firstMonday);
+	  	var totalVisitedPerDay = model.getDailyAverages();
 	  	
 	 	// to visited per day
 	  	var topDailyDataPerSite = getTopDailyData(firstMonday,topData);
 
 	  	// visited per hour
-	  	var totalVisitedPerHour = getVisitedPerHour();
+	  	var totalVisitedPerHour = model.getHourlyAverages();
 
 	  	// top visited per hour
 	 	var topHourlyDataPerSite = getTopHourlyData(topData);
@@ -136,10 +108,10 @@ var StatisticsView = function(container,model)
 	}
 
 	function getFirstMonday()
-	 {
+	{
 	 	//check whether day 0 is a monday and set loop to start at first monday
 	 	for(i=0; i<7;i++){	
-	 		var firstMonday =0;
+	 		var firstMonday = 0;
 	 		var retrievedString = model.days[i][0].toString();
 	 		var retrievedDay = (retrievedString.indexOf('Mon') > -1); //true
 	 		if(retrievedDay == true){
@@ -148,27 +120,6 @@ var StatisticsView = function(container,model)
 	 		}
 	 	}
 	}
-
-	function getVisitedPerDay(firstMonday)
-  	{
-		var totalVisitedPerDay = [0,0,0,0,0,0,0];
-	 	var dayNumber = 0;
-	  	dayNumber = firstMonday;
-	 	
-	 	//for the last 12 weeks sum all visits of each weekday
-	 	for (i=0; i<12; i++){	
-	 		for(j=0; j<7; j++){	
-	 			totalVisitedPerDay[j] += model.days[j+dayNumber][1].length
-			}
-			dayNumber+=7;
-	 	}
-
-	 	//make averages
-	 	for (i=0; i<totalVisitedPerDay.length;i++){
-	 		totalVisitedPerDay[i] = (totalVisitedPerDay[i]/12).toFixed(0);
-	 	}
-	 	return totalVisitedPerDay;
- 	}
 
 	function getTopDailyData(firstMonday,topData)
 	{	
@@ -202,28 +153,6 @@ var StatisticsView = function(container,model)
 	  	}
 	  	return topDailyDataPerSite;
 	}
-
-	function getVisitedPerHour()
-	{
-	  	var totalVisitedPerHour = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-		var hourNumber =0;
-		
-		for (i=0; i<90; i++){
-	 		for(j=0; j<24; j++){	
-	 			for(k=0; k<model.hours[(j+hourNumber)][2].length; k++){
-	 				totalVisitedPerHour[j] += model.hours[(j+hourNumber)][2][k][1];
-	 			} 							 
-			}
-			hourNumber +=24;
-	 	}
-
-	 	//make averages
-	 	for (i=0;i<totalVisitedPerHour.length;i++){
-	 		totalVisitedPerHour[i] = (totalVisitedPerHour[i]/90).toFixed(1);
-	 	}
-	 	return totalVisitedPerHour;
-	}
-
 
 	function getTopHourlyData(topData)
 	{	
