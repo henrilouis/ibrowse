@@ -2,7 +2,7 @@
   "name": "iBROWSE",
   "version": "0.7",
   "manifest_version": 2,
-  "description": "Search your history faster in a visual way, and get keen insights into your browsing behaviour. Replaces the normal history.",
+  "description": "Search your history faster using the information visualizations, and get keen insights into your browsing behaviour.",
 
   "icons": { "16": "images/icon16.png",
            "48": "images/icon48.png",
