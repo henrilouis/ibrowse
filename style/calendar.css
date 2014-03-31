@@ -297,36 +297,6 @@
 /*
 .q1
 {
-	background-color: #dae289;
-	fill: #dae289
-}
-
-.q2
-{
-	background-color: #cedb9c;
-	fill: #9cc069
-}
-
-.q3
-{
-	background-color: #b5cf6b;
-	fill: #669d45
-}
-
-.q4
-{
-	background-color: #637939;
-	fill: #637939
-}
-
-.q5
-{
-	background-color: #3b6427;
-	fill: #3b6427
-}*/
-
-.q1
-{
 	background-color:#6FA7D1;
 	fill:#6FA7D1;
 }
@@ -353,6 +323,36 @@
 {
 	background-color:#192645;
 	fill:#192645;
+}*/
+
+.q1
+{
+	background-color:#ADD5F7;
+	fill:#ADD5F7;
+}
+
+.q2
+{
+	background-color:#7FB2F0;
+	fill:#7FB2F0;
+}
+
+.q3
+{
+	background-color:#4E7AC7;
+	fill:#4E7AC7;
+}
+
+.q4
+{
+	background-color:#35478C;
+	fill:#35478C;
+}
+
+.q5
+{
+	background-color:#16193B;
+	fill:#16193B;
 }
 
 rect.highlight

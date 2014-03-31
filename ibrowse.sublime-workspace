@@ -4,122 +4,81 @@
 		"selected_items":
 		[
 			[
-				"z",
-				"z-index"
+				"selecte",
+				"selectedItemSearch"
+			],
+			[
+				"selec",
+				"selectedItemSearch"
+			],
+			[
+				"Tar",
+				"targetArray2"
+			],
+			[
+				"curre",
+				"currentView"
+			],
+			[
+				"days",
+				"daysSearch"
+			],
+			[
+				"fav",
+				"faviconBox"
+			],
+			[
+				"getD",
+				"getDaysSearch"
+			],
+			[
+				"set",
+				"setSelectedItem"
+			],
+			[
+				"hou",
+				"hoursSearch"
+			],
+			[
+				"ti",
+				"timeUnit"
+			],
+			[
+				"filter",
+				"filteredPieData"
 			],
 			[
 				"pos",
 				"position"
 			],
 			[
-				"getD",
-				"getDailyTop"
+				"end",
+				"endDate"
 			],
 			[
-				"totalVist",
-				"totalVisitedPerSite"
+				"star",
+				"startDate"
 			],
 			[
-				"sear",
-				"searchInput"
+				"getm",
+				"getMonthJSON"
+			],
+			[
+				"fun",
+				"function"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "js/view/monthCalendarView.js",
+			"contents": "#calendar\n{\n	\n}\n\n#daycal, #weekcal\n{\n	display:none;\n}\n\n#cal, #daycal, #weekcal\n{\n	margin-top:80px;\n	width: 735px;\n	margin:auto;\n	position: relative;\n}\n\n#cal\n{\n	height: 280px;\n	margin-bottom: 20px;\n}\n\n#cal ul#dayLegend\n{\n	position: absolute;\n	list-style: none;\n	z-index: 1;\n}\n\n#cal ul#dayLegend li\n{\n	padding-top: 8px;\n	height: 30px;\n	padding-bottom: 8px;\n	margin-bottom: 2px;\n	margin-left: -40px;\n	font-size: 10px;\n	width: 30px;\n	background: #dedede;\n	text-align: center;\n	background: #fff;\n}\n\n#colorLegendValuesContainer\n{\n	width: 158px;\n	position: absolute;\n	font-size: 11px;\n	color: #FFF;\n	margin-top: -29px;\n	margin-left: 569px;\n	z-index: 2;\n	pointer-events: none;\n}\n\n#colorLegendValueMax\n{\n	float:right;\n	width:40px;\n	margin-right: 2px;\n	text-align: right;\n}\n\n#colorLegendValueMin\n{\n	float:left;\n	width:40;\n	margin-left: 2px;\n	text-align: left;\n}\n\n#weekcal #colorLegendValuesContainer\n{\n	width: 143px;\n	margin-left: 586px;\n}\n\n#daycal #colorLegendValuesContainer\n{\n	width: 143px;\n	margin-left: 596px;\n}\n\n#daycal ul#hourLegend\n{\n	position: absolute;\n	list-style: none;\n	pointer-events: none;\n	margin-left: -48px;\n	/*margin-left: -64px;*/\n}\n\n#daycal ul#hourLegend li\n{\n	width:12px;\n}\n\n#daycal ul#hourLegend li div\n{\n	float: left;\n	font-size: 7px;\n	background: #dedede;\n	text-align: center;\n	background: #fff;\n	height: 12px;\n	width: 12px;\n	padding-right: 2px;\n	border-right: 2px solid #efefef;\n	border-bottom: 2px solid #efefef;\n}\n\n#daycal #dayCalContainer\n{\n	position: relative;\n	margin-top: -32px;\n	margin-left: 4px;\n}\n\n#weekcal\n{\n	position: relative;\n}\n\n#weekcal ul#dayLegend_y\n{\n	position: absolute;\n	list-style: none;\n	pointer-events: none;\n	z-index:1;\n}\n\n#weekcal ul#dayLegend_y li\n{\n	padding-top: 8px;\n	height: 27px;\n	padding-bottom: 8px;\n	margin-bottom: 2px;\n	margin-left: -37px;;\n	font-size: 10px;\n	width: 30px;\n	background: #dedede;\n	text-align: center;\n	background: #fff;\n	pointer-events: none;\n}\n\n#weekcal #weekCalContainer\n{\n	margin-left: 35px;\n	margin-top: -32px;\n}\n\n#weekcal ul#dayLegend_x \n{\n	position: absolute;\n	width: 767px;\n	margin-top: 202px;\n	margin-left: -7px;\n}\n\n#weekcal ul#dayLegend_x li\n{	\n	text-align: center;\n	font-size:11px;\n	float:left;\n	width: 29px;\n	list-style: none;\n}\n\n#monthCalContainer\n{\n	margin-top: -32px;\n	\n}\n\n#monthCalContainer .cal-heatmap-container\n{\n	overflow: hidden;\n	width:735px;\n}\n\n.nextButton, .previousButton\n{\n	font-size:25px;\n	position:absolute;\n	border: none;\n	box-shadow: none;\n	outline: 0;\n	top:50%;\n	background:transparent;\n	color:#fff;\n	margin-top: -10px;\n}\n\n#weekcal .nextButton, #weekcal .previousButton\n{\n	margin-top: -25px;\n}\n\n#daycal .nextButton, #daycal .previousButton\n{\n	margin-top: -25px;\n}\n\n.nextButton\n{\n	right:-80px;\n}\n\n.nextButton:hover\n{\n	color:#6FA7D1;\n}\n\n.previousButton\n{\n	left:-80px;\n}\n\n.previousButton:hover\n{\n	color:#6FA7D1;\n}\n\n\n/* Cal-HeatMap CSS */\n\n.cal-heatmap-container {\n	display: block;\n}\n\n.graph\n{\n	font-family: \"Lucida Grande\", Lucida, Verdana, sans-serif;\n}\n\n.graph-label\n{\n	fill: #444;\n	font-size: 14px;\n}\n\n#daycal\n{\n	margin-bottom: 10px;\n}\n\n#daycal .graph-label\n{\n	font-size: 14px;\n}\n\n#weekcal .graph-label\n{\n	font-size: 14px;\n}\n.graph, .graph-legend rect {\n	shape-rendering: crispedges\n}\n\n.graph-rect\n{\n	/*fill: #ededed*/\n	fill:#fff;\n}\n\n.subdomain-text {\n	opacity:0;\n	font-size: 8px;\n	fill: #fff;\n	pointer-events: none;\n	text-shadow: 1px 1px #333;\n}\n\n.subdomain-text:hover\n{\n	opacity:1;\n}\n\n.hover_cursor:hover {\n	cursor: pointer\n}\n\n.qi {\n	background-color: #999;\n	fill: #999\n}\n\n.q0\n{\n	background-color: #fff !important;\n	fill: #fff !important;\n}\n\n/*\n.q1\n{\n	background-color:#6FA7D1;\n	fill:#6FA7D1;\n}\n\n.q2\n{\n	background-color:#395F99;\n	fill:#395F99;\n}\n\n.q3\n{\n	background-color:#224F73;\n	fill:#224F73;\n}\n\n.q4\n{\n	background-color:#1C3752;\n	fill:#1C3752;\n}\n\n.q5\n{\n	background-color:#192645;\n	fill:#192645;\n}*/\n\n.q1\n{\n	background-color:#ADD5F7;\n	fill:#ADD5F7;\n}\n\n.q2\n{\n	background-color:#7FB2F0;\n	fill:#7FB2F0;\n}\n\n.q3\n{\n	background-color:#4E7AC7;\n	fill:#4E7AC7;\n}\n\n.q4\n{\n	background-color:#35478C;\n	fill:#35478C;\n}\n\n.q5\n{\n	background-color:#16193B;\n	fill:#16193B;\n}r\n\nrect.highlight\n{\n	stroke:#444;\n	stroke-width:1\n}\n\ntext.highlight\n{\n	fill: #444\n}\n\nrect.now\n{\n	stroke: #00ff00\n}\n\ntext.now\n{\n	fill: red;\n	font-weight: 800\n}\n\n.domain-background {\n	fill: none;\n	shape-rendering: crispedges\n}\n\n.ch-tooltip {\n	padding: 10px;\n	background: #222;\n	color: #bbb;\n	font-size: 12px;\n	line-height: 1.4;\n	width: 140px;\n	position: absolute;\n	z-index: 99999;\n	text-align: center;\n	border-radius: 2px;\n	box-shadow: 2px 2px 2px rgba(0,0,0,0.2);\n	display: none;\n	box-sizing: border-box;\n}\n\n.ch-tooltip::after{\n	position: absolute;\n	width: 0;\n	height: 0;\n	border-color: transparent;\n	border-style: solid;\n	content: \"\";\n	padding: 0;\n	display: \"block\";\n	bottom: -6px;\n	left: 50%;\n	margin-left: -6px;\n    border-width: 6px 6px 0;\n    border-top-color: #222;\n}",
+			"file": "style/calendar.css",
+			"file_size": 5236,
+			"file_write_time": 130406967685955455,
 			"settings":
 			{
-				"buffer_size": 3767,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "style/general.css",
-			"settings":
-			{
-				"buffer_size": 1091,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/view/weekCalendarView.js",
-			"settings":
-			{
-				"buffer_size": 3869,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/view/dayCalendarView.js",
-			"settings":
-			{
-				"buffer_size": 3781,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/view/statisticsView.js",
-			"settings":
-			{
-				"buffer_size": 3580,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/view/loadingView.js",
-			"settings":
-			{
-				"buffer_size": 393,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/controller/searchBarController.js",
-			"settings":
-			{
-				"buffer_size": 1468,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/model/ibrowseModel.js",
-			"settings":
-			{
-				"buffer_size": 11852,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 3013,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/controller/loadingController.js",
-			"settings":
-			{
-				"buffer_size": 49,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "style/history.css",
-			"settings":
-			{
-				"buffer_size": 1221,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/view/historyView.js",
-			"settings":
-			{
-				"buffer_size": 1445,
+				"buffer_size": 4823,
 				"line_ending": "Windows"
 			}
 		}
@@ -127,26 +86,62 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 58.0,
+		"height": 104.0,
 		"selected_items":
 		[
 			[
-				"intall",
-				"Package Control: Install Package"
+				"javascri",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"javasc",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
 			],
 			[
 				"install",
 				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"package",
+				"Package Control: Disable Package"
+			],
+			[
+				"",
+				"Package Control: Install Package"
 			]
 		],
-		"width": 416.0
+		"width": 528.0
 	},
 	"console":
 	{
-		"height": 160.0,
+		"height": 126.0,
 		"history":
 		[
-			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
 		]
 	},
 	"distraction_free":
@@ -160,38 +155,93 @@
 	},
 	"file_history":
 	[
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/superController.js",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/view/loadingView.js",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/view/historyItemView.js",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/view/piechartView.js",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/style/calendar.css",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/external/cal-heatmap.js",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/manifest.json",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/controller/searchBarController.js",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/model/ibrowseModel.js",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/view/historyView.js",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/view/searchBarView.js",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/view/barGraphView.js",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/view/statisticsView.js",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/view/monthCalendarView.js",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/view/dayCalendarView.js",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/controller/monthCalendarController.js",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/view/weekCalendarView.js",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/style/piechart.css",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/style/statistics.css",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/.gitignore",
-		"/C/Users/Henri/Dropbox/GitHub/ibrowse/style/general.css",
-		"/C/Users/Henri/AppData/Roaming/Sublime Text 3/Packages/Alignment/Base File.sublime-settings",
-		"/C/Users/Henri/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
-		"/C/Users/Henri/AppData/Roaming/Sublime Text 3/Packages/Alignment/Default (Windows).sublime-keymap"
+		"/C/Users/Henri/Dropbox/GitHub/ibrowse/ibrowse.sublime-project",
+		"/C/Users/Henri/Dropbox/GitHub/ibrowse/ibrowse.sublime-workspace",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/model/ibrowseModel.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/historyView.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/historyItemView.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/style/calendar.css",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/style/general.css",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/style/statistics.css",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/monthCalendarView.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/dayCalendarView.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/statisticsView.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/searchBarView.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/weekCalendarView.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/historyItemController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/barGraphView.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/searchBarController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/style.css",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/index.html",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/style/fonts.css",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/manifest.json",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/fonts/FjallaOne-Regular.ttf",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/style/history.css",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/calendarView.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/piechartView.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/style/piechart.css",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/style/bargraph.css",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/weekCalendarController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/external/cal-heatmap.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/piechartController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/external/d3.tip.v0.6.3.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/style/searchbar.css",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/external/d3tip.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/superController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/monthCalendarController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/dayCalendarController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/viewNavController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/viewNavView.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/calendarController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/historyController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/dayView.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/ibrowse.sublime-project",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/dayStatsController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/dayController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/style/treemap.css",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/controller/treemapController.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/view/calendarview.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js/external/cal-heatmap.min.js",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/style/cal-heatmap.css",
+		"/C/Users/Henri/Documents/GitHub/ibrowse/js",
+		"/C/Users/Henri/Documents/GitHub/scheduler-html/index.html",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/lotts-over.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/single-cuar_private_file.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/customer-area/templates/customer-page.template.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/customer-area/templates/template-functions.class.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/customer-area/templates/customer-private-files-content-empty-category_archive.template.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/customer-area/templates/customer-private-files-content-empty-date_archive.template.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/customer-area/templates/customer-private-files-content-empty.template.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/customer-area/templates/customer-private-files-content-item.template.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/customer-area/templates/customer-private-files-content.template.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/functions.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/header.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/style.css",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/sftp-config.json",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/css/header.css",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/themes/Lotts/index.php",
+		"/C/Users/Henri/AppData/Roaming/Sublime Text 3/Packages/CSScomb/README.md",
+		"/C/Users/Henri/Dropbox/Werk/Websites/lotts.nl/wp-content/plugins/customer-area/customer-area.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/worldgap/DrasticTreemapGApi.js",
+		"/C/Users/Henri/Dropbox/Werk/Websites/worldgap/js/main.js",
+		"/C/Users/Henri/Dropbox/Werk/Websites/worldgap/data.tsv",
+		"/C/Users/Henri/Dropbox/Werk/Websites/gapminder/sftp-config.json",
+		"/C/Users/Henri/Dropbox/Werk/Websites/ivis/wvs/sftp-config.json",
+		"/C/Users/Henri/AppData/Roaming/Sublime Text 3/Packages/SFTP/SFTP.sublime-settings",
+		"/C/Users/Henri/Dropbox/Werk/Websites/ivis/wvs/globe.js",
+		"/C/Users/Henri/Dropbox/Werk/Websites/ivis/wvs/css/main.css",
+		"/C/Users/Henri/Dropbox/Werk/Websites/ivis/wvs/data.json",
+		"/C/Users/Henri/Dropbox/Werk/Websites/ivis/wvs/index.php",
+		"/C/Users/Henri/Dropbox/Werk/Websites/ivis/wvs/index.html",
+		"/C/Users/Henri/Dropbox/Werk/Websites/ivis/wvs/img/.gitignore"
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
 		]
@@ -201,53 +251,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"getfull",
-			"updateHistory",
-			"getFullYear",
+			"alert",
+			"statisticstitle",
 			"search",
-			"createstats",
-			"getDailyTop",
-			"getTop",
-			"totalVisited",
-			"totalVisitedPerSite",
-			"getTopDailyData",
-			"getHourlyAverages",
-			"getVisitedPerHour",
-			"getDailyAverages",
-			"average",
-			"visitedperday",
-			"visitsperday",
-			"getVisitedPerDay",
-			"totalVisitedPerDay",
-			"getVisitedPerDay",
-			"totalVisitedPerSiteURL",
-			"firstMonday",
-			"createSiteCount",
+			"setselecteditem",
+			"setSelectedItem",
+			"notifyObservers",
+			"notifyobservers",
+			"lastSearchString",
+			"search(lastSearchString",
+			"removeurl",
 			"selectedItemSearch",
-			"history",
-			"dataReady",
-			"selectedItem",
-			".url",
-			"search",
-			".url",
-			"createSiteCount",
-			"gethistor",
-			"tooltip",
-			"dailySortButton",
-			"change",
-			"#daycontain",
-			"nextButton",
+			"lastSearch",
+			"hoursSearch = searchHistory(string, hours);",
+			"hours",
+			"days",
 			"daycal",
+			"hoursToDays",
+			"updateData",
+			"updateData ",
+			"search",
+			"searchdays",
+			"daysearch",
+			"search",
+			"update",
+			"textTween",
+			"removePieTween",
+			"pieTween",
+			"currentview",
+			"itemSelected",
+			"setDaysSearch",
+			"searchDays",
+			"dayMs",
+			"searchHistory",
+			"searchDays",
+			"days",
+			"getHistory",
+			"days",
+			"model",
+			"hoursToDays",
+			"daysToHours",
+			"getHistory",
+			"days",
+			"searchDays",
+			"setDays",
+			"hourstodays",
+			"searchDays",
+			"hourstodays",
+			"indexof",
+			"sitescount",
+			"indexof",
+			"#weekcal ul#dayLegend_y",
+			"dayLegend_y",
+			"tip",
+			";\");\n",
+			"apply",
 			"tooltip",
-			"    var toolTip = d3.select(\"#hourlyBargraph\")\n    .append(\"div\")\n    .attr(\"class\", \"ch-tooltip\");",
+			"tip",
 			"tooltip",
-			"create_bargraph",
-			"click",
-			"tooltip",
+			"tip",
+			"search",
+			"search4",
+			"search",
+			".html",
+			"rotate(-90)",
+			"visits",
+			"text",
+			"transform",
+			"tip",
+			"d3-tip n",
+			"text-anchor",
+			"visits",
+			"text-align: center;\nfont-size: 25px;",
+			"statisticsTitle",
+			"your statistics",
+			"filteredPieData",
+			"label_group",
+			"favIcons",
+			"label",
 			"#piechart .center_group .total",
-			"h2",
-			"#cal",
-			"weekcalcont"
+			"ul#topSitesList .topSitesURL",
+			"statistics",
+			"statisticsTitle",
+			"statisticstitle",
+			"k",
+			"statisticsbox",
+			"alert",
+			"update_legend",
+			"click",
+			"onclick",
+			"update_legend",
+			"select",
+			"line",
+			"total",
+			"#graphsBox .value",
+			"updateDayData",
+			"notifyObservers",
+			"container",
+			"notify",
+			"dataready",
+			"container",
+			"statisticsContainer",
+			"container",
+			"setCurrentView",
+			"daycal",
+			"calendars",
+			"searchHours",
+			"searchHistory",
+			"searchHours",
+			"gethistory",
+			"getFullYear",
+			"searchdays",
+			"searchHours",
+			"searchhours",
+			"searchDays",
+			"searchHours",
+			"dayMs",
+			"getHoursSearchMax",
+			"getHoursSearch",
+			"cal",
+			"historyTitle",
+			".",
+			"historyTitle",
+			"historyTitle ",
+			"height",
+			"dayssearch",
+			":hover",
+			"onClick",
+			"d.v"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -265,56 +396,24 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "js/view/monthCalendarView.js",
+					"file": "style/calendar.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3767,
+						"buffer_size": 4823,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3363,
-								3366
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1782.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "style/general.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1091,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1027,
-								1027
+								4052,
+								4052
 							]
 						],
 						"settings":
@@ -326,327 +425,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1350.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "js/view/weekCalendarView.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3869,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3656,
-								3656
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1998.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "js/view/dayCalendarView.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3781,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3305,
-								3305
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1531.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "js/view/statisticsView.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3580,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								771,
-								771
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1512.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "js/view/loadingView.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 393,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								352,
-								352
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 4852.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "js/controller/searchBarController.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 1468,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "js/model/ibrowseModel.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11852,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1777,
-								1777
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 766.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3013,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								338,
-								345
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "js/controller/loadingController.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 49,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								49,
-								49
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "style/history.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1221,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								456,
-								456
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 162.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "js/view/historyView.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1445,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								870,
-								881
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
 					"type": "text"
 				}
 			]
@@ -654,11 +436,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 23.0
 	},
 	"input":
 	{
-		"height": 34.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -689,12 +471,12 @@
 	},
 	"output.sftp":
 	{
-		"height": 0.0
+		"height": 100.0
 	},
 	"project": "ibrowse.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -707,11 +489,11 @@
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 500.0,
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 380.0
 	},
 	"select_symbol":
 	{
@@ -728,7 +510,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 303.0,
+	"side_bar_width": 272.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
