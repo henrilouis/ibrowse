@@ -72,13 +72,34 @@
 	"buffers":
 	[
 		{
-			"contents": "#calendar\n{\n	\n}\n\n#daycal, #weekcal\n{\n	display:none;\n}\n\n#cal, #daycal, #weekcal\n{\n	margin-top:80px;\n	width: 735px;\n	margin:auto;\n	position: relative;\n}\n\n#cal\n{\n	height: 280px;\n	margin-bottom: 20px;\n}\n\n#cal ul#dayLegend\n{\n	position: absolute;\n	list-style: none;\n	z-index: 1;\n}\n\n#cal ul#dayLegend li\n{\n	padding-top: 8px;\n	height: 30px;\n	padding-bottom: 8px;\n	margin-bottom: 2px;\n	margin-left: -40px;\n	font-size: 10px;\n	width: 30px;\n	background: #dedede;\n	text-align: center;\n	background: #fff;\n}\n\n#colorLegendValuesContainer\n{\n	width: 158px;\n	position: absolute;\n	font-size: 11px;\n	color: #FFF;\n	margin-top: -29px;\n	margin-left: 569px;\n	z-index: 2;\n	pointer-events: none;\n}\n\n#colorLegendValueMax\n{\n	float:right;\n	width:40px;\n	margin-right: 2px;\n	text-align: right;\n}\n\n#colorLegendValueMin\n{\n	float:left;\n	width:40;\n	margin-left: 2px;\n	text-align: left;\n}\n\n#weekcal #colorLegendValuesContainer\n{\n	width: 143px;\n	margin-left: 586px;\n}\n\n#daycal #colorLegendValuesContainer\n{\n	width: 143px;\n	margin-left: 596px;\n}\n\n#daycal ul#hourLegend\n{\n	position: absolute;\n	list-style: none;\n	pointer-events: none;\n	margin-left: -48px;\n	/*margin-left: -64px;*/\n}\n\n#daycal ul#hourLegend li\n{\n	width:12px;\n}\n\n#daycal ul#hourLegend li div\n{\n	float: left;\n	font-size: 7px;\n	background: #dedede;\n	text-align: center;\n	background: #fff;\n	height: 12px;\n	width: 12px;\n	padding-right: 2px;\n	border-right: 2px solid #efefef;\n	border-bottom: 2px solid #efefef;\n}\n\n#daycal #dayCalContainer\n{\n	position: relative;\n	margin-top: -32px;\n	margin-left: 4px;\n}\n\n#weekcal\n{\n	position: relative;\n}\n\n#weekcal ul#dayLegend_y\n{\n	position: absolute;\n	list-style: none;\n	pointer-events: none;\n	z-index:1;\n}\n\n#weekcal ul#dayLegend_y li\n{\n	padding-top: 8px;\n	height: 27px;\n	padding-bottom: 8px;\n	margin-bottom: 2px;\n	margin-left: -37px;;\n	font-size: 10px;\n	width: 30px;\n	background: #dedede;\n	text-align: center;\n	background: #fff;\n	pointer-events: none;\n}\n\n#weekcal #weekCalContainer\n{\n	margin-left: 35px;\n	margin-top: -32px;\n}\n\n#weekcal ul#dayLegend_x \n{\n	position: absolute;\n	width: 767px;\n	margin-top: 202px;\n	margin-left: -7px;\n}\n\n#weekcal ul#dayLegend_x li\n{	\n	text-align: center;\n	font-size:11px;\n	float:left;\n	width: 29px;\n	list-style: none;\n}\n\n#monthCalContainer\n{\n	margin-top: -32px;\n	\n}\n\n#monthCalContainer .cal-heatmap-container\n{\n	overflow: hidden;\n	width:735px;\n}\n\n.nextButton, .previousButton\n{\n	font-size:25px;\n	position:absolute;\n	border: none;\n	box-shadow: none;\n	outline: 0;\n	top:50%;\n	background:transparent;\n	color:#fff;\n	margin-top: -10px;\n}\n\n#weekcal .nextButton, #weekcal .previousButton\n{\n	margin-top: -25px;\n}\n\n#daycal .nextButton, #daycal .previousButton\n{\n	margin-top: -25px;\n}\n\n.nextButton\n{\n	right:-80px;\n}\n\n.nextButton:hover\n{\n	color:#6FA7D1;\n}\n\n.previousButton\n{\n	left:-80px;\n}\n\n.previousButton:hover\n{\n	color:#6FA7D1;\n}\n\n\n/* Cal-HeatMap CSS */\n\n.cal-heatmap-container {\n	display: block;\n}\n\n.graph\n{\n	font-family: \"Lucida Grande\", Lucida, Verdana, sans-serif;\n}\n\n.graph-label\n{\n	fill: #444;\n	font-size: 14px;\n}\n\n#daycal\n{\n	margin-bottom: 10px;\n}\n\n#daycal .graph-label\n{\n	font-size: 14px;\n}\n\n#weekcal .graph-label\n{\n	font-size: 14px;\n}\n.graph, .graph-legend rect {\n	shape-rendering: crispedges\n}\n\n.graph-rect\n{\n	/*fill: #ededed*/\n	fill:#fff;\n}\n\n.subdomain-text {\n	opacity:0;\n	font-size: 8px;\n	fill: #fff;\n	pointer-events: none;\n	text-shadow: 1px 1px #333;\n}\n\n.subdomain-text:hover\n{\n	opacity:1;\n}\n\n.hover_cursor:hover {\n	cursor: pointer\n}\n\n.qi {\n	background-color: #999;\n	fill: #999\n}\n\n.q0\n{\n	background-color: #fff !important;\n	fill: #fff !important;\n}\n\n/*\n.q1\n{\n	background-color:#6FA7D1;\n	fill:#6FA7D1;\n}\n\n.q2\n{\n	background-color:#395F99;\n	fill:#395F99;\n}\n\n.q3\n{\n	background-color:#224F73;\n	fill:#224F73;\n}\n\n.q4\n{\n	background-color:#1C3752;\n	fill:#1C3752;\n}\n\n.q5\n{\n	background-color:#192645;\n	fill:#192645;\n}*/\n\n.q1\n{\n	background-color:#ADD5F7;\n	fill:#ADD5F7;\n}\n\n.q2\n{\n	background-color:#7FB2F0;\n	fill:#7FB2F0;\n}\n\n.q3\n{\n	background-color:#4E7AC7;\n	fill:#4E7AC7;\n}\n\n.q4\n{\n	background-color:#35478C;\n	fill:#35478C;\n}\n\n.q5\n{\n	background-color:#16193B;\n	fill:#16193B;\n}r\n\nrect.highlight\n{\n	stroke:#444;\n	stroke-width:1\n}\n\ntext.highlight\n{\n	fill: #444\n}\n\nrect.now\n{\n	stroke: #00ff00\n}\n\ntext.now\n{\n	fill: red;\n	font-weight: 800\n}\n\n.domain-background {\n	fill: none;\n	shape-rendering: crispedges\n}\n\n.ch-tooltip {\n	padding: 10px;\n	background: #222;\n	color: #bbb;\n	font-size: 12px;\n	line-height: 1.4;\n	width: 140px;\n	position: absolute;\n	z-index: 99999;\n	text-align: center;\n	border-radius: 2px;\n	box-shadow: 2px 2px 2px rgba(0,0,0,0.2);\n	display: none;\n	box-sizing: border-box;\n}\n\n.ch-tooltip::after{\n	position: absolute;\n	width: 0;\n	height: 0;\n	border-color: transparent;\n	border-style: solid;\n	content: \"\";\n	padding: 0;\n	display: \"block\";\n	bottom: -6px;\n	left: 50%;\n	margin-left: -6px;\n    border-width: 6px 6px 0;\n    border-top-color: #222;\n}",
 			"file": "style/calendar.css",
-			"file_size": 5236,
-			"file_write_time": 130406967685955455,
 			"settings":
 			{
-				"buffer_size": 4823,
+				"buffer_size": 4822,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "style/searchbar.css",
+			"settings":
+			{
+				"buffer_size": 388,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "style/history.css",
+			"settings":
+			{
+				"buffer_size": 1221,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "manifest.json",
+			"settings":
+			{
+				"buffer_size": 451,
 				"line_ending": "Windows"
 			}
 		}
@@ -155,6 +176,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Henri/Dropbox/GitHub/ibrowse/style/calendar.css",
 		"/C/Users/Henri/Dropbox/GitHub/ibrowse/ibrowse.sublime-project",
 		"/C/Users/Henri/Dropbox/GitHub/ibrowse/ibrowse.sublime-workspace",
 		"/C/Users/Henri/Documents/GitHub/ibrowse/js/model/ibrowseModel.js",
@@ -237,7 +259,7 @@
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -251,6 +273,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"remove",
 			"alert",
 			"statisticstitle",
 			"search",
@@ -377,8 +400,7 @@
 			"height",
 			"dayssearch",
 			":hover",
-			"onClick",
-			"d.v"
+			"onClick"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -396,7 +418,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -405,15 +427,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4823,
+						"buffer_size": 4822,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4052,
-								4052
+								2801,
+								2801
 							]
 						],
 						"settings":
@@ -425,10 +447,107 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4852.0,
+						"translation.y": 2818.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "style/searchbar.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 388,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								322,
+								322
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "style/history.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1221,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1143,
+								1143
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 973.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "manifest.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 451,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								203,
+								203
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
