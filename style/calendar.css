@@ -27,6 +27,7 @@
 	position: absolute;
 	list-style: none;
 	z-index: 1;
+
 }
 
 #cal ul#dayLegend li
@@ -41,6 +42,7 @@
 	background: #dedede;
 	text-align: center;
 	background: #fff;
+	pointer-events: none;
 }
 
 #colorLegendValuesContainer
@@ -240,6 +242,7 @@
 {
 	fill: #444;
 	font-size: 14px;
+	pointer-events: none;
 }
 
 #daycal

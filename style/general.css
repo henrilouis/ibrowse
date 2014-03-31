@@ -58,7 +58,7 @@ section#visualisations h2
 
 section#visualisations #calendar h2
 {
-	
+	pointer-events: none;
 }
 
 .center

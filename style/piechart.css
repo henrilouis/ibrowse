@@ -15,6 +15,7 @@
 {
 	font-size: 20px;
 	font-weight:normal;
+	pointer-events: none;
 }
 
 #piechart .center_group .total
@@ -25,6 +26,7 @@
 #piechart .center_group .units
 {
 	font-size: 20px;
+	pointer-events: none;
 }
 
 #piechart .value
