@@ -178,7 +178,7 @@ var PiechartView = function(container,model,topData)
 
 		d3.select(this)
 			.attr("stroke","#555")
-		    .attr("opacity", 1);
+		    .attr("opacity", 1)
 		    .moveToFront();
     }
 
