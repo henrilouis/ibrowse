@@ -68,7 +68,7 @@ var PiechartView = function(container,model,topData)
 	//WHITE CIRCLE BEHIND LABELS
 	var whiteCircle = center_group.append("svg:circle")
 	  .attr("fill", "white")
-	  .attr("r", ir)
+	  .attr("r", ir-1) // added -1
 	  .attr("cursor", "pointer")
 	  .on("mouseover",update_center)
 	  .on("mouseout",remove_center)
@@ -151,6 +151,13 @@ var PiechartView = function(container,model,topData)
 	///////////////////////////////////////////////////////////
 	// FUNCTIONS //////////////////////////////////////////////
 	///////////////////////////////////////////////////////////
+
+	d3.selection.prototype.moveToFront = function() {
+	  return this.each(function(){
+	    this.parentNode.appendChild(this);
+	  });
+	};
+
 	function update_legend(d)
     {
 		// "TOTAL" LABEL
@@ -160,9 +167,19 @@ var PiechartView = function(container,model,topData)
 		//UNITS LABEL
 		totalUnits.text("OF VISITS");
 
+		if (pieSelected == true && d.name != selectedPie.name)
+	    {
 		d3.select(this)
-		.attr("stroke-width", 0)
-	    .attr("opacity", 1);
+	      	.attr("stroke-width", 2)
+	      	.attr("stroke","white")
+	      	.attr("cursor", "pointer")
+	      	.attr("opacity", 0.7);
+	    }
+
+		d3.select(this)
+		.attr("stroke","#555")
+	    .attr("opacity", 1)
+	    .moveToFront();
     }
 
     function remove_legend(d)
@@ -178,9 +195,10 @@ var PiechartView = function(container,model,topData)
 		//UNITS LABEL
 		  totalUnits.text("VISITS");
 
-		d3.selectAll("#piechart path")
+		d3.selectAll("#piechart .arc path")
 		  	.attr("opacity", 1)
-		  	.attr("stroke-width", 2);
+		  	.attr("stroke-width", 2)
+		  	.attr("stroke","white");
 
 	    }
 	    else if (pieSelected == true && d.name != selectedPie.name)
@@ -193,8 +211,9 @@ var PiechartView = function(container,model,topData)
 		totalUnits.text("OF VISITS");
 		d3.select(this)
 	      	.attr("stroke-width", 2)
+	      	.attr("stroke","white")
 	      	.attr("cursor", "pointer")
-	      	.attr("opacity", 0.7);
+	      	.attr("opacity", 0.4);
 	    }
 	}
 
@@ -213,14 +232,17 @@ var PiechartView = function(container,model,topData)
 			//UNITS LABEL
 			totalUnits.text("OF VISITS");
 
-			d3.selectAll("#piechart path")
-		  	.attr("opacity", 0.4);
+			d3.selectAll("#piechart .arc path")
+		  	.attr("opacity", 0.4)
+		  	.attr("stroke","white");
 
 		  	selectedThis=d3.select(this);
 			d3.select(this)
 		      	.attr("stroke-width", 2)
+		      	.attr("stroke","#555")
 		      	.attr("cursor", "pointer")
-		      	.attr("opacity", 1);
+		      	.attr("opacity", 1)
+		      	.moveToFront();
 
 	    	for(i=0;i<topData.length;i++)
 	    	{
@@ -236,6 +258,7 @@ var PiechartView = function(container,model,topData)
     	{	
     		d3.select(this)
 		      	.attr("stroke-width", 2)
+		      	.attr("stroke","white")
 		      	.attr("cursor", "pointer")
 		      	.attr("opacity", 1);
     		
@@ -259,7 +282,6 @@ var PiechartView = function(container,model,topData)
 		  totalUnits.text(" ");
 
 		  d3.select(this)
-		      	.attr("stroke-width", 2)
 		      	.attr("cursor", "pointer");
 		}
 	}
@@ -288,6 +310,9 @@ var PiechartView = function(container,model,topData)
 
 		  d3.select("circle")
 		  .attr("cursor", "default");
+
+		  d3.selectAll("#piechart .arc path")
+		  .attr("stroke", "white");
 
 		  d3.selectAll("path")
 		  .attr("opacity", 1);

@@ -6,17 +6,17 @@ var BarGraphView = function(container,model,visitsData,viewType)
     width = 700,
     height = 200;
 
-    var x = d3.scale.ordinal()
+  var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
 
-    var y = d3.scale.linear()
+  var y = d3.scale.linear()
     .range([height, 10]);
 
-    var xAxis = d3.svg.axis()
-    .scale(x)
+  var xAxis = d3.svg.axis()
+  .scale(x)
     .orient("bottom");
 
-    var yAxis = d3.svg.axis()
+  var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
     .ticks(10, "visits");
@@ -117,10 +117,9 @@ var BarGraphView = function(container,model,visitsData,viewType)
               .map(function(d) { return d.hour+":00"; }))
               .copy();
 
-          var transition = svg.transition().duration(750),
+            var transition = svg.transition().duration(750),
               delay = function(d, i) { return i * 50; };
-
-          transition.selectAll(".bar")
+            transition.selectAll(".bar")
               .delay(delay)
               .attr("x", function(d) { return x0(d.hour+":00"); });
 
@@ -128,7 +127,8 @@ var BarGraphView = function(container,model,visitsData,viewType)
               .call(xAxis)
             .selectAll("g")
               .delay(delay);
-      }
+                
+    }
   }
 
   function dailyView()
