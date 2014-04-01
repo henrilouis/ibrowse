@@ -75,7 +75,7 @@
 			"file": "js/view/piechartView.js",
 			"settings":
 			{
-				"buffer_size": 9110,
+				"buffer_size": 9109,
 				"line_ending": "Windows"
 			}
 		}
@@ -410,15 +410,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9110,
+						"buffer_size": 9109,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								466,
-								466
+								5160,
+								5160
 							]
 						],
 						"settings":
@@ -430,7 +430,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2340.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

@@ -1,8 +1,8 @@
 {
   "name": "iBROWSE",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "manifest_version": 2,
-  "description": "Search your history faster using the calendar visualization, and get keen insights into your browsing behaviour.",
+  "description": "Search your history using the calendar visualization, and get keen insights into your browsing behaviour. Replaces normal History.",
 
   "icons": { "16": "images/icon16.png",
            "48": "images/icon48.png",
