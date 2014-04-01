@@ -71,6 +71,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "js/view/piechartView.js",
+			"settings":
+			{
+				"buffer_size": 9110,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -248,6 +256,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"selectedthis",
+			"create",
+			"creat",
+			"selectedpie",
+			"stroke",
 			"hourlySortButton",
 			"change",
 			".",
@@ -370,12 +383,7 @@
 			"searchhours",
 			"searchDays",
 			"searchHours",
-			"dayMs",
-			"getHoursSearchMax",
-			"getHoursSearch",
-			"cal",
-			"historyTitle",
-			"."
+			"dayMs"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -393,8 +401,41 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "js/view/piechartView.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9110,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								466,
+								466
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],

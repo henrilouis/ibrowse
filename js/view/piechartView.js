@@ -10,7 +10,7 @@ var PiechartView = function(container,model,topData)
 	var totalVisitedPerDay = totalVisitedPerDay;
 	var totalVisitedPerHour = totalVisitedPerHour;
 	var pieSelected = false;
-	var selectedPie =0;
+	var selectedPie = 0;
 
 	//OBJECTS TO BE POPULATED WITH DATA LATER
 	var lines, valueLabels, nameLabels, favIcons;
@@ -169,7 +169,7 @@ var PiechartView = function(container,model,topData)
 
 		if (pieSelected == true && d.name != selectedPie.name)
 	    {
-		d3.select(this)
+			d3.select(this)
 	      	.attr("stroke-width", 2)
 	      	.attr("stroke","white")
 	      	.attr("cursor", "pointer")
@@ -177,9 +177,9 @@ var PiechartView = function(container,model,topData)
 	    }
 
 		d3.select(this)
-		.attr("stroke","#555")
-	    .attr("opacity", 1)
-	    .moveToFront();
+			.attr("stroke","#555")
+		    .attr("opacity", 1);
+		    .moveToFront();
     }
 
     function remove_legend(d)
