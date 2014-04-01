@@ -180,6 +180,9 @@ var PiechartView = function(container,model,topData)
 			.attr("stroke","#333")
 		    .attr("opacity", 1)
 		    .moveToFront();
+
+		d3.select("#piechart .arc path.selected")
+	    	.moveToFront();
     }
 
     function remove_legend(d)
@@ -234,7 +237,8 @@ var PiechartView = function(container,model,topData)
 
 			d3.selectAll("#piechart .arc path")
 		  	.attr("opacity", 0.4)
-		  	.attr("stroke","white");
+		  	.attr("stroke","white")
+		  	.classed("selected", false);
 
 		  	selectedThis=d3.select(this);
 			d3.select(this)
@@ -242,6 +246,7 @@ var PiechartView = function(container,model,topData)
 		      	.attr("stroke","#333")
 		      	.attr("cursor", "pointer")
 		      	.attr("opacity", 1)
+		      	.classed("selected", true)
 		      	.moveToFront();
 
 	    	for(i=0;i<topData.length;i++)
@@ -312,7 +317,8 @@ var PiechartView = function(container,model,topData)
 		  .attr("cursor", "default");
 
 		  d3.selectAll("#piechart .arc path")
-		  .attr("stroke", "white");
+		  .attr("stroke", "white")
+		  .classed("selected", false);
 
 		  d3.selectAll("path")
 		  .attr("opacity", 1);
