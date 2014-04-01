@@ -177,7 +177,7 @@ var PiechartView = function(container,model,topData)
 	    }
 
 		d3.select(this)
-			.attr("stroke","#555")
+			.attr("stroke","#333")
 		    .attr("opacity", 1)
 		    .moveToFront();
     }
@@ -239,7 +239,7 @@ var PiechartView = function(container,model,topData)
 		  	selectedThis=d3.select(this);
 			d3.select(this)
 		      	.attr("stroke-width", 2)
-		      	.attr("stroke","#555")
+		      	.attr("stroke","#333")
 		      	.attr("cursor", "pointer")
 		      	.attr("opacity", 1)
 		      	.moveToFront();
