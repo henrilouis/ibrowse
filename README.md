@@ -13,3 +13,5 @@ Showing your top visited sites, top web browsing-days and hours.
     
 ##Installation
 Download the repository and unpack it. Turn on developer mode in the chrome extensions view, and load the unpacked extension.
+
+Or for just using the plugin download it from the Chrome webstore at https://chrome.google.com/webstore/detail/ibrowse/hcjpbkigjdnnpjmhgjnficbpkjgbmnek
