@@ -75,7 +75,15 @@
 			"file": "js/view/piechartView.js",
 			"settings":
 			{
-				"buffer_size": 9109,
+				"buffer_size": 9277,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/model/ibrowseModel.js",
+			"settings":
+			{
+				"buffer_size": 11852,
 				"line_ending": "Windows"
 			}
 		},
@@ -264,6 +272,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"class",
 			"selectedthis",
 			"create",
 			"creat",
@@ -390,8 +399,7 @@
 			"searchHours",
 			"searchhours",
 			"searchDays",
-			"searchHours",
-			"dayMs"
+			"searchHours"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -409,7 +417,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -418,15 +426,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9109,
+						"buffer_size": 9277,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6117,
-								6117
+								5523,
+								5523
 							]
 						],
 						"settings":
@@ -438,14 +446,46 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3150.0,
+						"translation.y": 2690.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/model/ibrowseModel.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 11852,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2425,
+								2425
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2160.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 2,
 					"file": "manifest.json",
 					"semi_transient": false,
 					"settings":
@@ -474,7 +514,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
