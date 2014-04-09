@@ -100,6 +100,7 @@ var IbrowseModel = function() {
 			endTime.setMilliseconds(0);
 
 		for(d; d<endTime; d.setTime(d.getTime()+timeUnit)){
+			if(timeUnit == dayMs){d.setHours(0);} // Daylight saving time fix for daily view
 			var unit = new Array();
 			unit.push(new Date(d.getTime()));
 			unit[1] = [];
@@ -111,6 +112,7 @@ var IbrowseModel = function() {
 			unit.push(createSiteCount(unit[1]));
 			target.push(unit);
 		}
+		console.log(target);
 	}
 
 	/*******************************
