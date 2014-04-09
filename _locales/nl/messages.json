@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "iBROWSE",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appDesc": {
+    "message": "Doorzoek je geschiedenis sneller met de visuele kalender en krijg inzicht in je surfgedrag. Vervangt normale geschiedenis.", 
+    "description":"The description of the application, displayed in the web store."
+  }
+}

@@ -1,8 +1,9 @@
 {
-  "name": "iBROWSE",
-  "version": "0.7.2",
+  "name": "__MSG_appName__",
+  "description": "__MSG_appDesc__",
+  "default_locale": "en",
+  "version": "0.7.4",
   "manifest_version": 2,
-  "description": "Search your history using the calendar visualization, and get keen insights into your browsing behaviour. Replaces normal History.",
 
   "icons": { "16": "images/icon16.png",
            "48": "images/icon48.png",

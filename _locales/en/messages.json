@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "iBROWSE",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appDesc": {
+    "message": "Search your history using the calendar visualization, and get keen insights into your browsing behaviour. Replaces normal History.", 
+    "description":"The description of the application, displayed in the web store."
+  }
+}

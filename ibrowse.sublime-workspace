@@ -83,7 +83,7 @@
 			"file": "js/model/ibrowseModel.js",
 			"settings":
 			{
-				"buffer_size": 11852,
+				"buffer_size": 11936,
 				"line_ending": "Windows"
 			}
 		},
@@ -91,7 +91,15 @@
 			"file": "manifest.json",
 			"settings":
 			{
-				"buffer_size": 469,
+				"buffer_size": 388,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "_locales/nl/messages.json",
+			"settings":
+			{
+				"buffer_size": 373,
 				"line_ending": "Windows"
 			}
 		}
@@ -168,6 +176,9 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/_locales/sv/messages.json",
+		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/_locales/nl/messages.json",
+		"/C/Users/Henri/Dropbox/GitHub/ibrowse/js/_locales/en/messages.json",
 		"/C/Users/Henri/Dropbox/GitHub/ibrowse/style/calendar.css",
 		"/C/Users/Henri/Dropbox/GitHub/ibrowse/manifest.json",
 		"/C/Users/Henri/Dropbox/GitHub/ibrowse/style/general.css",
@@ -446,7 +457,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2690.0,
+						"translation.y": 2600.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -455,18 +466,18 @@
 				{
 					"buffer": 1,
 					"file": "js/model/ibrowseModel.js",
-					"semi_transient": true,
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11852,
+						"buffer_size": 11936,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2425,
-								2425
+								2982,
+								2982
 							]
 						],
 						"settings":
@@ -478,7 +489,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2160.0,
+						"translation.y": 1350.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -490,15 +501,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 469,
+						"buffer_size": 388,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								469,
-								469
+								388,
+								388
 							]
 						],
 						"settings":
@@ -515,6 +526,37 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "_locales/nl/messages.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 373,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								373,
+								373
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]

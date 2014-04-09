@@ -112,7 +112,6 @@ var IbrowseModel = function() {
 			unit.push(createSiteCount(unit[1]));
 			target.push(unit);
 		}
-		console.log(target);
 	}
 
 	/*******************************

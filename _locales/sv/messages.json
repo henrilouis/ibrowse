@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "iBROWSE",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appDesc": {
+    "message": "Sök din historia med hjälp av kalendern visualisering, och få angelägna insikter i ditt surfande. Ersätter normal historia.", 
+    "description":"The description of the application, displayed in the web store."
+  }
+}
