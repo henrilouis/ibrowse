@@ -25,7 +25,7 @@ var MonthCalendarView = function(container,model)
 	}
 
 	startDate 				= new Date(Date.now());
-	startDate.setDate(startDate.getDate()-90);
+	startDate.setMonth(startDate.getMonth()-3);
 
 	// Color Legend Values
 	var colorLegendValues = new Array;
