@@ -66,7 +66,6 @@ var IbrowseModel = function() {
 						// Convert the raw data in time-unit based arrays
 						historyPerTimeUnit(history,hourMs,hours);
 						historyPerTimeUnit(history,dayMs,days);
-
 						// Create the top lists and statistics
 						createStats();
 
@@ -100,7 +99,7 @@ var IbrowseModel = function() {
 			endTime.setMilliseconds(0);
 
 		for(d; d<endTime; d.setTime(d.getTime()+timeUnit)){
-			if(timeUnit == dayMs){d.setHours(0);} // Daylight saving time fix for daily view
+			if( timeUnit == dayMs && endTime.dst() ){d.setHours(0);} // Daylight saving time fix for daily view
 			var unit = new Array();
 			unit.push(new Date(d.getTime()));
 			unit[1] = [];
@@ -374,6 +373,16 @@ var IbrowseModel = function() {
 			}
 		}
 		return max;
+	}
+
+	Date.prototype.stdTimezoneOffset = function() {
+	    var jan = new Date(this.getFullYear(), 0, 1);
+	    var jul = new Date(this.getFullYear(), 6, 1);
+	    return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+	}
+
+	Date.prototype.dst = function() {
+	    return this.getTimezoneOffset() < this.stdTimezoneOffset();
 	}
 
 	/*******************************
