@@ -19,6 +19,12 @@ header
 	width:160px;
 }
 
+@media screen and (max-width: 1100px) {
+	#logobox h1{
+		display:none;
+	}
+}
+
 #logo
 {
 	

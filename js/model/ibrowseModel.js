@@ -90,6 +90,7 @@ var IbrowseModel = function() {
 			d.setMinutes(0);
 			d.setSeconds(0);
 			d.setMilliseconds(0);
+		var dstStart = d.dst();
 
 		var endTime = new Date();
 			endTime.setDate(endTime.getDate()+1);
@@ -99,10 +100,22 @@ var IbrowseModel = function() {
 			endTime.setMilliseconds(0);
 
 		for(d; d<endTime; d.setTime(d.getTime()+timeUnit)){
-			if( timeUnit == dayMs && endTime.dst() ){d.setHours(0);} // Daylight saving time fix for daily view
+			
+			// DST fix if DST is in the history data set
+			if( timeUnit == dayMs && dstStart != d.dst() ){
+				if( dstStart == true ){
+					d.setHours(0);
+					d.setDate(d.getDate()+1);
+				}else if( d.dst() == true ){
+					d.setHours(0);
+				}
+			}
+			dstStart = d.dst();
+			
 			var unit = new Array();
 			unit.push(new Date(d.getTime()));
 			unit[1] = [];
+			
 			for(i=0; i < history.length; i++){
 				if( (history[i][3] >= d.getTime()) && (history[i][3] < (d.getTime()+timeUnit)) ){
 					unit[1].push(history[i]);
